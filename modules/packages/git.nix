@@ -1,5 +1,6 @@
 {
   settings,
+  pkgs,
   ...
 }:
 
@@ -30,7 +31,7 @@
   programs.git.extraConfig = {
     init = {
       defaultBranch = "main";
-      editor = "${settings.variables.EDITOR} --wait";
+      editor = "${pkgs.nvim}/bin/nvim";
     };
     github = {
       user = settings.username;

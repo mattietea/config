@@ -36,11 +36,11 @@
       src = zsh-fast-syntax-highlighting;
       file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
     }
-    {
-      name = "zsh-autosuggestions";
-      src = zsh-autosuggestions;
-      file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
-    }
+    # {
+    #   name = "zsh-autosuggestions";
+    #   src = zsh-autosuggestions;
+    #   file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
+    # }
     {
       name = "zsh-you-should-use";
       src = zsh-you-should-use;
@@ -64,8 +64,12 @@
     # See https://github.com/marlonrichert/zsh-autocomplete/issues/750
     setopt interactive_comments
 
-    # Use tab to cycle through completions instead of accepting the first one
-    bindkey -M menuselect              '^I'         menu-complete
+    # zsh autocomplete, make tab and shift tab change the selection in the menu
+    bindkey '^I' menu-complete
+    bindkey "$terminfo[kcbt]" reverse-menu-complete
+
+    # zsh autocomplete, make tab and shift tab change the selection in the menu
+    bindkey -M menuselect '^I' menu-complete
     bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 
     # TODO: Fix this

@@ -17,24 +17,16 @@ An attempt to use [Nix](https://nixos.org/download/) for my dotfiles
 git clone https://github.com/mattietea/config ~/.config/nix
 ```
 
-2. In `flake.nix`, set `settings.hostname.personal` and `settings.hostname.work` to the respective hostnames
+2. In `flake.nix` update
 
-3. Remove all previous zsh related configs
+   1. username
+   2. email
+   3. hostnames (eg. "Matts-Work-MacBook-Pro")
 
-```sh
-rm -rf ~/.config/zsh
-rm -rf ~/.zsh*
-rm -rf ~/.oh-my-zsh
-```
-
-> This are some common places things get installed
-
-4. Run the darwin build
+1. Run the darwin build
 
 ```sh
-cd ~/.config/nix
-
-nix run nix-darwin -- switch --flake .#mac
+(cd ~/.config/nix && nix run nix-darwin -- switch --flake .)
 ```
 
 > Installs `nix-darwin` and exposes the `darwin-rebuild` command
@@ -42,9 +34,7 @@ nix run nix-darwin -- switch --flake .#mac
 ## Rebuild
 
 ```sh
-cd ~/.config/nix
-
-darwin-rebuild switch --flake .#mac
+(cd ~/.config/nix && darwin-rebuild switch --flake .)
 ```
 
 ## Formatting
@@ -59,8 +49,12 @@ nix fmt
 - [sukhmancs/nixos-configs](https://github.com/sukhmancs/nixos-configs)
 - [zupo/dotfiles](https://github.com/zupo/dotfiles/blob/main/flake.nix)
 - [pcasaretto/nix-home](https://github.com/pcasaretto/nix-home)
+- [nix-darwin-dotfiles]https://github.com/shaunsingh/nix-darwin-dotfiles
 
 ### Random
 
 - [zellij](https://github.com/zellij-org/zellij) - A terminal workspace with batteries included
+- [hhtwm - window manager](https://github.com/szymonkaliski/hhtwm)
+- [devhints](https://devhints.io)
+- [tldr](https://github.com/tldr-pages/tldr?tab=readme-ov-file)
 - [superkey](https://superkey.app/) - Keyboard enhancement

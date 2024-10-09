@@ -4,12 +4,6 @@
 
 {
 
-  imports = [
-    ./shared/fonts.nix
-    ./shared/core.nix
-    ./shared/environment.nix
-  ];
-
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 

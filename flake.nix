@@ -4,28 +4,28 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    inputs@{
+    {
       self,
-      nix-darwin,
+      darwin,
       nixpkgs,
       home-manager,
-    }:
+      ...
+    }@inputs:
     let
+      # Utilities
+      buildDarwin = import ./modules/utils/build-darwin.nix;
+
+      # Settings
       settings = {
-        name = "Matt Thomas";
-        # $ id -un
-        # This is used to configure your systems `user`
-        # but is also used to configure things like git ect.
-        # If you're github username and systems user is different
-        # look for references to `settings.username` and update them
+        # Used git, might try and think of a better way
         username = "mattietea";
         email = "mattcthomas@me.com";
         variables = {
@@ -35,23 +35,30 @@
       };
     in
     {
-      darwinConfigurations.mac = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./system/macos.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mattietea = import ./modules/home.nix;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              inherit settings;
-            };
-          }
-        ];
-        specialArgs = {
-          inherit settings;
+      darwinConfigurations = {
+        # scutil --get LocalHostName
+        Matts-Work-MacBook-Pro = buildDarwin {
+          user = "mattietea";
+          settings = settings;
+          inputs = inputs;
+          modules = {
+            system = [
+              ./modules/system/core
+              ./modules/system/darwin.nix
+            ];
+            user = [
+              ./modules/packages/fonts.nix
+              ./modules/packages/git.nix
+              ./modules/packages/zsh.nix
+              ./modules/packages/eza.nix
+              ./modules/packages/fzf.nix
+              ./modules/packages/starship.nix
+              ./modules/packages/neovim.nix
+              ./modules/packages/gh.nix
+              ./modules/packages/bat.nix
+              ./modules/packages/git-absorb.nix
+            ];
+          };
         };
       };
 
