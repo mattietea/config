@@ -16,8 +16,9 @@
     ./programs/neovim.nix
     ./programs/gh.nix
     ./programs/bat.nix
+    ./programs/git-absorb.nix
   ];
 
   home.stateVersion = "24.05";
-  
+
 }

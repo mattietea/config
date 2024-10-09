@@ -18,7 +18,7 @@
     undo = "reset --soft";
 
     fixup = "commit --fixup";
-    tidy = "rebase --interactive $(git merge-base HEAD origin/main)";
+    tidy = "rebase --interactive";
 
     nevermind = "!git reset --hard HEAD && git clean -d -f";
     # Don't need fzf with marlonrichert/zsh-autocomplete
