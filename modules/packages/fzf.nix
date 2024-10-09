@@ -18,7 +18,7 @@
     "--height 100%"
     "--layout=reverse"
     "--inline-info"
-    "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always --line-range :500 {}'"
+    "--preview '${pkgs.bat}/tyle=numbers --color=bin/bat --salways --line-range :500 {}'"
     "--border=none"
     "--preview-window=noborder"
   ];

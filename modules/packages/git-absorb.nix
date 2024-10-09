@@ -5,7 +5,9 @@
   ];
 
   programs.git.extraConfig = {
+
     # https://github.com/tummychow/git-absorb?tab=readme-ov-file#configuration
+
     absorb = {
       maxStack = 30;
       oneFixupPerCommit = true;

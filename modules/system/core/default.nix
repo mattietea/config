@@ -1,18 +1,27 @@
 {
-  config,
-  lib,
-  pkgs,
-  settings,
+  user,
   ...
 }:
 
 {
 
+  imports = [
+    ./environment.nix
+  ];
+
+  users = {
+    # Set the home directory for the user
+    users.${user} = {
+      name = user;
+      home = "/Users/${user}";
+    };
+  };
+
   nix = {
     configureBuildUsers = true;
 
     settings = {
-      trusted-users = [ settings.username ];
+      trusted-users = [ user ];
       experimental-features = "nix-command flakes";
     };
 

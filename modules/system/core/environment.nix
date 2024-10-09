@@ -1,29 +1,24 @@
 {
-  config,
-  lib,
   pkgs,
   settings,
   ...
 }:
-
 {
-
-  users = {
-    # Set the home directory for the user
-    users.${settings.username}.home = "/Users/${settings.username}";
-  };
 
   # TODO: Is this needed?
   programs = {
     zsh.enable = true;
+
+    # Disable zsh completion
+    # As we call it ourselves later in the process
     zsh.enableCompletion = false;
   };
 
   # List packages installed in system profile (All users)
   environment = {
-    systemPackages = (import ../../shared/packages.nix { inherit pkgs; });
 
     shells = [
+      pkgs.nushell
       pkgs.zsh
       pkgs.bash
     ];
