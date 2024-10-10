@@ -57,6 +57,7 @@
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
+              ./modules/programs/wezterm.nix
             ];
           };
         };
