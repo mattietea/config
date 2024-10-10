@@ -49,7 +49,7 @@ nix fmt
 - [sukhmancs/nixos-configs](https://github.com/sukhmancs/nixos-configs)
 - [zupo/dotfiles](https://github.com/zupo/dotfiles/blob/main/flake.nix)
 - [pcasaretto/nix-home](https://github.com/pcasaretto/nix-home)
-- [nix-darwin-dotfiles]https://github.com/shaunsingh/nix-darwin-dotfiles
+- [nix-darwin-dotfiles](https://github.com/shaunsingh/nix-darwin-dotfiles)
 
 ### Random
 
@@ -58,3 +58,5 @@ nix fmt
 - [devhints](https://devhints.io)
 - [tldr](https://github.com/tldr-pages/tldr?tab=readme-ov-file)
 - [superkey](https://superkey.app/) - Keyboard enhancement
+- [roundy](https://github.com/nullxception/roundy) - zsh prompt
+- [dreams of autonomy zsh cfg](https://www.youtube.com/watch?v=ud7YxC33Z3w)
