@@ -31,7 +31,15 @@
   programs.git.extraConfig = {
     init = {
       defaultBranch = "main";
-      editor = "${pkgs.nvim}/bin/nvim";
+    };
+    core = {
+      editor = "${pkgs.neovim}/bin/nvim";
+      fsmonitor = true;
+      untrackedcache = true;
+    };
+    feature = {
+      manyFiles = true;
+
     };
     github = {
       user = settings.username;
