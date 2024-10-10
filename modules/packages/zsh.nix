@@ -36,11 +36,6 @@
       src = zsh-fast-syntax-highlighting;
       file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
     }
-    # {
-    #   name = "zsh-autosuggestions";
-    #   src = zsh-autosuggestions;
-    #   file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
-    # }
     {
       name = "zsh-you-should-use";
       src = zsh-you-should-use;
