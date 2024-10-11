@@ -57,7 +57,32 @@
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
-              ./modules/programs/wezterm.nix
+              ./modules/programs/wezterm
+            ];
+          };
+        };
+
+        Matts-Personal-MacBook-Pro = buildDarwin {
+          user = "mattietea";
+          settings = settings;
+          inputs = inputs;
+          modules = {
+            system = [
+              ./modules/system/core
+              ./modules/system/darwin.nix
+            ];
+            user = [
+              ./modules/packages/fonts.nix
+              ./modules/packages/git.nix
+              ./modules/packages/zsh.nix
+              ./modules/packages/eza.nix
+              ./modules/packages/fzf.nix
+              ./modules/packages/starship.nix
+              ./modules/packages/neovim.nix
+              ./modules/packages/gh.nix
+              ./modules/packages/bat.nix
+              ./modules/packages/git-absorb.nix
+              ./modules/programs/wezterm
             ];
           };
         };
