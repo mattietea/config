@@ -43,6 +43,11 @@ git clone https://github.com/mattietea/config ~/.config/nix
 nix fmt
 ```
 
+### TODO
+
+- [ ] Update ZSH config to defer plugins (fix zsh-autocomplete)
+- [ ] Figure out Homebrew
+
 ### Examples
 
 - [tbreslein/dots](https://github.com/tbreslein/dots/blob/main/flake.nix)
