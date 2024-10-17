@@ -1,0 +1,52 @@
+{...}:
+
+{
+  programs.alacritty = {
+    enable = true;
+    settings = {
+
+      normal.family = "SFMono Nerd Font";
+      bold.family = "SFMono Nerd Font";
+      italic.family = "SFMono Nerd Font";
+      bold_italic.family = "SFMono Nerd Font";
+      size = 18;
+
+      colors = {
+        primary = {
+          background = "#24292e";
+          foreground = "#d1d5da";
+        };
+        normal = {
+          black   = "#586069";
+          red     = "#ea4a5a";
+          green   = "#34d058";
+          yellow  = "#ffea7f";
+          blue    = "#2188ff";
+          magenta = "#b392f0";
+          cyan    = "#39c5cf";
+          white   = "#d1d5da";
+        };
+        bright = {
+          black   = "#959da5";
+          red     = "#f97583";
+          green   = "#85e89d";
+          yellow  = "#ffea7f";
+          blue    = "#79b8ff";
+          magenta = "#b392f0";
+          cyan    = "#56d4dd";
+          white   = "#fafbfc";
+        };
+        indexed_colors = [
+          {
+            index = 16;
+            color = "#d18616";
+          }
+          {
+            index = 17;
+            color = "#f97583";
+          }
+        ];
+      };
+    }
+  };
+}

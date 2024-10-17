@@ -57,7 +57,7 @@
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
-              ./modules/programs/wezterm
+              ./modules/programs/alacritty
             ];
           };
         };
@@ -82,7 +82,7 @@
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
-              ./modules/programs/wezterm
+              ./modules/programs/alacritty.nix
             ];
           };
         };
