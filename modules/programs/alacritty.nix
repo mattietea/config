@@ -1,40 +1,60 @@
-{...}:
+{ ... }:
 
 {
   programs.alacritty = {
     enable = true;
     settings = {
 
-      normal.family = "SFMono Nerd Font";
-      bold.family = "SFMono Nerd Font";
-      italic.family = "SFMono Nerd Font";
-      bold_italic.family = "SFMono Nerd Font";
-      size = 18;
+      live_config_reload = true;
+
+      font = {
+        size = 20;
+        normal = {
+          family = "SFMono Nerd Font";
+          style = "Regular";
+        };
+        bold = {
+          family = "SFMono Nerd Font";
+          style = "Medium";
+        };
+        italic = {
+          family = "SFMono Nerd Font";
+          style = "Italic";
+        };
+        bold_italic = {
+          family = "SFMono Nerd Font";
+          style = "Medium Italic";
+        };
+      };
+
+      env = {
+        TERM = "xterm-256color";
+      };
 
       colors = {
         primary = {
-          background = "#24292e";
-          foreground = "#d1d5da";
+          background = "#0d1117";
+          foreground = "#e6edf3";
         };
         normal = {
-          black   = "#586069";
-          red     = "#ea4a5a";
-          green   = "#34d058";
-          yellow  = "#ffea7f";
-          blue    = "#2188ff";
-          magenta = "#b392f0";
-          cyan    = "#39c5cf";
-          white   = "#d1d5da";
+          black = "#484f58";
+          red = "#ff7b72";
+          green = "#3fb950";
+          yellow = "#d29922";
+          blue = "#58a6ff";
+          magenta = "#bc8cff";
+          cyan = "#39c5cf";
+          white = "#b1bac4";
         };
         bright = {
-          black   = "#959da5";
-          red     = "#f97583";
-          green   = "#85e89d";
-          yellow  = "#ffea7f";
-          blue    = "#79b8ff";
-          magenta = "#b392f0";
-          cyan    = "#56d4dd";
-          white   = "#fafbfc";
+          black = "#6e7681";
+          red = "#ffa198";
+          green = "#56d364";
+          yellow = "#e3b341";
+          blue = "#79c0ff";
+          magenta = "#d2a8ff";
+          cyan = "#56d4dd";
+          white = "#f0f6fc";
         };
         indexed_colors = [
           {
@@ -43,10 +63,10 @@
           }
           {
             index = 17;
-            color = "#f97583";
+            color = "#ffa198";
           }
         ];
       };
-    }
+    };
   };
 }
