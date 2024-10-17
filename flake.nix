@@ -57,6 +57,7 @@
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
+              ./modules/packages/tldr.nix
               ./modules/programs/alacritty.nix
             ];
           };
@@ -82,6 +83,7 @@
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
+              ./modules/packages/tldr.nix
               ./modules/programs/alacritty.nix
             ];
           };
