@@ -52,12 +52,12 @@
               ./modules/packages/zsh.nix
               ./modules/packages/eza.nix
               ./modules/packages/fzf.nix
-              ./modules/packages/starship.nix
+              ./modules/packages/pure.nix
               ./modules/packages/neovim.nix
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/git-absorb.nix
-              ./modules/programs/alacritty
+              ./modules/programs/alacritty.nix
             ];
           };
         };
@@ -77,7 +77,7 @@
               ./modules/packages/zsh.nix
               ./modules/packages/eza.nix
               ./modules/packages/fzf.nix
-              ./modules/packages/starship.nix
+              ./modules/packages/pure.nix
               ./modules/packages/neovim.nix
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
