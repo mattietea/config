@@ -8,7 +8,7 @@
       live_config_reload = true;
 
       font = {
-        size = 20;
+        size = 24;
         normal = {
           family = "SFMono Nerd Font";
           style = "Regular";
@@ -33,7 +33,7 @@
 
       colors = {
         primary = {
-          background = "#0d1117";
+          background = "#000000";
           foreground = "#e6edf3";
         };
         normal = {
