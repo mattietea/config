@@ -29,8 +29,8 @@
         username = "mattietea";
         email = "mattcthomas@me.com";
         variables = {
-          EDITOR = "cursor";
-          VISUAL = "cursor";
+          EDITOR = "nvim";
+          VISUAL = "cursor --wait";
         };
       };
     in
