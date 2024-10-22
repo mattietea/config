@@ -56,6 +56,7 @@
               ./modules/packages/neovim.nix
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
+              ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
               ./modules/packages/tldr.nix
               ./modules/programs/alacritty.nix
@@ -82,6 +83,7 @@
               ./modules/packages/neovim.nix
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
+              ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
               ./modules/packages/tldr.nix
               ./modules/programs/alacritty.nix

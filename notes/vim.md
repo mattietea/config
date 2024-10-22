@@ -3,15 +3,16 @@
 ## Keyboard Shortcuts
 
 Moving lines
+
 ```
 test(*)
-t* 
+t*
 test*
 ```
 
 Words
 
-`w` - move to start or end of word 
+`w` - move to start or end of word
 
 ```
 (*)word* *again*
@@ -30,4 +31,5 @@ Words
 ```
 
 ## Random
-- [Vim Golf](https://www.vimgolf.com/) - challenges 
+
+- [Vim Golf](https://www.vimgolf.com/) - challenges

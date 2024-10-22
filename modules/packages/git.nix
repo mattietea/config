@@ -33,7 +33,7 @@
       defaultBranch = "main";
     };
     core = {
-      editor = "${pkgs.neovim}/bin/nvim";
+      editor = "${settings.variables.VISUAL}";
       fsmonitor = true;
       untrackedcache = true;
     };
