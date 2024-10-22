@@ -47,6 +47,7 @@ nix fmt
 
 - [x] Add `qmv` for bulk renaming files
 - [x] Update EDITOR and VISUAL env variables
+- [ ] Add zoxide
 - [ ] Update ZSH config to defer plugins (fix zsh-autocomplete)
 - [ ] Figure out Homebrew
 
@@ -67,3 +68,4 @@ nix fmt
 - [superkey](https://superkey.app/) - Keyboard enhancement
 - [roundy](https://github.com/nullxception/roundy) - zsh prompt
 - [dreams of autonomy zsh cfg](https://www.youtube.com/watch?v=ud7YxC33Z3w)
+- [maple font](https://github.com/subframe7536/maple-font/)
