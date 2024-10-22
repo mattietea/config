@@ -39,7 +39,6 @@
     };
     feature = {
       manyFiles = true;
-
     };
     github = {
       user = settings.username;
