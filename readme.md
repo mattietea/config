@@ -45,8 +45,8 @@ nix fmt
 
 ### TODO
 
-- [ ] Add `qmv` for bulk renaming files
-- [ ] Update EDITOR and VISUAL env variables
+- [x] Add `qmv` for bulk renaming files
+- [x] Update EDITOR and VISUAL env variables
 - [ ] Update ZSH config to defer plugins (fix zsh-autocomplete)
 - [ ] Figure out Homebrew
 

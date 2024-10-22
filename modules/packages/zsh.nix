@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   # https://home-manager-options.extranix.com/?query=programs.zsh.&release=master
 
@@ -18,13 +17,10 @@
   ];
 
   programs.zsh.shellAliases = {
-    l = "eza --oneline --all";
-    ls = "eza --oneline";
-    la = "l";
     c = "clear";
-    g = "git";
-    cat = "bat";
-    code = "$EDITOR";
+    g = "${pkgs.git}/bin/git";
+    cat = "${pkgs.bat}/bin/bat";
+    code = "${settings.variables.VISUAL}";
   };
 
   # Notice we are using the nixpkgs package for these
@@ -75,7 +71,7 @@
     [[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
   '';
 
-  programs.zsh.sessionVariables = {
+  programs.zsh.sessionVariables = settings.variables // {
     # https://github.com/MichaelAquilina/zsh-you-should-use?tab=readme-ov-file#customising-messages
     YSU_MESSAGE_FORMAT = "⚠ $(tput setaf 3)%command$(tput sgr0) → $(tput setaf 2)%alias$(tput sgr0)";
   };
