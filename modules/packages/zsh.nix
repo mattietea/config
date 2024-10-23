@@ -33,11 +33,6 @@
       file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
     }
     {
-      name = "zsh-you-should-use";
-      src = zsh-you-should-use;
-      file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
-    }
-    {
       name = "zsh-autocomplete";
       src = zsh-autocomplete;
       file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
@@ -52,29 +47,35 @@
     # See https://github.com/zsh-users/zsh/blob/master/Completion/compinit#L67-L72
     zstyle '*:compinit' arguments -u
 
+    # Enable hidden files in autocomplete
+    setopt globdots
+
+    # --------------------------------------------------------------------------
+    # zsh-autocomplete
+    # --------------------------------------------------------------------------
     # See https://github.com/marlonrichert/zsh-autocomplete/issues/750
     setopt interactive_comments
 
-    # zsh autocomplete, make tab and shift tab change the selection in the menu
-    bindkey '^I' menu-complete
-    bindkey "$terminfo[kcbt]" reverse-menu-complete
+    bindkey              '^I' menu-select
+    bindkey "$terminfo[kcbt]" menu-select
 
-    # zsh autocomplete, make tab and shift tab change the selection in the menu
-    bindkey -M menuselect '^I' menu-complete
-    bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 
-    # TODO: Fix this
-    # Currently needed for Shopify
+    bindkey -M menuselect              '^I'         menu-select
+    bindkey -M menuselect "$terminfo[kcbt]" menu-select
+
+    # zsh-autocomplete ---------------------------------------------------------
+
+    # --------------------------------------------------------------------------
+    # shopify (TODO: move this)
+    # --------------------------------------------------------------------------
     [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
     [[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
     [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
     [[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
+    # shopify ------------------------------------------------------------------
   '';
 
-  programs.zsh.sessionVariables = settings.variables // {
-    # https://github.com/MichaelAquilina/zsh-you-should-use?tab=readme-ov-file#customising-messages
-    YSU_MESSAGE_FORMAT = "⚠ $(tput setaf 3)%command$(tput sgr0) → $(tput setaf 2)%alias$(tput sgr0)";
-  };
+  programs.zsh.sessionVariables = settings.variables;
 
   programs.zsh.history.size = 10000000;
   programs.zsh.history.save = 10000000;
