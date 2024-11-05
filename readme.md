@@ -58,6 +58,7 @@ nix fmt
 - [zupo/dotfiles](https://github.com/zupo/dotfiles/blob/main/flake.nix)
 - [pcasaretto/nix-home](https://github.com/pcasaretto/nix-home)
 - [nix-darwin-dotfiles](https://github.com/shaunsingh/nix-darwin-dotfiles)
+- [christoomey/dotfiles](https://github.com/christoomey/dotfiles)
 
 ### Random
 
@@ -69,3 +70,11 @@ nix fmt
 - [roundy](https://github.com/nullxception/roundy) - zsh prompt
 - [dreams of autonomy zsh cfg](https://www.youtube.com/watch?v=ud7YxC33Z3w)
 - [maple font](https://github.com/subframe7536/maple-font/)
+- [precommit checks](https://github.com/dc-tec/nixvim/blob/main/flake.nix#L43-L49)
+- vim
+  - [telescope](https://github.com/nvim-telescope/telescope.nvim)
+  - [Vim: Tutorial on Editing, Navigation, and File Management](https://www.youtube.com/watch?app=desktop&v=E-ZbrtoSuzw)
+  - [vim-which-key](https://github.com/liuchengxu/vim-which-key)
+  - [oil](https://github.com/stevearc/oil.nvim)
+  - [mini](https://github.com/echasnovski/mini.nvim)
+  - [clue](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-clue.md)
