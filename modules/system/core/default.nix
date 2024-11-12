@@ -17,6 +17,8 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   nix = {
     configureBuildUsers = true;
 
