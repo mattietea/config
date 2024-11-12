@@ -63,6 +63,7 @@
               ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
               ./modules/packages/tldr.nix
+              ./modules/packages/graphite.nix
               ./modules/programs/alacritty.nix
             ];
           };
@@ -90,6 +91,7 @@
               ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
               ./modules/packages/tldr.nix
+              ./modules/packages/graphite.nix
               ./modules/programs/alacritty.nix
             ];
           };
