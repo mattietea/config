@@ -5,8 +5,6 @@
     enable = true;
     settings = {
 
-      live_config_reload = true;
-
       font = {
         size = 24;
         normal = {
