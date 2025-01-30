@@ -60,8 +60,10 @@
     bindkey "$terminfo[kcbt]" menu-select
 
 
-    bindkey -M menuselect              '^I'         menu-select
+    bindkey -M menuselect              '^I' menu-select
     bindkey -M menuselect "$terminfo[kcbt]" menu-select
+
+    zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
 
     # zsh-autocomplete ---------------------------------------------------------
 
