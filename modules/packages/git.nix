@@ -21,10 +21,6 @@
     fixup = "commit --fixup";
     tidy = "rebase --interactive";
 
-    m = "!${pkgs.git-machete}/bin/git machete";
-
-    soak = "!git absorb --and-rebase --base $(git merge-base HEAD origin/main)";
-
     nevermind = "!git reset --hard HEAD && git clean -d -f";
     # Don't need fzf with marlonrichert/zsh-autocomplete
     # fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";

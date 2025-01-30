@@ -62,6 +62,7 @@
               ./modules/packages/bat.nix
               ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
+              ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
               ./modules/packages/graphite.nix
               ./modules/programs/alacritty.nix
@@ -90,6 +91,7 @@
               ./modules/packages/bat.nix
               ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
+              ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
               ./modules/packages/graphite.nix
               ./modules/programs/alacritty.nix

@@ -9,4 +9,8 @@
     git-machete
   ];
 
+  programs.git.aliases = {
+    m = "machete";
+  };
+
 }

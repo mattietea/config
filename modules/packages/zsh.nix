@@ -54,7 +54,7 @@
     # zsh-autocomplete
     # --------------------------------------------------------------------------
     # See https://github.com/marlonrichert/zsh-autocomplete/issues/750
-    setopt interactive_comments
+    setopt interactivecomments
 
     bindkey              '^I' menu-select
     bindkey "$terminfo[kcbt]" menu-select
