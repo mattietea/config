@@ -65,7 +65,6 @@
               ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
               ./modules/packages/graphite.nix
-              ./modules/programs/alacritty.nix
             ];
           };
         };
@@ -94,7 +93,6 @@
               ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
               ./modules/packages/graphite.nix
-              ./modules/programs/alacritty.nix
             ];
           };
         };
