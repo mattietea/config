@@ -58,7 +58,7 @@
     bindkey -M menuselect              '^I' menu-select
     bindkey -M menuselect "$terminfo[kcbt]" menu-select
 
-    zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
+    # zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
   '';
 
   programs.zsh.sessionVariables = settings.variables;
