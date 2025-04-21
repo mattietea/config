@@ -100,8 +100,6 @@
       };
     };
 
-    defaults.universalaccess.reduceMotion = true;
-
     defaults.universalaccess.reduceTransparency = true;
 
     # Whether to enable keyboard mappings. (The below wont work if not)
