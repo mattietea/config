@@ -50,7 +50,7 @@
     defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
     # Displays have separate Spaces
-    defaults.spaces.spans-displays = true;
+    defaults.spaces.spans-displays = false;
 
     # For normal click: 0 for light clicking, 1 for medium, 2 for firm. The default is 1.
     defaults.trackpad.FirstClickThreshold = 0;
@@ -79,12 +79,6 @@
 
     # Whether to use 24-hour or 12-hour time. The default is based on region settings.
     defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
-
-    # Set to 'Dark' to enable dark mode, or leave unset for normal mode.
-    defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
-
-    # Whether to use centimeters (metric) or inches (US, UK) as the measurement unit.
-    defaults.NSGlobalDomain.AppleMeasurementUnits = "Centimeters";
 
     defaults.CustomSystemPreferences = {
       "com.apple.Safari" = {
