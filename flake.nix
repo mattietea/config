@@ -57,7 +57,6 @@
               ./modules/packages/eza.nix
               ./modules/packages/fzf.nix
               ./modules/packages/pure.nix
-              ./modules/packages/neovim
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/rename-utils.nix
@@ -69,7 +68,7 @@
           };
         };
 
-        Matts-Personal-MacBook-Pro = buildDarwin {
+        Matts-Personal-Macbook = buildDarwin {
           user = "mattietea";
           settings = settings;
           inputs = inputs;
@@ -85,14 +84,12 @@
               ./modules/packages/eza.nix
               ./modules/packages/fzf.nix
               ./modules/packages/pure.nix
-              ./modules/packages/neovim
               ./modules/packages/gh.nix
               ./modules/packages/bat.nix
               ./modules/packages/rename-utils.nix
               ./modules/packages/git-absorb.nix
               ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
-              ./modules/packages/graphite.nix
             ];
           };
         };

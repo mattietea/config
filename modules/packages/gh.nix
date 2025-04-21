@@ -10,5 +10,6 @@
   # https://home-manager-options.extranix.com/?query=programs.gh.enable&release=master
 
   programs.gh.enable = true;
+  programs.gh.gitCredentialHelper.enable = true;
 
 }

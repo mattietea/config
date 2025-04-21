@@ -21,12 +21,12 @@ git clone https://github.com/mattietea/config ~/.config/nix
 
    1. username
    2. email
-   3. hostnames (eg. "Matts-Work-MacBook-Pro")
+   3. hostnames (scutil --get LocalHostName)
 
 1. Run the darwin build
 
 ```sh
-(cd ~/.config/nix && nix run nix-darwin -- switch --flake .)
+nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .
 ```
 
 > Installs `nix-darwin` and exposes the `darwin-rebuild` command
@@ -34,7 +34,7 @@ git clone https://github.com/mattietea/config ~/.config/nix
 ## Rebuild
 
 ```sh
-(cd ~/.config/nix && darwin-rebuild switch --flake .)
+darwin-rebuild switch --flake .
 ```
 
 ## Formatting
