@@ -23,9 +23,6 @@
     code = "${settings.variables.VISUAL}";
   };
 
-  # Notice we are using the nixpkgs package for these
-  # this is so Nix can manage their installs and remove them
-  # when they are no longer used.
   programs.zsh.plugins = with pkgs; [
     {
       name = "fast-syntax-highlighting";
@@ -39,8 +36,6 @@
     }
   ];
 
-  # Disable as 'zsh-autocoplete' calls this
-  # as marlonrichert/zsh-autocomplete calls this for us
   programs.zsh.enableCompletion = lib.mkForce false;
 
   programs.zsh.initExtra = ''
@@ -64,17 +59,6 @@
     bindkey -M menuselect "$terminfo[kcbt]" menu-select
 
     zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
-
-    # zsh-autocomplete ---------------------------------------------------------
-
-    # --------------------------------------------------------------------------
-    # shopify (TODO: move this)
-    # --------------------------------------------------------------------------
-    [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-    [[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
-    [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
-    [[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
-    # shopify ------------------------------------------------------------------
   '';
 
   programs.zsh.sessionVariables = settings.variables;

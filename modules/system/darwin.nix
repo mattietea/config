@@ -20,20 +20,21 @@
     '';
 
     defaults.dock.autohide = true;
-
-    # Auto hide stage strip showing recent apps. Default is false.
+    defaults.dock.autohide-delay = 0.1;
+    defaults.dock.autohide-time-modifier = 0.1;
     defaults.dock.show-recents = false;
+    defaults.dock.tilesize = 48;
 
     # Whether to automatically rearrange spaces based on most recent use
     defaults.dock.mru-spaces = false;
 
-    # Hide top menu bar
-    defaults.NSGlobalDomain._HIHideMenuBar = true;
+    defaults.NSGlobalDomain._HIHideMenuBar = false;
 
     # Whether to show the full filepath in the window title
     defaults.finder._FXShowPosixPathInTitle = true;
     defaults.finder.AppleShowAllExtensions = true;
     defaults.finder.AppleShowAllFiles = true;
+    defaults.finder.FXDefaultSearchScope = "SCcf";
 
     # Show path breadcrumbs in finder windows
     defaults.finder.ShowPathbar = true;
@@ -44,8 +45,6 @@
     # Change the default finder view
     # "icnv" = Icon view, "Nlsv" = List view, "clmv" = Column View, "Flwv" = Gallery View The default is icnv
     defaults.finder.FXPreferredViewStyle = "Nlsv";
-    # Change the default search scope. Use "SCcf" to default to current folder
-    defaults.finder.FXDefaultSearchScope = "SCcf";
 
     # Automatically install Mac OS software updates
     defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
@@ -57,6 +56,8 @@
     defaults.trackpad.FirstClickThreshold = 0;
     # For force touch: 0 for light clicking, 1 for medium, 2 for firm. The default is 1.
     defaults.trackpad.SecondClickThreshold = 0;
+
+    defaults.NSGlobalDomain.AppleShowAllFiles = true;
 
     # This sets how long you must hold down the key before it starts repeating.
     # 120, 94, 68, 35, 25, 15 (lower is faster)
@@ -72,6 +73,10 @@
     # Configures the trackpad tracking speed (0 to 3). The default is "1".s
     defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 
+    defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
+
+    defaults.universalaccess.closeViewScrollWheelToggle = true;
+
     # Whether to use 24-hour or 12-hour time. The default is based on region settings.
     defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
 
@@ -80,6 +85,24 @@
 
     # Whether to use centimeters (metric) or inches (US, UK) as the measurement unit.
     defaults.NSGlobalDomain.AppleMeasurementUnits = "Centimeters";
+
+    defaults.CustomSystemPreferences = {
+      "com.apple.Safari" = {
+        WebKitDeveloperExtrasEnabledPreferenceKey = true;
+        IncludeInternalDebugMenu = true;
+        IncludeDevelopMenu = true;
+      };
+      "com.apple.SoftwareUpdate" = {
+        AutomaticCheckEnabled = true;
+        ScheduleFrequency = 1;
+        AutomaticDownload = 1;
+        CriticalUpdateInstall = 1;
+      };
+    };
+
+    defaults.universalaccess.reduceMotion = true;
+
+    defaults.universalaccess.reduceTransparency = true;
 
     # Whether to enable keyboard mappings. (The below wont work if not)
     keyboard.enableKeyMapping = true;

@@ -33,7 +33,7 @@
         username = "mattietea";
         email = "mattcthomas@me.com";
         variables = {
-          EDITOR = "nvim";
+          EDITOR = "cursor --wait";
           VISUAL = "cursor --wait";
         };
       };
@@ -51,6 +51,7 @@
               ./modules/system/darwin.nix
             ];
             user = [
+              ./modules/packages/shopify.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
               ./modules/packages/zsh.nix
