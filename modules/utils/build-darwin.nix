@@ -59,7 +59,7 @@ inputs.darwin.lib.darwinSystem {
         # Configure home-manager for the specified user
         users.${user} = {
           # Set the state version for this user's home-manager configuration
-          home.stateVersion = "24.05";
+          home.stateVersion = "24.11";
         };
 
         # Include shared user modules

@@ -17,7 +17,7 @@
     tree = "ls --tree";
   };
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # When we change directory, run the ls command
     function chpwd() {
       emulate -L zsh

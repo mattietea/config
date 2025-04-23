@@ -6,7 +6,7 @@
 {
 
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       zstyle :prompt:pure:git:branch color yellow
 
       autoload -U promptinit; promptinit

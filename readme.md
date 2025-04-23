@@ -43,6 +43,12 @@ darwin-rebuild switch --flake .
 nix fmt
 ```
 
+## Clear Cache
+
+```
+nix-collect-garbage
+```
+
 ### TODO
 
 - [x] Add `qmv` for bulk renaming files
