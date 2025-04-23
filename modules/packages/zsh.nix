@@ -15,6 +15,8 @@
     "~/Desktop"
   ];
 
+  # programs.zsh.zprof.enable = true;
+
   programs.zsh.shellAliases = {
     c = "clear";
     g = "${pkgs.git}/bin/git";
