@@ -1,7 +1,6 @@
-{
-  pkgs,
-  settings,
-  ...
+{ pkgs
+, settings
+, ...
 }:
 {
 

@@ -15,13 +15,12 @@
   };
 
   outputs =
-    {
-      self,
-      darwin,
-      nixpkgs,
-      home-manager,
-      nixvim,
-      ...
+    { self
+    , darwin
+    , nixpkgs
+    , home-manager
+    , nixvim
+    , ...
     }@inputs:
     let
       # Utilities
@@ -96,6 +95,6 @@
         };
       };
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     };
 }

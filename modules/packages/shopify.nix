@@ -1,8 +1,7 @@
-{
-  settings,
-  pkgs,
-  lib,
-  ...
+{ settings
+, pkgs
+, lib
+, ...
 }:
 {
   programs.zsh.initContent = ''

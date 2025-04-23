@@ -40,7 +40,7 @@ darwin-rebuild switch --flake .
 ## Formatting
 
 ```sh
-nix fmt
+nix fmt -- .
 ```
 
 ## Clear Cache

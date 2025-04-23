@@ -1,8 +1,7 @@
-{
-  settings,
-  pkgs,
-  lib,
-  ...
+{ settings
+, pkgs
+, lib
+, ...
 }:
 {
   # https://home-manager-options.extranix.com/?query=programs.zsh.&release=master

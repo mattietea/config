@@ -6,31 +6,29 @@
 
   ```nix
   buildDarwin {
-    settings = {
+  settings = {
       username = "johndoe";
       name = "John Doe";
       email = "john@example.com";
-    };
-    inputs = inputs;
-    modules = {
+  };
+  inputs = inputs;
+  modules = {
       system = [ ./system/darwin.nix ./host/core.nix ];
       user = [ ./modules/programs/git.nix ./modules/programs/zsh.nix ];
-    };
+  };
   }
   ```
 */
 {
   # The username of the primary user of the system.
-  user,
-
-  # An attribute set containing user-specific settings like name, email, and variables.
-  settings,
-
-  # The flake inputs, providing access to nixpkgs, home-manager, and other dependencies.
-  inputs,
-
-  # An attribute set containing lists of system-wide and user-specific NixOS modules to be included in the configuration.
-  modules,
+  user
+, # An attribute set containing user-specific settings like name, email, and variables.
+  settings
+, # The flake inputs, providing access to nixpkgs, home-manager, and other dependencies.
+  inputs
+, # An attribute set containing lists of system-wide and user-specific NixOS modules to be included in the configuration.
+  modules
+,
 }:
 
 inputs.darwin.lib.darwinSystem {
