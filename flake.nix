@@ -78,6 +78,7 @@
               ./modules/system/darwin.nix
             ];
             user = [
+              ./modules/applications/raycast.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
               ./modules/packages/zsh.nix
