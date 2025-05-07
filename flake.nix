@@ -93,6 +93,7 @@
               ./modules/packages/git-absorb.nix
               ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
+              ./modules/packages/bun.nix
             ];
           };
         };
