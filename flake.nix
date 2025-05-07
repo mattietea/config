@@ -50,6 +50,7 @@
               ./modules/system/darwin.nix
             ];
             user = [
+              ./modules/applications/raycast.nix
               ./modules/packages/shopify.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
@@ -78,6 +79,7 @@
               ./modules/system/darwin.nix
             ];
             user = [
+              ./modules/applications/notion.nix
               ./modules/applications/raycast.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
