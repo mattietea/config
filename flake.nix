@@ -50,6 +50,7 @@
               ./modules/system/darwin.nix
             ];
             user = [
+              ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
               ./modules/packages/shopify.nix
               ./modules/packages/fonts.nix
@@ -79,6 +80,8 @@
               ./modules/system/darwin.nix
             ];
             user = [
+              ./modules/applications/discord.nix
+              ./modules/applications/spotify.nix
               ./modules/applications/notion.nix
               ./modules/applications/raycast.nix
               ./modules/packages/fonts.nix
