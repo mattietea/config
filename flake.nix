@@ -84,6 +84,8 @@
               ./modules/applications/spotify.nix
               ./modules/applications/notion.nix
               ./modules/applications/raycast.nix
+              ./modules/packages/node.nix
+              ./modules/packages/pnpm.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
               ./modules/packages/zsh.nix
