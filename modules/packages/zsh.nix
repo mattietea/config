@@ -30,11 +30,11 @@
       src = zsh-fast-syntax-highlighting;
       file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
     }
-    {
-      name = "zsh-autocomplete";
-      src = zsh-autocomplete;
-      file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-    }
+    # {
+    #   name = "zsh-autocomplete";
+    #   src = zsh-autocomplete;
+    #   file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
+    # }
   ];
 
   programs.zsh.enableCompletion = lib.mkForce false;
@@ -50,14 +50,14 @@
     # zsh-autocomplete
     # --------------------------------------------------------------------------
     # See https://github.com/marlonrichert/zsh-autocomplete/issues/750
-    setopt interactivecomments
+    # setopt interactivecomments
 
-    bindkey              '^I' menu-select
-    bindkey "$terminfo[kcbt]" menu-select
+    # bindkey              '^I' menu-select
+    # bindkey "$terminfo[kcbt]" menu-select
 
 
-    bindkey -M menuselect              '^I' menu-select
-    bindkey -M menuselect "$terminfo[kcbt]" menu-select
+    # bindkey -M menuselect              '^I' menu-select
+    # bindkey -M menuselect "$terminfo[kcbt]" menu-select
 
     zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
   '';
