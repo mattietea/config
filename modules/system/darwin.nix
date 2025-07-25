@@ -74,8 +74,6 @@
 
     defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
 
-    defaults.universalaccess.closeViewScrollWheelToggle = true;
-
     # Whether to use 24-hour or 12-hour time. The default is based on region settings.
     defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
 
@@ -92,8 +90,6 @@
         CriticalUpdateInstall = 1;
       };
     };
-
-    defaults.universalaccess.reduceTransparency = true;
 
     # Whether to enable keyboard mappings. (The below wont work if not)
     keyboard.enableKeyMapping = true;
