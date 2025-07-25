@@ -47,6 +47,9 @@
     github = {
       user = settings.username;
     };
+    lfs = {
+      setlockablereadonly = 0;
+    };
     pull = {
       rebase = true;
     };
