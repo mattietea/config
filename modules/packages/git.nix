@@ -35,7 +35,11 @@
     core = {
       editor = "${settings.variables.VISUAL}";
       fsmonitor = true;
-      untrackedcache = true;
+      fscache = true;
+      preloadindex = true;
+    };
+    gc = {
+      auto = 256;
     };
     feature = {
       manyFiles = true;
