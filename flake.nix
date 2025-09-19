@@ -16,7 +16,6 @@
     , darwin
     , nixpkgs
     , home-manager
-    , nixvim
     , ...
     }@inputs:
     let
@@ -25,7 +24,7 @@
 
       # Settings
       settings = {
-        # Used git, might try and think of a better way
+        # Used by git, might try and think of a better way
         username = "mattietea";
         email = "mattcthomas@me.com";
         variables = {
@@ -79,7 +78,6 @@
             user = [
               ./modules/applications/discord.nix
               ./modules/applications/spotify.nix
-              ./modules/applications/notion.nix
               ./modules/applications/raycast.nix
               ./modules/packages/node.nix
               ./modules/packages/pnpm.nix
@@ -95,7 +93,6 @@
               ./modules/packages/git-absorb.nix
               ./modules/packages/git-machete.nix
               ./modules/packages/tldr.nix
-              ./modules/packages/bun.nix
             ];
           };
         };
