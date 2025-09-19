@@ -28,8 +28,8 @@
         username = "mattietea";
         email = "mattcthomas@me.com";
         variables = {
-          EDITOR = "cursor --wait";
-          VISUAL = "cursor --wait";
+          EDITOR = "zed --wait";
+          VISUAL = "zed --wait";
         };
       };
     in
@@ -48,6 +48,7 @@
             user = [
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
+              ./modules/applications/zed.nix
               ./modules/packages/shopify.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
@@ -79,6 +80,7 @@
               ./modules/applications/discord.nix
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
+              ./modules/applications/zed.nix
               ./modules/packages/node.nix
               ./modules/packages/pnpm.nix
               ./modules/packages/fonts.nix
