@@ -1,4 +1,5 @@
-{ ...
+{ user
+, ...
 }:
 
 {
@@ -7,16 +8,19 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
+    primaryUser = user;
+
+    # https://github.com/nix-community/home-manager/blob/master/modules/system/darwin-settings.nix
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 6;
 
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
-    activationScripts.postUserActivation.text = ''
-      # activateSettings -u will reload the settings from the database and apply them to the current session,
-      # so we do not need to logout and login again to make the changes take effect.
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+    # activationScripts.postUserActivation.${user}.text = ''
+    #   # activateSettings -u will reload the settings from the database and apply them to the current session,
+    #   # so we do not need to logout and login again to make the changes take effect.
+    #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    # '';
 
     defaults.dock.autohide = true;
     defaults.dock.autohide-delay = 0.1;

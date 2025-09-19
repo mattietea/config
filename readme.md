@@ -34,7 +34,7 @@ nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch 
 ## Rebuild
 
 ```sh
-darwin-rebuild switch --flake .
+sudo darwin-rebuild switch --flake .
 ```
 
 ## Formatting
@@ -47,6 +47,12 @@ nix fmt -- .
 
 ```
 nix-collect-garbage
+```
+
+## Update
+
+```
+nix flake update
 ```
 
 ### TODO
