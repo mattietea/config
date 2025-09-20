@@ -1,6 +1,6 @@
-{ settings
-, pkgs
-, ...
+{
+  pkgs,
+  ...
 }:
 
 {
@@ -8,6 +8,7 @@
 
   programs.eza.enable = true;
   programs.eza.enableZshIntegration = true;
+  programs.eza.git = true;
 
   programs.zsh.shellAliases = {
     ls = "${pkgs.eza}/bin/eza --oneline --icons --git --hyperlink";

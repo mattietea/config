@@ -21,14 +21,13 @@
 */
 {
   # The username of the primary user of the system.
-  user
-, # An attribute set containing user-specific settings like name, email, and variables.
-  settings
-, # The flake inputs, providing access to nixpkgs, home-manager, and other dependencies.
-  inputs
-, # An attribute set containing lists of system-wide and user-specific NixOS modules to be included in the configuration.
-  modules
-,
+  user,
+  # An attribute set containing user-specific settings like name, email, and variables.
+  settings,
+  # The flake inputs, providing access to nixpkgs, home-manager, and other dependencies.
+  inputs,
+  # An attribute set containing lists of system-wide and user-specific NixOS modules to be included in the configuration.
+  modules,
 }:
 
 inputs.darwin.lib.darwinSystem {
@@ -56,6 +55,7 @@ inputs.darwin.lib.darwinSystem {
 
         # Configure home-manager for the specified user
         users.${user} = {
+          home.preferXdgDirectories = true;
           # Set the state version for this user's home-manager configuration
           home.stateVersion = "24.11";
         };

@@ -1,7 +1,8 @@
-{ settings
-, pkgs
-, lib
-, ...
+{
+  settings,
+  pkgs,
+  lib,
+  ...
 }:
 {
   # https://home-manager-options.extranix.com/?query=programs.zsh.&release=master
@@ -9,19 +10,13 @@
   programs.zsh.enable = true;
   programs.zsh.autocd = true;
 
-  programs.zsh.cdpath = [
-    "~/Documents"
-    "~/Downloads"
-    "~/Desktop"
-  ];
-
-  # programs.zsh.zprof.enable = true;
-
   programs.zsh.shellAliases = {
     c = "clear";
     g = "${pkgs.git}/bin/git";
     cat = "${pkgs.bat}/bin/bat";
     code = "${settings.variables.VISUAL}";
+    config = "${settings.variables.VISUAL} ~/.config/nix";
+    reload = "source ~/.zshrc";
   };
 
   programs.zsh.plugins = with pkgs; [
@@ -59,7 +54,7 @@
     # bindkey -M menuselect              '^I' menu-select
     # bindkey -M menuselect "$terminfo[kcbt]" menu-select
 
-    zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
+    # zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
   '';
 
   programs.zsh.sessionVariables = settings.variables;
