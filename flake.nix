@@ -12,11 +12,12 @@
   };
 
   outputs =
-    { self
-    , darwin
-    , nixpkgs
-    , home-manager
-    , ...
+    {
+      self,
+      darwin,
+      nixpkgs,
+      home-manager,
+      ...
     }@inputs:
     let
       # Utilities
@@ -49,6 +50,8 @@
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
               ./modules/applications/zed.nix
+              ./modules/packages/delta.nix
+              ./modules/packages/lazygit.nix
               ./modules/packages/shopify.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
@@ -81,6 +84,8 @@
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
               ./modules/applications/zed.nix
+              ./modules/packages/delta.nix
+              ./modules/packages/lazygit.nix
               ./modules/packages/node.nix
               ./modules/packages/pnpm.nix
               ./modules/packages/fonts.nix
@@ -100,6 +105,5 @@
         };
       };
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     };
 }

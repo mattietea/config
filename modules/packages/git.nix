@@ -1,26 +1,25 @@
-{ settings
-, pkgs
-, ...
+{
+  settings,
+  pkgs,
+  ...
 }:
 
 {
   programs.git.enable = true;
   programs.git.userName = settings.username;
   programs.git.userEmail = settings.email;
-  programs.git.delta.enable = true;
 
   programs.git.aliases = {
     amend = "commit --amend";
     commend = "commit --amend --no-edit";
 
-    uncommit = "reset --mixed HEAD~";
     unstage = "reset HEAD --";
-    undo = "reset --soft";
+    undo = "!git reset --soft HEAD~";
 
     fixup = "commit --fixup";
     tidy = "rebase --interactive";
 
-    nevermind = "!git reset --hard HEAD && git clean -d -f";
+    nvm = "!git reset --hard HEAD && git clean -d -f";
 
     # Don't need fzf with marlonrichert/zsh-autocomplete
     # fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";
@@ -37,6 +36,7 @@
       fsmonitor = true;
       fscache = true;
       preloadindex = true;
+      pager = "${pkgs.delta}/bin/delta";
     };
     gc = {
       auto = 256;
@@ -69,6 +69,9 @@
     };
     rerere = {
       enabled = true;
+    };
+    mergetool = {
+      hideResolved = true;
     };
     rebase = {
       autosquash = true;
