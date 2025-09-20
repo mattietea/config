@@ -16,14 +16,13 @@
     unstage = "reset HEAD --";
     undo = "!git reset --soft HEAD~";
 
-    fixup = "commit --fixup";
-    tidy = "rebase --interactive";
-
     nvm = "!git reset --hard HEAD && git clean -d -f";
 
+    lazy = "gitlazy";
+
     # Don't need fzf with marlonrichert/zsh-autocomplete
-    # fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";
-    # tidy = "!git log -n 50 --pretty=format:'%h %s' | fzf | cut -c -7 | xargs -o git rebase --interactive";
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";
+    tidy = "!git log -n 50 --pretty=format:'%h %s' | fzf | cut -c -7 | xargs -o git rebase --interactive --autosquash";
   };
 
   # https://jvns.ca/blog/2024/02/16/popular-git-config-options

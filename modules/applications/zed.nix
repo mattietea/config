@@ -17,6 +17,8 @@
 
     extensions = [
       "nix"
+      "git-firefly"
+      "tokyo-night"
     ];
 
     userKeymaps = [
@@ -31,8 +33,27 @@
         bindings = {
           cmd-1 = "workspace::ToggleLeftDock";
           cmd-2 = "workspace::ToggleBottomDock";
+          cmd-3 = [
+            "task::Spawn"
+            {
+              task_name = "lazygit";
+              target = "center";
+            }
+          ];
           cmd-shift-b = "pane::RevealInProjectPanel";
         };
+      }
+    ];
+
+    userTasks = [
+      {
+        label = "lazygit";
+        command = "lazygit";
+        cwd = "\${ZED_WORKTREE_ROOT}";
+        hide = "on_success";
+        reveal_target = "center";
+        use_new_terminal = true;
+        allow_concurrent_runs = false;
       }
     ];
 
@@ -61,7 +82,7 @@
       theme = {
         mode = "system";
         light = "One Light";
-        dark = "One Dark";
+        dark = "Tokyo Night";
       };
 
       languages = {
