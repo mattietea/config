@@ -77,7 +77,7 @@
         hide_gitignore = false;
       };
 
-      buffer_font_family = "Hack Nerd Font Mono";
+      buffer_font_family = "JetBrainsMono Nerd Font";
 
       theme = {
         mode = "system";

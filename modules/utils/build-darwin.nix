@@ -55,6 +55,9 @@ inputs.darwin.lib.darwinSystem {
 
         # Configure home-manager for the specified user
         users.${user} = {
+
+          xdg.enable = true;
+
           home.preferXdgDirectories = true;
           # Set the state version for this user's home-manager configuration
           home.stateVersion = "24.11";

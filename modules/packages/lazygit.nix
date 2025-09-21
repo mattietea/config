@@ -7,7 +7,18 @@
 
   programs.lazygit.settings = {
     autoFetch = false;
-    git.paging.pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+    git = {
+      fetchAll = false;
+      paging.pager = "${pkgs.delta}/bin/delta --light --paging=never";
+    };
+    gui = {
+      nerdFontsVersion = 3;
+      showCommandLog = false;
+      border = "hidden";
+      skipStashWarning = true;
+      filterMode = "fuzzy";
+      commitHashLength = 4;
+    };
   };
 
 }
