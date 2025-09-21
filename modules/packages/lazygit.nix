@@ -14,7 +14,7 @@
     gui = {
       nerdFontsVersion = 3;
       showCommandLog = false;
-      border = "hidden";
+      border = "single";
       skipStashWarning = true;
       filterMode = "fuzzy";
       commitHashLength = 4;

@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     nixfmt
     nixd
+    nixfmt-tree
   ];
 
   # https://home-manager-options.extranix.com/?query=programs.zed&release=master
