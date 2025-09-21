@@ -16,7 +16,7 @@
     cat = "${pkgs.bat}/bin/bat";
     code = "${settings.variables.VISUAL}";
     config = "${settings.variables.VISUAL} ~/.config/nix";
-    reload = "source ~/.zshrc";
+    switch = "sudo darwin-rebuild switch --flake .";
   };
 
   programs.zsh.plugins = with pkgs; [
