@@ -15,7 +15,7 @@
     g = "${pkgs.git}/bin/git";
     cat = "${pkgs.bat}/bin/bat";
     code = "${settings.variables.VISUAL}";
-    config = "${settings.variables.VISUAL} ~/.config/nix";
+    config = "cd ~/.config/nix";
     switch = "sudo darwin-rebuild switch --flake .";
   };
 
@@ -25,11 +25,11 @@
       src = zsh-fast-syntax-highlighting;
       file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
     }
-    # {
-    #   name = "zsh-autocomplete";
-    #   src = zsh-autocomplete;
-    #   file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-    # }
+    {
+      name = "fzf-tab";
+      src = zsh-fzf-tab;
+      file = "share/fzf-tab/fzf-tab.plugin.zsh";
+    }
   ];
 
   programs.zsh.enableCompletion = lib.mkForce false;

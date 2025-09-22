@@ -62,11 +62,14 @@ inputs.darwin.lib.darwinSystem {
 
           home.preferXdgDirectories = true;
           # Set the state version for this user's home-manager configuration
+          # Check latest version at: https://github.com/nix-community/home-manager/releases
           home.stateVersion = "25.05";
         };
 
         # Include shared user modules
-        sharedModules = modules.user;
+        sharedModules = modules.user ++ [
+          inputs.mac-app-util.homeManagerModules.default
+        ];
       };
     }
   ];

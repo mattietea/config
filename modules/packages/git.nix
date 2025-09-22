@@ -36,6 +36,7 @@
       fscache = true;
       preloadindex = true;
       pager = "${pkgs.delta}/bin/delta";
+      untrackedCache = true;
     };
     gc = {
       auto = 256;
@@ -58,6 +59,7 @@
     };
     push = {
       autoSetupRemote = true;
+      default = "simple";
     };
     commit = {
       verbose = true;
@@ -79,6 +81,9 @@
     };
     diff = {
       algorithm = "histogram";
+    };
+    status = {
+      showUntrackedFiles = "all";
     };
   };
 }
