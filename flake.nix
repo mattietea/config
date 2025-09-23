@@ -53,6 +53,7 @@
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
               ./modules/applications/zed.nix
+              ./modules/packages/television.nix
               ./modules/packages/delta.nix
               ./modules/packages/lazygit.nix
               ./modules/packages/shopify.nix
@@ -87,6 +88,7 @@
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
               ./modules/applications/zed.nix
+              ./modules/packages/television.nix
               ./modules/packages/delta.nix
               ./modules/packages/lazygit.nix
               ./modules/packages/node.nix
