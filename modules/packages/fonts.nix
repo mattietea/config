@@ -7,10 +7,11 @@
   # https://home-manager-options.extranix.com/?query=fonts&release=master
 
   home.packages = with pkgs; [
-    pkgs.nerd-fonts.geist-mono
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.nerd-fonts.meslo-lg
-    pkgs.nerd-fonts.hack
+    nerd-fonts.geist-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.meslo-lg
+    nerd-fonts.hack
+    nerd-fonts.iosevka
   ];
 
   fonts = {
