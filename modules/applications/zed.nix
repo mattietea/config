@@ -19,6 +19,7 @@
       "nix"
       "git-firefly"
       "tokyo-night"
+      "biome"
     ];
 
     userKeymaps = [
@@ -61,12 +62,12 @@
 
       base_keymap = "VSCode";
 
-      ui_font_size = 14;
-      buffer_font_size = 16;
+      ui_font_size = 12;
+      buffer_font_size = 13;
       buffer_font_family = "Hack Nerd Font Mono";
 
       terminal = {
-        font_size = 14;
+        font_size = 12;
       };
 
       minimap = {
@@ -115,7 +116,6 @@
         };
       };
     };
-
   };
 
 }
