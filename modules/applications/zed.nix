@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     nixfmt-rfc-style
     nixd
+    nil
   ];
 
   # https://home-manager-options.extranix.com/?query=programs.zed&release=master
@@ -19,6 +20,7 @@
       "nix"
       "git-firefly"
       "tokyo-night"
+      "github-theme"
       "biome"
     ];
 
@@ -60,6 +62,12 @@
 
     userSettings = {
 
+      agent = {
+        always_allow_tool_actions = true;
+        notify_when_agent_waiting = true;
+        play_sound_when_agent_done = true;
+      };
+
       base_keymap = "VSCode";
 
       ui_font_size = 12;
@@ -82,28 +90,31 @@
       theme = {
         mode = "system";
         light = "One Light";
-        dark = "Tokyo Night";
+        dark = "Github Dark";
       };
 
       languages = {
         Nix = {
           language_servers = [
             "nixd"
+            "nil"
           ];
-        };
-        JavaScript = {
-          code_actions_on_format = {
-            "source.fixAll.eslint" = true;
-          };
-        };
-        TypeScript = {
-          code_actions_on_format = {
-            "source.fixAll.eslint" = true;
-          };
         };
       };
 
       lsp = {
+        biome = {
+          settings = {
+            require_config_file = true;
+          };
+        };
+        nil = {
+          settings = {
+            diagnostics = {
+              ignored = [ "unused_binding" ];
+            };
+          };
+        };
         nixd = {
           binary = {
             path = "${pkgs.nixd}/bin/nixd";
