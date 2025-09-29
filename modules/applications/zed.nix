@@ -64,7 +64,7 @@
 
       agent = {
         always_allow_tool_actions = true;
-        notify_when_agent_waiting = true;
+        notify_when_agent_waiting = "all_screens";
         play_sound_when_agent_done = true;
       };
 
