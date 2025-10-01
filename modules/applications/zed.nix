@@ -32,6 +32,12 @@
         };
       }
       {
+        context = "Editor";
+        bindings = {
+          "ctrl-right" = "agent::QuoteSelection";
+        };
+      }
+      {
         context = "Workspace";
         bindings = {
           cmd-1 = "workspace::ToggleLeftDock";
