@@ -21,14 +21,32 @@
       "git-firefly"
       "tokyo-night"
       "github-theme"
-      "biome"
+      # "biome"
     ];
 
     userKeymaps = [
       {
         context = "Editor";
         bindings = {
-          cmd-shift-i = "editor::SplitSelectionIntoLines";
+          alt-shift-i = "editor::SplitSelectionIntoLines";
+        };
+      }
+      {
+        context = "Editor";
+        bindings = {
+          "ctrl-right" = "agent::QuoteSelection";
+        };
+      }
+      {
+        context = "!ProjectPanel";
+        bindings = {
+          cmd-1 = "pane::RevealInProjectPanel";
+        };
+      }
+      {
+        context = "ProjectPanel";
+        bindings = {
+          cmd-1 = "workspace::ToggleLeftDock";
         };
       }
       {
@@ -40,7 +58,6 @@
       {
         context = "Workspace";
         bindings = {
-          cmd-1 = "workspace::ToggleLeftDock";
           cmd-2 = "workspace::ToggleBottomDock";
           cmd-3 = [
             "task::Spawn"
@@ -50,6 +67,7 @@
             }
           ];
           cmd-shift-b = "pane::RevealInProjectPanel";
+          "cmd-k l" = "dev::OpenLanguageServerLogs";
         };
       }
     ];
@@ -68,17 +86,27 @@
 
     userSettings = {
 
+      base_keymap = "VSCode";
+
+      ui_font_size = 12;
+      buffer_font_size = 13;
+      buffer_font_family = "Hack Nerd Font Mono";
+      excerpt_context_lines = 5;
+      multi_cursor_modifier = "cmd_or_ctrl";
+      seed_search_query_from_cursor = "selection";
+      use_smartcase_search = true;
+      show_call_status_icon = false;
+      tab_size = 2;
+
       agent = {
         always_allow_tool_actions = true;
         notify_when_agent_waiting = "all_screens";
         play_sound_when_agent_done = true;
       };
 
-      base_keymap = "VSCode";
-
-      ui_font_size = 12;
-      buffer_font_size = 13;
-      buffer_font_family = "Hack Nerd Font Mono";
+      file_finder = {
+        modal_max_width = "small";
+      };
 
       terminal = {
         font_size = 12;
@@ -88,15 +116,34 @@
         show = "never";
       };
 
+      tabs = {
+        git_status = true;
+      };
+
       project_panel = {
         auto_reveal_entries = false;
         hide_gitignore = false;
+
+      };
+
+      collaboration_panel = {
+        button = false;
+      };
+
+      git_panel = {
+        sort_by_path = true;
       };
 
       theme = {
         mode = "system";
         light = "One Light";
         dark = "Github Dark";
+      };
+
+      git = {
+        branch_picker = {
+          show_author_name = true;
+        };
       };
 
       languages = {

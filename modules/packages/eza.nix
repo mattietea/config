@@ -11,7 +11,7 @@
   programs.eza.git = true;
 
   programs.zsh.shellAliases = {
-    ls = "${pkgs.eza}/bin/eza --oneline --icons --git --hyperlink";
+    ls = "${pkgs.eza}/bin/eza --oneline --icons --git";
     l = "ls --all";
     la = "l";
     tree = "ls --tree";
@@ -21,7 +21,7 @@
     # When we change directory, run the ls command
     function chpwd() {
       emulate -L zsh
-      ${pkgs.eza}/bin/eza --grid --icons --git --hyperlink;
+      ${pkgs.eza}/bin/eza --grid --icons --git;
     }
   '';
 }
