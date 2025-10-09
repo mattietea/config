@@ -92,7 +92,7 @@
       buffer_font_size = 13;
       buffer_font_family = "Hack Nerd Font Mono";
       excerpt_context_lines = 5;
-      multi_cursor_modifier = "cmd_or_ctrl";
+
       seed_search_query_from_cursor = "selection";
       use_smartcase_search = true;
       show_call_status_icon = false;
