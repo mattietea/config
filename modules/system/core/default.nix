@@ -20,13 +20,8 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    enable = true;
-
-    settings = {
-      trusted-users = [ user ];
-      experimental-features = "nix-command flakes";
-    };
-
+    # https://docs.determinate.systems/guides/nix-darwin/
+    enable = false;
   };
 
 }
