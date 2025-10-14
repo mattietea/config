@@ -17,6 +17,8 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 
 ## Setup
 
+O. Install [Determinate Nix](https://docs.determinate.systems)
+
 1. Clone the repo:
    ```sh
    git clone https://github.com/mattietea/config ~/.config/nix
@@ -28,7 +30,7 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 
 3. Initial build:
    ```sh
-   sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/.config/nix/
+   sudo nix run nix-darwin -- switch --flake .
    ```
 
 ## Daily Commands
