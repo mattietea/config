@@ -88,11 +88,9 @@
               ./modules/applications/spotify.nix
               ./modules/applications/raycast.nix
               ./modules/applications/zed.nix
-              # ./modules/packages/opencode.nix
+              ./modules/packages/opencode.nix
               ./modules/packages/delta.nix
               ./modules/packages/lazygit.nix
-              ./modules/packages/node.nix
-              ./modules/packages/pnpm.nix
               ./modules/packages/fonts.nix
               ./modules/packages/git.nix
               ./modules/packages/zsh.nix
