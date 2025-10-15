@@ -21,76 +21,14 @@
       "git-firefly"
       "tokyo-night"
       "github-theme"
-      # "biome"
-    ];
-
-    userKeymaps = [
-      {
-        context = "Editor";
-        bindings = {
-          alt-shift-i = "editor::SplitSelectionIntoLines";
-        };
-      }
-      {
-        context = "Editor";
-        bindings = {
-          "ctrl-right" = "agent::QuoteSelection";
-        };
-      }
-      {
-        context = "!ProjectPanel";
-        bindings = {
-          cmd-1 = "pane::RevealInProjectPanel";
-        };
-      }
-      {
-        context = "ProjectPanel";
-        bindings = {
-          cmd-1 = "workspace::ToggleLeftDock";
-        };
-      }
-      {
-        context = "Editor";
-        bindings = {
-          "ctrl-right" = "agent::QuoteSelection";
-        };
-      }
-      {
-        context = "Workspace";
-        bindings = {
-          cmd-2 = "workspace::ToggleBottomDock";
-          cmd-3 = [
-            "task::Spawn"
-            {
-              task_name = "lazygit";
-              target = "center";
-            }
-          ];
-          cmd-shift-b = "pane::RevealInProjectPanel";
-          "cmd-k l" = "dev::OpenLanguageServerLogs";
-        };
-      }
-    ];
-
-    userTasks = [
-      {
-        label = "lazygit";
-        command = "lazygit";
-        cwd = "\${ZED_WORKTREE_ROOT}";
-        hide = "on_success";
-        reveal_target = "center";
-        use_new_terminal = true;
-        allow_concurrent_runs = false;
-      }
     ];
 
     userSettings = {
-
       base_keymap = "VSCode";
 
-      ui_font_size = 12;
+      ui_font_size = 13;
       buffer_font_size = 13;
-      buffer_font_family = "Hack Nerd Font Mono";
+      buffer_font_family = "JetBrainsMono Nerd Font";
       excerpt_context_lines = 5;
 
       seed_search_query_from_cursor = "selection";
@@ -98,18 +36,22 @@
       show_call_status_icon = false;
       tab_size = 2;
 
+      bottom_dock_layout = "left_aligned";
+
       agent = {
         always_allow_tool_actions = true;
         notify_when_agent_waiting = "all_screens";
         play_sound_when_agent_done = true;
+        inline_assistant_model = {
+          provider = "copilot_chat";
+          model = "gpt-5-mini";
+        };
       };
 
-      file_finder = {
-        modal_max_width = "small";
-      };
-
-      terminal = {
-        font_size = 12;
+      agent_servers = {
+        claude = {
+          default_mode = "bypassPermissions";
+        };
       };
 
       minimap = {
@@ -138,6 +80,11 @@
         mode = "system";
         light = "One Light";
         dark = "Github Dark";
+      };
+
+      terminal = {
+        font_size = 14;
+        max_scroll_history_lines = 100000;
       };
 
       git = {
@@ -180,5 +127,67 @@
         };
       };
     };
+
+    userKeymaps = [
+      {
+        context = "Editor";
+        bindings = {
+          alt-shift-i = "editor::SplitSelectionIntoLines";
+        };
+      }
+      {
+        context = "Editor";
+        bindings = {
+          "ctrl-right" = "agent::QuoteSelection";
+        };
+      }
+      {
+        context = "!ProjectPanel";
+        bindings = {
+          cmd-1 = "pane::RevealInProjectPanel";
+        };
+      }
+      {
+        context = "ProjectPanel";
+        bindings = {
+          cmd-1 = "workspace::ToggleLeftDock";
+        };
+      }
+      {
+        context = "Editor";
+        bindings = {
+          "ctrl-right" = "agent::QuoteSelection";
+        };
+      }
+      {
+        context = "Workspace";
+        bindings = {
+          cmd-2 = "workspace::ToggleBottomDock";
+          cmd-3 = [
+            "task::Spawn"
+            {
+              task_name = "LazyGit";
+              target = "center";
+            }
+          ];
+          cmd-shift-b = "pane::RevealInProjectPanel";
+          "cmd-k l" = "dev::OpenLanguageServerLogs";
+        };
+      }
+    ];
+
+    userTasks = [
+      {
+        label = "LazyGit";
+        command = "lazygit";
+        cwd = "\${ZED_WORKTREE_ROOT}";
+        hide = "on_success";
+        reveal_target = "center";
+        use_new_terminal = true;
+        show_command = false;
+        show_summary = false;
+        allow_concurrent_runs = false;
+      }
+    ];
   };
 }
