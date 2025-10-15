@@ -1,11 +1,13 @@
+{ lib, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.gh;
+in
 {
-  ...
-}:
+  options.pkgs.gh.enable = mkEnableOption "GitHub CLI (gh)";
 
-{
-  # https://home-manager-options.extranix.com/?query=programs.gh.enable&release=master
-
-  programs.gh.enable = true;
-  programs.gh.gitCredentialHelper.enable = true;
-
+  config = mkIf cfg.enable {
+    programs.gh.enable = true;
+    programs.gh.gitCredentialHelper.enable = true;
+  };
 }

@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.bun;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.bun.enable = mkEnableOption "Bun";
 
-{
-
-  home.packages = with pkgs; [
-    bun
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.bun ];
+  };
 }

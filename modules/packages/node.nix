@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.node;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.node.enable = mkEnableOption "Node.js";
 
-{
-
-  home.packages = with pkgs; [
-    nodejs
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.nodejs ];
+  };
 }

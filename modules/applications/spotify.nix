@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.apps.spotify;
+in
 {
-  pkgs,
-  ...
-}:
+  options.apps.spotify.enable = mkEnableOption "Spotify";
 
-{
-
-  home.packages = with pkgs; [
-    spotify
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.spotify ];
+  };
 }

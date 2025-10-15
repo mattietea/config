@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.dotenv;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.dotenv.enable = mkEnableOption "devenv";
 
-{
-
-  home.packages = with pkgs; [
-    devenv
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.devenv ];
+  };
 }

@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.apps.discord;
+in
 {
-  pkgs,
-  ...
-}:
+  options.apps.discord.enable = mkEnableOption "Discord";
 
-{
-
-  home.packages = with pkgs; [
-    discord
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.discord ];
+  };
 }

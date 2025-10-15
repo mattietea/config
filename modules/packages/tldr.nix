@@ -1,10 +1,12 @@
+{ lib, config, pkgs, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.tldr;
+in
 {
-  pkgs,
-  ...
-}:
-{
+  options.pkgs.tldr.enable = mkEnableOption "tldr";
 
-  home.packages = with pkgs; [
-    tldr
-  ];
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.tldr ];
+  };
 }

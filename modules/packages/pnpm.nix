@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.pnpm;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.pnpm.enable = mkEnableOption "pnpm";
 
-{
-
-  home.packages = with pkgs; [
-    pnpm
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.pnpm ];
+  };
 }

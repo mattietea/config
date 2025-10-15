@@ -1,16 +1,13 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.git-machete;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.git-machete.enable = mkEnableOption "git-machete";
 
-{
-
-  home.packages = with pkgs; [
-    git-machete
-  ];
-
-  programs.git.aliases = {
-    m = "machete";
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.git-machete ];
+    programs.git.aliases.m = "machete";
   };
-
 }

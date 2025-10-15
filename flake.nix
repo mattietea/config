@@ -23,9 +23,6 @@
       ...
     }@inputs:
     let
-      # Utilities
-      buildDarwin = import ./modules/utils/build-darwin.nix;
-
       # Settings
       settings = {
         # Used by git, might try and think of a better way
@@ -39,73 +36,12 @@
     in
     {
       darwinConfigurations = {
-        # scutil --get LocalHostName
-        Matts-Work-MacBook-Pro = buildDarwin {
-          user = "mattietea";
-          settings = settings;
-          inputs = inputs;
-          modules = {
-            system = [
-              ./modules/system/core
-              ./modules/system/darwin.nix
-            ];
-            user = [
-              ./modules/applications/spotify.nix
-              ./modules/applications/raycast.nix
-              ./modules/applications/zed.nix
-              ./modules/packages/opencode.nix
-              ./modules/packages/delta.nix
-              ./modules/packages/lazygit.nix
-              ./modules/packages/shopify.nix
-              ./modules/packages/fonts.nix
-              ./modules/packages/git.nix
-              ./modules/packages/zsh.nix
-              ./modules/packages/eza.nix
-              ./modules/packages/fzf.nix
-              ./modules/packages/pure.nix
-              ./modules/packages/gh.nix
-              ./modules/packages/bat.nix
-              ./modules/packages/rename-utils.nix
-              ./modules/packages/git-absorb.nix
-              ./modules/packages/git-machete.nix
-              ./modules/packages/tldr.nix
-              ./modules/packages/graphite.nix
-            ];
-          };
-        };
+        work = import ./hosts/work { inherit inputs settings; };
+        personal = import ./hosts/personal { inherit inputs settings; };
 
-        Matts-Personal-Macbook = buildDarwin {
-          user = "mattietea";
-          settings = settings;
-          inputs = inputs;
-          modules = {
-            system = [
-              ./modules/system/core
-              ./modules/system/darwin.nix
-            ];
-            user = [
-              ./modules/applications/discord.nix
-              ./modules/applications/spotify.nix
-              ./modules/applications/raycast.nix
-              ./modules/applications/zed.nix
-              ./modules/packages/opencode.nix
-              ./modules/packages/delta.nix
-              ./modules/packages/lazygit.nix
-              ./modules/packages/fonts.nix
-              ./modules/packages/git.nix
-              ./modules/packages/zsh.nix
-              ./modules/packages/eza.nix
-              ./modules/packages/fzf.nix
-              ./modules/packages/pure.nix
-              ./modules/packages/gh.nix
-              ./modules/packages/bat.nix
-              ./modules/packages/rename-utils.nix
-              ./modules/packages/git-absorb.nix
-              ./modules/packages/git-machete.nix
-              ./modules/packages/tldr.nix
-            ];
-          };
-        };
+        # Compatibility aliases for hostname-based switching
+        Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs settings; };
+        Matts-Personal-Macbook = import ./hosts/personal { inherit inputs settings; };
       };
 
       # Formatter configuration

@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.apps.raycast;
+in
 {
-  pkgs,
-  ...
-}:
+  options.apps.raycast.enable = mkEnableOption "Raycast";
 
-{
-
-  home.packages = with pkgs; [
-    raycast
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.raycast ];
+  };
 }

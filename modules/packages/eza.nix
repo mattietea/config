@@ -1,27 +1,29 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.eza;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.eza.enable = mkEnableOption "eza";
 
-{
-  # https://home-manager-options.extranix.com/?query=programs.eza&release=master
+  config = mkIf cfg.enable {
+    programs.eza.enable = true;
+    programs.eza.enableZshIntegration = true;
+    programs.eza.git = true;
 
-  programs.eza.enable = true;
-  programs.eza.enableZshIntegration = true;
-  programs.eza.git = true;
+    programs.zsh.shellAliases = {
+      ls = "${pkgs.eza}/bin/eza --oneline --icons --git";
+      l = "ls --all";
+      la = "l";
+      tree = "ls --tree";
+    };
 
-  programs.zsh.shellAliases = {
-    ls = "${pkgs.eza}/bin/eza --oneline --icons --git";
-    l = "ls --all";
-    la = "l";
-    tree = "ls --tree";
+    programs.zsh.initContent = ''
+      # When we change directory, run the ls command
+      function chpwd() {
+        emulate -L zsh
+        ${pkgs.eza}/bin/eza --grid --icons --git;
+      }
+    '';
   };
-
-  programs.zsh.initContent = ''
-    # When we change directory, run the ls command
-    function chpwd() {
-      emulate -L zsh
-      ${pkgs.eza}/bin/eza --grid --icons --git;
-    }
-  '';
 }

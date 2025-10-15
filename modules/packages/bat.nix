@@ -1,9 +1,12 @@
+{ lib, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.bat;
+in
 {
-  ...
-}:
+  options.pkgs.bat.enable = mkEnableOption "bat";
 
-{
-  # https://home-manager-options.extranix.com/?query=programs.eza&release=master
-
-  programs.bat.enable = true;
+  config = mkIf cfg.enable {
+    programs.bat.enable = true;
+  };
 }

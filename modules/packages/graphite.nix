@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.graphite;
+in
 {
-  pkgs,
-  ...
-}:
+  options.pkgs.graphite.enable = mkEnableOption "graphite-cli";
 
-{
-
-  home.packages = with pkgs; [
-    graphite-cli
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.graphite-cli ];
+  };
 }

@@ -1,11 +1,13 @@
+{ lib, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.starship;
+in
 {
-  ...
-}:
+  options.pkgs.starship.enable = mkEnableOption "Starship prompt";
 
-{
-  # https://home-manager-options.extranix.com/?query=programs.starship.enable&release=master
-
-  programs.starship.enable = true;
-  programs.starship.enableZshIntegration = true;
-
+  config = mkIf cfg.enable {
+    programs.starship.enable = true;
+    programs.starship.enableZshIntegration = true;
+  };
 }

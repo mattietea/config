@@ -1,10 +1,15 @@
-{ pkgs, ... }:
-
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.pkgs.opencode;
+in
 {
-  # https://home-manager-options.extranix.com/?query=opencode&release=master
+  options.pkgs.opencode.enable = mkEnableOption "opencode";
 
-  programs.opencode = {
-    enable = true;
-    package = pkgs.opencode;
+  config = mkIf cfg.enable {
+    programs.opencode = {
+      enable = true;
+      package = pkgs.opencode;
+    };
   };
 }

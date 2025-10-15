@@ -1,12 +1,12 @@
+{ lib, pkgs, config, ... }:
+let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.apps.notion;
+in
 {
-  pkgs,
-  ...
-}:
+  options.apps.notion.enable = mkEnableOption "Notion";
 
-{
-
-  home.packages = with pkgs; [
-    notion-app
-  ];
-
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.notion-app ];
+  };
 }
