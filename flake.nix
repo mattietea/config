@@ -23,25 +23,16 @@
       ...
     }@inputs:
     let
-      # Settings
-      settings = {
-        # Used by git, might try and think of a better way
-        username = "mattietea";
-        email = "mattcthomas@me.com";
-        variables = {
-          EDITOR = "zed --wait";
-          VISUAL = "zed --wait";
-        };
-      };
+      mkDarwinHost = import ./lib/mkDarwinHost.nix { inherit inputs; };
     in
     {
       darwinConfigurations = {
-        work = import ./hosts/work { inherit inputs settings; };
-        personal = import ./hosts/personal { inherit inputs settings; };
+        work = import ./hosts/work { inherit mkDarwinHost; };
+        personal = import ./hosts/personal { inherit mkDarwinHost; };
 
         # Compatibility aliases for hostname-based switching
-        Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs settings; };
-        Matts-Personal-Macbook = import ./hosts/personal { inherit inputs settings; };
+        Matts-Work-MacBook-Pro = import ./hosts/work { inherit mkDarwinHost; };
+        Matts-Personal-Macbook = import ./hosts/personal { inherit mkDarwinHost; };
       };
 
       # Formatter configuration
