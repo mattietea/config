@@ -15,11 +15,7 @@
 
   outputs =
     {
-      self,
-      darwin,
       nixpkgs,
-      home-manager,
-      mac-app-util,
       ...
     }@inputs:
     let
@@ -35,9 +31,8 @@
         Matts-Personal-Macbook = import ./hosts/personal { inherit mkDarwinHost; };
       };
 
-      # Formatter configuration
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
-      formatter.x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.nixfmt-rfc-style;
-
+      formatter = nixpkgs.lib.genAttrs [ "aarch64-darwin" "x86_64-darwin" ] (
+        system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
+      );
     };
 }
