@@ -1,13 +1,30 @@
-{ lib, settings, pkgs, config, ... }:
+{
+  lib,
+  settings,
+  pkgs,
+  config,
+  ...
+}:
 let
-  inherit (lib) mkEnableOption mkOption mkIf types;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.pkgs.git;
 in
 {
   options.pkgs.git = {
     enable = mkEnableOption "Git";
-    userName = mkOption { type = types.str; default = settings.username; };
-    userEmail = mkOption { type = types.str; default = settings.email; };
+    userName = mkOption {
+      type = types.str;
+      default = settings.username;
+    };
+    userEmail = mkOption {
+      type = types.str;
+      default = settings.email;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -44,13 +61,23 @@ in
         github.user = settings.username;
         lfs.setlockablereadonly = 0;
         pull.rebase = true;
-        fetch = { prune = true; prunetags = true; };
-        push = { autoSetupRemote = true; default = "simple"; };
+        fetch = {
+          prune = true;
+          prunetags = true;
+        };
+        push = {
+          autoSetupRemote = true;
+          default = "simple";
+        };
         commit.verbose = true;
         merge.conflictStyle = "zdiff3"; # https://www.ductile.systems/zdiff3/
         rerere.enabled = true;
         mergetool.hideResolved = true;
-        rebase = { autosquash = true; autostash = true; updateRefs = true; };
+        rebase = {
+          autosquash = true;
+          autostash = true;
+          updateRefs = true;
+        };
         diff.algorithm = "histogram";
         status.showUntrackedFiles = "all";
       };

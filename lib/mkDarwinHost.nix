@@ -34,6 +34,7 @@ inputs.darwin.lib.darwinSystem {
       home-manager.users.${settings.username} = {
         inherit apps;
         pkgs = packages;
+        home.sessionVariables = settings.variables;
       };
     }
   ];

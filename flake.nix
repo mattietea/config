@@ -10,7 +10,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -31,8 +30,6 @@
         Matts-Personal-Macbook = import ./hosts/personal { inherit mkDarwinHost; };
       };
 
-      formatter = nixpkgs.lib.genAttrs [ "aarch64-darwin" "x86_64-darwin" ] (
-        system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
-      );
+      formatter = nixpkgs.lib.genAttrs (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
     };
 }

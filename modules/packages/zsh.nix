@@ -1,4 +1,10 @@
-{ lib, config, settings, pkgs, ... }:
+{
+  lib,
+  config,
+  settings,
+  pkgs,
+  ...
+}:
 let
   inherit (lib) mkEnableOption mkIf mkForce;
   cfg = config.pkgs.zsh;

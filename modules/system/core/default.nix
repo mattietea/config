@@ -1,12 +1,13 @@
-{ user, lib, config, ... }:
 {
-  imports = [
-    ./environment.nix
-  ];
-
+  user,
+  lib,
+  config,
+  ...
+}:
+{
   options.unfreePackages = lib.mkOption {
     type = lib.types.listOf lib.types.str;
-    default = [];
+    default = [ ];
     description = "Names (lib.getName) of unfree packages allowed per host";
   };
 
