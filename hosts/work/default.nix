@@ -36,5 +36,6 @@ mkDarwinHost {
     rename-utils.enable = true;
     tldr.enable = true;
     zsh.enable = true;
+    shopify.enable = true;
   };
 }

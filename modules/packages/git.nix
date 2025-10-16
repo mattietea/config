@@ -59,6 +59,9 @@ in
           # Caches untracked files for faster status
           # https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreuntrackedCache
           untrackedCache = true;
+          # Enables commit-graph for faster log/blame operations
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corecommitGraph
+          commitGraph = true;
         };
         index = {
           # Use all CPU cores for index operations (0 = auto-detect)
@@ -70,11 +73,35 @@ in
         };
         # Parallel packing during gc and push operations
         # https://git-scm.com/docs/git-config#Documentation/git-config.txt-packthreads
-        pack.threads = 0;
+        pack = {
+          threads = 0;
+          # Enable bitmap indexes for faster fetches
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-packwriteBitmaps
+          writeBitmaps = true;
+          # Limit individual pack file size to 2GB for better performance
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-packpackSizeLimit
+          packSizeLimit = "2g";
+          # Allow more memory for better pack compression
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-packwindowMemory
+          windowMemory = "1g";
+        };
         # Faster network operations (fetch/push)
         # https://git-scm.com/docs/git-config#Documentation/git-config.txt-protocolversion
         protocol.version = 2;
-        gc.auto = 256;
+        # Trigger auto-gc less frequently (default 6700, was 256)
+        # Lower values cause frequent gc which can slow operations
+        # https://git-scm.com/docs/git-config#Documentation/git-config.txt-gcauto
+        gc.auto = 6700;
+        # Enable background maintenance with incremental strategy
+        # Runs hourly: prefetch, commit-graph
+        # Daily: loose-objects, incremental-repack
+        # Weekly: pack-refs
+        # https://git-scm.com/docs/git-config#Documentation/git-config.txt-maintenancestrategy
+        maintenance = {
+          auto = true;
+          strategy = "incremental";
+          autoDetach = true;
+        };
         feature.manyFiles = true;
         github.user = settings.username;
         lfs.setlockablereadonly = 0;
@@ -82,6 +109,12 @@ in
         fetch = {
           prune = true;
           prunetags = true;
+          # Parallel submodule fetches (0 = auto-detect CPU cores)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchparallel
+          parallel = 0;
+          # Update commit-graph during fetch for faster operations
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchwriteCommitGraph
+          writeCommitGraph = true;
         };
         push = {
           autoSetupRemote = true;
@@ -94,7 +127,6 @@ in
         rebase = {
           autosquash = true;
           autostash = true;
-          updateRefs = true;
         };
         diff.algorithm = "histogram";
         status.showUntrackedFiles = "normal";
