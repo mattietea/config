@@ -9,7 +9,6 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
   outputs =
@@ -18,16 +17,16 @@
       ...
     }@inputs:
     let
-      mkDarwinHost = import ./lib/mkDarwinHost.nix { inherit inputs; };
+      utilities = import ./utilities { inherit inputs; };
     in
     {
       darwinConfigurations = {
-        work = import ./hosts/work { inherit mkDarwinHost; };
-        personal = import ./hosts/personal { inherit mkDarwinHost; };
+        work = import ./hosts/work { mkDarwinHost = utilities.mkDarwinHost; };
+        personal = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
 
         # Compatibility aliases for hostname-based switching
-        Matts-Work-MacBook-Pro = import ./hosts/work { inherit mkDarwinHost; };
-        Matts-Personal-Macbook = import ./hosts/personal { inherit mkDarwinHost; };
+        Matts-Work-MacBook-Pro = import ./hosts/work { mkDarwinHost = utilities.mkDarwinHost; };
+        Matts-Personal-Macbook = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
       };
 
       formatter = nixpkgs.lib.genAttrs (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);

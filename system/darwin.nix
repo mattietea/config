@@ -1,5 +1,5 @@
 {
-  user,
+  settings,
   ...
 }:
 
@@ -9,7 +9,7 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
-    primaryUser = user;
+    primaryUser = settings.username;
 
     # https://github.com/nix-community/home-manager/blob/master/modules/system/darwin-settings.nix
     # Used for backwards compatibility, please read the changelog before changing.
