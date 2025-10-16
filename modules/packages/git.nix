@@ -36,13 +36,12 @@ in
       aliases = {
         amend = "commit --amend";
         commend = "commit --amend --no-edit";
-        unstage = "reset HEAD --";
-        undo = "!git reset --soft HEAD~";
-        nvm = "!git reset --hard HEAD && git clean -d -f";
+        unstage = "restore --staged";
+        undo = "reset --soft HEAD~";
+        wipe = "!git reset --hard HEAD && git clean -dfx";
         lazy = "!${pkgs.lazygit}/bin/lazygit";
-        # Don't need fzf with marlonrichert/zsh-autocomplete
-        fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";
-        tidy = "!git log -n 50 --pretty=format:'%h %s' | fzf | cut -c -7 | xargs -o git rebase --interactive --autosquash";
+        fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git commit --fixup";
+        tidy = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git rebase --interactive --autosquash";
       };
 
       # https://jvns.ca/blog/2024/02/16/popular-git-config-options
