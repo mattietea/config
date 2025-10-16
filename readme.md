@@ -2,31 +2,14 @@
 
 Declarative macOS development environment using Nix Flakes, nix-darwin, and home-manager.
 
-## What's Included
-
-**Core Tools:**
-- Git ecosystem: git, gh, lazygit, git-absorb, git-machete, graphite
-- Shell: zsh with pure prompt, starship, fzf
-- Development: node, pnpm, bun, delta, bat, eza, tldr
-- Applications: Zed, Raycast, Spotify, Discord
-
-**Architecture:**
-- [nix-darwin](https://github.com/LnL7/nix-darwin) - macOS system configuration
-- [home-manager](https://github.com/nix-community/home-manager) - User environment management
-- Modular configuration with separate work/personal machine profiles
-
 ## Setup
 
-O. Install [Determinate Nix](https://docs.determinate.systems)
+1. Install [Determinate Nix](https://docs.determinate.systems)
 
-1. Clone the repo:
+2. Clone the repo:
    ```sh
    git clone https://github.com/mattietea/config ~/.config/nix
    ```
-
-2. Update `flake.nix` with your details:
-   - username, email
-   - hostname (`scutil --get LocalHostName`)
 
 3. Initial build:
    ```sh
@@ -40,7 +23,7 @@ O. Install [Determinate Nix](https://docs.determinate.systems)
 switch
 
 # Format code
-nix fmt -- .
+nix fmt
 
 # Update packages
 nix flake update
@@ -49,9 +32,49 @@ nix flake update
 nix-collect-garbage
 ```
 
+## How It Works
+
+The configuration uses a modular architecture that automatically loads all modules:
+
+**Entry Point (`flake.nix`):**
+- Defines flake inputs (nixpkgs, nix-darwin, home-manager)
+- Creates host configurations by hostname (e.g., `Matts-Work-MacBook-Pro`)
+- Imports the `mkDarwinHost` helper from `utilities/`
+
+**Host Configurations (`hosts/work/`, `hosts/personal/`):**
+- Each host defines:
+  - `settings`: username, email, environment variables
+  - `apps`: GUI applications to enable
+  - `packages`: CLI tools to enable
+
+**System Configuration (`system/darwin.nix`):**
+- macOS system preferences (Dock, Finder, trackpad, keyboard)
+- Applied globally to all hosts
+
+**Module Files (`modules/applications/`, `modules/packages/`):**
+- Each `.nix` file defines a single application or package
+- Uses NixOS module system with `enable` options
+- Automatically discovered and loaded via `builtins.readDir`
+- To add a new tool: just create a new `.nix` file in the appropriate directory
+
 ## Structure
 
-- `modules/packages/` - CLI tools and utilities
-- `modules/applications/` - GUI applications
-- `modules/system/` - System-level configuration
-- `flake.nix` - Main configuration with work/personal profiles
+```
+├── flake.nix                    # Flake inputs and host configurations
+├── hosts/
+│   ├── work/default.nix         # Work machine configuration
+│   └── personal/default.nix     # Personal machine configuration
+├── utilities/default.nix        # mkDarwinHost helper function
+├── system/darwin.nix            # macOS system preferences
+├── modules/
+│   ├── applications/            # GUI apps (auto-imported)
+│   │   ├── discord.nix
+│   │   ├── raycast.nix
+│   │   ├── spotify.nix
+│   │   └── zed.nix
+│   └── packages/                # CLI tools (auto-imported)
+│       ├── git.nix
+│       ├── zsh.nix
+│       ├── fzf.nix
+│       └── ...
+```

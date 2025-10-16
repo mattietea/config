@@ -21,14 +21,10 @@
     in
     {
       darwinConfigurations = {
-        work = import ./hosts/work { mkDarwinHost = utilities.mkDarwinHost; };
-        personal = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
-
-        # Compatibility aliases for hostname-based switching
         Matts-Work-MacBook-Pro = import ./hosts/work { mkDarwinHost = utilities.mkDarwinHost; };
         Matts-Personal-Macbook = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
       };
 
-      formatter = nixpkgs.lib.genAttrs (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
     };
 }

@@ -20,6 +20,7 @@ mkDarwinHost {
   };
 
   packages = {
+    bun.enable = true;
     bat.enable = true;
     delta.enable = true;
     dotenv.enable = true;
@@ -35,7 +36,6 @@ mkDarwinHost {
     opencode.enable = true;
     pure.enable = true;
     rename-utils.enable = true;
-    shopify.enable = true;
     tldr.enable = true;
     zsh.enable = true;
   };

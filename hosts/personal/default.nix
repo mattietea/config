@@ -20,6 +20,7 @@ mkDarwinHost {
   };
 
   packages = {
+    bun.enable = true;
     bat.enable = true;
     delta.enable = true;
     dotenv.enable = true;

@@ -50,12 +50,31 @@ in
         init.defaultBranch = "main";
         core = {
           editor = "${settings.variables.VISUAL}";
+          # Monitors filesystem changes for faster status checks
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corefsmonitor
           fsmonitor = true;
-          fscache = true;
+          # Parallel index preloading for faster operations
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corepreloadIndex
           preloadindex = true;
           pager = "${pkgs.delta}/bin/delta";
+          # Caches untracked files for faster status
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreuntrackedCache
           untrackedCache = true;
         };
+        index = {
+          # Use all CPU cores for index operations (0 = auto-detect)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-indexthreads
+          threads = 0;
+          # More efficient index format (smaller, faster)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-indexversion
+          version = 4;
+        };
+        # Parallel packing during gc and push operations
+        # https://git-scm.com/docs/git-config#Documentation/git-config.txt-packthreads
+        pack.threads = 0;
+        # Faster network operations (fetch/push)
+        # https://git-scm.com/docs/git-config#Documentation/git-config.txt-protocolversion
+        protocol.version = 2;
         gc.auto = 256;
         feature.manyFiles = true;
         github.user = settings.username;
@@ -79,7 +98,7 @@ in
           updateRefs = true;
         };
         diff.algorithm = "histogram";
-        status.showUntrackedFiles = "all";
+        status.showUntrackedFiles = "normal";
       };
     };
   };
