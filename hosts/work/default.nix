@@ -13,7 +13,6 @@ mkDarwinHost {
   };
 
   apps = {
-    discord.enable = true;
     raycast.enable = true;
     spotify.enable = true;
     zed.enable = true;
@@ -23,7 +22,6 @@ mkDarwinHost {
     bun.enable = true;
     bat.enable = true;
     delta.enable = true;
-    dotenv.enable = true;
     eza.enable = true;
     fonts.enable = true;
     fzf.enable = true;
