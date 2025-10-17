@@ -31,7 +31,6 @@ mkDarwinHost {
     git.enable = true;
     git-absorb.enable = true;
     git-machete.enable = true;
-    graphite.enable = true;
     lazygit.enable = true;
     opencode.enable = true;
     pure.enable = true;
