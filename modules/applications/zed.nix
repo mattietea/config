@@ -78,7 +78,7 @@ in
         git.branch_picker.show_author_name = true;
         languages.Nix.language_servers = [
           "nixd"
-          "nil"
+          "!nil"
         ];
         lsp = {
           biome.settings.require_config_file = true;
