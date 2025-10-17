@@ -14,7 +14,17 @@ in
   config = mkIf cfg.enable {
     programs.opencode = {
       enable = true;
-      package = pkgs.opencode;
+
+      settings = {
+        autoshare = false;
+        mcp = {
+          "context7" = {
+            type = "remote";
+            url = "https://mcp.context7.com/mcp";
+          };
+        };
+      };
+
     };
   };
 }
