@@ -17,6 +17,7 @@ in
   };
 
   config = mkIf (cfg.enable) {
+
     # useful editor/language tooling alongside zed
     home.packages = with pkgs; [
       nixfmt-rfc-style
@@ -81,7 +82,10 @@ in
         ];
         lsp = {
           biome.settings.require_config_file = true;
-          nil.settings.diagnostics.ignored = [ "unused_binding" ];
+          nil.settings = {
+            diagnostics.ignored = [ "unused_binding" ];
+            autoArchive = true;
+          };
           nixd = {
             binary.path = "${pkgs.nixd}/bin/nixd";
             settings.diagnostic.suppress = [ "sema-extra-with" ];
