@@ -78,6 +78,7 @@
     defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 
     defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
+    defaults.NSGlobalDomain.NSWindowShouldDragOnGesture = true;
 
     # Whether to use 24-hour or 12-hour time. The default is based on region settings.
     defaults.NSGlobalDomain.AppleICUForce24HourTime = true;
