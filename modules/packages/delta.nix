@@ -16,6 +16,7 @@ in
       enable = true;
       package = pkgs.delta;
       options = {
+        enableGitIntegration = true;
         hyperlinks = true;
         side-by-side = true;
         hyperlinks-file-link-format = "zed://file/{path}:{line}";
