@@ -12,11 +12,11 @@ in
   options.pkgs.delta.enable = mkEnableOption "delta (git diff pager)";
 
   config = mkIf cfg.enable {
-    programs.git.delta = {
+    programs.delta = {
       enable = true;
       package = pkgs.delta;
+      enableGitIntegration = true;
       options = {
-        enableGitIntegration = true;
         hyperlinks = true;
         side-by-side = true;
         hyperlinks-file-link-format = "zed://file/{path}:{line}";

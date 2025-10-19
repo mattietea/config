@@ -13,6 +13,6 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.git-machete ];
-    programs.git.aliases.m = "machete";
+    programs.git.settings.alias.m = "machete";
   };
 }

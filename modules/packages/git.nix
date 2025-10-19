@@ -30,22 +30,25 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = cfg.userName;
-      userEmail = cfg.userEmail;
 
-      aliases = {
-        amend = "commit --amend";
-        commend = "commit --amend --no-edit";
-        unstage = "restore --staged";
-        undo = "reset --soft HEAD~";
-        wipe = "!git reset --hard HEAD && git clean -dfx";
-        lazy = "!${pkgs.lazygit}/bin/lazygit";
-        fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git commit --fixup";
-        tidy = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git rebase --interactive --autosquash";
-      };
+      settings = {
+        user = {
+          name = cfg.userName;
+          email = cfg.userEmail;
+        };
 
-      # https://jvns.ca/blog/2024/02/16/popular-git-config-options
-      extraConfig = {
+        alias = {
+          amend = "commit --amend";
+          commend = "commit --amend --no-edit";
+          unstage = "restore --staged";
+          undo = "reset --soft HEAD~";
+          wipe = "!git reset --hard HEAD && git clean -dfx";
+          lazy = "!${pkgs.lazygit}/bin/lazygit";
+          fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git commit --fixup";
+          tidy = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git rebase --interactive --autosquash";
+        };
+
+        # https://jvns.ca/blog/2024/02/16/popular-git-config-options
         init.defaultBranch = "main";
         core = {
           editor = "${settings.variables.VISUAL}";
