@@ -66,6 +66,9 @@ in
           # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corecommitGraph
           commitGraph = true;
         };
+        branch = {
+          autoSetupBranch = true;
+        };
         index = {
           # Use all CPU cores for index operations (0 = auto-detect)
           # https://git-scm.com/docs/git-config#Documentation/git-config.txt-indexthreads

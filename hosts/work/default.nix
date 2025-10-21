@@ -36,5 +36,6 @@ mkDarwinHost {
     tldr.enable = true;
     zsh.enable = true;
     shopify.enable = true;
+    aerospace.enable = true;
   };
 }
