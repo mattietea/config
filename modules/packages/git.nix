@@ -67,7 +67,7 @@ in
           commitGraph = true;
         };
         branch = {
-          autoSetupBranch = true;
+          autoSetupMerge = true;
         };
         index = {
           # Use all CPU cores for index operations (0 = auto-detect)
@@ -131,6 +131,7 @@ in
         rerere.enabled = true;
         mergetool.hideResolved = true;
         rebase = {
+          updateRefs = true;
           autosquash = true;
           autostash = true;
         };
