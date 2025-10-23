@@ -13,7 +13,7 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 
 3. Initial build:
    ```sh
-   sudo nix run nix-darwin -- switch --flake .
+   sudo -i nix run nix-darwin -- switch --flake ~/.config/nix
    ```
 
 ## Daily Commands
