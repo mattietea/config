@@ -23,9 +23,6 @@ in
         # Available commands : https://nikitabobko.github.io/AeroSpace/commands
         "after-startup-command" = [ ];
 
-        # Start AeroSpace at login
-        "start-at-login" = false;
-
         # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
         "enable-normalization-flatten-containers" = true;
         "enable-normalization-opposite-orientation-for-nested-containers" = true;

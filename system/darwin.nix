@@ -56,8 +56,8 @@
 
     # Autohide Dock and tune animation/delay
     defaults.dock.autohide = true; # auto-hide Dock when not in use
-    defaults.dock.autohide-delay = 0.1; # delay before Dock hides (seconds)
-    defaults.dock.autohide-time-modifier = 0.1; # animation duration (seconds)
+    defaults.dock.autohide-delay = 0.0; # delay before Dock hides (seconds)
+    defaults.dock.autohide-time-modifier = 0.0; # animation duration (seconds)
 
     # Hide "recent applications" in Dock
     defaults.dock.show-recents = false;
