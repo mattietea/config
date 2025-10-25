@@ -14,8 +14,8 @@ in
   config = mkIf cfg.enable {
     programs.aerospace = {
       enable = true;
-      launchd.enable = true;
       userSettings = {
+        "start-at-login" = true;
         # Place a copy of this config to ~/.aerospace.toml
         # After that, you can edit ~/.aerospace.toml to your liking
 

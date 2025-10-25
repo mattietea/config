@@ -67,7 +67,8 @@ in
           commitGraph = true;
         };
         branch = {
-          autoSetupMerge = true;
+          autoSetupMerge = "always";
+          autoSetupRebase = "always";
         };
         index = {
           # Use all CPU cores for index operations (0 = auto-detect)

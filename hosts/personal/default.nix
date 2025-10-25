@@ -39,6 +39,6 @@ mkDarwinHost {
     tldr.enable = true;
     zsh.enable = true;
     aerospace.enable = true;
-    zellij.enable = true;
+    zellij.enable = false;
   };
 }
