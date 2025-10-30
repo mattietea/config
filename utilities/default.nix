@@ -43,6 +43,7 @@
             users.${settings.username} = {
               inherit apps;
               pkgs = packages;
+              targets.darwin.linkApps.enable = true;
               home = {
                 username = settings.username;
                 homeDirectory = "/Users/${settings.username}";
