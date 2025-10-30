@@ -22,7 +22,7 @@
     {
       darwinConfigurations = {
         Matts-Work-MacBook-Pro = import ./hosts/work { mkDarwinHost = utilities.mkDarwinHost; };
-        Matts-Personal-Macbook-Air = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
+        Matts-Personal-Macbook = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
       };
 
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;

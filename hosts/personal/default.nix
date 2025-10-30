@@ -1,7 +1,7 @@
 { mkDarwinHost }:
 
 mkDarwinHost {
-  hostname = "Matts-Personal-Macbook";
+  hostname = "Matts-Personal-Macbook-Air";
 
   settings = {
     username = "mattietea";
