@@ -17,6 +17,7 @@ mkDarwinHost {
     raycast.enable = true;
     spotify.enable = true;
     zed.enable = true;
+    whatsapp.enable = true;
   };
 
   packages = {

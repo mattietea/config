@@ -244,6 +244,14 @@
     defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
     # Also enforce Software Update behaviors via CustomSystemPreferences below.
+    defaults.CustomSystemPreferences = {
+      "com.apple.SoftwareUpdate" = {
+        AutomaticCheckEnabled = true; # enable automatic checking
+        ScheduleFrequency = 1; # check daily
+        AutomaticDownload = 1; # download updates in background
+        CriticalUpdateInstall = 1; # install critical updates automatically
+      };
+    };
 
     ########################################################################
     # Trackpad (Pressure/Click thresholds and gestures)
@@ -287,6 +295,13 @@
     # These are per-user preferences for the current user, useful for trackpad
     # gesture toggles that are stored in user-specific domains.
     defaults.CustomUserPreferences = {
+      # Safari developer/debug menus (moved from system to per-user)
+      # "com.apple.Safari" = {
+      #   WebKitDeveloperExtrasEnabledPreferenceKey = true;
+      #   IncludeInternalDebugMenu = true;
+      #   IncludeDevelopMenu = true;
+      # };
+
       # Built-in trackpad domain
       "com.apple.AppleMultitouchTrackpad" = {
         # Disable four-finger vertical swipe (commonly Mission Control)
@@ -308,20 +323,6 @@
       # Fn/Globe key action (per-user HIToolbox domain)
       "com.apple.HIToolbox" = {
         AppleFnUsageType = "Show Emoji & Symbols";
-      };
-      # Developer/Debug menus in Safari
-      "com.apple.Safari" = {
-        WebKitDeveloperExtrasEnabledPreferenceKey = true;
-        IncludeInternalDebugMenu = true;
-        IncludeDevelopMenu = true;
-      };
-
-      # Encourage a stricter software update policy via domain keys
-      "com.apple.SoftwareUpdate" = {
-        AutomaticCheckEnabled = true; # enable automatic checking
-        ScheduleFrequency = 1; # check daily
-        AutomaticDownload = 1; # download updates in background
-        CriticalUpdateInstall = 1; # install critical updates automatically
       };
     };
 
