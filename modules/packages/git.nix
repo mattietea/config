@@ -67,7 +67,7 @@ in
           commitGraph = true;
         };
         branch = {
-          autoSetupMerge = "always";
+          autoSetupMerge = "simple";
           autoSetupRebase = "always";
         };
         index = {
@@ -122,22 +122,60 @@ in
           # Update commit-graph during fetch for faster operations
           # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchwriteCommitGraph
           writeCommitGraph = true;
+          # Skip forced-update check for faster pulls (trades safety for speed)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchshowForcedUpdates
+          showForcedUpdates = false;
+          # Reduce log output during prune operations
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchoutput
+          output = "compact";
         };
         push = {
           autoSetupRemote = true;
           default = "simple";
         };
         commit.verbose = true;
-        merge.conflictStyle = "zdiff3"; # https://www.ductile.systems/zdiff3/
+        merge = {
+          conflictStyle = "zdiff3"; # https://www.ductile.systems/zdiff3/
+          # Don't show detailed file stats after merge (huge reduction in output for large repos)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergestat
+          stat = false;
+        };
         rerere.enabled = true;
         mergetool.hideResolved = true;
         rebase = {
           updateRefs = true;
           autosquash = true;
           autostash = true;
+          # Don't show detailed file stats after rebase (for large repos with pull.rebase=true)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-rebasestat
+          stat = false;
         };
         diff.algorithm = "histogram";
         status.showUntrackedFiles = "normal";
+        # Reduce advice messages for cleaner output
+        advice = {
+          statusHints = false;
+          pushNonFastForward = false;
+          detachedHead = false;
+        };
+        # Use sparse index for faster operations on large repos
+        # Essential for sparse-checkout performance - dramatically speeds up status/add/commit
+        # https://git-scm.com/docs/git-config#Documentation/git-config.txt-indexsparse
+        index.sparse = true;
+        # Faster submodule operations
+        submodule = {
+          fetchJobs = 0; # 0 = auto-detect CPU cores
+          recurse = false; # Only recurse when explicitly requested
+        };
+        # Worktree optimizations
+        worktree = {
+          # Guess remote when creating worktrees (less typing)
+          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-worktreeguessRemote
+          guessRemote = true;
+        };
+        # Column output for branch/tag lists (cleaner for repos with many branches)
+        # https://git-scm.com/docs/git-config#Documentation/git-config.txt-columnui
+        column.ui = "auto";
       };
     };
   };
