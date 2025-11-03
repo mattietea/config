@@ -122,9 +122,6 @@ in
           # Update commit-graph during fetch for faster operations
           # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchwriteCommitGraph
           writeCommitGraph = true;
-          # Skip forced-update check for faster pulls (trades safety for speed)
-          # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchshowForcedUpdates
-          showForcedUpdates = false;
           # Reduce log output during prune operations
           # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchoutput
           output = "compact";
