@@ -43,12 +43,12 @@
             users.${settings.username} = {
               inherit apps;
               pkgs = packages;
-              targets.darwin.linkApps.enable = true;
+              targets.darwin.copyApps.enable = true;
               home = {
                 username = settings.username;
                 homeDirectory = "/Users/${settings.username}";
                 sessionVariables = settings.variables;
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
             };
           };
