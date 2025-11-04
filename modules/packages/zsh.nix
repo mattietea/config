@@ -36,6 +36,14 @@ in
         src = zsh-fzf-tab;
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
+      {
+        name = "git-fast";
+        file = "plugins/gitfast/gitfast.plugin.zsh";
+        src = builtins.fetchGit {
+          url = "https://github.com/ohmyzsh/ohmyzsh";
+          ref = "master";
+        };
+      }
     ];
 
     programs.zsh.enableCompletion = mkForce false;
