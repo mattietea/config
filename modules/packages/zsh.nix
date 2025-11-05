@@ -36,42 +36,13 @@ in
         src = zsh-fzf-tab;
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
-      {
-        name = "gitfast";
-        src = oh-my-zsh;
-        file = "share/oh-my-zsh/plugins/gitfast/gitfast.plugin.zsh";
-      }
     ];
 
     programs.zsh.enableCompletion = true;
 
     programs.zsh.initContent = ''
-      # See https://github.com/zsh-users/zsh/blob/master/Completion/compinit#L67-L72
-      # zstyle '*:compinit' arguments -u
-
       zstyle ':completion:*' sort false
-
-      # Enable hidden files in autocomplete
       setopt globdots
-
-
-
-
-
-      # --------------------------------------------------------------------------
-      # zsh-autocomplete
-      # --------------------------------------------------------------------------
-      # See https://github.com/marlonrichert/zsh-autocomplete/issues/750
-      # setopt interactivecomments
-
-      # bindkey              '^I' menu-select
-      # bindkey "$terminfo[kcbt]" menu-select
-
-
-      # bindkey -M menuselect              '^I' menu-select
-      # bindkey -M menuselect "$terminfo[kcbt]" menu-select
-
-      # zstyle ':completion:*' completer _complete _complete:-fuzzy _correct _approximate _ignored
     '';
 
     programs.zsh.sessionVariables = settings.variables;
