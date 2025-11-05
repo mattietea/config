@@ -43,16 +43,19 @@ in
       }
     ];
 
-    programs.zsh.enableCompletion = mkForce false;
+    programs.zsh.enableCompletion = true;
 
     programs.zsh.initContent = ''
       # See https://github.com/zsh-users/zsh/blob/master/Completion/compinit#L67-L72
-      zstyle '*:compinit' arguments -u
+      # zstyle '*:compinit' arguments -u
 
       zstyle ':completion:*' sort false
 
       # Enable hidden files in autocomplete
       setopt globdots
+
+
+
 
 
       # --------------------------------------------------------------------------
