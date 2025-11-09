@@ -1,5 +1,4 @@
 { mkDarwinHost }:
-
 mkDarwinHost {
   hostname = "Matts-Work-MacBook-Pro";
 
@@ -12,30 +11,30 @@ mkDarwinHost {
     };
   };
 
-  apps = {
-    raycast.enable = true;
-    spotify.enable = true;
-    zed.enable = true;
-  };
+  apps = [
+    ../../modules/applications/raycast.nix
+    ../../modules/applications/spotify.nix
+    ../../modules/applications/zed.nix
+  ];
 
-  packages = {
-    bun.enable = true;
-    bat.enable = true;
-    delta.enable = true;
-    eza.enable = true;
-    fonts.enable = true;
-    fzf.enable = true;
-    gh.enable = true;
-    git.enable = true;
-    git-absorb.enable = true;
-    git-machete.enable = true;
-    lazygit.enable = true;
-    opencode.enable = true;
-    pure.enable = true;
-    rename-utils.enable = true;
-    tldr.enable = true;
-    zsh.enable = true;
-    shopify.enable = true;
-    aerospace.enable = true;
-  };
+  packages = [
+    ../../modules/packages/bun.nix
+    ../../modules/packages/bat.nix
+    ../../modules/packages/delta.nix
+    ../../modules/packages/eza.nix
+    ../../modules/packages/fonts.nix
+    ../../modules/packages/fzf.nix
+    ../../modules/packages/gh.nix
+    ../../modules/packages/git.nix
+    ../../modules/packages/git-absorb.nix
+    ../../modules/packages/git-machete.nix
+    ../../modules/packages/lazygit.nix
+    ../../modules/packages/opencode.nix
+    ../../modules/packages/pure.nix
+    ../../modules/packages/rename-utils.nix
+    ../../modules/packages/tldr.nix
+    ../../modules/packages/zsh.nix
+    ../../modules/packages/shopify.nix
+    ../../modules/packages/aerospace.nix
+  ];
 }

@@ -1,17 +1,5 @@
+{ ... }:
 {
-  lib,
-  config,
-  ...
-}:
-let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.pkgs.aerospace;
-in
-{
-
-  options.pkgs.aerospace.enable = mkEnableOption "aerospace";
-
-  config = mkIf cfg.enable {
     programs.aerospace = {
       enable = true;
       userSettings = {
@@ -193,6 +181,4 @@ in
         };
       };
     };
-  };
-
 }

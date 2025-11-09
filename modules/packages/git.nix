@@ -1,40 +1,16 @@
 {
-  lib,
   settings,
   pkgs,
-  config,
   ...
 }:
-let
-  inherit (lib)
-    mkEnableOption
-    mkOption
-    mkIf
-    types
-    ;
-  cfg = config.pkgs.git;
-in
 {
-  options.pkgs.git = {
-    enable = mkEnableOption "Git";
-    userName = mkOption {
-      type = types.str;
-      default = settings.username;
-    };
-    userEmail = mkOption {
-      type = types.str;
-      default = settings.email;
-    };
-  };
-
-  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
 
       settings = {
         user = {
-          name = cfg.userName;
-          email = cfg.userEmail;
+          name = settings.username;
+          email = settings.email;
         };
 
         alias = {
@@ -175,5 +151,4 @@ in
         column.ui = "auto";
       };
     };
-  };
 }

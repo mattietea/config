@@ -1,22 +1,8 @@
 {
-  lib,
   pkgs,
-  config,
   ...
 }:
-let
-  inherit (lib)
-    mkEnableOption
-    mkIf
-    ;
-  cfg = config.apps.zed;
-in
 {
-  options.apps.zed = {
-    enable = mkEnableOption "Zed editor";
-  };
-
-  config = mkIf (cfg.enable) {
 
     # useful editor/language tooling alongside zed
     home.packages = with pkgs; [
@@ -145,5 +131,4 @@ in
         }
       ];
     };
-  };
 }

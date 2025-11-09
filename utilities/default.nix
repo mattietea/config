@@ -4,8 +4,8 @@
     {
       hostname,
       settings,
-      apps ? { },
-      packages ? { },
+      apps ? [ ],
+      packages ? [ ],
     }:
 
     inputs.darwin.lib.darwinSystem {
@@ -33,16 +33,8 @@
             extraSpecialArgs = {
               inherit settings inputs;
             };
-            sharedModules =
-              inputs.nixpkgs.lib.mapAttrsToList (name: _: ../modules/applications + "/${name}") (
-                builtins.readDir ../modules/applications
-              )
-              ++ inputs.nixpkgs.lib.mapAttrsToList (name: _: ../modules/packages + "/${name}") (
-                builtins.readDir ../modules/packages
-              );
+            sharedModules = apps ++ packages;
             users.${settings.username} = {
-              inherit apps;
-              pkgs = packages;
               targets.darwin.copyApps.enable = true;
               home = {
                 username = settings.username;

@@ -1,5 +1,4 @@
 { mkDarwinHost }:
-
 mkDarwinHost {
   hostname = "Matts-Personal-Macbook-Air";
 
@@ -12,35 +11,33 @@ mkDarwinHost {
     };
   };
 
-  apps = {
-    discord.enable = true;
-    raycast.enable = true;
-    spotify.enable = true;
-    zed.enable = true;
-    whatsapp.enable = true;
-    ticktick.enable = true;
-  };
+  apps = [
+    ../../modules/applications/discord.nix
+    ../../modules/applications/raycast.nix
+    ../../modules/applications/spotify.nix
+    ../../modules/applications/zed.nix
+    ../../modules/applications/whatsapp.nix
+  ];
 
-  packages = {
-    bun.enable = true;
-    bat.enable = true;
-    delta.enable = true;
-    dotenv.enable = true;
-    eza.enable = true;
-    fonts.enable = true;
-    fzf.enable = true;
-    gh.enable = true;
-    git.enable = true;
-    git-absorb.enable = true;
-    git-machete.enable = true;
-    lazygit.enable = true;
-    opencode.enable = true;
-    pure.enable = true;
-    rename-utils.enable = true;
-    shopify.enable = true;
-    tldr.enable = true;
-    zsh.enable = true;
-    aerospace.enable = true;
-    zellij.enable = false;
-  };
+  packages = [
+    ../../modules/packages/bun.nix
+    ../../modules/packages/bat.nix
+    ../../modules/packages/delta.nix
+    ../../modules/packages/dotenv.nix
+    ../../modules/packages/eza.nix
+    ../../modules/packages/fonts.nix
+    ../../modules/packages/fzf.nix
+    ../../modules/packages/gh.nix
+    ../../modules/packages/git.nix
+    ../../modules/packages/git-absorb.nix
+    ../../modules/packages/git-machete.nix
+    ../../modules/packages/lazygit.nix
+    ../../modules/packages/opencode.nix
+    ../../modules/packages/pure.nix
+    ../../modules/packages/rename-utils.nix
+    ../../modules/packages/shopify.nix
+    ../../modules/packages/tldr.nix
+    ../../modules/packages/zsh.nix
+    ../../modules/packages/aerospace.nix
+  ];
 }
