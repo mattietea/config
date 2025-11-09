@@ -1,7 +1,5 @@
-{ mkDarwinHost }:
-mkDarwinHost {
-  hostname = "Matts-Personal-Macbook-Air";
-
+{ inputs, ... }:
+let
   settings = {
     username = "mattietea";
     email = "mattcthomas@me.com";
@@ -10,34 +8,73 @@ mkDarwinHost {
       VISUAL = "zed --wait";
     };
   };
+in
+inputs.darwin.lib.darwinSystem {
+  system = "aarch64-darwin";
+  specialArgs = {
+    inherit inputs settings;
+  };
+  modules = [
+    {
+      nixpkgs.config.allowUnfree = true;
+      nix.enable = false;
 
-  apps = [
-    ../../modules/applications/discord.nix
-    ../../modules/applications/raycast.nix
-    ../../modules/applications/spotify.nix
-    ../../modules/applications/zed.nix
-    ../../modules/applications/whatsapp.nix
-  ];
-
-  packages = [
-    ../../modules/packages/bun.nix
-    ../../modules/packages/bat.nix
-    ../../modules/packages/delta.nix
-    ../../modules/packages/dotenv.nix
-    ../../modules/packages/eza.nix
-    ../../modules/packages/fonts.nix
-    ../../modules/packages/fzf.nix
-    ../../modules/packages/gh.nix
-    ../../modules/packages/git.nix
-    ../../modules/packages/git-absorb.nix
-    ../../modules/packages/git-machete.nix
-    ../../modules/packages/lazygit.nix
-    ../../modules/packages/opencode.nix
-    ../../modules/packages/pure.nix
-    ../../modules/packages/rename-utils.nix
-    ../../modules/packages/shopify.nix
-    ../../modules/packages/tldr.nix
-    ../../modules/packages/zsh.nix
-    ../../modules/packages/aerospace.nix
+      users.users.${settings.username} = {
+        name = settings.username;
+        home = "/Users/${settings.username}";
+      };
+    }
+    ../../modules/darwin/system
+    inputs.home-manager.darwinModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "bak";
+        extraSpecialArgs = {
+          inherit settings inputs;
+        };
+        sharedModules = [
+          # Applications
+          ../../modules/home-manager/applications/discord
+          ../../modules/home-manager/applications/raycast
+          ../../modules/home-manager/applications/spotify
+          ../../modules/home-manager/applications/whatsapp
+          ../../modules/home-manager/applications/zed
+          # Packages
+          ../../modules/home-manager/packages/aerospace
+          ../../modules/home-manager/packages/bat
+          ../../modules/home-manager/packages/bun
+          ../../modules/home-manager/packages/delta
+          ../../modules/home-manager/packages/dotenv
+          ../../modules/home-manager/packages/eza
+          ../../modules/home-manager/packages/fonts
+          ../../modules/home-manager/packages/fzf
+          ../../modules/home-manager/packages/gh
+          ../../modules/home-manager/packages/git
+          ../../modules/home-manager/packages/git-absorb
+          ../../modules/home-manager/packages/git-machete
+          ../../modules/home-manager/packages/lazygit
+          ../../modules/home-manager/packages/opencode
+          ../../modules/home-manager/packages/pure
+          ../../modules/home-manager/packages/rename-utils
+          ../../modules/home-manager/packages/shopify
+          ../../modules/home-manager/packages/tldr
+          ../../modules/home-manager/packages/zsh
+        ];
+        users.${settings.username} = {
+          targets.darwin.copyApps.enable = true;
+          home = {
+            username = settings.username;
+            homeDirectory = "/Users/${settings.username}";
+            sessionVariables = settings.variables;
+            stateVersion = "25.11";
+          };
+        };
+      };
+    }
+    {
+      networking.hostName = "Matts-Personal-Macbook-Air";
+    }
   ];
 }

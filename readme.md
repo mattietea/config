@@ -34,28 +34,35 @@ nix-collect-garbage
 
 ## How It Works
 
-The configuration uses a modular architecture that automatically loads all modules:
+The configuration uses a modular architecture following standard nix-darwin and home-manager patterns:
 
 **Entry Point (`flake.nix`):**
 - Defines flake inputs (nixpkgs, nix-darwin, home-manager)
 - Creates host configurations by hostname (e.g., `Matts-Work-MacBook-Pro`)
-- Imports the `mkDarwinHost` helper from `utilities/`
+- Passes `inputs` directly to host configurations
 
 **Host Configurations (`hosts/work/`, `hosts/personal/`):**
-- Each host defines:
-  - `settings`: username, email, environment variables
-  - `apps`: GUI applications to enable
-  - `packages`: CLI tools to enable
+- Each host directly calls `darwin.lib.darwinSystem` (standard pattern)
+- Defines `settings`: username, email, environment variables
+- Imports darwin modules (system-level configuration)
+- Lists all home-manager modules in `sharedModules` (user-level configuration)
+- Configures home-manager integration
 
-**System Configuration (`system/darwin.nix`):**
+**Darwin Modules (`modules/darwin/`):**
+- System-level macOS configuration
 - macOS system preferences (Dock, Finder, trackpad, keyboard)
-- Applied globally to all hosts
+- Applied globally to all hosts via module import
+- Each module is a folder with a `default.nix` file
+- Example: `modules/darwin/system/default.nix`
 
-**Module Files (`modules/applications/`, `modules/packages/`):**
-- Each `.nix` file defines a single application or package
-- Uses NixOS module system with `enable` options
-- Automatically discovered and loaded via `builtins.readDir`
-- To add a new tool: just create a new `.nix` file in the appropriate directory
+**Home Manager Modules (`modules/home-manager/`):**
+- User-level configuration (dotfiles, user packages, programs)
+- Organized into `applications/` (GUI apps) and `packages/` (CLI tools)
+- Each module is a folder with a `default.nix` file
+- Uses home-manager module system
+- Imported via `sharedModules` in host configurations
+- To add a new tool: create a new folder with `default.nix` in the appropriate subdirectory (`applications/` or `packages/`) and add it to the `sharedModules` list in the appropriate host file
+- Folder structure allows for additional files alongside modules (e.g., config files, scripts)
 
 ## Structure
 
@@ -64,17 +71,26 @@ The configuration uses a modular architecture that automatically loads all modul
 ├── hosts/
 │   ├── work/default.nix         # Work machine configuration
 │   └── personal/default.nix     # Personal machine configuration
-├── utilities/default.nix        # mkDarwinHost helper function
-├── system/darwin.nix            # macOS system preferences
 ├── modules/
-│   ├── applications/            # GUI apps (auto-imported)
-│   │   ├── discord.nix
-│   │   ├── raycast.nix
-│   │   ├── spotify.nix
-│   │   └── zed.nix
-│   └── packages/                # CLI tools (auto-imported)
-│       ├── git.nix
-│       ├── zsh.nix
-│       ├── fzf.nix
-│       └── ...
+│   ├── darwin/                  # System-level configuration (nix-darwin)
+│   │   └── system/
+│   │       └── default.nix      # macOS system preferences
+│   └── home-manager/            # User-level configuration (home-manager)
+│       ├── applications/        # GUI applications
+│       │   ├── discord/
+│       │   │   └── default.nix
+│       │   ├── raycast/
+│       │   │   └── default.nix
+│       │   ├── spotify/
+│       │   │   └── default.nix
+│       │   ├── whatsapp/
+│       │   │   └── default.nix
+│       │   └── zed/
+│       │       └── default.nix
+│       └── packages/            # CLI tools and packages
+│           ├── git/
+│           │   └── default.nix
+│           ├── zsh/
+│           │   └── default.nix
+│           └── ...
 ```

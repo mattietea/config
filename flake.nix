@@ -16,13 +16,10 @@
       nixpkgs,
       ...
     }@inputs:
-    let
-      utilities = import ./utilities { inherit inputs; };
-    in
     {
       darwinConfigurations = {
-        Matts-Work-MacBook-Pro = import ./hosts/work { mkDarwinHost = utilities.mkDarwinHost; };
-        Matts-Personal-Macbook-Air = import ./hosts/personal { mkDarwinHost = utilities.mkDarwinHost; };
+        Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs; };
+        Matts-Personal-Macbook-Air = import ./hosts/personal { inherit inputs; };
       };
 
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
