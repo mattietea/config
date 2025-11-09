@@ -18,6 +18,7 @@ mkDarwinHost {
     spotify.enable = true;
     zed.enable = true;
     whatsapp.enable = true;
+    ticktick.enable = true;
   };
 
   packages = {
