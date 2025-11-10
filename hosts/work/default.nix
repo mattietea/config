@@ -39,6 +39,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/applications/raycast
           ../../modules/home-manager/applications/spotify
           ../../modules/home-manager/applications/zed
+          ../../modules/home-manager/applications/logseq
           # Packages
           ../../modules/home-manager/packages/aerospace
           ../../modules/home-manager/packages/bat
