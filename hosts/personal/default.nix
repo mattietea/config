@@ -36,6 +36,7 @@ inputs.darwin.lib.darwinSystem {
         };
         sharedModules = [
           # Applications
+          ../../modules/home-manager/applications/logseq
           ../../modules/home-manager/applications/brave
           ../../modules/home-manager/applications/discord
           ../../modules/home-manager/applications/raycast
