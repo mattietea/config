@@ -2,6 +2,7 @@
 {
     programs.aerospace = {
       enable = true;
+      launchd.enable = true;
       userSettings = {
         "start-at-login" = true;
         # Place a copy of this config to ~/.aerospace.toml
