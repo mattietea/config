@@ -14,7 +14,7 @@
 
       # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
       "enable-normalization-flatten-containers" = true;
-      "enable-normalization-opposite-orientation-for-nested-containerfs" = true;
+      "enable-normalization-opposite-orientation-for-nested-containers" = true;
 
       # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
       # The 'accordion-padding' specifies the size of accordion padding
