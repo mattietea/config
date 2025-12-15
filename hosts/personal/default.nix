@@ -48,6 +48,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/bat
           ../../modules/home-manager/packages/bun
           ../../modules/home-manager/packages/delta
+          ../../modules/home-manager/packages/direnv
           ../../modules/home-manager/packages/dotenv
           ../../modules/home-manager/packages/eza
           ../../modules/home-manager/packages/fonts
