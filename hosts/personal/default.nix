@@ -36,11 +36,11 @@ inputs.darwin.lib.darwinSystem {
         };
         sharedModules = [
           # Applications
-          ../../modules/home-manager/applications/logseq
+          # ../../modules/home-manager/applications/logseq
           ../../modules/home-manager/applications/brave
           ../../modules/home-manager/applications/discord
           ../../modules/home-manager/applications/raycast
-          ../../modules/home-manager/applications/spotify
+          # ../../modules/home-manager/applications/spotify
           ../../modules/home-manager/applications/whatsapp
           ../../modules/home-manager/applications/zed
           # Packages
