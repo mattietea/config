@@ -14,7 +14,6 @@
       cat = "${pkgs.bat}/bin/bat";
       code = "${settings.variables.VISUAL}";
       config = "cd ~/.config/nix";
-      switch = "sudo darwin-rebuild switch --flake .";
     };
 
     plugins = with pkgs; [
