@@ -19,9 +19,38 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 
 ## Daily Commands
 
+### Using devenv (Recommended)
+
+This project uses [devenv](https://devenv.sh/) for development environment management. Enter the devenv shell to access all tools:
+
+```sh
+devenv shell
+```
+
+Available scripts (run from within devenv shell or via `devenv shell -- <script>`):
+
+```sh
+# Apply changes to nix-darwin
+switch
+
+# Format all files (uses treefmt with nixfmt, prettier, yamlfmt)
+format
+
+# Lint Nix files (uses statix)
+lint
+
+# Update flake inputs
+update
+
+# Clean up old Nix generations
+clean
+```
+
+### Direct Nix Commands
+
 ```sh
 # Apply changes
-switch
+sudo darwin-rebuild switch --flake .
 
 # Format code
 nix fmt
@@ -32,6 +61,31 @@ nix flake update
 # Clean up old generations
 nix-collect-garbage
 ```
+
+## Development Environment
+
+This project uses [devenv](https://devenv.sh/) to manage the development environment. The `devenv.nix` file configures:
+
+- **Language Server**: nixd for Nix language support
+- **Formatting**: treefmt with nixfmt (RFC 0076), prettier, and yamlfmt
+- **Linting**: statix for Nix files, shellcheck for shell scripts
+- **Git Hooks**: Automatic formatting and linting on commit
+
+### Formatting
+
+All formatting uses RFC 0076 style via `nixfmt`:
+
+- VS Code format-on-save uses nixfmt
+- `treefmt` command uses nixfmt for Nix files
+- Git hooks use treefmt (which uses nixfmt)
+
+### VS Code Integration
+
+VS Code is configured to use tools from the devenv environment:
+
+- nix-ide extension uses nixd from devenv
+- Formatting uses nixfmt from devenv
+- All tools are automatically available when working in this project
 
 ## How It Works
 
@@ -73,6 +127,10 @@ The configuration uses a modular architecture following standard nix-darwin and 
 
 ```
 ├── flake.nix                    # Flake inputs and host configurations
+├── devenv.nix                   # Development environment configuration
+├── .vscode/                     # VS Code workspace settings
+│   ├── settings.json            # Editor configuration (formatting, linting)
+│   └── extensions.json          # Recommended extensions
 ├── hosts/
 │   ├── work/default.nix         # Work machine configuration
 │   └── personal/default.nix     # Personal machine configuration
