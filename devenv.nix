@@ -29,6 +29,10 @@
     format.exec = ''
       treefmt
     '';
+
+    clean.exec = ''
+      nix-collect-garbage
+    '';
   };
 
   # https://devenv.sh/tests/
