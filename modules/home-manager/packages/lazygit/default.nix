@@ -1,6 +1,5 @@
-{
-  pkgs,
-  ...
+{ pkgs
+, ...
 }:
 {
   programs.lazygit.enable = true;
@@ -9,7 +8,7 @@
     git = {
       autoFetch = false;
       fetchAll = false;
-      pagers = [ { pager = "${pkgs.delta}/bin/delta --light --paging=never"; } ];
+      pagers = [{ pager = "${pkgs.delta}/bin/delta --light --paging=never"; }];
     };
     gui = {
       nerdFontsVersion = "3";

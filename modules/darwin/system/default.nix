@@ -326,18 +326,18 @@
       };
     };
 
-  ########################################################################
-  # Keyboard mappings / modifiers
-  ########################################################################
+    ########################################################################
+    # Keyboard mappings / modifiers
+    ########################################################################
 
-  # Enable keyboard mappings (required for below remaps)
-  keyboard.enableKeyMapping = true;
+    # Enable keyboard mappings (required for below remaps)
+    keyboard.enableKeyMapping = true;
 
-  # Remap Caps Lock to Escape
-  keyboard.remapCapsLockToEscape = true;
+    # Remap Caps Lock to Escape
+    keyboard.remapCapsLockToEscape = true;
 
-  # On non-US keyboards, remap the key to produce the tilde (~) more easily
-  keyboard.nonUS.remapTilde = true;
+    # On non-US keyboards, remap the key to produce the tilde (~) more easily
+    keyboard.nonUS.remapTilde = true;
 
     ########################################################################
     # Fn / Globe key action

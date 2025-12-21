@@ -1,7 +1,6 @@
-{
-  settings,
-  pkgs,
-  ...
+{ settings
+, pkgs
+, ...
 }:
 {
   programs.zsh.enable = true;

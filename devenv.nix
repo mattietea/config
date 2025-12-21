@@ -24,10 +24,8 @@
     echo hello from $GREET
   '';
 
-  # https://devenv.sh/basics/
-  enterShell = ''
-    hello         # Run scripts directly
-    git --version # Use packages
+  scripts.update.exec = ''
+    nix flake update
   '';
 
   # https://devenv.sh/tasks/
