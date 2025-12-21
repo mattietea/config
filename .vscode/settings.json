@@ -1,0 +1,43 @@
+{
+  "editor.formatOnSave": true,
+  "[nix]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "jnoortheen.nix-ide",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
+  },
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.formatterPath": "nixpkgs-fmt",
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": "nixpkgs-fmt"
+      },
+      "options": {
+        "nixpkgs": {
+          "path": null
+        }
+      }
+    }
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "files.associations": {
+    "*.nix": "nix"
+  }
+}

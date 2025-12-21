@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.direnv = {
     enableZshIntegration = true;
     enable = true;

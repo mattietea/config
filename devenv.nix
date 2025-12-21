@@ -1,4 +1,6 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs
+, ...
+}:
 
 {
   cachix.enable = false;
@@ -16,6 +18,10 @@
       nix flake update
     '';
 
+    lint.exec = ''
+      statix check .
+    '';
+
     format.exec = ''
       treefmt
     '';
@@ -31,9 +37,6 @@
   treefmt = {
     enable = true;
     config = {
-      # Enable nixpkgs-fmt for Nix file formatting
-      # Enable prettier for Markdown formatting
-      # Enable yamlfmt for YAML formatting
       programs = {
         nixpkgs-fmt.enable = true;
         prettier.enable = true;
