@@ -2,54 +2,56 @@
 , ...
 }:
 {
-  programs.fd.enable = true;
-  programs.ripgrep.enable = true;
+  programs = {
+    fd.enable = true;
+    ripgrep.enable = true;
 
-  programs.television = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      tick_rate = 50;
-      ui = {
-        use_nerd_font_icons = true;
-        show_preview_panel = true;
-      };
-    };
-    channels = {
-      files = {
-        metadata = {
-          description = "A channel to select files and directories";
-          name = "files";
-          requirements = [
-            "fd"
-            "bat"
-          ];
-        };
-        preview = {
-          command = "${pkgs.bat}/bin/bat -n --color=always '{}'";
-        };
-        source = {
-          command = [
-            "${pkgs.fd}/bin/fd -t f -H"
-          ];
+    television = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        tick_rate = 50;
+        ui = {
+          use_nerd_font_icons = true;
+          show_preview_panel = true;
         };
       };
-      folder = {
-        metadata = {
-          description = "A channel to select directories";
-          name = "folder";
-          requirements = [
-            "fd"
-          ];
+      channels = {
+        files = {
+          metadata = {
+            description = "A channel to select files and directories";
+            name = "files";
+            requirements = [
+              "fd"
+              "bat"
+            ];
+          };
+          preview = {
+            command = "${pkgs.bat}/bin/bat -n --color=always '{}'";
+          };
+          source = {
+            command = [
+              "${pkgs.fd}/bin/fd -t f -H"
+            ];
+          };
         };
-        preview = {
-          command = "${pkgs.eza}/bin/eza -l --tree --color=always --icons {}";
-        };
-        source = {
-          command = [
-            "${pkgs.fd}/bin/fd -t d"
-            "${pkgs.fd}/bin/fd -t d --hidden"
-          ];
+        folder = {
+          metadata = {
+            description = "A channel to select directories";
+            name = "folder";
+            requirements = [
+              "fd"
+            ];
+          };
+          preview = {
+            command = "${pkgs.eza}/bin/eza -l --tree --color=always --icons {}";
+          };
+          source = {
+            command = [
+              "${pkgs.fd}/bin/fd -t d"
+              "${pkgs.fd}/bin/fd -t d --hidden"
+            ];
+          };
         };
       };
     };

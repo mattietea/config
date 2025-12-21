@@ -1,7 +1,8 @@
-{ ... }:
+_:
 {
-  programs.zellij.enable = true;
-  programs.zellij.enableZshIntegration = true;
-
-  programs.zellij.settings = { };
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = { };
+  };
 }

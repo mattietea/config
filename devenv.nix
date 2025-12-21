@@ -2,42 +2,28 @@
 
 {
   cachix.enable = false;
-  # https://devenv.sh/basics/
-  env.GREET = "devenv";
 
-  # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
-
-  # https://devenv.sh/languages/
-  # Enable Nix language support
   languages.nix.enable = true;
-  # languages.rust.enable = true;
-
-  # https://devenv.sh/processes/
-  # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
-
-  # https://devenv.sh/services/
-  # services.postgres.enable = true;
+  languages.nix.lsp.package = pkgs.nixd;
 
   # https://devenv.sh/scripts/
-  scripts.hello.exec = ''
-    echo hello from $GREET
-  '';
+  scripts = {
+    switch.exec = ''
+      sudo -i nix run nix-darwin -- switch --flake .
+    '';
 
-  scripts.update.exec = ''
-    nix flake update
-  '';
+    update.exec = ''
+      nix flake update
+    '';
 
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
+    format.exec = ''
+      treefmt
+    '';
+  };
 
   # https://devenv.sh/tests/
   enterTest = ''
-    echo "Running tests"
-    git --version | grep --color=auto "${pkgs.git.version}"
+    nix flake check --no-build || exit 1
   '';
 
   # Configure treefmt for formatting
@@ -46,7 +32,13 @@
     enable = true;
     config = {
       # Enable nixpkgs-fmt for Nix file formatting
-      programs.nixpkgs-fmt.enable = true;
+      # Enable prettier for Markdown formatting
+      # Enable yamlfmt for YAML formatting
+      programs = {
+        nixpkgs-fmt.enable = true;
+        prettier.enable = true;
+        yamlfmt.enable = true;
+      };
     };
   };
 
@@ -59,6 +51,8 @@
       treefmt.enable = true;
       # Enable shellcheck for shell script linting
       shellcheck.enable = true;
+      # Enable statix for Nix file linting
+      statix.enable = true;
     };
   };
 

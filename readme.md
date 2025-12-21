@@ -7,6 +7,7 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 1. Install [Determinate Nix](https://docs.determinate.systems)
 
 2. Clone the repo:
+
    ```sh
    git clone https://github.com/mattietea/config ~/.config/nix
    ```
@@ -37,11 +38,13 @@ nix-collect-garbage
 The configuration uses a modular architecture following standard nix-darwin and home-manager patterns:
 
 **Entry Point (`flake.nix`):**
+
 - Defines flake inputs (nixpkgs, nix-darwin, home-manager)
 - Creates host configurations by hostname (e.g., `Matts-Work-MacBook-Pro`)
 - Passes `inputs` directly to host configurations
 
 **Host Configurations (`hosts/work/`, `hosts/personal/`):**
+
 - Each host directly calls `darwin.lib.darwinSystem` (standard pattern)
 - Defines `settings`: username, email, environment variables
 - Imports darwin modules (system-level configuration)
@@ -49,6 +52,7 @@ The configuration uses a modular architecture following standard nix-darwin and 
 - Configures home-manager integration
 
 **Darwin Modules (`modules/darwin/`):**
+
 - System-level macOS configuration
 - macOS system preferences (Dock, Finder, trackpad, keyboard)
 - Applied globally to all hosts via module import
@@ -56,6 +60,7 @@ The configuration uses a modular architecture following standard nix-darwin and 
 - Example: `modules/darwin/system/default.nix`
 
 **Home Manager Modules (`modules/home-manager/`):**
+
 - User-level configuration (dotfiles, user packages, programs)
 - Organized into `applications/` (GUI apps) and `packages/` (CLI tools)
 - Each module is a folder with a `default.nix` file

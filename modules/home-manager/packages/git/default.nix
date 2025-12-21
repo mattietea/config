@@ -9,7 +9,7 @@
     settings = {
       user = {
         name = settings.username;
-        email = settings.email;
+        inherit (settings) email;
       };
 
       alias = {

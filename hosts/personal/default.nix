@@ -69,7 +69,7 @@ inputs.darwin.lib.darwinSystem {
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           home = {
-            username = settings.username;
+            inherit (settings) username;
             homeDirectory = "/Users/${settings.username}";
             sessionVariables = settings.variables;
             stateVersion = "25.11";
