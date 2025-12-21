@@ -8,11 +8,11 @@
     }
   },
   "nix.enableLanguageServer": true,
-  "nix.serverPath": "nixd",
+  "nix.serverPath": ["devenv", "shell", "--", "nixd"],
   "nix.serverSettings": {
     "nixd": {
       "formatting": {
-        "command": ["nixfmt"]
+        "command": ["devenv", "shell", "--", "nixfmt"]
       },
       "options": {
         "nixpkgs": {

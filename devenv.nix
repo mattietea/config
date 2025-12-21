@@ -15,7 +15,7 @@
   # https://devenv.sh/scripts/
   scripts = {
     switch.exec = ''
-      sudo -i nix run nix-darwin -- switch --flake .
+      sudo darwin-rebuild switch --flake .
     '';
 
     update.exec = ''
