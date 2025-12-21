@@ -1,6 +1,7 @@
-{ settings
-, pkgs
-, ...
+{
+  settings,
+  pkgs,
+  ...
 }:
 {
   programs.zsh = {

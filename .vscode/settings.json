@@ -9,16 +9,18 @@
   },
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
-  "nix.formatterPath": "nixpkgs-fmt",
   "nix.serverSettings": {
     "nixd": {
       "formatting": {
-        "command": "nixpkgs-fmt"
+        "command": ["nixfmt"]
       },
       "options": {
         "nixpkgs": {
-          "path": null
+          "expr": "import <nixpkgs> { }"
         }
+      },
+      "diagnostic": {
+        "suppress": ["sema-extra-with"]
       }
     }
   },

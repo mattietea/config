@@ -1,5 +1,6 @@
-{ pkgs
-, ...
+{
+  pkgs,
+  ...
 }:
 
 {
@@ -7,6 +8,9 @@
 
   languages.nix.enable = true;
   languages.nix.lsp.package = pkgs.nixd;
+
+  # Add nixfmt-rfc-style for VS Code formatting (RFC 0076 compliant)
+  packages = [ pkgs.nixfmt-rfc-style ];
 
   # https://devenv.sh/scripts/
   scripts = {
@@ -38,7 +42,7 @@
     enable = true;
     config = {
       programs = {
-        nixpkgs-fmt.enable = true;
+        nixfmt.enable = true;
         prettier.enable = true;
         yamlfmt.enable = true;
       };

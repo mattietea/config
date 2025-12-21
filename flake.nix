@@ -12,8 +12,9 @@
   };
 
   outputs =
-    { nixpkgs
-    , ...
+    {
+      nixpkgs,
+      ...
     }@inputs:
     {
       darwinConfigurations = {

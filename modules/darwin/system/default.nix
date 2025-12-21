@@ -52,10 +52,6 @@
         spans-displays = false;
       };
 
-      # Disable "Switch to Space with open windows" when activating apps
-      # Prevents macOS from jumping to the Space that contains an app's window.
-      NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
-
       # Common related options (commented):
       # Group windows by application in Mission Control (Exposé)
       # defaults.dock.expose-group-apps = true; # default: false

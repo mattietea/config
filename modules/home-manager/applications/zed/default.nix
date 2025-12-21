@@ -1,14 +1,10 @@
-{ pkgs
-, ...
+{
+  pkgs,
+  ...
 }:
 {
 
   # useful editor/language tooling alongside zed
-  home.packages = with pkgs; [
-    nixfmt-rfc-style
-    nixd
-    nil
-  ];
 
   programs.zed-editor = {
     enable = true;
