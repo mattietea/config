@@ -59,7 +59,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/git-absorb
           ../../modules/home-manager/packages/git-machete
           ../../modules/home-manager/packages/lazygit
-          # ../../modules/home-manager/packages/opencode  # Disabled: package has badPlatforms blocking darwin
+          ../../modules/home-manager/packages/opencode
           ../../modules/home-manager/packages/pure
           ../../modules/home-manager/packages/rename-utils
           ../../modules/home-manager/packages/shopify
