@@ -1,10 +1,7 @@
 {
-  pkgs,
-  ...
+  _,
 }:
 {
-
-  # useful editor/language tooling alongside zed
 
   programs.zed-editor = {
     enable = true;
@@ -13,6 +10,7 @@
       "git-firefly"
       "tokyo-night"
       "github-theme"
+      "opencode"
     ];
     userSettings = {
       base_keymap = "VSCode";
@@ -57,23 +55,10 @@
         max_scroll_history_lines = 100000;
       };
       git.branch_picker.show_author_name = true;
-      languages.Nix.language_servers = [
-        "nixd"
-        "!nil"
-      ];
       lsp = {
         biome.settings.require_config_file = true;
-        nil.settings = {
-          diagnostics.ignored = [ "unused_binding" ];
-          autoArchive = true;
-        };
-        nixd = {
-          binary.path = "${pkgs.nixd}/bin/nixd";
-          settings.diagnostic.suppress = [ "sema-extra-with" ];
-        };
       };
     };
-
     userKeymaps = [
       {
         context = "Editor";
