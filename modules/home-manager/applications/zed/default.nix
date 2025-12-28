@@ -1,7 +1,4 @@
-{
-  _,
-}:
-{
+_: {
 
   programs.zed-editor = {
     enable = true;
