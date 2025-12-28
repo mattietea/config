@@ -4,7 +4,7 @@ This is a Nix dotfiles configuration project using home-manager, nix-darwin, and
 
 **When asked about packages or libraries, always use context7 to search for documentation.**
 
-### Run within devenv
+## Run within devenv
 
 Before running any commands, ensure you're in the devenv shell:
 
