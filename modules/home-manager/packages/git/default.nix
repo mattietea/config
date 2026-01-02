@@ -34,7 +34,6 @@
         # Parallel index preloading for faster operations
         # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corepreloadIndex
         preloadindex = true;
-        pager = "${pkgs.delta}/bin/delta";
         # Caches untracked files for faster status
         # https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreuntrackedCache
         untrackedCache = true;
