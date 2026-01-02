@@ -57,7 +57,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/gh
           ../../modules/home-manager/packages/git
           ../../modules/home-manager/packages/git-absorb
-          ../../modules/home-manager/packages/git-machete
+          # ../../modules/home-manager/packages/git-machete
           ../../modules/home-manager/packages/lazygit
           ../../modules/home-manager/packages/opencode
           ../../modules/home-manager/packages/pure
