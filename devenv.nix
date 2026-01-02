@@ -21,7 +21,8 @@
     '';
 
     update.exec = ''
-      nix flake update
+      devenv update;
+      nix flake update;
     '';
 
     lint.exec = ''

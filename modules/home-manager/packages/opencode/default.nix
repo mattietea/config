@@ -1,7 +1,6 @@
 _: {
   programs.opencode = {
     enable = true;
-
     settings = {
       autoshare = false;
       mcp = {
