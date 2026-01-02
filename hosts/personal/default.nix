@@ -40,7 +40,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/applications/brave
           ../../modules/home-manager/applications/discord
           ../../modules/home-manager/applications/raycast
-          # ../../modules/home-manager/applications/spotify
+          ../../modules/home-manager/applications/spotify
           ../../modules/home-manager/applications/whatsapp
           ../../modules/home-manager/applications/zed
           ../../modules/home-manager/applications/docker
