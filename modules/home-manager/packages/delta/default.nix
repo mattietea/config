@@ -1,15 +1,14 @@
 {
-  pkgs,
-  ...
+  _,
 }:
 {
   programs.delta = {
     enable = true;
-    package = pkgs.delta;
     enableGitIntegration = true;
     options = {
+      navigate = true; # Use n and N to move between diff sections
       hyperlinks = true;
-      side-by-side = true;
+      line-numbers = true;
     };
   };
 }

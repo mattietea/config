@@ -62,6 +62,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/tldr
           ../../modules/home-manager/packages/zsh
         ];
+
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           home = {
