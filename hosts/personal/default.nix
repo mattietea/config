@@ -60,6 +60,7 @@ inputs.darwin.lib.darwinSystem {
           # ../../modules/home-manager/packages/git-machete
           ../../modules/home-manager/packages/ghostty
           ../../modules/home-manager/packages/lazygit
+          ../../modules/home-manager/packages/mise
           ../../modules/home-manager/packages/opencode
           ../../modules/home-manager/packages/pure
           ../../modules/home-manager/packages/rename-utils
