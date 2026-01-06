@@ -11,8 +11,8 @@ _: {
     ];
     userSettings = {
       base_keymap = "VSCode";
-      ui_font_size = 13;
-      buffer_font_size = 13;
+      ui_font_size = 14;
+      buffer_font_size = 14;
       buffer_font_family = "JetBrainsMono Nerd Font";
       excerpt_context_lines = 5;
       seed_search_query_from_cursor = "selection";
