@@ -9,10 +9,11 @@
       font-size = 14;
       font-thicken = true;
       font-thicken-strength = 255;
-      theme = "light:GitHub Light High Contrast,dark:GitHub Dark High Contrast";
+      adjust-cursor-thickness = 3;
+      theme = "light:GitHub,dark:GitHub Dark High Contrast";
       window-decoration = "auto";
       macos-titlebar-style = "tabs";
-      window-padding-x = 4;
+      window-padding-x = 8;
       window-padding-y = 4;
       macos-option-as-alt = true;
       confirm-close-surface = false;
