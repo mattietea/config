@@ -58,7 +58,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/opencode
           ../../modules/home-manager/packages/pure
           ../../modules/home-manager/packages/rename-utils
-          ../../modules/home-manager/packages/shopify
+          ../../modules/home-manager/packages/claude-code
           ../../modules/home-manager/packages/tldr
           ../../modules/home-manager/packages/zsh
         ];

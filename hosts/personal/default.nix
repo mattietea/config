@@ -45,6 +45,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/applications/zed
           ../../modules/home-manager/applications/docker
           # Packages
+          ../../modules/home-manager/packages/claude-code
           ../../modules/home-manager/packages/aerospace
           ../../modules/home-manager/packages/bat
           ../../modules/home-manager/packages/bun
