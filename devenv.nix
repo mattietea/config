@@ -1,11 +1,10 @@
 {
   pkgs,
   ...
-
 }:
 
 {
-  cachix.enable = false;
+  cachix.enable = false; # test
 
   languages.nix.enable = true;
   languages.nix.lsp.package = pkgs.nixd;
@@ -38,11 +37,6 @@
     '';
   };
 
-  # https://devenv.sh/tests/
-  enterTest = ''
-    nix flake check --no-build || exit 1
-  '';
-
   # Configure treefmt for formatting
   # Reference: https://devenv.sh/reference/options/#treefmtenable
   treefmt = {
@@ -67,6 +61,12 @@
       shellcheck.enable = true;
       # Enable statix for Nix file linting
       statix.enable = true;
+      # Validate flake on commit
+      flake-check = {
+        enable = true;
+        entry = "nix flake check --no-build";
+        pass_filenames = false;
+      };
     };
   };
 
