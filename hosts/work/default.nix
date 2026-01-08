@@ -37,7 +37,6 @@ inputs.darwin.lib.darwinSystem {
         sharedModules = [
           # Applications
           ../../modules/home-manager/applications/raycast
-          ../../modules/home-manager/applications/spotify
           ../../modules/home-manager/applications/zed
           # ../../modules/home-manager/applications/logseq
           # Packages
