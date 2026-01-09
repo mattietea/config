@@ -3,13 +3,13 @@
 
   programs.claude-code = {
     enable = true;
-    settings = {
-      mcpServers = {
-        context7 = {
-          type = "sse";
-          url = "https://mcp.context7.com/mcp";
-        };
+    mcpServers = {
+      context7 = {
+        type = "http";
+        url = "https://mcp.context7.com/mcp";
       };
+    };
+    settings = {
       statusLine = {
         type = "command";
         command = ''
