@@ -10,6 +10,7 @@
       };
     };
     settings = {
+      defaultMode = "plan";
       attribution = {
         commit = "";
         pr = "";
