@@ -46,10 +46,12 @@ Add a new tool/program to the nix dotfiles configuration.
    }
    ```
 
-6. **Remind user about imports**
-   - The new module needs to be imported in the host config
-   - Location: `hosts/personal/default.nix` or `hosts/work/default.nix`
-   - Add: `../../modules/home-manager/packages/<tool>` or `../../modules/home-manager/applications/<tool>`
+6. **Ask where to add the tool**
+   - Ask the user which host(s) to add the tool to: `personal`, `work`, or `both`
+   - Add the import to the appropriate host config(s):
+     - `hosts/personal/default.nix`
+     - `hosts/work/default.nix`
+   - Import path: `../../modules/home-manager/packages/<tool>` or `../../modules/home-manager/applications/<tool>`
 
 ## After creating the config
 

@@ -66,6 +66,7 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/pure
           ../../modules/home-manager/packages/rename-utils
           ../../modules/home-manager/packages/tldr
+          ../../modules/home-manager/packages/zoxide
           ../../modules/home-manager/packages/zsh
         ];
         users.${settings.username} = {
