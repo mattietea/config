@@ -1,3 +1,6 @@
 _: {
-  programs.bat.enable = true;
+  programs.bat = {
+    enable = true;
+    config.theme = "ansi";
+  };
 }
