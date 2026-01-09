@@ -11,6 +11,71 @@
     };
     settings = {
       defaultMode = "plan";
+      permissions = {
+        allow = [
+          "Read"
+          "Edit"
+          "Write"
+          "Glob"
+          "Grep"
+          "LS"
+          "Task"
+          "WebFetch"
+          "WebSearch"
+
+          "Bash(git:*)"
+          "Bash(ls:*)"
+          "Bash(cat:*)"
+          "Bash(pwd:*)"
+          "Bash(cd:*)"
+          "Bash(find:*)"
+          "Bash(grep:*)"
+          "Bash(rg:*)"
+          "Bash(head:*)"
+          "Bash(tail:*)"
+          "Bash(wc:*)"
+          "Bash(echo:*)"
+          "Bash(which:*)"
+          "Bash(diff:*)"
+
+          "Bash(npm:*)"
+          "Bash(npx:*)"
+          "Bash(yarn:*)"
+          "Bash(pnpm:*)"
+          "Bash(bun:*)"
+          "Bash(node:*)"
+          "Bash(tsc:*)"
+          "Bash(eslint:*)"
+          "Bash(prettier:*)"
+
+          "Bash(python:*)"
+          "Bash(pip:*)"
+          "Bash(uv:*)"
+
+          "Bash(cargo:*)"
+          "Bash(go:*)"
+
+          "Bash(make:*)"
+          "Bash(jq:*)"
+          "Bash(gh:*)"
+        ];
+        deny = [
+          "Read(.env)"
+          "Read(.env.*)"
+          "Read(**/.env)"
+          "Read(**/.env.*)"
+          "Read(**/secrets/**)"
+          "Read(**/*secret*)"
+          "Read(**/*credential*)"
+          "Read(~/.ssh/**)"
+          "Read(~/.aws/**)"
+
+          "Bash(su:*)"
+          "Bash(chmod 777:*)"
+          "Bash(shutdown:*)"
+          "Bash(reboot:*)"
+        ];
+      };
       attribution = {
         commit = "";
         pr = "";
