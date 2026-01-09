@@ -4,7 +4,7 @@
 }:
 
 {
-  cachix.enable = false; # test
+  cachix.enable = false;
 
   languages.nix.enable = true;
   languages.nix.lsp.package = pkgs.nixd;
