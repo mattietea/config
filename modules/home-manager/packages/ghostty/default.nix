@@ -18,6 +18,7 @@
       macos-option-as-alt = true;
       confirm-close-surface = false;
       bold-is-bright = true;
+      unfocused-split-opacity = 0.95;
     };
   };
 }
