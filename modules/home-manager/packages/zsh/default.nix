@@ -14,7 +14,6 @@
       cat = "${pkgs.bat}/bin/bat";
       code = "${settings.variables.VISUAL}";
       config = "cd ~/.config/nix";
-      cd = "${pkgs.zoxide}/bin/zoxide";
     };
 
     plugins = with pkgs; [
