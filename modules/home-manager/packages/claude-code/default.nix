@@ -10,6 +10,10 @@
       };
     };
     settings = {
+      attribution = {
+        commit = "";
+        pr = "";
+      };
       statusLine = {
         type = "command";
         command = ''
