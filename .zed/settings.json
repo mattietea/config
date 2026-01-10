@@ -4,12 +4,7 @@
   "languages": {
     "JSON": {
       "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
+      "formatter": "language_server"
     },
     "Markdown": {
       "format_on_save": "on"
@@ -22,23 +17,20 @@
           "arguments": ["-"]
         }
       },
-      "language_servers": ["nixd", "!nil"]
+      "language_servers": ["nixd", "!nil", "..."]
     },
     "YAML": {
       "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
+      "formatter": "language_server"
     }
   },
   "lsp": {
     "nixd": {
       "settings": {
-        "diagnostic": {
-          "suppress": ["sema-extra-with"]
+        "nixd": {
+          "diagnostic": {
+            "suppress": ["sema-extra-with"]
+          }
         }
       }
     }
