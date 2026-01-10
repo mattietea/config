@@ -321,6 +321,21 @@
         "com.apple.HIToolbox" = {
           AppleFnUsageType = "Show Emoji & Symbols";
         };
+
+        # Disable Mission Control space-switching shortcuts (ctrl-left/right)
+        # to allow apps like Zed to use these keybindings
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            # Disable "Move left a space" (ctrl-left)
+            "80" = {
+              enabled = false;
+            };
+            # Disable "Move right a space" (ctrl-right)
+            "79" = {
+              enabled = false;
+            };
+          };
+        };
       };
     };
 
