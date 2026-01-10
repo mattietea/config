@@ -23,10 +23,6 @@ _: {
         always_allow_tool_actions = true;
         notify_when_agent_waiting = "all_screens";
         play_sound_when_agent_done = true;
-        inline_assistant_model = {
-          provider = "copilot_chat";
-          model = "gpt-5-mini";
-        };
       };
       agent_servers = {
         claude = {
@@ -60,10 +56,7 @@ _: {
         context = "Editor";
         bindings.alt-shift-i = "editor::SplitSelectionIntoLines";
       }
-      {
-        context = "Editor";
-        bindings."ctrl-right" = "agent::QuoteSelection";
-      }
+
       {
         context = "!ProjectPanel";
         bindings.cmd-1 = "pane::RevealInProjectPanel";
@@ -85,6 +78,10 @@ _: {
           ];
           cmd-shift-b = "pane::RevealInProjectPanel";
           "cmd-k l" = "dev::OpenLanguageServerLogs";
+          "cmd-alt-c" = [
+            "agent::NewExternalAgentThread"
+            { agent = "claude_code"; }
+          ];
         };
       }
     ];
