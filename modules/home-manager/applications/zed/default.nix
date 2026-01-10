@@ -1,5 +1,8 @@
-_: {
-
+{ lib, ... }:
+let
+  utils = import ./utilities.nix { inherit lib; };
+in
+{
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -50,6 +53,7 @@ _: {
       lsp = {
         biome.settings.require_config_file = true;
       };
+      context_servers = utils.contextServers;
     };
     userKeymaps = [
       {

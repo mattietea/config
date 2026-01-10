@@ -1,14 +1,18 @@
-{ pkgs, ... }:
 {
-
+  pkgs,
+  lib,
+  ...
+}:
+let
+  utils = import ./utilities.nix { inherit lib; };
+  ai = import ../../ai;
+in
+{
   programs.claude-code = {
     enable = true;
-    mcpServers = {
-      context7 = {
-        type = "http";
-        url = "https://mcp.context7.com/mcp";
-      };
-    };
+    inherit (utils) mcpServers;
+    memory.text = ai.rules;
+    inherit (ai) agents;
     settings = {
       defaultMode = "plan";
       permissions = {

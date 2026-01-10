@@ -69,6 +69,85 @@ modules/
 }
 ```
 
+## AI Tooling Configuration
+
+AI tools (claude-code, opencode, zed) share configuration via the `ai/` module.
+
+### Structure
+
+```
+modules/home-manager/
+├── ai/                         # Shared AI config (single source of truth)
+│   ├── default.nix             # Exports { mcpServers, rules, agents }
+│   ├── mcp.nix                 # MCP server definitions
+│   ├── rules.nix               # Shared rules/instructions
+│   └── agents.nix              # Shared agent definitions
+├── packages/
+│   ├── claude-code/
+│   │   ├── default.nix         # Tool config
+│   │   └── utilities.nix       # MCP transform (remote→http, local→stdio)
+│   └── opencode/
+│       ├── default.nix
+│       └── utilities.nix       # MCP transform (remote→remote, local→local)
+└── applications/
+    └── zed/
+        ├── default.nix
+        └── utilities.nix       # MCP transform (no type field, just url/command)
+```
+
+### Adding MCP Servers
+
+Add to `modules/home-manager/ai/mcp.nix`:
+
+```nix
+{
+  # Remote HTTP server
+  my-server = {
+    type = "remote";
+    url = "https://example.com/mcp";
+    # headers = { Authorization = "Bearer token"; };  # optional
+  };
+
+  # Local stdio server
+  filesystem = {
+    type = "local";
+    command = [ "npx" "-y" "@modelcontextprotocol/server-filesystem" "/tmp" ];
+    # environment = { VAR = "value"; };  # optional
+  };
+}
+```
+
+The server will automatically be configured in all three tools with the correct format.
+
+### Adding Shared Rules
+
+Edit `modules/home-manager/ai/rules.nix` with markdown content:
+
+```nix
+''
+  # My Rules
+  - Always use TypeScript
+  - Follow existing patterns
+''
+```
+
+This creates `~/.claude/CLAUDE.md` and `~/.config/opencode/AGENTS.md`.
+
+### Adding Shared Agents
+
+Edit `modules/home-manager/ai/agents.nix`:
+
+```nix
+{
+  code-reviewer = ''
+    # Code Reviewer Agent
+    You are a senior engineer specializing in code reviews.
+  '';
+  # Or reference a file:
+  # documentation = ./agents/documentation.md;
+}
+```
+
 ## Run within devenv
 
 Before running any commands, ensure you're in the devenv shell:
