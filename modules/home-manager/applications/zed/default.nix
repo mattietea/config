@@ -5,7 +5,6 @@ _: {
     extensions = [
       "nix"
       "git-firefly"
-      "tokyo-night"
       "github-theme"
       "opencode"
     ];
@@ -74,10 +73,6 @@ _: {
         bindings.cmd-1 = "workspace::ToggleLeftDock";
       }
       {
-        context = "Editor";
-        bindings."ctrl-right" = "agent::QuoteSelection";
-      }
-      {
         context = "Workspace";
         bindings = {
           cmd-2 = "workspace::ToggleBottomDock";
@@ -93,7 +88,6 @@ _: {
         };
       }
     ];
-
     userTasks = [
       {
         label = "LazyGit";
