@@ -54,6 +54,7 @@ clean     # Run garbage collection
 .
 ├── flake.nix                    # Flake inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
+├── .claude/auto-memory/         # Auto-memory plugin cache (gitignored)
 ├── hosts/
 │   ├── personal/default.nix     # Personal MacBook Air config
 │   └── work/default.nix         # Work MacBook Pro config
@@ -232,6 +233,20 @@ Tools reference each other's binaries:
 
 # FZF uses eza for directory trees
 "--preview '${pkgs.eza}/bin/eza --tree {}'"
+```
+
+### 7. Shell Aliases with Package References
+
+Shell aliases reference packages via `${pkgs.tool}/bin/tool`:
+
+```nix
+# zsh/default.nix
+shellAliases = {
+  g = "${pkgs.git}/bin/git";
+  cat = "${pkgs.bat}/bin/bat";
+  code = "${settings.variables.VISUAL}";
+  claude = "claude --dangerously-skip-permissions";
+};
 ```
 
 <!-- END AUTO-MANAGED -->

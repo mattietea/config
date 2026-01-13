@@ -71,6 +71,14 @@ ai/
 ''
 ```
 
+**Current rules content** (`rules.nix`):
+
+- **Sisyphus Orchestration Mode**: Defines 11 specialized agents for multi-agent coordination via Task tool
+- **Agent roster**: sisyphus-junior, prometheus, oracle, metis, momus, explore, frontend-engineer, document-writer, qa-tester, librarian, multimodal-looker
+- **Delegation strategy**: When to use Task tool (complex tasks, planning, architecture) vs direct execution (simple edits, single tool usage)
+- **Magic keywords**: ultrawork (max parallelization), search/find (explore agent), analyze/investigate (oracle agent)
+- **Continuation enforcement**: Complete tasks fully before stopping, delegate subtasks when needed
+
 ### Agents Format
 
 ```nix
