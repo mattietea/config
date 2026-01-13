@@ -84,6 +84,31 @@ in
         commit = "";
         pr = "";
       };
+      enabledPlugins = {
+        "oh-my-claude-sisyphus@Yeachan-Heo/oh-my-claude-sisyphus" = true;
+        "auto-memory@severity1-marketplace" = true;
+        "code-simplifier@claude-plugins-official" = true;
+      };
+      extraKnownMarketplaces = {
+        "Yeachan-Heo/oh-my-claude-sisyphus" = {
+          source = {
+            source = "github";
+            repo = "Yeachan-Heo/oh-my-claude-sisyphus";
+          };
+        };
+        severity1-marketplace = {
+          source = {
+            source = "github";
+            repo = "severity1/severity1-marketplace";
+          };
+        };
+        claude-plugins-official = {
+          source = {
+            source = "github";
+            repo = "anthropics/claude-code-plugins";
+          };
+        };
+      };
       statusLine = {
         type = "command";
         command = ''
