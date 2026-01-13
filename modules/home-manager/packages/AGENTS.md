@@ -111,14 +111,14 @@ in
     memory.text = ai.rules;
     inherit (ai) agents;
     settings = {
-      model = "claude-opus-4-5-20251101";  # Explicit model selection
+      model = "opus";  # Shorthand: opus, sonnet, or haiku
       # ... other tool-specific settings
     };
   };
 }
 ```
 
-**Model configuration**: claude-code uses top-level `settings.model`, while opencode configures per-agent models in `oh-my-opencode.json`.
+**Model configuration**: claude-code uses top-level `settings.model` with shorthand names (`"opus"`, `"sonnet"`, `"haiku"`), while opencode configures per-agent models in `oh-my-opencode.json`.
 
 ### Settings Parameter
 

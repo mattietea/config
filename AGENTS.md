@@ -167,7 +167,7 @@ Each tool has `utilities.nix` to transform shared config to tool-specific format
 
 **Model configuration**:
 
-- claude-code: Top-level `settings.model` (e.g., `"claude-opus-4-5-20251101"`)
+- claude-code: Top-level `settings.model` using shorthand names (`"opus"`, `"sonnet"`, `"haiku"`)
 - opencode: Per-agent models in `oh-my-opencode.json` (e.g., `agents.Sisyphus.model = "anthropic/claude-opus-4-5"`)
 
 ### Claude Code Plugin Configuration
