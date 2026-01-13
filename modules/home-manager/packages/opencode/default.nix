@@ -19,7 +19,7 @@ let
     agents = {
       Sisyphus.model = "anthropic/claude-opus-4-5";
       oracle.model = "anthropic/claude-sonnet-4-5";
-      librarian.model = "anthropic/claude-sonnet-4-5";
+      librarian.model = "anthropic/claude-haiku-4-5";
       explore.model = "anthropic/claude-haiku-4-5";
       frontend-ui-ux-engineer.model = "anthropic/claude-sonnet-4-5";
       document-writer.model = "anthropic/claude-sonnet-4-5";
