@@ -385,6 +385,45 @@ in
 - `$out/libexec/` - Internal binaries/scripts, `$out/bin/` - User-facing commands
 - `substitute` - Patch hardcoded paths in bash scripts
 
+### 11. Mac App Store Integration Pattern
+
+For installing macOS App Store apps declaratively via `mas` CLI:
+
+```nix
+{
+  pkgs,
+  lib,
+  ...
+}:
+let
+  masApps = {
+    "App Name" = 1234567890;  # App Store ID
+  };
+in
+{
+  home.packages = [ pkgs.mas ];
+
+  home.activation.installMasApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${lib.concatStringsSep "\n" (
+      lib.mapAttrsToList (name: id: ''
+        if ! ${pkgs.mas}/bin/mas list | grep -q "^${toString id} "; then
+          echo "Installing ${name}..."
+          ${pkgs.mas}/bin/mas install ${toString id}
+        fi
+      '') masApps
+    )}
+  '';
+}
+```
+
+**Key patterns**:
+
+- `masApps` attrset maps display names to App Store IDs
+- `home.activation` runs during `switch` for imperative actions
+- `lib.hm.dag.entryAfter [ "writeBoundary" ]` ensures proper ordering
+- Idempotent: checks if already installed before running `mas install`
+- Find App Store IDs via `mas search <app-name>` or App Store URLs
+
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: best-practices -->

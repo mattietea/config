@@ -10,7 +10,7 @@ Houses macOS application configurations for GUI apps installed via home-manager.
 
 **Contains applications including**:
 
-- Browser: brave
+- Browser: brave, safari (extensions via mas)
 - Communication: discord, whatsapp (optional)
 - Development: zed (editor), docker
 - Productivity: raycast, logseq (optional)
@@ -29,6 +29,7 @@ applications/
 ├── docker/          # Container platform
 ├── logseq/          # Note-taking (optional)
 ├── raycast/         # Launcher & productivity
+├── safari/          # Safari extensions (via mas)
 ├── spotify/         # Music streaming
 ├── whatsapp/        # Communication (optional)
 └── zed/             # Code editor
@@ -99,6 +100,44 @@ Applications installed via home-manager appear in:
 
 - `~/Applications/Home Manager Apps/`
 - Symlinked by `copyApps` activation
+
+### Mac App Store Apps (mas pattern)
+
+For Safari extensions and App Store-only apps, use `mas` CLI with activation scripts:
+
+```nix
+{
+  pkgs,
+  lib,
+  ...
+}:
+let
+  masApps = {
+    "App Name" = 1234567890;  # App Store ID
+  };
+in
+{
+  home.packages = [ pkgs.mas ];
+
+  home.activation.installMasApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${lib.concatStringsSep "\n" (
+      lib.mapAttrsToList (name: id: ''
+        if ! ${pkgs.mas}/bin/mas list | grep -q "^${toString id} "; then
+          echo "Installing ${name}..."
+          ${pkgs.mas}/bin/mas install ${toString id}
+        fi
+      '') masApps
+    )}
+  '';
+}
+```
+
+**Key points**:
+
+- Find App Store IDs: `mas search <name>` or from App Store URLs
+- Idempotent: checks before installing
+- `lib.hm.dag.entryAfter [ "writeBoundary" ]` ensures proper activation ordering
+- Used by: `safari/` module for extensions (1Blocker, SponsorBlock)
 
 <!-- END AUTO-MANAGED -->
 
