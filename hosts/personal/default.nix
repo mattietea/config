@@ -63,13 +63,13 @@ inputs.darwin.lib.darwinSystem {
           ../../modules/home-manager/packages/ghostty
           ../../modules/home-manager/packages/lazygit
           ../../modules/home-manager/packages/mise
+          ../../modules/home-manager/packages/mole
           ../../modules/home-manager/packages/opencode
           ../../modules/home-manager/packages/pure
           ../../modules/home-manager/packages/rename-utils
           ../../modules/home-manager/packages/tldr
           ../../modules/home-manager/packages/zoxide
           ../../modules/home-manager/packages/zsh
-          ../../modules/home-manager/packages/mole
         ];
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;

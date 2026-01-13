@@ -16,14 +16,9 @@ let
     # Use proxyVendor to bypass out-of-sync vendor directory in upstream
     proxyVendor = true;
 
-    # Run go mod tidy after vendor creation to sync dependencies
-    overrideModAttrs = _: {
-      modPostBuild = ''
-        go mod tidy
-      '';
-    };
+    # Sync dependencies after vendor creation
+    overrideModAttrs = _: { modPostBuild = "go mod tidy"; };
 
-    # Hash will change when upstream updates dependencies
     vendorHash = "sha256-iy9ZM4/r7tPKxSivCOBp4lTaZuftTm994FAJo6TDMB4=";
 
     # Tests require macOS Trash which doesn't work in Nix sandbox
