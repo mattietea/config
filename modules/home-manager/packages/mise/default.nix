@@ -6,7 +6,7 @@
   programs.mise = {
     enable = true;
     enableZshIntegration = true;
-    settings = {
+    globalConfig.settings = {
       experimental = true;
     };
   };
