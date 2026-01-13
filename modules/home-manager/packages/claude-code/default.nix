@@ -20,6 +20,7 @@ in
     memory.text = ai.rules;
     inherit (ai) agents;
     settings = {
+      model = "opus";
       defaultMode = "plan";
       permissions = {
         allow = [

@@ -110,9 +110,15 @@ in
     inherit (utils) mcpServers;
     memory.text = ai.rules;
     inherit (ai) agents;
+    settings = {
+      model = "claude-opus-4-5-20251101";  # Explicit model selection
+      # ... other tool-specific settings
+    };
   };
 }
 ```
+
+**Model configuration**: claude-code uses top-level `settings.model`, while opencode configures per-agent models in `oh-my-opencode.json`.
 
 ### Settings Parameter
 

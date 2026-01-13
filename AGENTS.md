@@ -165,6 +165,11 @@ Each tool has `utilities.nix` to transform shared config to tool-specific format
 
 **Sisyphus orchestration mode** is enabled by default, providing 11 specialized agents (sisyphus-junior, prometheus, oracle, metis, momus, explore, frontend-engineer, document-writer, qa-tester, librarian, multimodal-looker) for multi-agent coordination via the Task tool.
 
+**Model configuration**:
+
+- claude-code: Top-level `settings.model` (e.g., `"claude-opus-4-5-20251101"`)
+- opencode: Per-agent models in `oh-my-opencode.json` (e.g., `agents.Sisyphus.model = "anthropic/claude-opus-4-5"`)
+
 ### Claude Code Plugin Configuration
 
 Claude Code plugins configured in `modules/home-manager/packages/claude-code/default.nix`:
