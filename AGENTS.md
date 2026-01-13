@@ -6,13 +6,13 @@ Personal macOS system configuration using Nix Flakes, nix-darwin, and home-manag
 
 ## Overview
 
-Declarative macOS dotfiles managing system settings, GUI applications, and CLI tools across two hosts (personal and work). Features modular architecture with 45+ tool configurations, shared AI tooling setup, and integrated development environment via devenv.
+Declarative macOS dotfiles managing system settings, GUI applications, and CLI tools across two hosts (personal and work). Features modular architecture with 45+ tool configurations, shared AI tooling setup with Sisyphus multi-agent orchestration, and integrated development environment via devenv.
 
 **Key Features**:
 
 - Modular tool configurations (each tool gets own `default.nix`)
 - Two host configurations with shared modules
-- Unified AI tool configuration (claude-code, opencode, zed)
+- Unified AI tool configuration (claude-code, opencode, zed) with Sisyphus orchestration mode
 - Cross-tool integrations (fzf + bat/eza, git + delta)
 - Reproducible builds via Nix flakes
 
@@ -158,10 +158,32 @@ fileWidgetOptions = [
 All AI tools (claude-code, opencode, zed) share:
 
 - MCP servers from `modules/home-manager/ai/mcp.nix`
-- Rules/instructions from `modules/home-manager/ai/rules.nix`
+- Rules/instructions from `modules/home-manager/ai/rules.nix` (includes Sisyphus orchestration mode)
 - Agent definitions from `modules/home-manager/ai/agents.nix`
 
 Each tool has `utilities.nix` to transform shared config to tool-specific format.
+
+**Sisyphus orchestration mode** is enabled by default, providing 11 specialized agents (sisyphus-junior, prometheus, oracle, metis, momus, explore, frontend-engineer, document-writer, qa-tester, librarian, multimodal-looker) for multi-agent coordination via the Task tool.
+
+### Claude Code Plugin Configuration
+
+Claude Code plugins configured in `modules/home-manager/packages/claude-code/default.nix`:
+
+**Plugin naming convention**: `plugin-name@marketplace-name` format in `enabledPlugins`
+
+**Enabled plugins**:
+
+- `oh-my-claude-sisyphus@oh-my-claude-sisyphus` - Advanced orchestration and planning
+- `auto-memory@severity1-marketplace` - Automatic CLAUDE.md management
+- `code-simplifier@claude-plugins-official` - Code optimization suggestions
+- `claude-notifications-go@claude-notifications-go` - macOS desktop notifications
+
+**Required package dependencies**:
+
+- `terminal-notifier` - macOS notification support for claude-notifications-go
+- `python3` - Python runtime for auto-memory plugin
+
+**Plugin marketplaces**: Defined in `extraKnownMarketplaces` with GitHub source repositories
 
 <!-- END AUTO-MANAGED -->
 

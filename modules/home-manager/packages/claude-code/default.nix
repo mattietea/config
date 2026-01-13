@@ -125,11 +125,17 @@ in
       statusLine = {
         type = "command";
         command = ''
+          # ANSI color codes
+          CYAN='\033[0;36m'
+          YELLOW='\033[0;33m'
+          RESET='\033[0m'
+
           dir=$(pwd | sed "s|^$HOME|~|")
           branch=$(git branch --show-current 2>/dev/null)
           [ -n "$(git status --porcelain 2>/dev/null)" ] && branch="$branch*"
           usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
-          echo "$dir $branch $usage"
+
+          echo -e "''${CYAN}$dir''${RESET} ''${YELLOW}$branch''${RESET} ''${YELLOW}$usage''${RESET}"
         '';
       };
     };

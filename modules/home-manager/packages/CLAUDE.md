@@ -151,6 +151,7 @@ Tools needing user info receive `settings` parameter:
 - fzf → bat, eza (preview integration)
 - git → delta (diff viewer)
 - zsh → multiple tools (shell integration)
+- claude-code → terminal-notifier, python3 (plugin dependencies)
 
 <!-- END AUTO-MANAGED -->
 
