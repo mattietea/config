@@ -174,7 +174,7 @@ Claude Code plugins configured in `modules/home-manager/packages/claude-code/def
 **Enabled plugins**:
 
 - `oh-my-claude-sisyphus@oh-my-claude-sisyphus` - Advanced orchestration and planning
-- `auto-memory@severity1-marketplace` - Automatic CLAUDE.md management
+- `auto-memory@severity1-marketplace` - Automatic CLAUDE.md/AGENTS.md management
 - `code-simplifier@claude-plugins-official` - Code optimization suggestions
 - `claude-notifications-go@claude-notifications-go` - macOS desktop notifications
 
