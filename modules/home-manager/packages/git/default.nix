@@ -123,6 +123,7 @@
         stat = false;
       };
       diff.algorithm = "histogram";
+      pager.diff = false; # Disable pager for git diff only
       status.showUntrackedFiles = "normal";
       # Reduce advice messages for cleaner output
       advice = {
