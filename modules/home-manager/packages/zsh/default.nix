@@ -14,6 +14,7 @@
       cat = "${pkgs.bat}/bin/bat";
       code = "${settings.variables.VISUAL}";
       config = "cd ~/.config/nix";
+      claude = "claude --dangerously-skip-permissions";
     };
 
     plugins = with pkgs; [

@@ -8,6 +8,12 @@ let
   ai = import ../../ai;
 in
 {
+  # Required for macOS desktop notifications and auto-memory plugin
+  home.packages = [
+    pkgs.terminal-notifier
+    pkgs.python3
+  ];
+
   programs.claude-code = {
     enable = true;
     inherit (utils) mcpServers;
@@ -88,6 +94,7 @@ in
         "oh-my-claude-sisyphus@oh-my-claude-sisyphus" = true;
         "auto-memory@severity1-marketplace" = true;
         "code-simplifier@claude-plugins-official" = true;
+        "claude-notifications-go@claude-notifications-go" = true;
       };
       extraKnownMarketplaces = {
         oh-my-claude-sisyphus = {
@@ -106,6 +113,12 @@ in
           source = {
             source = "github";
             repo = "anthropics/claude-plugins-official";
+          };
+        };
+        claude-notifications-go = {
+          source = {
+            source = "github";
+            repo = "777genius/claude-notifications-go";
           };
         };
       };

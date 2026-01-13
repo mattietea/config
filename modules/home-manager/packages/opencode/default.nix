@@ -28,13 +28,19 @@ let
   };
 in
 {
+  # Required for macOS desktop notifications
+  home.packages = [ pkgs.terminal-notifier ];
+
   programs.opencode = {
     enable = true;
     package = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       autoshare = false;
       mcp = utils.mcpServers;
-      plugin = [ "oh-my-opencode" ];
+      plugin = [
+        "oh-my-opencode"
+        "@mohak34/opencode-notifier@latest"
+      ];
     };
     inherit (ai) rules agents;
   };

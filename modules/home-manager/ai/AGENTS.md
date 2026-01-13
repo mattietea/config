@@ -1,74 +1,135 @@
-# Shared AI Configuration Module
+# AI Tooling Configuration Module
 
-This module provides shared configuration for AI coding tools (claude-code, opencode, zed).
+Shared configuration for claude-code, opencode, and zed.
 
-## Files
+<!-- AUTO-MANAGED: module-description -->
 
-- `default.nix` - Exports `{ mcpServers, rules, agents }`
-- `mcp.nix` - MCP server definitions (single source of truth)
-- `rules.nix` - Shared rules/instructions (empty by default)
-- `agents.nix` - Shared agent definitions (empty by default)
+## Purpose
 
-## Adding MCP Servers
+Central module providing unified configuration for all AI coding tools. Exports MCP servers, rules/instructions, and agent definitions that are automatically transformed and applied to each tool's specific format.
 
-Edit `mcp.nix`:
+**Responsibilities**:
+
+- Define MCP servers once, use everywhere
+- Maintain shared rules and instructions (CLAUDE.md/AGENTS.md content)
+- Define custom agents available to all tools
+- Export transformable configuration for tool-specific utilities
+
+<!-- END AUTO-MANAGED -->
+
+<!-- AUTO-MANAGED: architecture -->
+
+## Module Architecture
+
+```
+ai/
+├── default.nix      # Exports: { mcpServers, rules, agents }
+├── mcp.nix          # MCP server definitions (type: remote|local)
+├── rules.nix        # Markdown string for CLAUDE.md/AGENTS.md
+└── agents.nix       # Agent definitions (name -> prompt string)
+```
+
+**Configuration Flow**:
+
+1. `mcp.nix`, `rules.nix`, `agents.nix` define raw configuration
+2. `default.nix` imports and exports as attribute set
+3. Each tool imports: `let ai = import ../../ai; in`
+4. Tool's `utilities.nix` transforms to tool-specific format:
+   - claude-code: remote→http, local→stdio
+   - opencode: remote→remote, local→local
+   - zed: no type field, just url/command
+
+<!-- END AUTO-MANAGED -->
+
+<!-- AUTO-MANAGED: conventions -->
+
+## Module-Specific Conventions
+
+### MCP Server Definition Format
 
 ```nix
+# mcp.nix structure
 {
-  # Remote HTTP server
-  my-server = {
-    type = "remote";
-    url = "https://example.com/mcp";
-    # headers = { Authorization = "Bearer token"; };
-  };
-
-  # Local stdio server
-  filesystem = {
-    type = "local";
-    command = [ "npx" "-y" "@modelcontextprotocol/server-filesystem" "/tmp" ];
-    # environment = { VAR = "value"; };
+  server-name = {
+    type = "remote";  # or "local"
+    url = "https://...";  # for remote
+    command = [ "cmd" "arg" ];  # for local
+    headers = { ... };  # optional, remote only
+    environment = { ... };  # optional, local only
   };
 }
 ```
 
-Each tool transforms this to its format via `utilities.nix`:
-
-| Tool        | Remote            | Local                               |
-| ----------- | ----------------- | ----------------------------------- |
-| claude-code | `type = "http"`   | `type = "stdio"`, `command`, `args` |
-| opencode    | `type = "remote"` | `type = "local"`, `command`         |
-| zed         | `url` only        | `command`, `args`                   |
-
-## Adding Shared Rules
-
-Edit `rules.nix` with markdown content:
+### Rules Format
 
 ```nix
+# rules.nix - must be a markdown string
 ''
-  # My Rules
-  - Always use TypeScript
-  - Follow existing patterns
+  # Project Rules
+  - Rule 1
+  - Rule 2
 ''
 ```
 
-This populates:
-
-- claude-code: `~/.claude/CLAUDE.md`
-- opencode: `~/.config/opencode/AGENTS.md`
-
-## Adding Shared Agents
-
-Edit `agents.nix`:
+### Agents Format
 
 ```nix
+# agents.nix - map of name to prompt
 {
-  code-reviewer = ''
-    # Code Reviewer Agent
-    You are a senior engineer specializing in code reviews.
+  agent-name = ''
+    Agent prompt text
   '';
-  # Or reference a file:
-  # documentation = ./agents/documentation.md;
+  # OR reference file:
+  agent-name = ./agents/agent.md;
 }
 ```
 
-Both claude-code and opencode support this format.
+### Tool Integration Pattern
+
+Each tool module does:
+
+```nix
+let
+  utils = import ./utilities.nix { inherit lib; };
+  ai = import ../../ai;
+in
+{
+  programs.tool = {
+    inherit (utils) mcpServers;  # transformed
+    memory.text = ai.rules;       # direct
+    inherit (ai) agents;          # direct or transformed
+  };
+}
+```
+
+<!-- END AUTO-MANAGED -->
+
+<!-- AUTO-MANAGED: dependencies -->
+
+## Key Dependencies
+
+**Consumed by**:
+
+- `modules/home-manager/packages/claude-code/` - Via utilities.nix transform
+- `modules/home-manager/packages/opencode/` - Via utilities.nix transform
+- `modules/home-manager/applications/zed/` - Via utilities.nix transform
+
+**External dependencies**:
+
+- None (pure Nix configuration)
+
+**Transform libraries**:
+
+- `claude-code/utilities.nix` - `transformMcpServers` function
+- `opencode/utilities.nix` - `transformMcpServers` function
+- `zed/utilities.nix` - `transformMcpServers` function
+
+<!-- END AUTO-MANAGED -->
+
+<!-- MANUAL -->
+
+## Custom Notes
+
+Add module-specific notes here.
+
+<!-- END MANUAL -->
