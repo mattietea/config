@@ -128,14 +128,16 @@ in
           # ANSI color codes
           CYAN='\033[0;36m'
           YELLOW='\033[0;33m'
+          PINK='\033[0;35m'
           RESET='\033[0m'
 
           dir=$(pwd | sed "s|^$HOME|~|")
           branch=$(git branch --show-current 2>/dev/null)
-          [ -n "$(git status --porcelain 2>/dev/null)" ] && branch="$branch*"
+          dirty=""
+          [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="''${PINK}*''${RESET}"
           usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
 
-          echo -e "''${CYAN}$dir''${RESET} ''${YELLOW}$branch''${RESET} ''${YELLOW}$usage''${RESET}"
+          printf "%b%s%b %b%s%b%b %b\n" "''${CYAN}" "$dir" "''${RESET}" "''${YELLOW}" "$branch" "''${RESET}" "$dirty" "$usage"
         '';
       };
     };

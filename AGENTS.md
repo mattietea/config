@@ -185,6 +185,35 @@ Claude Code plugins configured in `modules/home-manager/packages/claude-code/def
 
 **Plugin marketplaces**: Defined in `extraKnownMarketplaces` with GitHub source repositories
 
+### Claude Code Status Line
+
+Custom colorized status line using ANSI color codes in `statusLine.command`:
+
+```nix
+statusLine = {
+  type = "command";
+  command = ''
+    # ANSI color codes
+    CYAN='\033[0;36m'
+    YELLOW='\033[0;33m'
+    PINK='\033[0;35m'
+    RESET='\033[0m'
+
+    dir=$(pwd | sed "s|^$HOME|~|")
+    branch=$(git branch --show-current 2>/dev/null)
+    dirty=""
+    [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="''${PINK}*''${RESET}"
+    usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
+
+    printf "%b%s%b %b%s%b%b %b\n" "''${CYAN}" "$dir" "''${RESET}" "''${YELLOW}" "$branch" "''${RESET}" "$dirty" "$usage"
+  '';
+};
+```
+
+**Color scheme**: Cyan for directory, yellow for git branch, pink asterisk for dirty status, usage statistics
+
+**Implementation details**: Uses `printf` with format strings for precise formatting control, avoiding shell interpretation issues with `echo -e`. Dirty status shown as separate pink asterisk instead of appending to branch name.
+
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: patterns -->
@@ -270,6 +299,34 @@ shellAliases = {
   claude = "claude --dangerously-skip-permissions";
 };
 ```
+
+### 8. Command-Based Dynamic Configuration
+
+Tools can use shell commands for dynamic runtime configuration:
+
+```nix
+# claude-code/default.nix - Colorized status line
+statusLine = {
+  type = "command";
+  command = ''
+    # ANSI color codes
+    CYAN='\033[0;36m'
+    YELLOW='\033[0;33m'
+    PINK='\033[0;35m'
+    RESET='\033[0m'
+
+    dir=$(pwd | sed "s|^$HOME|~|")
+    branch=$(git branch --show-current 2>/dev/null)
+    dirty=""
+    [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="''${PINK}*''${RESET}"
+    usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
+
+    printf "%b%s%b %b%s%b%b %b\n" "''${CYAN}" "$dir" "''${RESET}" "''${YELLOW}" "$branch" "''${RESET}" "$dirty" "$usage"
+  '';
+};
+```
+
+Pattern: Use double-single-quote (`''`) for multi-line strings, reference packages via `${pkgs.tool}/bin/tool`, prefer `printf` over `echo -e` for ANSI color formatting
 
 <!-- END AUTO-MANAGED -->
 
