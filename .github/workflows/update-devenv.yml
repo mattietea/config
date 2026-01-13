@@ -4,7 +4,7 @@ on:
     - cron: "0 9 * * 1"
   workflow_dispatch:
 jobs:
-  update:
+  update-devenv:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,8 +22,8 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "chore: update devenv.lock"
-          title: "chore: update devenv.lock"
+          commit-message: "Update devenv.lock"
+          title: "Update devenv.lock"
           branch: update-devenv-lock
           delete-branch: true
       - name: Enable auto-merge
