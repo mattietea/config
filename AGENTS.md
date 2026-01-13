@@ -328,6 +328,63 @@ statusLine = {
 
 Pattern: Use double-single-quote (`''`) for multi-line strings, reference packages via `${pkgs.tool}/bin/tool`, prefer `printf` over `echo -e` for ANSI color formatting
 
+### 9. Non-Flake Input Pattern (External Packages)
+
+For packages not in nixpkgs that need to be built from source:
+
+```nix
+# flake.nix - Add as non-flake input
+mole-src = {
+  url = "github:tw93/Mole";
+  flake = false;  # Just fetch source, don't evaluate as flake
+};
+```
+
+Access in modules via `inputs.mole-src`. Use `inputs.mole-src.shortRev` for version.
+
+### 10. Hybrid Bash + Go Package Pattern
+
+For packages with mixed bash scripts and Go binaries (e.g., mole):
+
+```nix
+# Two-stage build pattern
+let
+  # Stage 1: Build Go binaries
+  go-helpers = pkgs.buildGoModule {
+    pname = "tool-go-helpers";
+    src = inputs.tool-src;
+    proxyVendor = true;  # Bypass out-of-sync vendor directories
+    overrideModAttrs = _: {
+      modPostBuild = "go mod tidy";  # Sync dependencies
+    };
+    vendorHash = "sha256-...";
+  };
+
+  # Stage 2: Assemble final package
+  tool = pkgs.stdenv.mkDerivation {
+    pname = "tool";
+    src = inputs.tool-src;
+    dontBuild = true;  # Skip build, just install
+    installPhase = ''
+      mkdir -p $out/libexec $out/bin
+      cp -r bin lib $out/libexec/
+      cp ${go-helpers}/bin/* $out/libexec/bin/
+      substitute main-script $out/bin/tool \
+        --replace 'SCRIPT_DIR="$(cd "$(dirname "''${BASH_SOURCE[0]}")" && pwd)"' \
+                  "SCRIPT_DIR='$out/libexec'"
+    '';
+  };
+in
+```
+
+**Key patterns**:
+
+- `proxyVendor = true` - Bypass upstream's out-of-sync vendor directory
+- `modPostBuild = "go mod tidy"` - Fix dependency mismatches
+- `dontBuild = true` - Skip build phase for script-only packages
+- `$out/libexec/` - Internal binaries/scripts, `$out/bin/` - User-facing commands
+- `substitute` - Patch hardcoded paths in bash scripts
+
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: best-practices -->

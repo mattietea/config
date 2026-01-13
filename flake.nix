@@ -12,6 +12,11 @@
 
     opencode.url = "github:anomalyco/opencode";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
+
+    mole-src = {
+      url = "github:tw93/Mole";
+      flake = false;
+    };
   };
 
   outputs =

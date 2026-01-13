@@ -40,6 +40,22 @@
         "type": "github"
       }
     },
+    "mole-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768304888,
+        "narHash": "sha256-eqZqcmtdMDLZOQcgtXEeJ8JwGjK+EXDXUxUr4kO5QNk=",
+        "owner": "tw93",
+        "repo": "Mole",
+        "rev": "acac949bc7785f62d72411f46b556a277ab3fb96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tw93",
+        "repo": "Mole",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1768178648,
@@ -80,6 +96,7 @@
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
+        "mole-src": "mole-src",
         "nixpkgs": "nixpkgs",
         "opencode": "opencode"
       }

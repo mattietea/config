@@ -15,6 +15,7 @@ Houses individual tool configurations for CLI utilities, development tools, and 
 - Development: devenv, mise, node, bun, pnpm
 - Editor integration: bat, delta
 - AI tools: claude-code, opencode
+- System utilities: mole (macOS cleanup)
 
 <!-- END AUTO-MANAGED -->
 
@@ -32,6 +33,7 @@ packages/
 ├── devenv/          # Development environments
 ├── fzf/             # Fuzzy finder
 ├── git/             # Git configuration
+├── mole/            # macOS cleanup tool (external, hybrid bash+go)
 ├── zsh/             # Shell configuration
 └── ... (30+ more)
 ```
@@ -130,6 +132,71 @@ Tools needing user info receive `settings` parameter:
 }
 ```
 
+### External Package Pattern (Non-Nixpkgs)
+
+For tools not in nixpkgs, use flake inputs with custom derivation:
+
+```nix
+{
+  inputs,  # Access flake inputs
+  pkgs,
+  lib,
+  ...
+}:
+let
+  version = inputs.tool-src.shortRev or "latest";
+
+  tool = pkgs.stdenv.mkDerivation {
+    pname = "tool";
+    inherit version;
+    src = inputs.tool-src;
+    # ... build logic
+  };
+in
+{
+  home.packages = [ tool ];
+}
+```
+
+### Hybrid Bash + Go Build Pattern
+
+For packages with bash scripts + Go binaries (e.g., mole):
+
+```nix
+let
+  # Build Go binaries separately
+  go-helpers = pkgs.buildGoModule {
+    pname = "tool-go-helpers";
+    src = inputs.tool-src;
+    proxyVendor = true;  # Bypass out-of-sync vendor
+    overrideModAttrs = _: {
+      modPostBuild = "go mod tidy";
+    };
+    vendorHash = "sha256-...";
+    subPackages = [ "cmd/helper1" "cmd/helper2" ];
+  };
+
+  # Assemble final package
+  tool = pkgs.stdenv.mkDerivation {
+    src = inputs.tool-src;
+    dontBuild = true;
+    installPhase = ''
+      mkdir -p $out/libexec $out/bin
+      cp -r bin lib $out/libexec/
+      cp ${go-helpers}/bin/* $out/libexec/bin/
+      substitute main $out/bin/tool \
+        --replace 'SCRIPT_DIR="..."' "SCRIPT_DIR='$out/libexec'"
+    '';
+  };
+in
+```
+
+**buildGoModule tips**:
+
+- `proxyVendor = true` - When upstream vendor/ is out of sync
+- `overrideModAttrs` with `modPostBuild = "go mod tidy"` - Fix dependency mismatches
+- After `update`, if vendorHash fails: use fake hash `"sha256-AAAA..."`, get real hash from error
+
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: dependencies -->
@@ -152,6 +219,7 @@ Tools needing user info receive `settings` parameter:
 - git → delta (diff viewer)
 - zsh → multiple tools (shell integration)
 - claude-code → terminal-notifier, python3 (plugin dependencies)
+- mole → inputs.mole-src (external flake input)
 
 <!-- END AUTO-MANAGED -->
 
