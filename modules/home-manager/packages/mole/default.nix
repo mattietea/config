@@ -19,7 +19,7 @@ let
     # Sync dependencies after vendor creation
     overrideModAttrs = _: { modPostBuild = "go mod tidy"; };
 
-    vendorHash = "sha256-iy9ZM4/r7tPKxSivCOBp4lTaZuftTm994FAJo6TDMB4=";
+    vendorHash = "sha256-QckRB0j/RvKbGTWDcNTcPxlfREKxOwTzY9abtUeRsZI=";
 
     # Tests require macOS Trash which doesn't work in Nix sandbox
     doCheck = false;
