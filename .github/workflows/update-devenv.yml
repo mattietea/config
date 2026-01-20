@@ -1,33 +1,34 @@
-name: Update devenv.lock
+name: Update Dependencies
 on:
   schedule:
-    - cron: "0 9 * * 1"
+    - cron: "0 9 * * 1" # Monday 9am UTC
   workflow_dispatch:
 jobs:
-  update-devenv:
+  update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
       - uses: cachix/cachix-action@v16
         with:
           name: devenv
       - name: Install devenv
         run: nix profile install nixpkgs#devenv
-      - name: Update devenv.lock
-        run: devenv update
+      - name: Update all dependencies
+        run: devenv shell -- update
       - name: Create PR
+        id: create-pr
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "Update devenv.lock"
-          title: "Update devenv.lock"
-          branch: update-devenv-lock
+          commit-message: "chore: update dependencies"
+          title: "Update dependencies (flake + devenv)"
+          branch: update-dependencies
           delete-branch: true
       - name: Enable auto-merge
         if: steps.create-pr.outputs.pull-request-number
-        run: gh pr merge --auto --squash update-devenv-lock
+        run: gh pr merge --auto --squash update-dependencies
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
