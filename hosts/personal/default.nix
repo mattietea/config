@@ -1,13 +1,7 @@
 { inputs, ... }:
 let
-  settings = {
-    username = "mattietea";
-    email = "mattcthomas@me.com";
-    variables = {
-      EDITOR = "zed --wait";
-      VISUAL = "zed --wait";
-    };
-  };
+  settings = import ../../lib/settings.nix;
+  modules = import ../../lib/modules.nix { root = ../..; };
 in
 inputs.darwin.lib.darwinSystem {
   system = "aarch64-darwin";
@@ -34,44 +28,7 @@ inputs.darwin.lib.darwinSystem {
         extraSpecialArgs = {
           inherit settings inputs;
         };
-        sharedModules = [
-          # Applications
-          # ../../modules/home-manager/applications/logseq
-          ../../modules/home-manager/applications/brave
-          ../../modules/home-manager/applications/safari
-          ../../modules/home-manager/applications/discord
-          ../../modules/home-manager/applications/raycast
-          ../../modules/home-manager/applications/spotify
-          # ../../modules/home-manager/applications/whatsapp
-          ../../modules/home-manager/applications/zed
-          ../../modules/home-manager/applications/docker
-          # Packages
-          ../../modules/home-manager/packages/claude-code
-          ../../modules/home-manager/packages/aerospace
-          ../../modules/home-manager/packages/bat
-          ../../modules/home-manager/packages/bun
-          ../../modules/home-manager/packages/node
-          ../../modules/home-manager/packages/delta
-          ../../modules/home-manager/packages/direnv
-          ../../modules/home-manager/packages/devenv
-          ../../modules/home-manager/packages/eza
-          ../../modules/home-manager/packages/fonts
-          ../../modules/home-manager/packages/fzf
-          ../../modules/home-manager/packages/gh
-          ../../modules/home-manager/packages/git
-          ../../modules/home-manager/packages/git-absorb
-          # ../../modules/home-manager/packages/git-machete
-          ../../modules/home-manager/packages/ghostty
-          ../../modules/home-manager/packages/lazygit
-          ../../modules/home-manager/packages/mise
-          ../../modules/home-manager/packages/mole
-          ../../modules/home-manager/packages/opencode
-          ../../modules/home-manager/packages/pure
-          ../../modules/home-manager/packages/rename-utils
-          ../../modules/home-manager/packages/tldr
-          ../../modules/home-manager/packages/zoxide
-          ../../modules/home-manager/packages/zsh
-        ];
+        sharedModules = modules.allPersonal;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           home = {
