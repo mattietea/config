@@ -20,8 +20,8 @@
         undo = "reset --soft HEAD~";
         wipe = "!git reset --hard HEAD && git clean -dfx";
         lazy = "!${pkgs.lazygit}/bin/lazygit";
-        fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git commit --fixup";
-        tidy = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --no-sort | awk '{print $1}' | xargs -o git rebase --interactive --autosquash";
+        fixup = "commit --fixup";
+        tidy = "rebase --interactive --autosquash";
       };
 
       # https://jvns.ca/blog/2024/02/16/popular-git-config-options

@@ -35,6 +35,12 @@
     initContent = ''
       zstyle ':completion:*' sort false
       setopt globdots
+
+      # fzf-tab: switch between groups with , and .
+      zstyle ':fzf-tab:*' switch-group ',' '.'
+
+      # For git commands: reverse order so commits appear first (they're generated last by zsh)
+      zstyle ':fzf-tab:complete:git-*:*' fzf-flags --tac
     '';
 
     sessionVariables = settings.variables;
