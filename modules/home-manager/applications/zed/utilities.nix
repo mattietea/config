@@ -1,7 +1,4 @@
-{ lib }:
-let
-  ai = import ../../ai;
-in
+{ lib, mcpServers }:
 {
   # Transform MCP servers to Zed's context_servers format
   contextServers = lib.mapAttrs (
@@ -14,5 +11,5 @@ in
         args = builtins.tail cfg.command;
       }
       // lib.optionalAttrs (cfg ? environment) { env = cfg.environment; }
-  ) ai.mcpServers;
+  ) mcpServers;
 }

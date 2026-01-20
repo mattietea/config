@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: "0 9 * * 1" # Monday 9am UTC
   workflow_dispatch:
+concurrency:
+  group: update-dependencies
+  cancel-in-progress: true
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -19,6 +22,10 @@ jobs:
         run: nix profile install nixpkgs#devenv
       - name: Update all dependencies
         run: devenv shell -- update
+      - name: Validate flake
+        run: nix flake check --no-build --no-warn-dirty
+      - name: Run devenv tests
+        run: devenv test
       - name: Create PR
         id: create-pr
         uses: peter-evans/create-pull-request@v7

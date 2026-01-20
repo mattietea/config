@@ -1,7 +1,4 @@
-{ lib }:
-let
-  ai = import ../../ai;
-in
+{ lib, mcpServers }:
 {
   # Transform MCP servers to opencode format
   # opencode uses: "remote" for remote, "local" for local
@@ -19,5 +16,5 @@ in
         inherit (cfg) command;
       }
       // lib.optionalAttrs (cfg ? environment) { inherit (cfg) environment; }
-  ) ai.mcpServers;
+  ) mcpServers;
 }

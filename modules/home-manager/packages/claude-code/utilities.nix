@@ -1,7 +1,4 @@
-{ lib }:
-let
-  ai = import ../../ai;
-in
+{ lib, mcpServers }:
 {
   # Transform MCP servers to claude-code format
   # claude-code uses: "http" for remote, "stdio" for local
@@ -20,5 +17,5 @@ in
         args = builtins.tail cfg.command;
       }
       // lib.optionalAttrs (cfg ? environment) { env = cfg.environment; }
-  ) ai.mcpServers;
+  ) mcpServers;
 }

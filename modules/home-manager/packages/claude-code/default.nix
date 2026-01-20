@@ -4,8 +4,11 @@
   ...
 }:
 let
-  utils = import ./utilities.nix { inherit lib; };
   ai = import ../../ai;
+  utils = import ./utilities.nix {
+    inherit lib;
+    inherit (ai) mcpServers;
+  };
 in
 {
   # Required for macOS desktop notifications and auto-memory plugin

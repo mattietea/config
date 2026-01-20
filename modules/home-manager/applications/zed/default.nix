@@ -1,6 +1,10 @@
 { lib, ... }:
 let
-  utils = import ./utilities.nix { inherit lib; };
+  ai = import ../../ai;
+  utils = import ./utilities.nix {
+    inherit lib;
+    inherit (ai) mcpServers;
+  };
 in
 {
   programs.zed-editor = {

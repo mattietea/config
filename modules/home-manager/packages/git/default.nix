@@ -30,6 +30,8 @@
         editor = "${settings.variables.VISUAL}";
         # Monitors filesystem changes for faster status checks
         # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corefsmonitor
+        # NOTE: May cause issues on network filesystems (NFS, SMB) or FUSE mounts.
+        # Disable with `git config core.fsmonitor false` in affected repos.
         fsmonitor = true;
         # Parallel index preloading for faster operations
         # https://git-scm.com/docs/git-config#Documentation/git-config.txt-corepreloadIndex
