@@ -1,7 +1,7 @@
 _: {
   programs.direnv = {
-    enableZshIntegration = true;
     enable = true;
+    enableZshIntegration = true;
     silent = true;
   };
 }
