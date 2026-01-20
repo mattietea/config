@@ -62,9 +62,12 @@ sudo determinate-nixd upgrade
 ├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
 ├── .claude/auto-memory/         # Auto-memory plugin cache (gitignored)
+├── .github/workflows/           # GitHub Actions CI
+│   ├── check.yml                # Flake validation and devenv tests
+│   └── update.yml               # Scheduled dependency updates (flake + devenv)
 ├── lib/
-│   ├── settings.nix             # Shared user settings (username, email, etc.)
-│   └── modules.nix              # Shared module lists with path resolution
+│   ├── settings/default.nix     # Shared user settings (username, email, env vars)
+│   └── modules/default.nix      # Shared module lists with path resolution
 ├── hosts/
 │   ├── personal/default.nix     # Personal MacBook Air config
 │   └── work/default.nix         # Work MacBook Pro config
@@ -84,21 +87,23 @@ sudo determinate-nixd upgrade
 
 **Data Flow**:
 
-1. `flake.nix` uses flake-parts for modular structure
-2. `lib/settings.nix` provides shared user config to all hosts
-3. `lib/modules.nix` provides shared module lists with path resolution
-4. `hosts/{personal,work}/default.nix` import from lib/ and use `sharedModules`
+1. `flake.nix` uses `flake-parts.lib.mkFlake` for modular flake structure
+2. `lib/settings/default.nix` provides shared user config to all hosts
+3. `lib/modules/default.nix` accepts `{ root }` parameter for path resolution
+4. `hosts/{personal,work}/default.nix` import from lib/ with `modules.allPersonal` or `modules.allWork`
 5. Each module configures a tool using home-manager or `home.packages`
 6. AI tools import shared config from `modules/home-manager/ai/`
 
 **Key Files**:
 
-- `flake.nix` - flake-parts based (nixpkgs, darwin, home-manager, flake-parts)
-- `lib/settings.nix` - Single source of truth for user settings
-- `lib/modules.nix` - Shared module lists (DRY host configuration)
-- `devenv.nix` - Scripts (switch, format, lint, update) and git hooks
-- `hosts/*/default.nix` - Minimal host-specific config (just hostname)
+- `flake.nix` - flake-parts structure with `flake` and `perSystem` outputs
+- `lib/settings/default.nix` - Single source of truth for user settings
+- `lib/modules/default.nix` - Shared module lists (DRY host configuration)
+- `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
+- `hosts/*/default.nix` - Minimal host-specific config (hostname + module list selection)
 - `modules/home-manager/ai/default.nix` - Single source of truth for AI config
+- `.github/workflows/check.yml` - CI: flake check + devenv test
+- `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv)
 
 <!-- END AUTO-MANAGED -->
 
@@ -147,11 +152,23 @@ sudo determinate-nixd upgrade
 ```nix
 # Host imports from lib/ (DRY pattern)
 let
-  settings = import ../../lib/settings.nix;
-  modules = import ../../lib/modules.nix { root = ../..; };
+  settings = import ../../lib/settings;
+  modules = import ../../lib/modules { root = ../..; };
 in
-{
-  sharedModules = modules.all;  # or modules.allBase for subset
+inputs.darwin.lib.darwinSystem {
+  specialArgs = { inherit inputs settings; };
+  modules = [
+    {
+      users.users.${settings.username} = { ... };
+    }
+    inputs.home-manager.darwinModules.home-manager
+    {
+      home-manager = {
+        extraSpecialArgs = { inherit settings inputs; };
+        sharedModules = modules.allPersonal;  # or modules.allWork
+      };
+    }
+  ];
 }
 
 # Modules import shared config
@@ -291,22 +308,24 @@ in
 
 ### 5. Shared Module Lists (DRY Pattern)
 
-Hosts import from `lib/modules.nix` for DRY configuration:
+Hosts import from `lib/modules/default.nix` for DRY configuration:
 
 ```nix
 let
-  modules = import ../../lib/modules.nix { root = ../..; };
+  modules = import ../../lib/modules { root = ../..; };
 in
 {
-  sharedModules = modules.all;  # All modules (base + extras)
+  home-manager.sharedModules = modules.allPersonal;  # or modules.allWork
 }
 ```
 
-Module lists in `lib/modules.nix`:
+Module lists in `lib/modules/default.nix`:
 
-- `allBase` - Core apps + packages (raycast, zed, all CLI tools)
-- `allExtras` - Extra apps (brave, safari, discord, spotify, docker)
-- `all` - Everything (allBase + allExtras)
+- `allBase` - Core apps (raycast, zed, spotify, docker) + all packages
+- `allPersonal` - allBase + personal apps (brave, safari, discord)
+- `allWork` - allBase only (no personal-specific apps)
+
+Path resolution via `{ root }` function parameter ensures correct relative paths from any importer.
 
 ### 6. Cross-Tool Integration via Package References
 
@@ -458,6 +477,129 @@ in
 - Idempotent: checks if already installed before running `mas install`
 - Find App Store IDs via `mas search <app-name>` or App Store URLs
 
+### 12. flake-parts Modular Flake Pattern
+
+For maintainable flake structure using flake-parts:
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "aarch64-darwin" "x86_64-darwin" ];
+
+      flake = {
+        # Top-level flake outputs (darwinConfigurations, etc.)
+        darwinConfigurations = {
+          Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs; };
+          Matts-Personal-Macbook-Air = import ./hosts/personal { inherit inputs; };
+        };
+      };
+
+      perSystem = { pkgs, ... }: {
+        # Per-system outputs (formatter, devShells, etc.)
+        formatter = pkgs.nixfmt;
+      };
+    };
+}
+```
+
+**Benefits**:
+
+- Modular structure separates flake-level and per-system outputs
+- Automatic system iteration via `perSystem`
+- Cleaner than manual `forAllSystems` pattern
+- `flake.darwinConfigurations` for system configs, `perSystem.formatter` for dev tools
+
+### 13. Shared Configuration Library Pattern
+
+Extract common config to `lib/` for DRY host configuration:
+
+```nix
+# lib/settings/default.nix - Single source of truth
+{
+  username = "mattietea";
+  email = "mattcthomas@me.com";
+  variables = {
+    EDITOR = "zed --wait";
+    VISUAL = "zed --wait";
+  };
+}
+
+# lib/modules/default.nix - Function with root parameter for path resolution
+{ root }:
+let
+  app = name: root + "/modules/home-manager/applications/${name}";
+  pkg = name: root + "/modules/home-manager/packages/${name}";
+in
+rec {
+  applications = {
+    base = [ (app "raycast") (app "zed") (app "spotify") (app "docker") ];
+    personal = [ (app "brave") (app "safari") (app "discord") ];
+  };
+  packages = {
+    base = [ (pkg "git") (pkg "fzf") (pkg "claude-code") /* ... */ ];
+  };
+  allBase = applications.base ++ packages.base;
+  allPersonal = allBase ++ applications.personal;
+  allWork = allBase;  # Work-specific subset
+}
+
+# hosts/*/default.nix - Minimal host config
+{ inputs, ... }:
+let
+  settings = import ../../lib/settings;
+  modules = import ../../lib/modules { root = ../..; };
+in
+inputs.darwin.lib.darwinSystem {
+  specialArgs = { inherit inputs settings; };
+  modules = [
+    {
+      users.users.${settings.username} = {
+        name = settings.username;
+        home = "/Users/${settings.username}";
+      };
+    }
+    inputs.home-manager.darwinModules.home-manager
+    {
+      home-manager = {
+        extraSpecialArgs = { inherit settings inputs; };
+        sharedModules = modules.allPersonal;  # or modules.allWork
+        users.${settings.username} = {
+          home = {
+            inherit (settings) username;
+            homeDirectory = "/Users/${settings.username}";
+            sessionVariables = settings.variables;
+          };
+        };
+      };
+    }
+    {
+      networking.hostName = "Matts-Personal-Macbook-Air";
+    }
+  ];
+}
+```
+
+**Pattern**:
+
+- `{ root }` function parameter solves relative path resolution across different importers
+- Settings provide user config (username, email, env vars) without duplication
+- Module lists enable host-specific subsets (personal vs work)
+- Host configs reduced to hostname + module list selection + settings inheritance
+- Settings passed via `specialArgs` and `extraSpecialArgs` for system and home-manager access
+
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: best-practices -->
@@ -469,10 +611,10 @@ in
 1. **Check home-manager first**: Run `nix search nixpkgs <tool>` and check home-manager docs
 2. **Create module directory**: `modules/home-manager/packages/<tool>/`
 3. **Add default.nix**: Use standard template (see Conventions)
-4. **Add to lib/modules.nix**: Add `(pkg "tool-name")` to the appropriate list
+4. **Add to lib/modules/default.nix**: Add `(pkg "tool-name")` to the appropriate list
 5. **Test**: Run `devenv shell -- switch`
 
-Note: Adding to `lib/modules.nix` automatically enables for all hosts using that module list.
+Note: Adding to `lib/modules/default.nix` automatically enables for all hosts using that module list.
 
 ### Cross-Tool Integration
 
