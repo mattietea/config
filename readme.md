@@ -70,6 +70,12 @@ nix flake update
 nix-collect-garbage
 ```
 
+### Updating Nix
+
+```sh
+sudo determinate-nixd upgrade
+```
+
 ## Development Environment
 
 This project uses [devenv](https://devenv.sh/) to manage the development environment. The `devenv.nix` file configures:
