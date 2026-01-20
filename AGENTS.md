@@ -37,6 +37,13 @@ update    # Update flake and devenv inputs
 clean     # Run garbage collection
 ```
 
+**System updates**:
+
+```bash
+# Update Nix itself (outside devenv shell)
+sudo determinate-nixd upgrade
+```
+
 **Git hooks** (auto-run on commit):
 
 - treefmt (formatting)
@@ -52,9 +59,12 @@ clean     # Run garbage collection
 
 ```
 .
-├── flake.nix                    # Flake inputs and outputs
+├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
 ├── .claude/auto-memory/         # Auto-memory plugin cache (gitignored)
+├── lib/
+│   ├── settings.nix             # Shared user settings (username, email, etc.)
+│   └── modules.nix              # Shared module lists with path resolution
 ├── hosts/
 │   ├── personal/default.nix     # Personal MacBook Air config
 │   └── work/default.nix         # Work MacBook Pro config
@@ -74,16 +84,20 @@ clean     # Run garbage collection
 
 **Data Flow**:
 
-1. `hosts/{personal,work}/default.nix` imports modules via `sharedModules`
-2. Each module configures a tool using home-manager or `home.packages`
-3. AI tools import shared config from `modules/home-manager/ai/`
-4. Cross-tool integrations reference other packages via `${pkgs.tool}/bin/tool`
+1. `flake.nix` uses flake-parts for modular structure
+2. `lib/settings.nix` provides shared user config to all hosts
+3. `lib/modules.nix` provides shared module lists with path resolution
+4. `hosts/{personal,work}/default.nix` import from lib/ and use `sharedModules`
+5. Each module configures a tool using home-manager or `home.packages`
+6. AI tools import shared config from `modules/home-manager/ai/`
 
 **Key Files**:
 
-- `flake.nix` - Defines inputs (nixpkgs, darwin, home-manager, opencode)
-- `devenv.nix` - Scripts (switch, format, lint) and git hooks
-- `hosts/*/default.nix` - Host-specific module lists and settings
+- `flake.nix` - flake-parts based (nixpkgs, darwin, home-manager, flake-parts)
+- `lib/settings.nix` - Single source of truth for user settings
+- `lib/modules.nix` - Shared module lists (DRY host configuration)
+- `devenv.nix` - Scripts (switch, format, lint, update) and git hooks
+- `hosts/*/default.nix` - Minimal host-specific config (just hostname)
 - `modules/home-manager/ai/default.nix` - Single source of truth for AI config
 
 <!-- END AUTO-MANAGED -->
@@ -131,11 +145,14 @@ clean     # Run garbage collection
 ### Import Patterns
 
 ```nix
-# Host imports modules as paths
-sharedModules = [
-  ../../modules/home-manager/packages/git
-  ../../modules/home-manager/packages/fzf
-];
+# Host imports from lib/ (DRY pattern)
+let
+  settings = import ../../lib/settings.nix;
+  modules = import ../../lib/modules.nix { root = ../..; };
+in
+{
+  sharedModules = modules.all;  # or modules.allBase for subset
+}
 
 # Modules import shared config
 let
@@ -272,12 +289,24 @@ in
 }
 ```
 
-### 5. Host-Specific Module Lists
+### 5. Shared Module Lists (DRY Pattern)
 
-Hosts import different module subsets:
+Hosts import from `lib/modules.nix` for DRY configuration:
 
-- Personal: Includes `opencode`, excludes some work tools
-- Work: Different application set, same package base
+```nix
+let
+  modules = import ../../lib/modules.nix { root = ../..; };
+in
+{
+  sharedModules = modules.all;  # All modules (base + extras)
+}
+```
+
+Module lists in `lib/modules.nix`:
+
+- `allBase` - Core apps + packages (raycast, zed, all CLI tools)
+- `allExtras` - Extra apps (brave, safari, discord, spotify, docker)
+- `all` - Everything (allBase + allExtras)
 
 ### 6. Cross-Tool Integration via Package References
 
@@ -440,8 +469,10 @@ in
 1. **Check home-manager first**: Run `nix search nixpkgs <tool>` and check home-manager docs
 2. **Create module directory**: `modules/home-manager/packages/<tool>/`
 3. **Add default.nix**: Use standard template (see Conventions)
-4. **Import in host**: Add to `sharedModules` in `hosts/personal/default.nix`
+4. **Add to lib/modules.nix**: Add `(pkg "tool-name")` to the appropriate list
 5. **Test**: Run `devenv shell -- switch`
+
+Note: Adding to `lib/modules.nix` automatically enables for all hosts using that module list.
 
 ### Cross-Tool Integration
 
