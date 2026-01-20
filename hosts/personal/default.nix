@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
-  settings = import ../../lib/settings.nix;
-  modules = import ../../lib/modules.nix { root = ../..; };
+  settings = import ../../lib/settings;
+  modules = import ../../lib/modules { root = ../..; };
 in
 inputs.darwin.lib.darwinSystem {
   system = "aarch64-darwin";
