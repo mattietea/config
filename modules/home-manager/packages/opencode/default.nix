@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
@@ -33,7 +32,7 @@ in
 
   programs.opencode = {
     enable = true;
-    package = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = pkgs.opencode;
     settings = {
       autoshare = false;
       mcp = utils.mcpServers;

@@ -10,9 +10,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    opencode.url = "github:anomalyco/opencode";
-    opencode.inputs.nixpkgs.follows = "nixpkgs";
-
     mole-src = {
       url = "github:tw93/Mole";
       flake = false;
@@ -24,12 +21,18 @@
       nixpkgs,
       ...
     }@inputs:
+    let
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+    in
     {
       darwinConfigurations = {
         Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs; };
         Matts-Personal-Macbook-Air = import ./hosts/personal { inherit inputs; };
       };
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
     };
 }
