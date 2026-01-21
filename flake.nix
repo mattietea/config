@@ -12,11 +12,6 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    mole-src = {
-      url = "github:tw93/Mole";
-      flake = false;
-    };
   };
 
   outputs =

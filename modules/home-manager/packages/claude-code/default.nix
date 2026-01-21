@@ -95,16 +95,16 @@ in
         pr = "";
       };
       enabledPlugins = {
-        "oh-my-claude-sisyphus@oh-my-claude-sisyphus" = true;
+        "oh-my-claudecode@oh-my-claudecode" = true;
         "auto-memory@severity1-marketplace" = true;
         "code-simplifier@claude-plugins-official" = true;
         "claude-notifications-go@claude-notifications-go" = true;
       };
       extraKnownMarketplaces = {
-        oh-my-claude-sisyphus = {
+        oh-my-claudecode = {
           source = {
             source = "github";
-            repo = "Yeachan-Heo/oh-my-claude-sisyphus";
+            repo = "Yeachan-Heo/oh-my-claudecode";
           };
         };
         severity1-marketplace = {
