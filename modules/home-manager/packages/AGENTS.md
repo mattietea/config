@@ -8,14 +8,13 @@ Collection of command-line tools and development utilities.
 
 Houses individual tool configurations for CLI utilities, development tools, and command-line applications. Each tool gets its own subdirectory with a `default.nix` module that configures it using home-manager when available, or falls back to `home.packages`.
 
-**Contains 30+ tools including**:
+**Contains 25+ tools including**:
 
-- Version control: git, gh, lazygit, git-absorb, graphite
+- Version control: git, gh, lazygit, git-absorb
 - Shell & navigation: zsh, fzf, zoxide, eza
-- Development: devenv, mise, node, bun, pnpm
+- Development: devenv, mise, node, bun
 - Editor integration: bat, delta
 - AI tools: claude-code, opencode
-- System utilities: mole (macOS cleanup)
 
 <!-- END AUTO-MANAGED -->
 
@@ -33,9 +32,8 @@ packages/
 ├── devenv/          # Development environments
 ├── fzf/             # Fuzzy finder
 ├── git/             # Git configuration
-├── mole/            # macOS cleanup tool (external, hybrid bash+go)
 ├── zsh/             # Shell configuration
-└── ... (30+ more)
+└── ... (25+ more)
 ```
 
 **Module Pattern**:
@@ -166,7 +164,7 @@ in
 
 ### Hybrid Bash + Go Build Pattern
 
-For packages with bash scripts + Go binaries (e.g., mole):
+For packages with bash scripts + Go binaries:
 
 ```nix
 let
@@ -201,6 +199,7 @@ in
 
 - `proxyVendor = true` - When upstream vendor/ is out of sync
 - `overrideModAttrs` with `modPostBuild = "go mod tidy"` - Fix dependency mismatches
+- `subPackages` - List specific Go packages to build
 - After `update`, if vendorHash fails: use fake hash `"sha256-AAAA..."`, get real hash from error
 
 <!-- END AUTO-MANAGED -->
@@ -225,7 +224,6 @@ in
 - git → delta (diff viewer)
 - zsh → multiple tools (shell integration)
 - claude-code → terminal-notifier, python3 (plugin dependencies)
-- mole → inputs.mole-src (external flake input)
 
 <!-- END AUTO-MANAGED -->
 

@@ -7,17 +7,17 @@
 
   ## Available Agents
 
-  1. **oh-my-claude-sisyphus:sisyphus-junior** - Focused task executor
-  2. **oh-my-claude-sisyphus:prometheus** - Strategic planning consultant
-  3. **oh-my-claude-sisyphus:oracle** - Architecture & debugging advisor (read-only)
-  4. **oh-my-claude-sisyphus:metis** - Requirements analysis
-  5. **oh-my-claude-sisyphus:momus** - Plan review expert
-  6. **oh-my-claude-sisyphus:explore** - Fast codebase search specialist
-  7. **oh-my-claude-sisyphus:frontend-engineer** - UI/UX designer-developer
-  8. **oh-my-claude-sisyphus:document-writer** - Technical documentation
-  9. **oh-my-claude-sisyphus:qa-tester** - Interactive CLI testing
-  10. **oh-my-claude-sisyphus:librarian** - External docs researcher
-  11. **oh-my-claude-sisyphus:multimodal-looker** - Visual/media analyzer
+  1. **oh-my-claudecode:sisyphus-junior** - Focused task executor
+  2. **oh-my-claudecode:prometheus** - Strategic planning consultant
+  3. **oh-my-claudecode:oracle** - Architecture & debugging advisor (read-only)
+  4. **oh-my-claudecode:metis** - Requirements analysis
+  5. **oh-my-claudecode:momus** - Plan review expert
+  6. **oh-my-claudecode:explore** - Fast codebase search specialist
+  7. **oh-my-claudecode:frontend-engineer** - UI/UX designer-developer
+  8. **oh-my-claudecode:document-writer** - Technical documentation
+  9. **oh-my-claudecode:qa-tester** - Interactive CLI testing
+  10. **oh-my-claudecode:librarian** - External docs researcher
+  11. **oh-my-claudecode:multimodal-looker** - Visual/media analyzer
 
   ## Delegation Strategy
 

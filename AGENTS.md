@@ -6,7 +6,7 @@ Personal macOS system configuration using Nix Flakes, nix-darwin, and home-manag
 
 ## Overview
 
-Declarative macOS dotfiles managing system settings, GUI applications, and CLI tools across two hosts (personal and work). Features modular architecture with 45+ tool configurations, shared AI tooling setup with Sisyphus multi-agent orchestration, and integrated development environment via devenv.
+Declarative macOS dotfiles managing system settings, GUI applications, and CLI tools across two hosts (personal and work). Features modular architecture with 40+ tool configurations, shared AI tooling setup with Sisyphus multi-agent orchestration, and integrated development environment via devenv.
 
 **Key Features**:
 
@@ -213,7 +213,7 @@ Claude Code plugins configured in `modules/home-manager/packages/claude-code/def
 
 **Enabled plugins**:
 
-- `oh-my-claude-sisyphus@oh-my-claude-sisyphus` - Advanced orchestration and planning
+- `oh-my-claudecode@oh-my-claudecode` - Advanced orchestration and planning
 - `auto-memory@severity1-marketplace` - Automatic CLAUDE.md/AGENTS.md management
 - `code-simplifier@claude-plugins-official` - Code optimization suggestions
 - `claude-notifications-go@claude-notifications-go` - macOS desktop notifications
@@ -388,17 +388,17 @@ For packages not in nixpkgs that need to be built from source:
 
 ```nix
 # flake.nix - Add as non-flake input
-mole-src = {
-  url = "github:tw93/Mole";
+tool-src = {
+  url = "github:org/tool";
   flake = false;  # Just fetch source, don't evaluate as flake
 };
 ```
 
-Access in modules via `inputs.mole-src`. Use `inputs.mole-src.shortRev` for version.
+Access in modules via `inputs.tool-src`. Use `inputs.tool-src.shortRev` for version.
 
 ### 10. Hybrid Bash + Go Package Pattern
 
-For packages with mixed bash scripts and Go binaries (e.g., mole):
+For packages with mixed bash scripts and Go binaries:
 
 ```nix
 # Two-stage build pattern
@@ -412,6 +412,7 @@ let
       modPostBuild = "go mod tidy";  # Sync dependencies
     };
     vendorHash = "sha256-...";
+    subPackages = [ "cmd/helper1" "cmd/helper2" ];
   };
 
   # Stage 2: Assemble final package
@@ -438,6 +439,7 @@ in
 - `dontBuild = true` - Skip build phase for script-only packages
 - `$out/libexec/` - Internal binaries/scripts, `$out/bin/` - User-facing commands
 - `substitute` - Patch hardcoded paths in bash scripts
+- `subPackages` - List Go subpackages to build
 
 ### 11. Mac App Store Integration Pattern
 
