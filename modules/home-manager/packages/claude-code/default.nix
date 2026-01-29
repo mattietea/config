@@ -95,13 +95,13 @@ in
         pr = "";
       };
       enabledPlugins = {
-        "oh-my-claudecode@oh-my-claudecode" = true;
+        "oh-my-claudecode@omc" = true;
         "auto-memory@severity1-marketplace" = true;
         "code-simplifier@claude-plugins-official" = true;
         "claude-notifications-go@claude-notifications-go" = true;
       };
       extraKnownMarketplaces = {
-        oh-my-claudecode = {
+        omc = {
           source = {
             source = "github";
             repo = "Yeachan-Heo/oh-my-claudecode";
