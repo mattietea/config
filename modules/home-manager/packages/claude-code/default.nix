@@ -21,92 +21,27 @@
 
       # UI Settings
       theme = "dark";
-      terminalProgressBar = true;
-      showTips = true;
-      verboseOutput = true;
+      terminalProgressBarEnabled = true;
+      spinnerTipsEnabled = true;
       outputStyle = "default";
-      showCodeDiffFooter = true;
+      codeDiffFooterEnabled = true;
+      prStatusFooterEnabled = true;
       editorMode = "normal";
 
       # Features
-      autoCompact = true;
-      thinkingMode = true;
-      promptSuggestions = true;
-      rewindCode = true;
-      respectGitignoreInFilePicker = true;
-      alwaysShowBashOutput = true;
+      alwaysThinkingEnabled = true;
+      autoCompactEnabled = true;
+      promptSuggestionEnabled = true;
+      fileCheckpointingEnabled = true;
+      respectGitignore = true;
+      enableAllProjectMcpServers = true;
 
       # Notifications (Ghostty OSC 777)
-      notifications = "ghostty";
+      notifChannel = "ghostty";
 
       # IDE Integration
       autoConnectIde = true;
-      claudeInChromeEnabledByDefault = true;
-      permissions = {
-        allow = [
-          "Read"
-          "Edit"
-          "Write"
-          "Glob"
-          "Grep"
-          "LS"
-          "Task"
-          "WebFetch"
-          "WebSearch"
-
-          "Bash(git:*)"
-          "Bash(ls:*)"
-          "Bash(cat:*)"
-          "Bash(pwd:*)"
-          "Bash(cd:*)"
-          "Bash(find:*)"
-          "Bash(grep:*)"
-          "Bash(rg:*)"
-          "Bash(head:*)"
-          "Bash(tail:*)"
-          "Bash(wc:*)"
-          "Bash(echo:*)"
-          "Bash(which:*)"
-          "Bash(diff:*)"
-
-          "Bash(npm:*)"
-          "Bash(npx:*)"
-          "Bash(yarn:*)"
-          "Bash(pnpm:*)"
-          "Bash(bun:*)"
-          "Bash(node:*)"
-          "Bash(tsc:*)"
-          "Bash(eslint:*)"
-          "Bash(prettier:*)"
-
-          "Bash(python:*)"
-          "Bash(pip:*)"
-          "Bash(uv:*)"
-
-          "Bash(cargo:*)"
-          "Bash(go:*)"
-
-          "Bash(make:*)"
-          "Bash(jq:*)"
-          "Bash(gh:*)"
-        ];
-        deny = [
-          "Read(.env)"
-          "Read(.env.*)"
-          "Read(**/.env)"
-          "Read(**/.env.*)"
-          "Read(**/secrets/**)"
-          "Read(**/*secret*)"
-          "Read(**/*credential*)"
-          "Read(~/.ssh/**)"
-          "Read(~/.aws/**)"
-
-          "Bash(su:*)"
-          "Bash(chmod 777:*)"
-          "Bash(shutdown:*)"
-          "Bash(reboot:*)"
-        ];
-      };
+      claudeInChromeDefaultEnabled = true;
       attribution = {
         commit = "";
         pr = "";
