@@ -13,6 +13,8 @@ let
       enabled = true;
       default_max_iterations = 100;
     };
+    # Hephaestus requires GPT-5.2-Codex (OpenAI only) — disable for Anthropic
+    disabled_agents = [ "hephaestus" ];
     agents = {
       # Primary orchestrator (Opus per official docs)
       Sisyphus.model = "anthropic/claude-opus-4-6";
