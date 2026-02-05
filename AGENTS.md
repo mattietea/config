@@ -11,7 +11,7 @@ Declarative macOS dotfiles managing system settings, GUI applications, and CLI t
 **Key Features**:
 
 - Modular tool configurations (each tool gets own `default.nix`)
-- Two host configurations with shared modules
+- Two self-contained host configurations with inline settings
 - Independent AI tool configuration (claude-code, opencode, zed) with MCP integration
 - Cross-tool integrations (fzf + bat/eza, git + delta)
 - Reproducible builds via Nix flakes
@@ -67,11 +67,10 @@ sudo determinate-nixd upgrade
 │   ├── check.yml                # Flake validation and devenv tests
 │   └── update.yml               # Scheduled dependency updates (flake + devenv)
 ├── lib/
-│   ├── settings/default.nix     # Shared user settings (username, email, env vars)
-│   └── modules/default.nix      # Shared module lists with path resolution
+│   └── mkHost.nix               # Shared darwinSystem builder function
 ├── hosts/
-│   ├── personal/default.nix     # Personal MacBook Air config
-│   └── work/default.nix         # Work MacBook Pro config
+│   ├── personal.nix             # Self-contained personal config (settings + apps + packages)
+│   └── work.nix                 # Self-contained work config (settings + apps + packages)
 └── modules/
     ├── darwin/system/           # macOS system defaults
     └── home-manager/
@@ -85,20 +84,20 @@ sudo determinate-nixd upgrade
 **Data Flow**:
 
 1. `flake.nix` uses `flake-parts.lib.mkFlake` for modular flake structure
-2. `flake.nix` includes `claude-code-nix` flake input for pre-built claude-code package
-3. `lib/settings/default.nix` provides shared user config to all hosts
-4. `lib/modules/default.nix` accepts `{ root }` parameter for path resolution
-5. `hosts/{personal,work}/default.nix` import from lib/ with `modules.allPersonal` or `modules.allWork`
+2. `flake.nix` imports `hosts/personal.nix` and `hosts/work.nix` directly
+3. Each host file defines its own settings (username, email, env vars) inline
+4. Each host file lists its own applications and packages explicitly
+5. Host files call `lib/mkHost.nix` which handles all darwinSystem boilerplate
 6. Each module configures a tool using home-manager or `home.packages`
 7. AI tools use `enableMcpIntegration` to connect to shared MCP module
 
 **Key Files**:
 
 - `flake.nix` - flake-parts structure with `flake` and `perSystem` outputs, flake inputs
-- `lib/settings/default.nix` - Single source of truth for user settings
-- `lib/modules/default.nix` - Shared module lists (DRY host configuration)
+- `lib/mkHost.nix` - Shared darwinSystem builder (nixpkgs, home-manager, networking)
+- `hosts/personal.nix` - Self-contained personal host (settings, apps, packages)
+- `hosts/work.nix` - Self-contained work host (settings, apps, packages)
 - `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
-- `hosts/*/default.nix` - Minimal host-specific config (hostname + module list selection)
 - `modules/home-manager/packages/mcp/default.nix` - MCP server configuration
 - `.github/workflows/check.yml` - CI: flake check + devenv test
 - `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv)
@@ -165,33 +164,33 @@ Convention: Explicitly set `package = pkgs.pre-commit` to ensure correct pre-com
 ### Naming Conventions
 
 - Module directories: `lowercase-with-dashes` (e.g., `git-absorb/`)
-- Files: Always `default.nix`
-- Settings parameter: Passed via `specialArgs` in host config
+- Module files: Always `default.nix`
+- Host files: `hosts/<name>.nix` (single file per host)
+- Settings: Defined inline in each host file
 
-### Import Patterns
+### Host Configuration Pattern
+
+Each host is a self-contained file that defines settings, apps, and packages, then calls `mkHost`:
 
 ```nix
-# Host imports from lib/ (DRY pattern)
+# hosts/personal.nix
+{ inputs }:
 let
-  settings = import ../../lib/settings;
-  modules = import ../../lib/modules { root = ../..; };
+  settings = {
+    username = "mattietea";
+    email = "mattcthomas@me.com";
+    variables = { EDITOR = "zed --wait"; VISUAL = "zed --wait"; };
+  };
+  mkHost = import ../lib/mkHost.nix;
+  app = name: ../modules/home-manager/applications/${name};
+  pkg = name: ../modules/home-manager/packages/${name};
 in
-inputs.darwin.lib.darwinSystem {
-  specialArgs = { inherit inputs settings; };
-  modules = [
-    {
-      users.users.${settings.username} = { ... };
-    }
-    inputs.home-manager.darwinModules.home-manager
-    {
-      home-manager = {
-        extraSpecialArgs = { inherit settings inputs; };
-        sharedModules = modules.allPersonal;  # or modules.allWork
-      };
-    }
-  ];
+mkHost {
+  inherit inputs settings;
+  hostname = "Matts-Personal-Macbook-Air";
+  applications = [ (app "brave") (app "zed") /* ... */ ];
+  packages = [ (pkg "git") (pkg "fzf") /* ... */ ];
 }
-
 ```
 
 ### Cross-Tool Integration
@@ -224,18 +223,51 @@ AI tools (claude-code, opencode, zed) configure independently:
 
 **MCP Integration**: Use `programs.mcp.servers` in mcp module, all AI tools access via `enableMcpIntegration`
 
-### Claude Code Plugin Configuration
+### Claude Code Configuration
 
-Claude Code plugins configured in `modules/home-manager/packages/claude-code/default.nix`:
+Claude Code configured in `modules/home-manager/packages/claude-code/default.nix`:
 
-**Plugin naming convention**: `plugin-name@marketplace-name` format in `enabledPlugins`
+**Core settings**:
 
-**Enabled plugins**:
+- Model: `"opus"` (shorthand: opus, sonnet, haiku)
+- Default mode: `"plan"`
+- Package source: `inputs.claude-code-nix` (external flake)
+- MCP integration: `enableMcpIntegration = true`
 
-- `oh-my-claudecode@oh-my-claudecode` - Advanced orchestration and planning
+**UI settings**:
+
+- Theme: `"dark"`
+- Terminal progress bar: `true`
+- Show tips: `true`
+- Verbose output: `true`
+- Output style: `"default"`
+- Show code diff footer: `true`
+- Editor mode: `"normal"`
+
+**Feature settings**:
+
+- Auto-compact: `true`
+- Thinking mode: `true`
+- Prompt suggestions: `true`
+- Rewind code: `true`
+- Respect gitignore in file picker: `true`
+- Always show bash output: `true`
+
+**Notifications**: Ghostty OSC 777 protocol (`notifications = "ghostty"`)
+
+**IDE integration**:
+
+- Auto-connect IDE: `true`
+- Claude in Chrome enabled by default: `true`
+
+**Plugins**:
+
+- `oh-my-claudecode@omc` - Advanced orchestration and planning
 - `auto-memory@severity1-marketplace` - Automatic CLAUDE.md/AGENTS.md management
 - `code-simplifier@claude-plugins-official` - Code optimization suggestions
 - `claude-notifications-go@claude-notifications-go` - macOS desktop notifications
+
+**Plugin naming convention**: `plugin-name@marketplace-name` format in `enabledPlugins`
 
 **Required package dependencies**:
 
@@ -243,6 +275,8 @@ Claude Code plugins configured in `modules/home-manager/packages/claude-code/def
 - `python3` - Python runtime for auto-memory plugin
 
 **Plugin marketplaces**: Defined in `extraKnownMarketplaces` with GitHub source repositories
+
+**Permissions**: Comprehensive allow list (Read, Edit, Write, Glob, Grep, Task, WebFetch, WebSearch, Bash commands for git/npm/python/cargo/go/make/jq/gh) with deny list for sensitive files (.env, secrets, SSH keys)
 
 ### Claude Code Status Line
 
@@ -311,26 +345,14 @@ AI tools use independent configuration with shared MCP:
 }
 ```
 
-### 5. Shared Module Lists (DRY Pattern)
+### 5. Self-Contained Host Files
 
-Hosts import from `lib/modules/default.nix` for DRY configuration:
+Each host file is fully independent — settings, apps, and packages all in one place:
 
-```nix
-let
-  modules = import ../../lib/modules { root = ../..; };
-in
-{
-  home-manager.sharedModules = modules.allPersonal;  # or modules.allWork
-}
-```
+- `hosts/personal.nix` - Personal MacBook Air (includes brave, safari, discord)
+- `hosts/work.nix` - Work MacBook Pro (base apps only)
 
-Module lists in `lib/modules/default.nix`:
-
-- `allBase` - Core apps (raycast, zed, spotify, docker) + all packages
-- `allPersonal` - allBase + personal apps (brave, safari, discord)
-- `allWork` - allBase only (no personal-specific apps)
-
-Path resolution via `{ root }` function parameter ensures correct relative paths from any importer.
+Both call `lib/mkHost.nix` which handles darwinSystem boilerplate. Package lists are intentionally duplicated so hosts are independent.
 
 ### 6. Cross-Tool Integration via Package References
 
@@ -370,7 +392,7 @@ statusLine = {
 };
 ```
 
-Pattern: Delegate to external scripts for complex dynamic status displays
+Pattern: Use `type = "command"` for dynamic status displays. Delegate to external scripts for complex processing.
 
 ### 9. External Package Inputs Pattern
 
@@ -523,8 +545,8 @@ For maintainable flake structure using flake-parts:
       flake = {
         # Top-level flake outputs (darwinConfigurations, etc.)
         darwinConfigurations = {
-          Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs; };
-          Matts-Personal-Macbook-Air = import ./hosts/personal { inherit inputs; };
+          Matts-Work-MacBook-Pro = import ./hosts/work.nix { inherit inputs; };
+          Matts-Personal-Macbook-Air = import ./hosts/personal.nix { inherit inputs; };
         };
       };
 
@@ -544,82 +566,40 @@ For maintainable flake structure using flake-parts:
 - `flake.darwinConfigurations` for system configs, `perSystem.formatter` for dev tools
 - Use `inputs.nixpkgs.follows` to unify dependency versions across all inputs
 
-### 13. Shared Configuration Library Pattern
+### 13. mkHost Builder Pattern
 
-Extract common config to `lib/` for DRY host configuration:
+Extract darwinSystem boilerplate into a reusable builder function:
 
 ```nix
-# lib/settings/default.nix - Single source of truth
+# lib/mkHost.nix - Shared builder
 {
-  username = "mattietea";
-  email = "mattcthomas@me.com";
-  variables = {
-    EDITOR = "zed --wait";
-    VISUAL = "zed --wait";
-  };
-}
-
-# lib/modules/default.nix - Function with root parameter for path resolution
-{ root }:
-let
-  app = name: root + "/modules/home-manager/applications/${name}";
-  pkg = name: root + "/modules/home-manager/packages/${name}";
-in
-rec {
-  applications = {
-    base = [ (app "raycast") (app "zed") (app "spotify") (app "docker") ];
-    personal = [ (app "brave") (app "safari") (app "discord") ];
-  };
-  packages = {
-    base = [ (pkg "git") (pkg "fzf") (pkg "claude-code") /* ... */ ];
-  };
-  allBase = applications.base ++ packages.base;
-  allPersonal = allBase ++ applications.personal;
-  allWork = allBase;  # Work-specific subset
-}
-
-# hosts/*/default.nix - Minimal host config
-{ inputs, ... }:
-let
-  settings = import ../../lib/settings;
-  modules = import ../../lib/modules { root = ../..; };
-in
+  inputs, settings, hostname,
+  system ? "aarch64-darwin",
+  applications ? [ ], packages ? [ ],
+}:
 inputs.darwin.lib.darwinSystem {
+  inherit system;
   specialArgs = { inherit inputs settings; };
   modules = [
-    {
-      users.users.${settings.username} = {
-        name = settings.username;
-        home = "/Users/${settings.username}";
-      };
-    }
+    { nixpkgs.config.allowUnfree = true; nix.enable = false; /* ... */ }
+    ../modules/darwin/system
     inputs.home-manager.darwinModules.home-manager
     {
       home-manager = {
-        extraSpecialArgs = { inherit settings inputs; };
-        sharedModules = modules.allPersonal;  # or modules.allWork
-        users.${settings.username} = {
-          home = {
-            inherit (settings) username;
-            homeDirectory = "/Users/${settings.username}";
-            sessionVariables = settings.variables;
-          };
-        };
+        sharedModules = applications ++ packages;
+        users.${settings.username} = { /* ... */ };
       };
     }
-    {
-      networking.hostName = "Matts-Personal-Macbook-Air";
-    }
+    { networking.hostName = hostname; }
   ];
 }
 ```
 
 **Pattern**:
 
-- `{ root }` function parameter solves relative path resolution across different importers
-- Settings provide user config (username, email, env vars) without duplication
-- Module lists enable host-specific subsets (personal vs work)
-- Host configs reduced to hostname + module list selection + settings inheritance
+- Builder takes `{ inputs, settings, hostname, applications, packages }`
+- Settings defined inline in each host file (not shared)
+- Each host independently lists its apps and packages
 - Settings passed via `specialArgs` and `extraSpecialArgs` for system and home-manager access
 
 <!-- END AUTO-MANAGED -->
@@ -633,10 +613,10 @@ inputs.darwin.lib.darwinSystem {
 1. **Check home-manager first**: Run `nix search nixpkgs <tool>` and check home-manager docs
 2. **Create module directory**: `modules/home-manager/packages/<tool>/`
 3. **Add default.nix**: Use standard template (see Conventions)
-4. **Add to lib/modules/default.nix**: Add `(pkg "tool-name")` to the appropriate list
+4. **Add to host files**: Add `(pkg "tool-name")` to each host that should have it (`hosts/personal.nix`, `hosts/work.nix`)
 5. **Test**: Run `devenv shell -- switch`
 
-Note: Adding to `lib/modules/default.nix` automatically enables for all hosts using that module list.
+Note: Each host independently lists its packages — adding to one host does not affect the other.
 
 ### Cross-Tool Integration
 
