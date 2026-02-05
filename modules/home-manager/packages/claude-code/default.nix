@@ -4,10 +4,9 @@
   ...
 }:
 {
-  # Required for macOS desktop notifications and auto-memory plugin
+  # Required for macOS desktop notifications
   home.packages = [
     pkgs.terminal-notifier
-    pkgs.python3
   ];
 
   programs.claude-code = {
@@ -48,7 +47,6 @@
       };
       enabledPlugins = {
         "oh-my-claudecode@omc" = true;
-        "auto-memory@severity1-marketplace" = true;
         "code-simplifier@claude-plugins-official" = true;
         "claude-notifications-go@claude-notifications-go" = true;
       };
@@ -59,12 +57,7 @@
             repo = "Yeachan-Heo/oh-my-claudecode";
           };
         };
-        severity1-marketplace = {
-          source = {
-            source = "github";
-            repo = "severity1/severity1-marketplace";
-          };
-        };
+
         claude-plugins-official = {
           source = {
             source = "github";
