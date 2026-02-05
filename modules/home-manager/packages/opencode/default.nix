@@ -4,12 +4,6 @@
   ...
 }:
 let
-  ai = import ../../ai;
-  utils = import ./utilities.nix {
-    inherit lib;
-    inherit (ai) mcpServers;
-  };
-
   # Configured for Claude Max20 mode
   ohMyOpencodeConfig = {
     "$schema" =
@@ -51,15 +45,14 @@ in
   programs.opencode = {
     enable = true;
     package = pkgs.opencode;
+    enableMcpIntegration = true;
     settings = {
       autoshare = false;
-      mcp = utils.mcpServers;
       plugin = [
         "oh-my-opencode"
         "@mohak34/opencode-notifier@latest"
       ];
     };
-    inherit (ai) rules agents;
   };
 
   home.file.".config/opencode/oh-my-opencode.json".text = builtins.toJSON ohMyOpencodeConfig;

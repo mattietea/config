@@ -44,6 +44,7 @@ rec {
       (pkg "git")
       (pkg "git-absorb")
       (pkg "lazygit")
+      (pkg "mcp")
       (pkg "mise")
       (pkg "node")
       (pkg "opencode")

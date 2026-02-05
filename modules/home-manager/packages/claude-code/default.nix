@@ -1,15 +1,7 @@
 {
   pkgs,
-  lib,
   ...
 }:
-let
-  ai = import ../../ai;
-  utils = import ./utilities.nix {
-    inherit lib;
-    inherit (ai) mcpServers;
-  };
-in
 {
   # Required for macOS desktop notifications and auto-memory plugin
   home.packages = [
@@ -19,9 +11,7 @@ in
 
   programs.claude-code = {
     enable = true;
-    inherit (utils) mcpServers;
-    memory.text = ai.rules;
-    inherit (ai) agents;
+    enableMcpIntegration = true;
     settings = {
       model = "opus";
       defaultMode = "plan";
@@ -128,21 +118,7 @@ in
       };
       statusLine = {
         type = "command";
-        command = ''
-          # ANSI color codes
-          CYAN='\033[0;36m'
-          YELLOW='\033[0;33m'
-          PINK='\033[0;35m'
-          RESET='\033[0m'
-
-          dir=$(pwd | sed "s|^$HOME|~|")
-          branch=$(git branch --show-current 2>/dev/null)
-          dirty=""
-          [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="''${PINK}*''${RESET}"
-          usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
-
-          printf "%b%s%b %b%s%b%b %b\n" "''${CYAN}" "$dir" "''${RESET}" "''${YELLOW}" "$branch" "''${RESET}" "$dirty" "$usage"
-        '';
+        command = "node ~/.claude/hud/omc-hud.mjs";
       };
     };
   };
