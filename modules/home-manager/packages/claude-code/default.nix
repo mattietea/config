@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -11,6 +12,7 @@
 
   programs.claude-code = {
     enable = true;
+    package = inputs.claude-code-nix.packages.${pkgs.system}.default;
     enableMcpIntegration = true;
     settings = {
       model = "opus";
