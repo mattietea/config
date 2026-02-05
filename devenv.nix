@@ -54,6 +54,7 @@
   # Configure git hooks for formatting and linting
   git-hooks = {
     enable = true;
+    package = pkgs.pre-commit;
     hooks = {
       # Enable treefmt for formatting (automatically uses treefmt config above)
       treefmt.enable = true;
