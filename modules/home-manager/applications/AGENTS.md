@@ -33,14 +33,11 @@ applications/
 ├── spotify/         # Music streaming
 ├── whatsapp/        # Communication (optional)
 └── zed/             # Code editor
-    ├── default.nix
-    └── utilities.nix
 ```
 
 **Module Pattern**:
 
 - Each directory has `default.nix`
-- Zed has `utilities.nix` for AI config transformation
 - Imported by hosts via relative paths in `sharedModules`
 - Some modules commented out in host configs (optional installs)
 
@@ -66,18 +63,16 @@ Most apps use simple package installation:
 
 ### Zed Editor Pattern
 
-Zed follows special pattern for AI integration:
+Zed uses standard home-manager configuration:
 
 ```nix
-let
-  utils = import ./utilities.nix { inherit lib; };
-  ai = import ../../ai;
-in
 {
   programs.zed-editor = {
     enable = true;
-    # AI config via utilities transform
-    extensions = [ "nix" ];
+    extensions = [ "nix" "opencode" ];
+    userSettings = {
+      # ... editor settings
+    };
   };
 }
 ```
@@ -147,7 +142,7 @@ in
 
 **Imports from**:
 
-- `modules/home-manager/ai/` - Shared AI configuration (zed only)
+- None (applications use home-manager options directly)
 
 **Imported by**:
 

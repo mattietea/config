@@ -6,13 +6,13 @@ Personal macOS system configuration using Nix Flakes, nix-darwin, and home-manag
 
 ## Overview
 
-Declarative macOS dotfiles managing system settings, GUI applications, and CLI tools across two hosts (personal and work). Features modular architecture with 40+ tool configurations, shared AI tooling setup with Sisyphus multi-agent orchestration, and integrated development environment via devenv.
+Declarative macOS dotfiles managing system settings, GUI applications, and CLI tools across two hosts (personal and work). Features modular architecture with 40+ tool configurations, independent AI tool setups, and integrated development environment via devenv.
 
 **Key Features**:
 
 - Modular tool configurations (each tool gets own `default.nix`)
 - Two host configurations with shared modules
-- Unified AI tool configuration (claude-code, opencode, zed) with Sisyphus orchestration mode
+- Independent AI tool configuration (claude-code, opencode, zed) with MCP integration
 - Cross-tool integrations (fzf + bat/eza, git + delta)
 - Reproducible builds via Nix flakes
 
@@ -75,14 +75,10 @@ sudo determinate-nixd upgrade
 └── modules/
     ├── darwin/system/           # macOS system defaults
     └── home-manager/
-        ├── ai/                  # Shared AI config (claude-code, opencode, zed)
-        │   ├── default.nix      # Exports: mcpServers, rules, agents
-        │   ├── mcp.nix          # MCP server definitions
-        │   ├── rules.nix        # Shared CLAUDE.md/AGENTS.md content
-        │   └── agents.nix       # Agent definitions
         ├── applications/        # GUI apps (brave, zed, discord, etc.)
         │   └── */default.nix
         └── packages/            # CLI tools (git, fzf, zsh, etc.)
+            ├── mcp/             # Standalone MCP server configuration
             └── */default.nix
 ```
 
@@ -93,7 +89,7 @@ sudo determinate-nixd upgrade
 3. `lib/modules/default.nix` accepts `{ root }` parameter for path resolution
 4. `hosts/{personal,work}/default.nix` import from lib/ with `modules.allPersonal` or `modules.allWork`
 5. Each module configures a tool using home-manager or `home.packages`
-6. AI tools import shared config from `modules/home-manager/ai/`
+6. AI tools use `enableMcpIntegration` to connect to shared MCP module
 
 **Key Files**:
 
@@ -102,7 +98,7 @@ sudo determinate-nixd upgrade
 - `lib/modules/default.nix` - Shared module lists (DRY host configuration)
 - `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
 - `hosts/*/default.nix` - Minimal host-specific config (hostname + module list selection)
-- `modules/home-manager/ai/default.nix` - Single source of truth for AI config
+- `modules/home-manager/packages/mcp/default.nix` - MCP server configuration
 - `.github/workflows/check.yml` - CI: flake check + devenv test
 - `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv)
 
@@ -145,7 +141,7 @@ sudo determinate-nixd upgrade
 ### Naming Conventions
 
 - Module directories: `lowercase-with-dashes` (e.g., `git-absorb/`)
-- Files: Always `default.nix` (exceptions: `utilities.nix`, `mcp.nix`, etc.)
+- Files: Always `default.nix`
 - Settings parameter: Passed via `specialArgs` in host config
 
 ### Import Patterns
@@ -172,10 +168,6 @@ inputs.darwin.lib.darwinSystem {
   ];
 }
 
-# Modules import shared config
-let
-  ai = import ../../ai;
-in
 ```
 
 ### Cross-Tool Integration
@@ -190,20 +182,18 @@ fileWidgetOptions = [
 
 ### AI Tool Configuration
 
-All AI tools (claude-code, opencode, zed) share:
+AI tools (claude-code, opencode, zed) configure independently:
 
-- MCP servers from `modules/home-manager/ai/mcp.nix`
-- Rules/instructions from `modules/home-manager/ai/rules.nix` (includes Sisyphus orchestration mode)
-- Agent definitions from `modules/home-manager/ai/agents.nix`
-
-Each tool has `utilities.nix` to transform shared config to tool-specific format.
-
-**Sisyphus orchestration mode** is enabled by default, providing 11 specialized agents (sisyphus-junior, prometheus, oracle, metis, momus, explore, frontend-engineer, document-writer, qa-tester, librarian, multimodal-looker) for multi-agent coordination via the Task tool.
+- Each tool uses `enableMcpIntegration = true` to connect to shared MCP module
+- MCP servers defined in `modules/home-manager/packages/mcp/default.nix`
+- No shared rules or agent definitions - tools configure their own settings
 
 **Model configuration**:
 
 - claude-code: Top-level `settings.model` using shorthand names (`"opus"`, `"sonnet"`, `"haiku"`)
 - opencode: Per-agent models in `oh-my-opencode.json` (e.g., `agents.Sisyphus.model = "anthropic/claude-opus-4-5"`)
+
+**MCP Integration**: Use `programs.mcp.servers` in mcp module, all AI tools access via `enableMcpIntegration`
 
 ### Claude Code Plugin Configuration
 
@@ -227,32 +217,16 @@ Claude Code plugins configured in `modules/home-manager/packages/claude-code/def
 
 ### Claude Code Status Line
 
-Custom colorized status line using ANSI color codes in `statusLine.command`:
+Claude Code uses oh-my-claudecode HUD for status line:
 
 ```nix
 statusLine = {
   type = "command";
-  command = ''
-    # ANSI color codes
-    CYAN='\033[0;36m'
-    YELLOW='\033[0;33m'
-    PINK='\033[0;35m'
-    RESET='\033[0m'
-
-    dir=$(pwd | sed "s|^$HOME|~|")
-    branch=$(git branch --show-current 2>/dev/null)
-    dirty=""
-    [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="''${PINK}*''${RESET}"
-    usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
-
-    printf "%b%s%b %b%s%b%b %b\n" "''${CYAN}" "$dir" "''${RESET}" "''${YELLOW}" "$branch" "''${RESET}" "$dirty" "$usage"
-  '';
+  command = "node ~/.claude/hud/omc-hud.mjs";
 };
 ```
 
-**Color scheme**: Cyan for directory, yellow for git branch, pink asterisk for dirty status, usage statistics
-
-**Implementation details**: Uses `printf` with format strings for precise formatting control, avoiding shell interpretation issues with `echo -e`. Dirty status shown as separate pink asterisk instead of appending to branch name.
+**Implementation**: Delegates to oh-my-claudecode plugin's HUD module for dynamic status display
 
 <!-- END AUTO-MANAGED -->
 
@@ -291,18 +265,19 @@ programs.fzf = {
 };
 ```
 
-### 4. Shared Configuration Pattern
+### 4. MCP Integration Pattern
 
-AI tools use a unified config module:
+AI tools use independent configuration with shared MCP:
 
 ```nix
-let
-  ai = import ../../ai;
-in
 {
   programs.claude-code = {
-    inherit (ai) agents;
-    memory.text = ai.rules;
+    enable = true;
+    enableMcpIntegration = true;
+    settings = {
+      model = "opus";
+      # ... tool-specific settings
+    };
   };
 }
 ```
@@ -359,28 +334,14 @@ shellAliases = {
 Tools can use shell commands for dynamic runtime configuration:
 
 ```nix
-# claude-code/default.nix - Colorized status line
+# claude-code/default.nix - oh-my-claudecode HUD
 statusLine = {
   type = "command";
-  command = ''
-    # ANSI color codes
-    CYAN='\033[0;36m'
-    YELLOW='\033[0;33m'
-    PINK='\033[0;35m'
-    RESET='\033[0m'
-
-    dir=$(pwd | sed "s|^$HOME|~|")
-    branch=$(git branch --show-current 2>/dev/null)
-    dirty=""
-    [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="''${PINK}*''${RESET}"
-    usage=$(cat | ${pkgs.bun}/bin/bun x ccusage statusline 2>/dev/null)
-
-    printf "%b%s%b %b%s%b%b %b\n" "''${CYAN}" "$dir" "''${RESET}" "''${YELLOW}" "$branch" "''${RESET}" "$dirty" "$usage"
-  '';
+  command = "node ~/.claude/hud/omc-hud.mjs";
 };
 ```
 
-Pattern: Use double-single-quote (`''`) for multi-line strings, reference packages via `${pkgs.tool}/bin/tool`, prefer `printf` over `echo -e` for ANSI color formatting
+Pattern: Delegate to external scripts for complex dynamic status displays
 
 ### 9. Non-Flake Input Pattern (External Packages)
 
@@ -639,14 +600,25 @@ When one tool depends on another:
 }
 ```
 
-### AI Tool Configuration
+### MCP Server Configuration
 
-To add MCP servers or rules visible to all AI tools:
+To add MCP servers for AI tools:
 
-1. Edit `modules/home-manager/ai/mcp.nix` (servers)
-2. Edit `modules/home-manager/ai/rules.nix` (instructions)
-3. Edit `modules/home-manager/ai/agents.nix` (agent definitions)
-4. Changes propagate to claude-code, opencode, and zed automatically
+1. Edit `modules/home-manager/packages/mcp/default.nix`
+2. Add server to `programs.mcp.servers` attribute set
+3. Changes available to all tools with `enableMcpIntegration = true`
+
+Example:
+
+```nix
+programs.mcp.servers = {
+  new-server = {
+    type = "stdio";
+    command = "npx";
+    args = [ "-y" "@scope/package" ];
+  };
+};
+```
 
 ### Shell Aliases
 

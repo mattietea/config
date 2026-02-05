@@ -27,11 +27,10 @@ packages/
 ├── aerospace/       # Window manager
 ├── bat/             # Cat replacement with syntax highlighting
 ├── claude-code/     # AI coding assistant
-│   ├── default.nix
-│   └── utilities.nix
 ├── devenv/          # Development environments
 ├── fzf/             # Fuzzy finder
 ├── git/             # Git configuration
+├── mcp/             # MCP server configuration
 ├── zsh/             # Shell configuration
 └── ... (25+ more)
 ```
@@ -39,7 +38,6 @@ packages/
 **Module Pattern**:
 
 - Each directory has `default.nix`
-- Some have `utilities.nix` for helper functions (e.g., AI tools)
 - Imported by hosts via relative paths in `sharedModules`
 
 <!-- END AUTO-MANAGED -->
@@ -94,20 +92,14 @@ changeDirWidgetOptions = [
 
 ### AI Tool Pattern
 
-AI tools (claude-code, opencode) follow special pattern:
+AI tools (claude-code, opencode) configure independently:
 
 ```nix
-let
-  utils = import ./utilities.nix { inherit lib; };
-  ai = import ../../ai;
-in
 {
   home.packages = [ /* dependencies */ ];
   programs.tool = {
     enable = true;
-    inherit (utils) mcpServers;
-    memory.text = ai.rules;
-    inherit (ai) agents;
+    enableMcpIntegration = true;
     settings = {
       model = "opus";  # Shorthand: opus, sonnet, or haiku
       # ... other tool-specific settings
@@ -117,6 +109,8 @@ in
 ```
 
 **Model configuration**: claude-code uses top-level `settings.model` with shorthand names (`"opus"`, `"sonnet"`, `"haiku"`), while opencode configures per-agent models in `oh-my-opencode.json`.
+
+**MCP Integration**: Set `enableMcpIntegration = true` to use servers from `packages/mcp/default.nix`.
 
 ### Settings Parameter
 
@@ -210,7 +204,6 @@ in
 
 **Imports from**:
 
-- `modules/home-manager/ai/` - Shared AI configuration (claude-code, opencode)
 - Host `settings` via `specialArgs` - User info, environment variables
 
 **Imported by**:
@@ -224,6 +217,7 @@ in
 - git → delta (diff viewer)
 - zsh → multiple tools (shell integration)
 - claude-code → terminal-notifier, python3 (plugin dependencies)
+- AI tools → mcp (MCP server configuration via enableMcpIntegration)
 
 <!-- END AUTO-MANAGED -->
 
