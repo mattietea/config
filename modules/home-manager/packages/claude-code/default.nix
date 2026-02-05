@@ -34,6 +34,7 @@
       promptSuggestions = true;
       rewindCode = true;
       respectGitignoreInFilePicker = true;
+      alwaysShowBashOutput = true;
 
       # Notifications (Ghostty OSC 777)
       notifications = "ghostty";
