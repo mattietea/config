@@ -41,10 +41,6 @@
             buildInputs = [ pkgs.devenv ];
             shellHook = ''echo "Use 'devenv shell' for full environment"'';
           };
-
-          checks.flake-schema = pkgs.runCommand "check" { } ''
-            echo "Flake valid" && touch $out
-          '';
         };
     };
 }

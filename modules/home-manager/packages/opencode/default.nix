@@ -14,26 +14,29 @@ let
       default_max_iterations = 100;
     };
     agents = {
-      # Primary orchestrator - uses Opus 4.5 for max capability
-      Sisyphus.model = "anthropic/claude-opus-4-5";
+      # Primary orchestrator (Opus per official docs)
+      Sisyphus.model = "anthropic/claude-opus-4-6";
       sisyphus-junior.model = "anthropic/claude-sonnet-4-5";
 
-      # Planning & strategy
-      prometheus.model = "anthropic/claude-sonnet-4-5";
-      metis.model = "anthropic/claude-sonnet-4-5";
-      momus.model = "anthropic/claude-sonnet-4-5";
+      # Plan execution orchestrator (Sonnet per official docs)
+      atlas.model = "anthropic/claude-sonnet-4-5";
 
-      # Architecture & debugging
-      oracle.model = "anthropic/claude-sonnet-4-5";
+      # Planning & strategy (Opus per official docs)
+      prometheus.model = "anthropic/claude-opus-4-6";
+      metis.model = "anthropic/claude-opus-4-6";
+      momus.model = "anthropic/claude-opus-4-6";
 
-      # Fast search & research
+      # Architecture & debugging (Opus per official docs)
+      oracle.model = "anthropic/claude-opus-4-6";
+
+      # Search & research (Haiku for explore, Sonnet for librarian per official docs)
       explore.model = "anthropic/claude-haiku-4-5";
-      librarian.model = "anthropic/claude-haiku-4-5";
+      librarian.model = "anthropic/claude-sonnet-4-5";
 
       # Specialized agents
       frontend-ui-ux-engineer.model = "anthropic/claude-sonnet-4-5";
       document-writer.model = "anthropic/claude-sonnet-4-5";
-      multimodal-looker.model = "anthropic/claude-sonnet-4-5";
+      multimodal-looker.model = "anthropic/claude-haiku-4-5";
       qa-tester.model = "anthropic/claude-sonnet-4-5";
     };
   };

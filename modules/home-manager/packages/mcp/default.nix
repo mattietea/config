@@ -1,5 +1,6 @@
 {
   pkgs,
+  settings,
   ...
 }:
 {
@@ -20,7 +21,7 @@
         args = [
           "-y"
           "@modelcontextprotocol/server-filesystem"
-          "/Users/mattietea"
+          "/Users/${settings.username}"
         ];
       };
     };
