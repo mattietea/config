@@ -7,6 +7,7 @@
   programs.zsh = {
     enable = true;
     autocd = true;
+    autosuggestion.enable = true;
 
     shellAliases = {
       c = "clear";
@@ -43,7 +44,9 @@
       zstyle ':fzf-tab:complete:git-*:*' fzf-flags --tac
     '';
 
-    sessionVariables = settings.variables;
+    sessionVariables = settings.variables // {
+      MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
+    };
 
     history = {
       size = 10000000;
