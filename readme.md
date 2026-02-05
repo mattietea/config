@@ -5,7 +5,7 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 ## Key Features
 
 - **Modular architecture**: 45+ tool configurations, each with its own `default.nix`
-- **Multi-host support**: Separate personal and work configurations sharing common modules
+- **Multi-host support**: Self-contained personal and work configurations with independent settings
 - **AI-powered development**: Unified configuration for claude-code, opencode, and zed with Sisyphus multi-agent orchestration
 - **Cross-tool integrations**: fzf + bat/eza, git + delta, and more
 - **Reproducible builds**: Everything managed via Nix flakes for complete reproducibility
@@ -111,13 +111,12 @@ The configuration uses a modular architecture following standard nix-darwin and 
 - Creates host configurations by hostname (e.g., `Matts-Work-MacBook-Pro`)
 - Passes `inputs` directly to host configurations
 
-**Host Configurations (`hosts/work/`, `hosts/personal/`):**
+**Host Configurations (`hosts/personal.nix`, `hosts/work.nix`):**
 
-- Each host directly calls `darwin.lib.darwinSystem` (standard pattern)
-- Defines `settings`: username, email, environment variables
-- Imports darwin modules (system-level configuration)
-- Lists all home-manager modules in `sharedModules` (user-level configuration)
-- Configures home-manager integration
+- Each host is a self-contained file defining settings, applications, and packages
+- Defines `settings` inline: username, email, environment variables
+- Calls `lib/mkHost.nix` builder which handles all darwinSystem boilerplate
+- Lists applications and packages explicitly — hosts are fully independent
 
 **Darwin Modules (`modules/darwin/`):**
 
@@ -133,8 +132,8 @@ The configuration uses a modular architecture following standard nix-darwin and 
 - Organized into `applications/` (GUI apps) and `packages/` (CLI tools)
 - Each module is a folder with a `default.nix` file
 - Uses home-manager module system
-- Imported via `sharedModules` in host configurations
-- To add a new tool: create a new folder with `default.nix` in the appropriate subdirectory (`applications/` or `packages/`) and add it to the `sharedModules` list in the appropriate host file
+- Imported via `sharedModules` in host configurations (assembled by `lib/mkHost.nix`)
+- To add a new tool: create a new folder with `default.nix` in the appropriate subdirectory (`applications/` or `packages/`) and add it to each host file that should have it
 - Folder structure allows for additional files alongside modules (e.g., config files, scripts)
 
 ## Structure
@@ -144,29 +143,25 @@ The configuration uses a modular architecture following standard nix-darwin and 
 ├── flake.nix                    # Flake inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
 ├── .claude/auto-memory/         # Auto-memory plugin cache (gitignored)
-├── .vscode/                     # VS Code workspace settings
-│   ├── settings.json            # Editor configuration (formatting, linting)
-│   └── extensions.json          # Recommended extensions
+├── lib/
+│   └── mkHost.nix               # Shared darwinSystem builder function
 ├── hosts/
-│   ├── personal/default.nix     # Personal MacBook Air config
-│   └── work/default.nix         # Work MacBook Pro config
+│   ├── personal.nix             # Self-contained personal config (settings + apps + packages)
+│   └── work.nix                 # Self-contained work config (settings + apps + packages)
 └── modules/
     ├── darwin/system/           # macOS system defaults
     └── home-manager/
-        ├── ai/                  # Shared AI config (claude-code, opencode, zed)
-        │   ├── default.nix      # Exports: mcpServers, rules, agents
-        │   ├── mcp.nix          # MCP server definitions
-        │   ├── rules.nix        # Shared CLAUDE.md/AGENTS.md content
-        │   └── agents.nix       # Agent definitions
         ├── applications/        # GUI apps (brave, zed, discord, etc.)
         │   └── */default.nix
         └── packages/            # CLI tools (git, fzf, zsh, etc.)
+            ├── mcp/             # Standalone MCP server configuration
             └── */default.nix
 ```
 
 **Key configuration flow:**
 
-1. `hosts/{personal,work}/default.nix` imports modules via `sharedModules`
-2. Each module configures a tool using home-manager or `home.packages`
-3. AI tools (claude-code, opencode, zed) share config from `modules/home-manager/ai/`
-4. Cross-tool integrations reference packages via `${pkgs.tool}/bin/tool`
+1. `flake.nix` imports `hosts/personal.nix` and `hosts/work.nix`
+2. Each host defines settings inline and lists its applications and packages
+3. Hosts call `lib/mkHost.nix` which handles all darwinSystem boilerplate
+4. Each module configures a tool using home-manager or `home.packages`
+5. Cross-tool integrations reference packages via `${pkgs.tool}/bin/tool`

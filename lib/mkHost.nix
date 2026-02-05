@@ -1,34 +1,33 @@
-{ inputs, ... }:
-let
-  settings = import ../../lib/settings;
-  modules = import ../../lib/modules { root = ../..; };
-in
+{
+  inputs,
+  settings,
+  hostname,
+  system ? "aarch64-darwin",
+  applications ? [ ],
+  packages ? [ ],
+}:
+
 inputs.darwin.lib.darwinSystem {
-  system = "aarch64-darwin";
-  specialArgs = {
-    inherit inputs settings;
-  };
+  inherit system;
+  specialArgs = { inherit inputs settings; };
   modules = [
     {
       nixpkgs.config.allowUnfree = true;
       nix.enable = false;
-
       users.users.${settings.username} = {
         name = settings.username;
         home = "/Users/${settings.username}";
       };
     }
-    ../../modules/darwin/system
+    ../modules/darwin/system
     inputs.home-manager.darwinModules.home-manager
     {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "bak";
-        extraSpecialArgs = {
-          inherit settings inputs;
-        };
-        sharedModules = modules.allPersonal;
+        extraSpecialArgs = { inherit settings inputs; };
+        sharedModules = applications ++ packages;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           home = {
@@ -40,8 +39,6 @@ inputs.darwin.lib.darwinSystem {
         };
       };
     }
-    {
-      networking.hostName = "Matts-Personal-Macbook-Air";
-    }
+    { networking.hostName = hostname; }
   ];
 }

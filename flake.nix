@@ -27,8 +27,8 @@
 
       flake = {
         darwinConfigurations = {
-          Matts-Work-MacBook-Pro = import ./hosts/work { inherit inputs; };
-          Matts-Personal-Macbook-Air = import ./hosts/personal { inherit inputs; };
+          Matts-Work-MacBook-Pro = import ./hosts/work.nix { inherit inputs; };
+          Matts-Personal-Macbook-Air = import ./hosts/personal.nix { inherit inputs; };
         };
       };
 
