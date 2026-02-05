@@ -15,8 +15,32 @@
     package = inputs.claude-code-nix.packages.${pkgs.system}.default;
     enableMcpIntegration = true;
     settings = {
+      # Model & Mode
       model = "opus";
       defaultMode = "plan";
+
+      # UI Settings
+      theme = "dark";
+      terminalProgressBar = true;
+      showTips = true;
+      verboseOutput = true;
+      outputStyle = "default";
+      showCodeDiffFooter = true;
+      editorMode = "normal";
+
+      # Features
+      autoCompact = true;
+      thinkingMode = true;
+      promptSuggestions = true;
+      rewindCode = true;
+      respectGitignoreInFilePicker = true;
+
+      # Notifications (Ghostty OSC 777)
+      notifications = "ghostty";
+
+      # IDE Integration
+      autoConnectIde = true;
+      claudeInChromeEnabledByDefault = true;
       permissions = {
         allow = [
           "Read"
