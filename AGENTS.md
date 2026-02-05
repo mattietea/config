@@ -85,15 +85,16 @@ sudo determinate-nixd upgrade
 **Data Flow**:
 
 1. `flake.nix` uses `flake-parts.lib.mkFlake` for modular flake structure
-2. `lib/settings/default.nix` provides shared user config to all hosts
-3. `lib/modules/default.nix` accepts `{ root }` parameter for path resolution
-4. `hosts/{personal,work}/default.nix` import from lib/ with `modules.allPersonal` or `modules.allWork`
-5. Each module configures a tool using home-manager or `home.packages`
-6. AI tools use `enableMcpIntegration` to connect to shared MCP module
+2. `flake.nix` includes `claude-code-nix` flake input for pre-built claude-code package
+3. `lib/settings/default.nix` provides shared user config to all hosts
+4. `lib/modules/default.nix` accepts `{ root }` parameter for path resolution
+5. `hosts/{personal,work}/default.nix` import from lib/ with `modules.allPersonal` or `modules.allWork`
+6. Each module configures a tool using home-manager or `home.packages`
+7. AI tools use `enableMcpIntegration` to connect to shared MCP module
 
 **Key Files**:
 
-- `flake.nix` - flake-parts structure with `flake` and `perSystem` outputs
+- `flake.nix` - flake-parts structure with `flake` and `perSystem` outputs, flake inputs
 - `lib/settings/default.nix` - Single source of truth for user settings
 - `lib/modules/default.nix` - Shared module lists (DRY host configuration)
 - `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
@@ -137,6 +138,29 @@ sudo determinate-nixd upgrade
   home.packages = [ pkgs.tool ];
 }
 ```
+
+### Devenv Configuration
+
+**Git hooks setup**:
+
+```nix
+git-hooks = {
+  enable = true;
+  package = pkgs.pre-commit;  # Explicit package for pre-commit
+  hooks = {
+    treefmt.enable = true;
+    statix.enable = true;
+    shellcheck.enable = true;
+    flake-check = {
+      enable = true;
+      entry = "nix flake check --no-build";
+      pass_filenames = false;
+    };
+  };
+};
+```
+
+Convention: Explicitly set `package = pkgs.pre-commit` to ensure correct pre-commit binary is used
 
 ### Naming Conventions
 
@@ -187,6 +211,11 @@ AI tools (claude-code, opencode, zed) configure independently:
 - Each tool uses `enableMcpIntegration = true` to connect to shared MCP module
 - MCP servers defined in `modules/home-manager/packages/mcp/default.nix`
 - No shared rules or agent definitions - tools configure their own settings
+
+**Package sources**:
+
+- claude-code: Uses external flake input `claude-code-nix` for pre-built package
+- opencode, zed: Use nixpkgs packages
 
 **Model configuration**:
 
@@ -343,9 +372,33 @@ statusLine = {
 
 Pattern: Delegate to external scripts for complex dynamic status displays
 
-### 9. Non-Flake Input Pattern (External Packages)
+### 9. External Package Inputs Pattern
 
-For packages not in nixpkgs that need to be built from source:
+**For pre-built packages from other flakes**:
+
+```nix
+# flake.nix - Add as flake input
+claude-code-nix.url = "github:sadjow/claude-code-nix";
+claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
+```
+
+**Access in modules**:
+
+```nix
+{
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  programs.claude-code = {
+    enable = true;
+    package = inputs.claude-code-nix.packages.${pkgs.system}.default;
+  };
+}
+```
+
+**For source-only packages (build yourself)**:
 
 ```nix
 # flake.nix - Add as non-flake input
@@ -457,6 +510,10 @@ For maintainable flake structure using flake-parts:
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # External package flakes
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
+    claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -485,6 +542,7 @@ For maintainable flake structure using flake-parts:
 - Automatic system iteration via `perSystem`
 - Cleaner than manual `forAllSystems` pattern
 - `flake.darwinConfigurations` for system configs, `perSystem.formatter` for dev tools
+- Use `inputs.nixpkgs.follows` to unify dependency versions across all inputs
 
 ### 13. Shared Configuration Library Pattern
 
