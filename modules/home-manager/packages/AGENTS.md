@@ -216,7 +216,7 @@ in
 - fzf → bat, eza (preview integration)
 - git → delta (diff viewer)
 - zsh → multiple tools (shell integration)
-- claude-code → terminal-notifier, python3 (plugin dependencies)
+- claude-code → terminal-notifier (plugin dependencies)
 - AI tools → mcp (MCP server configuration via enableMcpIntegration)
 
 <!-- END AUTO-MANAGED -->

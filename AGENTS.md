@@ -61,7 +61,6 @@ sudo determinate-nixd upgrade
 .
 ├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
-├── .claude/auto-memory/         # Auto-memory plugin cache (gitignored)
 ├── .sisyphus/                   # Sisyphus planning artifacts (gitignored)
 ├── .github/workflows/           # GitHub Actions CI
 │   ├── check.yml                # Flake validation and devenv tests
@@ -263,7 +262,6 @@ Claude Code configured in `modules/home-manager/packages/claude-code/default.nix
 **Plugins**:
 
 - `oh-my-claudecode@omc` - Advanced orchestration and planning
-- `auto-memory@severity1-marketplace` - Automatic CLAUDE.md/AGENTS.md management
 - `code-simplifier@claude-plugins-official` - Code optimization suggestions
 - `claude-notifications-go@claude-notifications-go` - macOS desktop notifications
 
@@ -272,7 +270,6 @@ Claude Code configured in `modules/home-manager/packages/claude-code/default.nix
 **Required package dependencies**:
 
 - `terminal-notifier` - macOS notification support for claude-notifications-go
-- `python3` - Python runtime for auto-memory plugin
 
 **Plugin marketplaces**: Defined in `extraKnownMarketplaces` with GitHub source repositories
 

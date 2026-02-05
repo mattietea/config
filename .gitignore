@@ -12,8 +12,6 @@ devenv.local.yaml
 # pre-commit
 .pre-commit-config.yaml
 
-# Claude Code auto-memory
-.claude/auto-memory/dirty-files
 .sisyphus/
 
 # oh-my-claudecode

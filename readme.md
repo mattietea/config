@@ -142,7 +142,6 @@ The configuration uses a modular architecture following standard nix-darwin and 
 .
 ├── flake.nix                    # Flake inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
-├── .claude/auto-memory/         # Auto-memory plugin cache (gitignored)
 ├── lib/
 │   └── mkHost.nix               # Shared darwinSystem builder function
 ├── hosts/
