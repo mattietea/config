@@ -27,6 +27,7 @@ mkHost {
   ];
 
   packages = [
+    (pkg "agent-skills")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")

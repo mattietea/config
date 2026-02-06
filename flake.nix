@@ -18,6 +18,19 @@
 
     opencode.url = "github:anomalyco/opencode/dev";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
+
+    agent-skills-nix.url = "github:Kyure-A/agent-skills-nix";
+    agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    anthropic-skills = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
+
+    vercel-skills = {
+      url = "github:vercel-labs/agent-skills";
+      flake = false;
+    };
   };
 
   outputs =
