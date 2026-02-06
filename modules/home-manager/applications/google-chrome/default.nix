@@ -1,5 +1,5 @@
 _: {
-  programs.brave = {
+  programs.google-chrome = {
     enable = true;
   };
 }

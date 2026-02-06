@@ -18,6 +18,7 @@ mkHost {
   hostname = "Matts-Work-MacBook-Pro";
 
   applications = [
+    (app "google-chrome")
     (app "raycast")
     (app "spotify")
     (app "zed")

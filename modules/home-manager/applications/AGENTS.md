@@ -10,7 +10,7 @@ Houses macOS application configurations for GUI apps installed via home-manager.
 
 **Contains applications including**:
 
-- Browser: brave, safari (extensions via mas)
+- Browser: brave, google-chrome, safari (extensions via mas)
 - Communication: discord, whatsapp (optional)
 - Development: zed (editor), docker
 - Productivity: raycast, logseq (optional)
@@ -27,6 +27,7 @@ applications/
 ├── brave/           # Web browser
 ├── discord/         # Communication
 ├── docker/          # Container platform
+├── google-chrome/   # Web browser
 ├── logseq/          # Note-taking (optional)
 ├── raycast/         # Launcher & productivity
 ├── safari/          # Safari extensions (via mas)

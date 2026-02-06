@@ -20,6 +20,7 @@ mkHost {
   applications = [
     (app "brave")
     (app "discord")
+    (app "google-chrome")
     (app "raycast")
     (app "safari")
     (app "spotify")

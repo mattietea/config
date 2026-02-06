@@ -11,8 +11,13 @@ inputs.darwin.lib.darwinSystem {
   specialArgs = { inherit inputs settings; };
   modules = [
     {
-      nixpkgs.hostPlatform = system;
-      nixpkgs.config.allowUnfree = true;
+      nixpkgs = {
+        hostPlatform = system;
+        config = {
+          allowUnfree = true;
+          allowInsecurePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "google-chrome" ];
+        };
+      };
       nix.enable = false;
       users.users.${settings.username} = {
         name = settings.username;
