@@ -40,7 +40,7 @@
       theme = {
         mode = "system";
         light = "One Light";
-        dark = "Github Dark";
+        dark = "GitHub Dark";
       };
       terminal = {
         font_size = 14;
