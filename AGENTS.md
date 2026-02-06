@@ -680,6 +680,10 @@ shellAliases = {
 
 ## Custom Notes
 
-Add project-specific notes, tips, or reminders here. This section is never auto-modified.
+**Always invoke Nix skills before writing/modifying Nix code:**
+
+- `/home-manager` — When adding tools, configuring apps, setting up shell integrations, managing cross-tool references
+- `/nix` — When writing or reviewing any Nix code (patterns, anti-patterns, formatting, lib access)
+- `/nix-darwin` — When modifying macOS system defaults, flake inputs, host files, or mkHost builder
 
 <!-- END MANUAL -->
