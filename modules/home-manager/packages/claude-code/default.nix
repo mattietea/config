@@ -46,18 +46,10 @@
         pr = "";
       };
       enabledPlugins = {
-        "oh-my-claudecode@omc" = true;
         "code-simplifier@claude-plugins-official" = true;
         "claude-notifications-go@claude-notifications-go" = true;
       };
       extraKnownMarketplaces = {
-        omc = {
-          source = {
-            source = "github";
-            repo = "Yeachan-Heo/oh-my-claudecode";
-          };
-        };
-
         claude-plugins-official = {
           source = {
             source = "github";
@@ -70,10 +62,6 @@
             repo = "777genius/claude-notifications-go";
           };
         };
-      };
-      statusLine = {
-        type = "command";
-        command = "node ~/.claude/hud/omc-hud.mjs";
       };
     };
   };
