@@ -24,6 +24,10 @@
           "/Users/${settings.username}"
         ];
       };
+      grep = {
+        type = "http";
+        url = "https://mcp.grep.app";
+      };
     };
   };
 }
