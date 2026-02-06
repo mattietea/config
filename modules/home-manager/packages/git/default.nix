@@ -7,6 +7,13 @@
   programs.git = {
     enable = true;
 
+    ignores = [
+      ".DS_Store"
+      "._*"
+      ".Spotlight-V100"
+      ".Trashes"
+    ];
+
     settings = {
       user = {
         name = settings.username;
@@ -125,7 +132,7 @@
         stat = false;
       };
       diff.algorithm = "histogram";
-      pager.diff = false; # Disable pager for git diff only
+      diff.colorMoved = "default";
       status.showUntrackedFiles = "normal";
       # Reduce advice messages for cleaner output
       advice = {
