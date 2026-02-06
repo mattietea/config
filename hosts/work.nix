@@ -19,6 +19,7 @@ mkHost {
 
   applications = [
     (app "google-chrome")
+    (app "opencode-desktop")
     (app "raycast")
     (app "spotify")
     (app "zed")
