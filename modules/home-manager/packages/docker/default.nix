@@ -1,7 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
-  home.packages = [ pkgs.docker ];
+_: {
+  programs.docker-cli = {
+    enable = true;
+  };
 }

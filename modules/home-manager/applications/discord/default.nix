@@ -1,7 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
-  home.packages = [ pkgs.discord ];
+_: {
+  programs.discord = {
+    enable = true;
+  };
 }

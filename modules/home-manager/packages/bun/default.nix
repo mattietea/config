@@ -1,7 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
-  home.packages = [ pkgs.bun ];
+_: {
+  programs.bun = {
+    enable = true;
+  };
 }
