@@ -20,7 +20,6 @@ mkHost {
   applications = [
     (app "brave")
     (app "discord")
-    (app "docker")
     (app "raycast")
     (app "safari")
     (app "spotify")
@@ -35,6 +34,7 @@ mkHost {
     (pkg "delta")
     (pkg "devenv")
     (pkg "direnv")
+    (pkg "docker")
     (pkg "eza")
     (pkg "fonts")
     (pkg "fzf")

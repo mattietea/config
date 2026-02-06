@@ -18,7 +18,6 @@ mkHost {
   hostname = "Matts-Work-MacBook-Pro";
 
   applications = [
-    (app "docker")
     (app "raycast")
     (app "spotify")
     (app "zed")
@@ -32,6 +31,7 @@ mkHost {
     (pkg "delta")
     (pkg "devenv")
     (pkg "direnv")
+    (pkg "docker")
     (pkg "eza")
     (pkg "fonts")
     (pkg "fzf")
