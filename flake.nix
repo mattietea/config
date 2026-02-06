@@ -15,6 +15,9 @@
 
     claude-code-nix.url = "github:sadjow/claude-code-nix";
     claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    opencode.url = "github:anomalyco/opencode/dev";
+    opencode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

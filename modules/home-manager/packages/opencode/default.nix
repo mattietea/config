@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
@@ -49,7 +50,7 @@ in
 
   programs.opencode = {
     enable = true;
-    package = pkgs.opencode;
+    package = inputs.opencode.packages.${pkgs.system}.default;
     enableMcpIntegration = true;
     settings = {
       autoshare = false;
