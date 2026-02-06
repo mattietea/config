@@ -9,9 +9,6 @@
   languages.nix.enable = true;
   languages.nix.lsp.package = pkgs.nixd;
 
-  # Add nixfmt-rfc-style for VS Code formatting (RFC 0076 compliant)
-  packages = [ pkgs.nixfmt-rfc-style ];
-
   # https://devenv.sh/scripts/
   scripts = {
     switch.exec = ''
