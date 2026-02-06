@@ -8,10 +8,10 @@
 }:
 
 inputs.darwin.lib.darwinSystem {
-  inherit system;
   specialArgs = { inherit inputs settings; };
   modules = [
     {
+      nixpkgs.hostPlatform = system;
       nixpkgs.config.allowUnfree = true;
       nix.enable = false;
       users.users.${settings.username} = {

@@ -11,7 +11,7 @@
 
   programs.claude-code = {
     enable = true;
-    package = inputs.claude-code-nix.packages.${pkgs.system}.default;
+    package = inputs.claude-code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableMcpIntegration = true;
     settings = {
       # Model & Mode
