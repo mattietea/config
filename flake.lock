@@ -24,11 +24,11 @@
     "anthropic-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1770171633,
-        "narHash": "sha256-8tANLG91vLbC30IFpEakPBN9bUjJJldpvX28w9e9y80=",
+        "lastModified": 1770412772,
+        "narHash": "sha256-9FGubcwHcGBJcKl02aJ+YsTMiwDOdgU/FHALjARG51c=",
         "owner": "anthropics",
         "repo": "skills",
-        "rev": "a5bcdd7e58cdff48566bf876f0a72a2008dcefbc",
+        "rev": "1ed29a03dc852d30fa6ef2ca53a67dc2c2c2c563",
         "type": "github"
       },
       "original": {
@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770362224,
-        "narHash": "sha256-glZjGWSy+LpalbwlsQ3iWNpWU4TlEOandYWOpl8sMt8=",
+        "lastModified": 1770407694,
+        "narHash": "sha256-4xSpkgFV5GYEW6IO1CeVVY+lZMQ0QdKX25MxMXGu3GQ=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "f4f8d6e7cc59e34e5a85550f017ead83ab925b22",
+        "rev": "5719a158291f024816c543362771df57e2ebb9d3",
         "type": "github"
       },
       "original": {
@@ -180,11 +180,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770405554,
-        "narHash": "sha256-7OZprcvFzP7A/Rq9mLLwEHpzPySj/R/E6kzf4SYFn8s=",
+        "lastModified": 1770422081,
+        "narHash": "sha256-V5fLv7jBDgXgAaf9inNqz/Z0foizsa3cydxtLVCbuwA=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "a25cd2da727f0171cea7a23611abb56b8003b7d2",
+        "rev": "4abf8049c99b6adc0f130e28d0126f59b3869e49",
         "type": "github"
       },
       "original": {
