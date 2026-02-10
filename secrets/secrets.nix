@@ -4,4 +4,5 @@ let
 in
 {
   "context7-api-key.age".publicKeys = all;
+  "exa-api-key.age".publicKeys = all;
 }
