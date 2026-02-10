@@ -25,6 +25,7 @@ mkHost {
     (app "raycast")
     (app "safari")
     (app "spotify")
+    (app "utm")
     (app "zed")
   ];
 
