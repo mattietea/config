@@ -25,6 +25,14 @@ inputs.darwin.lib.darwinSystem {
       };
     }
     ../modules/darwin/system
+    inputs.agenix.darwinModules.default
+    {
+      age.identityPaths = [ "/Users/${settings.username}/.ssh/id_ed25519" ];
+      age.secrets.context7-api-key = {
+        file = ../secrets/context7-api-key.age;
+        owner = settings.username;
+      };
+    }
     inputs.home-manager.darwinModules.home-manager
     {
       home-manager = {

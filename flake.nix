@@ -19,6 +19,9 @@
     opencode.url = "github:anomalyco/opencode/dev";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
 
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
     agent-skills-nix.url = "github:Kyure-A/agent-skills-nix";
     agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
 
