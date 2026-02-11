@@ -18,15 +18,15 @@
       claude = "claude --dangerously-skip-permissions";
     };
 
-    plugins = with pkgs; [
+    plugins = [
       {
         name = "fast-syntax-highlighting";
-        src = zsh-fast-syntax-highlighting;
+        src = pkgs.zsh-fast-syntax-highlighting;
         file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
       }
       {
         name = "fzf-tab";
-        src = zsh-fzf-tab;
+        src = pkgs.zsh-fzf-tab;
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
     ];
