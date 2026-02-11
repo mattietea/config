@@ -72,6 +72,11 @@ sudo determinate-nixd upgrade
 │   └── work.nix                 # Self-contained work config (settings + apps + packages)
 └── modules/
     ├── darwin/system/           # macOS system defaults
+    │   ├── default.nix          # Importer + meta settings
+    │   ├── dock.nix             # Dock, Spaces, Mission Control
+    │   ├── finder.nix           # Finder preferences
+    │   ├── input.nix            # Keyboard, trackpad, input settings
+    │   └── updates.nix          # Software Update settings
     └── home-manager/
         ├── applications/        # GUI apps (brave, zed, discord, etc.)
         │   └── */default.nix
@@ -97,6 +102,11 @@ sudo determinate-nixd upgrade
 - `hosts/personal.nix` - Self-contained personal host (settings, apps, packages)
 - `hosts/work.nix` - Self-contained work host (settings, apps, packages)
 - `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
+- `modules/darwin/system/default.nix` - System defaults importer + meta settings
+- `modules/darwin/system/dock.nix` - Dock, Spaces, Mission Control settings
+- `modules/darwin/system/finder.nix` - Finder preferences
+- `modules/darwin/system/input.nix` - Keyboard, trackpad, input settings
+- `modules/darwin/system/updates.nix` - Software Update settings
 - `modules/home-manager/packages/mcp/default.nix` - MCP server configuration
 - `.github/workflows/check.yml` - CI: flake check + devenv test
 - `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv)
