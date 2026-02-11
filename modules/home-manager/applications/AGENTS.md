@@ -6,7 +6,7 @@ Collection of graphical user interface applications.
 
 ## Purpose
 
-Houses macOS application configurations for GUI apps installed via home-manager. Each application gets its own subdirectory with a `default.nix` module that uses `home.packages` or app-specific home-manager options.
+Houses macOS application configurations for GUI apps installed via home-manager. Each application gets its own subdirectory with a `default.nix` module.
 
 **Contains applications including**:
 
@@ -36,104 +36,23 @@ applications/
 └── zed/             # Code editor
 ```
 
-**Module Pattern**:
-
-- Each directory has `default.nix`
-- Imported by hosts via relative paths in `sharedModules`
-- Some modules commented out in host configs (optional installs)
-
 <!-- END AUTO-MANAGED -->
 
 <!-- AUTO-MANAGED: conventions -->
 
 ## Module-Specific Conventions
 
-### Standard Application Module
-
-Most apps use simple package installation:
-
-```nix
-{
-  pkgs,
-  ...
-}:
-{
-  home.packages = [ pkgs.app-name ];
-}
-```
+See root `AGENTS.md` for standard module template. Most apps use simple `home.packages = [ pkgs.app-name ];`.
 
 ### Zed Editor Pattern
 
-Zed uses standard home-manager configuration:
-
-```nix
-{
-  programs.zed-editor = {
-    enable = true;
-    extensions = [ "nix" "opencode" ];
-    userSettings = {
-      # ... editor settings
-    };
-  };
-}
-```
-
-### Optional Applications
-
-Some apps are commented out in host configs:
-
-```nix
-# hosts/personal/default.nix
-sharedModules = [
-  # ../../modules/home-manager/applications/logseq   # Commented
-  ../../modules/home-manager/applications/brave       # Active
-];
-```
+Zed uses home-manager's `programs.zed-editor` with extensions and userSettings. See `zed/default.nix`.
 
 ### macOS App Management
 
-Applications installed via home-manager appear in:
-
-- `~/Applications/Home Manager Apps/`
-- Symlinked by `copyApps` activation
-
-### Mac App Store Apps (mas pattern)
-
-For Safari extensions and App Store-only apps, use `mas` CLI with activation scripts:
-
-```nix
-{
-  pkgs,
-  lib,
-  ...
-}:
-let
-  masApps = {
-    "App Name" = 1234567890;  # App Store ID
-  };
-in
-{
-  home.packages = [ pkgs.mas ];
-
-  home.activation.installMasApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${lib.concatStringsSep "\n" (
-      lib.mapAttrsToList (name: id: ''
-        if ! ${pkgs.mas}/bin/mas list | grep -q "^${toString id} "; then
-          echo "Installing ${name}..."
-          ${pkgs.mas}/bin/mas install ${toString id}
-        fi
-      '') masApps
-    )}
-  '';
-}
-```
-
-**Key points**:
-
+- Apps installed via home-manager appear in `~/Applications/Home Manager Apps/`
+- App Store apps use `mas` CLI with `home.activation` scripts (see `safari/default.nix` for example)
 - Find App Store IDs: `mas search <name>` or from App Store URLs
-- Idempotent: checks before installing
-- `lib.hm.dag.entryAfter [ "writeBoundary" ]` ensures proper activation ordering
-- Used by: `safari/` module for extensions (1Blocker, SponsorBlock)
 
 <!-- END AUTO-MANAGED -->
 
@@ -141,14 +60,7 @@ in
 
 ## Key Dependencies
 
-**Imports from**:
-
-- None (applications use home-manager options directly)
-
-**Imported by**:
-
-- `hosts/personal/default.nix` - Subset of applications
-- `hosts/work/default.nix` - Different subset (work-appropriate apps)
+**Imported by**: `hosts/personal.nix` and `hosts/work.nix` as `sharedModules` paths
 
 **External dependencies**:
 
