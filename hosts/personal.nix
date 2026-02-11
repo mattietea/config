@@ -26,6 +26,7 @@ mkHost {
     (app "safari")
     (app "spotify")
     (app "utm")
+    (app "ghostty")
     (app "zed")
   ];
 
@@ -45,7 +46,6 @@ mkHost {
     (pkg "fonts")
     (pkg "fzf")
     (pkg "gh")
-    (pkg "ghostty")
     (pkg "git")
     (pkg "git-absorb")
     (pkg "lazygit")

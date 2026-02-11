@@ -22,6 +22,7 @@ mkHost {
     (app "opencode-desktop")
     (app "raycast")
     (app "spotify")
+    (app "ghostty")
     (app "zed")
   ];
 
@@ -41,7 +42,6 @@ mkHost {
     (pkg "fonts")
     (pkg "fzf")
     (pkg "gh")
-    (pkg "ghostty")
     (pkg "git")
     (pkg "git-absorb")
     (pkg "lazygit")
