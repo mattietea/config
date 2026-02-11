@@ -9,6 +9,10 @@
   languages.nix.enable = true;
   languages.nix.lsp.package = pkgs.nixd;
 
+  packages = [
+    pkgs.deadnix
+  ];
+
   # https://devenv.sh/scripts/
   scripts = {
     switch.exec = ''
@@ -31,6 +35,10 @@
 
     clean.exec = ''
       nix-collect-garbage
+    '';
+
+    deadnix.exec = ''
+      deadnix --no-lambda-pattern-names .
     '';
   };
 
@@ -59,6 +67,13 @@
       shellcheck.enable = true;
       # Enable statix for Nix file linting
       statix.enable = true;
+      # Enable deadnix for unused code detection
+      deadnix = {
+        enable = true;
+        settings = {
+          noLambdaPatternNames = true;
+        };
+      };
       # Validate flake on commit
       flake-check = {
         enable = true;
