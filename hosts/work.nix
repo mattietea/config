@@ -32,6 +32,7 @@ mkHost {
     (pkg "bat")
     (pkg "bun")
     (pkg "claude-code")
+    (pkg "dock")
     (pkg "delta")
     (pkg "devenv")
     (pkg "direnv")

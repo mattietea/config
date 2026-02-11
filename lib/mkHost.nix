@@ -6,9 +6,13 @@
   applications ? [ ],
   packages ? [ ],
 }:
-
+let
+  applicationNames = map builtins.baseNameOf applications;
+in
 inputs.darwin.lib.darwinSystem {
-  specialArgs = { inherit inputs settings; };
+  specialArgs = {
+    inherit inputs settings applicationNames;
+  };
   modules = [
     {
       nixpkgs = {
@@ -47,7 +51,7 @@ inputs.darwin.lib.darwinSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "bak";
-        extraSpecialArgs = { inherit settings inputs; };
+        extraSpecialArgs = { inherit settings inputs applicationNames; };
         sharedModules = applications ++ packages;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
