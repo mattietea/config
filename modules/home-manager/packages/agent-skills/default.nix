@@ -16,8 +16,9 @@
         path = inputs.vercel-skills;
         subdir = "skills";
       };
-      local = {
-        path = ./skills;
+      vercel-cli = {
+        path = inputs.vercel-skills-cli;
+        subdir = "skills";
       };
     };
     skills.enable = [

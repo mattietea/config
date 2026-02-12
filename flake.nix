@@ -34,6 +34,11 @@
       url = "github:vercel-labs/agent-skills";
       flake = false;
     };
+
+    vercel-skills-cli = {
+      url = "github:vercel-labs/skills";
+      flake = false;
+    };
   };
 
   outputs =

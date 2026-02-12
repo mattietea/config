@@ -271,7 +271,8 @@
         "home-manager": "home-manager_3",
         "nixpkgs": "nixpkgs",
         "opencode": "opencode",
-        "vercel-skills": "vercel-skills"
+        "vercel-skills": "vercel-skills",
+        "vercel-skills-cli": "vercel-skills-cli"
       }
     },
     "systems": {
@@ -317,6 +318,22 @@
       "original": {
         "owner": "vercel-labs",
         "repo": "agent-skills",
+        "type": "github"
+      }
+    },
+    "vercel-skills-cli": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770806776,
+        "narHash": "sha256-RlbAWuuH5nOWSV9Qcr9y4d5VtP0BLweKoyljS9nGK1Q=",
+        "owner": "vercel-labs",
+        "repo": "skills",
+        "rev": "0dd0490b1b795ae707a5596a54958db587a2465b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "skills",
         "type": "github"
       }
     }
