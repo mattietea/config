@@ -20,7 +20,7 @@
       defaultMode = "plan";
 
       # UI Settings
-      theme = "dark";
+      theme = "ansi-light";
       terminalProgressBarEnabled = true;
       spinnerTipsEnabled = true;
       outputStyle = "default";
