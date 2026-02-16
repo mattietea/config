@@ -4,8 +4,8 @@ let
     username = "mattietea";
     email = "mattcthomas@me.com";
     variables = {
-      EDITOR = "zed --wait";
-      VISUAL = "zed --wait";
+      EDITOR = "nano";
+      VISUAL = "nano";
     };
   };
 
@@ -27,7 +27,6 @@ mkHost {
     (app "spotify")
     (app "utm")
     (app "ghostty")
-    (app "zed")
   ];
 
   packages = [
