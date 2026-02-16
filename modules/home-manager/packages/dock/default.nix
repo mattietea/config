@@ -46,6 +46,10 @@ let
       appPath = "${homeApps}/Ghostty.app";
     }
     {
+      moduleName = "zed";
+      appPath = "${homeApps}/Zed.app";
+    }
+    {
       moduleName = "opencode-desktop";
       appPath = "${homeApps}/OpenCode.app";
     }
