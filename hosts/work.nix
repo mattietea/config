@@ -37,7 +37,7 @@ mkHost {
     (pkg "delta")
     (pkg "devenv")
     (pkg "direnv")
-    (pkg "docker")
+
     (pkg "eza")
     (pkg "fonts")
     (pkg "fzf")
