@@ -19,6 +19,10 @@ let
     }
     {
       moduleName = null;
+      appPath = "/System/Applications/Calendar.app";
+    }
+    {
+      moduleName = null;
       appPath = "/System/Applications/Reminders.app";
     }
     {
