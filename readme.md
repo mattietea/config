@@ -4,11 +4,12 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 
 ## Key Features
 
-- **Modular architecture**: 45+ tool configurations, each with its own `default.nix`
+- **Modular architecture**: 40+ tool configurations, each with its own `default.nix`
 - **Multi-host support**: Self-contained personal and work configurations with independent settings
-- **AI-powered development**: Unified configuration for claude-code, opencode, and zed with Sisyphus multi-agent orchestration
+- **AI-powered development**: Independent configuration for claude-code, opencode, and zed with MCP integration
 - **Cross-tool integrations**: fzf + bat/eza, git + delta, and more
 - **Reproducible builds**: Everything managed via Nix flakes for complete reproducibility
+- **Automated CI/CD**: GitHub Actions for flake validation, testing, and weekly dependency updates
 
 ## Setup
 
@@ -140,8 +141,11 @@ The configuration uses a modular architecture following standard nix-darwin and 
 
 ```
 .
-├── flake.nix                    # Flake inputs and outputs
+├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
+├── .github/workflows/           # GitHub Actions CI
+│   ├── check.yml                # Flake validation and devenv tests
+│   └── update.yml               # Scheduled dependency updates (flake + devenv)
 ├── lib/
 │   └── mkHost.nix               # Shared darwinSystem builder function
 ├── hosts/
@@ -149,6 +153,11 @@ The configuration uses a modular architecture following standard nix-darwin and 
 │   └── work.nix                 # Self-contained work config (settings + apps + packages)
 └── modules/
     ├── darwin/system/           # macOS system defaults
+    │   ├── default.nix          # Importer + meta settings
+    │   ├── dock.nix             # Dock, Spaces, Mission Control
+    │   ├── finder.nix           # Finder preferences
+    │   ├── input.nix            # Keyboard, trackpad, input settings
+    │   └── updates.nix          # Software Update settings
     └── home-manager/
         ├── applications/        # GUI apps (brave, zed, discord, etc.)
         │   └── */default.nix
@@ -159,8 +168,10 @@ The configuration uses a modular architecture following standard nix-darwin and 
 
 **Key configuration flow:**
 
-1. `flake.nix` imports `hosts/personal.nix` and `hosts/work.nix`
-2. Each host defines settings inline and lists its applications and packages
-3. Hosts call `lib/mkHost.nix` which handles all darwinSystem boilerplate
-4. Each module configures a tool using home-manager or `home.packages`
-5. Cross-tool integrations reference packages via `${pkgs.tool}/bin/tool`
+1. `flake.nix` uses `flake-parts.lib.mkFlake` for modular flake structure
+2. `flake.nix` imports `hosts/personal.nix` and `hosts/work.nix` directly
+3. Each host defines settings inline and lists its applications and packages
+4. Hosts call `lib/mkHost.nix` which handles all darwinSystem boilerplate
+5. Each module configures a tool using home-manager or `home.packages`
+6. AI tools use `enableMcpIntegration` to connect to shared MCP module
+7. Cross-tool integrations reference packages via `${pkgs.tool}/bin/tool`

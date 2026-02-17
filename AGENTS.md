@@ -61,7 +61,6 @@ sudo determinate-nixd upgrade
 .
 ├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
-├── .sisyphus/                   # Sisyphus planning artifacts (gitignored)
 ├── .github/workflows/           # GitHub Actions CI
 │   ├── check.yml                # Flake validation and devenv tests
 │   └── update.yml               # Scheduled dependency updates (flake + devenv)
