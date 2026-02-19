@@ -45,9 +45,6 @@ let
   };
 in
 {
-  # Required for macOS desktop notifications
-  home.packages = [ pkgs.terminal-notifier ];
-
   programs.opencode = {
     enable = true;
     package = inputs.opencode.packages.${pkgs.system}.default;
@@ -56,7 +53,6 @@ in
       autoshare = false;
       plugin = [
         "oh-my-opencode"
-        "@mohak34/opencode-notifier@latest"
       ];
     };
   };
