@@ -2,6 +2,8 @@
 let
   settings = {
     username = "mattietea";
+    name = "Matt Thomas";
+    github = "mattietea";
     email = "mattcthomas@me.com";
     variables = {
       EDITOR = "zed --wait";
