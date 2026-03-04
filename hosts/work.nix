@@ -1,8 +1,10 @@
 { inputs }:
 let
   settings = {
-    username = "mattietea";
-    email = "mattcthomas@me.com";
+    username = "matthewthomas";
+    name = "Matthew Thomas";
+    github = "mattietea-harvey";
+    email = "matthew.thomas@harvey.ai";
     variables = {
       EDITOR = "zed --wait";
       VISUAL = "zed --wait";
@@ -15,13 +17,13 @@ let
 in
 mkHost {
   inherit inputs settings;
-  hostname = "Matts-Work-MacBook-Pro";
+  hostname = "Castula-KQPN";
 
   applications = [
-    (app "google-chrome")
+    # (app "google-chrome")
     (app "opencode-desktop")
-    (app "raycast")
-    (app "spotify")
+    # (app "raycast")
+    # (app "spotify")
     (app "ghostty")
     (app "zed")
   ];
