@@ -6,6 +6,7 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
 
     ignores = [
       ".DS_Store"
@@ -16,8 +17,7 @@
 
     settings = {
       user = {
-        name = settings.username;
-        inherit (settings) email;
+        inherit (settings) name email;
       };
 
       alias = {
@@ -94,7 +94,7 @@
         autoDetach = true;
       };
       feature.manyFiles = true;
-      github.user = settings.username;
+      github.user = settings.github;
       lfs.setlockablereadonly = 0;
       pull.rebase = true;
       fetch = {

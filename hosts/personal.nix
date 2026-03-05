@@ -2,6 +2,8 @@
 let
   settings = {
     username = "mattietea";
+    name = "Matt Thomas";
+    github = "mattietea";
     email = "mattcthomas@me.com";
     variables = {
       EDITOR = "zed --wait";
@@ -50,6 +52,7 @@ mkHost {
     (pkg "git-absorb")
     (pkg "lazygit")
     (pkg "mcp")
+    (pkg "mcp-personal")
     (pkg "mise")
     (pkg "node")
     (pkg "opencode")
