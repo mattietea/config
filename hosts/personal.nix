@@ -52,6 +52,7 @@ mkHost {
     (pkg "git-absorb")
     (pkg "lazygit")
     (pkg "mcp")
+    (pkg "mcp-personal")
     (pkg "mise")
     (pkg "node")
     (pkg "opencode")
