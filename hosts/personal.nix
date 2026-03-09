@@ -56,6 +56,7 @@ mkHost {
     (pkg "mise")
     (pkg "node")
     (pkg "opencode")
+    (pkg "opencode-personal")
     (pkg "pure")
     (pkg "rename-utils")
     (pkg "tldr")
