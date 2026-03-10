@@ -9,5 +9,9 @@ _: {
       type = "http";
       url = "https://mcp.us3.datadoghq.com/api/unstable/mcp-server/mcp";
     };
+    linear = {
+      type = "http";
+      url = "https://mcp.linear.app/mcp";
+    };
   };
 }
