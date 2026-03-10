@@ -13,6 +13,7 @@
       "._*"
       ".Spotlight-V100"
       ".Trashes"
+      ".sisyphus"
     ];
 
     settings = {
