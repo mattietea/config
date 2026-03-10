@@ -56,30 +56,18 @@
   };
 
   # https://devenv.sh/git-hooks/
-  # Configure git hooks for formatting and linting
-  git-hooks = {
-    enable = true;
-    package = pkgs.pre-commit;
-    hooks = {
-      # Enable treefmt for formatting (automatically uses treefmt config above)
-      treefmt.enable = true;
-      # Enable shellcheck for shell script linting
-      shellcheck.enable = true;
-      # Enable statix for Nix file linting
-      statix.enable = true;
-      # Enable deadnix for unused code detection
-      deadnix = {
-        enable = true;
-        settings = {
-          noLambdaPatternNames = true;
-        };
-      };
-      # Validate flake on commit
-      flake-check = {
-        enable = true;
-        entry = "nix flake check --no-build";
-        pass_filenames = false;
-      };
+  git-hooks.hooks = {
+    treefmt.enable = true;
+    shellcheck.enable = true;
+    statix.enable = true;
+    deadnix = {
+      enable = true;
+      settings.noLambdaPatternNames = true;
+    };
+    flake-check = {
+      enable = true;
+      entry = "nix flake check --no-build";
+      pass_filenames = false;
     };
   };
 
