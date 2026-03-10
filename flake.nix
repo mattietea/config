@@ -16,6 +16,11 @@
     claude-code-nix.url = "github:sadjow/claude-code-nix";
     claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    # TODO: unpin when nixpkgs devenv > 2.0.3 (GC thread crash fix merged 2026-03-09)
+    # Track: https://github.com/cachix/devenv/issues/2576
+    devenv.url = "github:cachix/devenv";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
+
     opencode.url = "github:anomalyco/opencode/dev";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
 
