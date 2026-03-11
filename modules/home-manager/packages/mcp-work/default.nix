@@ -13,5 +13,9 @@ _: {
       type = "http";
       url = "https://mcp.linear.app/mcp";
     };
+    slack = {
+      type = "http";
+      url = "https://mcp.slack.com/mcp";
+    };
   };
 }
