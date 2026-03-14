@@ -18,11 +18,11 @@
 
     # TODO: unpin when nixpkgs devenv > 2.0.3 (GC thread crash fix merged 2026-03-09)
     # Track: https://github.com/cachix/devenv/issues/2576
+    # NOTE: no nixpkgs follows — devenv/opencode ship pre-built binaries;
+    # overriding nixpkgs breaks their binary cache and forces ~1000 source builds.
     devenv.url = "github:cachix/devenv";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
 
     opencode.url = "github:anomalyco/opencode/dev";
-    opencode.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
