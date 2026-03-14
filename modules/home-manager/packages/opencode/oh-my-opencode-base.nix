@@ -85,10 +85,10 @@
       };
     };
 
-    sisyphus-junior.model = "anthropic/claude-sonnet-4-5";
+    sisyphus-junior.model = "anthropic/claude-sonnet-4-6";
 
     # Plan execution orchestrator
-    atlas.model = "anthropic/claude-sonnet-4-5";
+    atlas.model = "anthropic/claude-sonnet-4-6";
 
     # Planning & strategy
     prometheus = {
@@ -123,7 +123,7 @@
     };
 
     librarian = {
-      model = "anthropic/claude-sonnet-4-5";
+      model = "anthropic/claude-sonnet-4-6";
       permission = {
         edit = "deny";
         webfetch = "allow";
@@ -137,7 +137,7 @@
   # Category defaults (Anthropic); work host overrides deep/ultrabrain/unspecified-high with OpenAI
   categories = {
     quick.model = "anthropic/claude-haiku-4-5";
-    unspecified-low.model = "anthropic/claude-sonnet-4-5";
+    unspecified-low.model = "anthropic/claude-sonnet-4-6";
     unspecified-high = {
       model = "anthropic/claude-opus-4-6";
       variant = "max";
@@ -150,8 +150,8 @@
       model = "anthropic/claude-opus-4-6";
       variant = "max";
     };
-    visual-engineering.model = "anthropic/claude-sonnet-4-5";
-    writing.model = "anthropic/claude-sonnet-4-5";
-    artistry.model = "anthropic/claude-sonnet-4-5";
+    visual-engineering.model = "anthropic/claude-sonnet-4-6";
+    writing.model = "anthropic/claude-sonnet-4-6";
+    artistry.model = "anthropic/claude-sonnet-4-6";
   };
 }
