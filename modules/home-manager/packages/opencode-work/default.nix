@@ -2,21 +2,46 @@ _:
 let
   baseConfig = import ../opencode/oh-my-opencode-base.nix;
 
-  # Anthropic + OpenAI: enable hephaestus, use GPT-5.4 for Oracle/Momus per official docs
+  # Anthropic + OpenAI: GPT-5.4 for oracle/momus, GPT-5.3-codex for deep work, hephaestus enabled
   config = baseConfig // {
     disabled_agents = [ ];
     agents = baseConfig.agents // {
-      # Architecture & debugging (GPT-5.4 per official docs)
-      oracle.model = "openai/gpt-5.4";
-      # Review (GPT-5.4 per official docs)
-      momus.model = "openai/gpt-5.4";
+      # Architecture & debugging — GPT-5.4 with high reasoning effort
+      oracle = {
+        model = "openai/gpt-5.4";
+        variant = "high";
+        reasoningEffort = "high";
+      };
+      # Review — GPT-5.4 with high reasoning effort
+      momus = {
+        model = "openai/gpt-5.4";
+        variant = "high";
+      };
+      # Autonomous deep worker — GPT-5.3-codex
+      hephaestus = {
+        model = "openai/gpt-5.3-codex";
+        variant = "medium";
+      };
     };
-    categories = {
-      quick.model = "anthropic/claude-haiku-4-5";
-      unspecified-low.model = "anthropic/claude-sonnet-4-5";
-      unspecified-high.model = "openai/gpt-5.4";
-      deep.model = "openai/gpt-5.3-codex";
-      ultrabrain.model = "openai/gpt-5.3-codex";
+    background_task = baseConfig.background_task // {
+      providerConcurrency = baseConfig.background_task.providerConcurrency // {
+        openai = 5;
+      };
+    };
+    categories = baseConfig.categories // {
+      deep = {
+        model = "openai/gpt-5.3-codex";
+        variant = "medium";
+      };
+      ultrabrain = {
+        model = "openai/gpt-5.4";
+        variant = "xhigh";
+        reasoningEffort = "xhigh";
+      };
+      unspecified-high = {
+        model = "openai/gpt-5.4";
+        variant = "high";
+      };
     };
   };
 in
