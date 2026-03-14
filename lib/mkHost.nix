@@ -17,12 +17,7 @@ inputs.darwin.lib.darwinSystem {
     {
       nixpkgs = {
         hostPlatform = system;
-        overlays = [
-          # TODO: remove after nixpkgs-unstable includes fix (nixpkgs PR #490957)
-          (_: prev: {
-            zed-editor = prev.zed-editor.overrideAttrs { doCheck = false; };
-          })
-        ];
+        overlays = [ ];
         config = {
           allowUnfree = true;
           allowInsecurePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "google-chrome" ];
