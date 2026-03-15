@@ -10,7 +10,7 @@
     enableMcpIntegration = true;
     settings = {
       # Model & Mode
-      model = "opusplan";
+      model = "opus[1m]";
       effortLevel = "high";
       defaultMode = "plan";
 
