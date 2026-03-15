@@ -1,8 +1,7 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
-  home.packages = [ inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv ];
+  home.packages = [ pkgs.devenv ];
 }
