@@ -79,10 +79,7 @@
     # Primary orchestrator
     Sisyphus = {
       model = "anthropic/claude-opus-4-6";
-      thinking = {
-        type = "enabled";
-        budgetTokens = 32000;
-      };
+      thinking.type = "adaptive";
     };
 
     sisyphus-junior.model = "anthropic/claude-sonnet-4-6";
@@ -93,18 +90,12 @@
     # Planning & strategy
     prometheus = {
       model = "anthropic/claude-opus-4-6";
-      thinking = {
-        type = "enabled";
-        budgetTokens = 32000;
-      };
+      thinking.type = "adaptive";
     };
 
     metis = {
       model = "anthropic/claude-opus-4-6";
-      thinking = {
-        type = "enabled";
-        budgetTokens = 32000;
-      };
+      thinking.type = "adaptive";
     };
 
     # Review — host configs may override model + add thinking/reasoningEffort
