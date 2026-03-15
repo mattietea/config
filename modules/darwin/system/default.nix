@@ -18,6 +18,7 @@
     ./dock.nix
     ./finder.nix
     ./input.nix
+    ./nix.nix
     ./updates.nix
   ];
 
