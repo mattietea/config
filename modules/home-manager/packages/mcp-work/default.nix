@@ -11,10 +11,6 @@ in
     # Direct MCP access — always loaded into context
     # Used for services where mcporter OAuth is blocked (redirect_uri mismatch)
     mcp.servers = {
-      datadog = {
-        type = "remote";
-        inherit (datadog) url;
-      };
       slack = {
         type = "remote";
         inherit (slack) url oauth;
