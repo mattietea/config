@@ -49,6 +49,7 @@ mkHost {
     (pkg "lazygit")
     (pkg "mcp")
     (pkg "mcp-work")
+    (pkg "mcporter")
     (pkg "mise")
     (pkg "node")
     (pkg "opencode")

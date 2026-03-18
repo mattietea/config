@@ -26,6 +26,9 @@
     agent-skills-nix.url = "github:Kyure-A/agent-skills-nix";
     agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
+
     anthropic-skills = {
       url = "github:anthropics/skills";
       flake = false;

@@ -20,6 +20,8 @@
         path = inputs.vercel-skills-cli;
         subdir = "skills";
       };
+      # Service skills (linear, notion, etc.) are co-located in mcp/
+      # and enabled by mcp-work/mcp-personal via programs.agent-skills
     };
     skills.enable = [
       "skill-creator"

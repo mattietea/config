@@ -1,4 +1,4 @@
 _: {
-  # Personal-only MCP servers
-  # programs.mcp.servers = { };
+  # Personal-only MCP servers and mcporter skills
+  # Add services here following the mcp-work pattern
 }
