@@ -47,11 +47,11 @@
     "anthropic-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1772827583,
-        "narHash": "sha256-GzNpraXV85qUwyGs5XDe0zHYr2AazqFppWtH9JvO3QE=",
+        "lastModified": 1774196161,
+        "narHash": "sha256-QAy9ulbKaK5QWiGiXYsxav+bMhhmqU8pCS7P0fWxLlk=",
         "owner": "anthropics",
         "repo": "skills",
-        "rev": "b0cbd3df1533b396d281a6886d5132f623393a9c",
+        "rev": "887114fd09f8f24a7e6c907f9ee505348498ab6a",
         "type": "github"
       },
       "original": {
@@ -210,11 +210,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774135471,
-        "narHash": "sha256-TVeIGOxnfSPM6JvkRkXHpJECnj1OG2dXkWMSA4elzzQ=",
+        "lastModified": 1774210133,
+        "narHash": "sha256-yeiWCY9aAUUJ3ebMVjs0UZXRnT5x90MCtpbpOWiXrvM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "856b01ebd1de3f53c3929ce8082d9d67d799d816",
+        "rev": "c6fe2944ad9f2444b2d767c4a5edee7c166e8a95",
         "type": "github"
       },
       "original": {
@@ -260,11 +260,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1774140679,
-        "narHash": "sha256-434iVc1N6WTzUximVKeVNObpKacPADa/8r81U2nwUVg=",
+        "lastModified": 1774227800,
+        "narHash": "sha256-vgNleiEZsiroiPMuqRxT1o9NM8vh+lLPFgASLXkorPM=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "e82c5a9a28a6ef47927138893e79c22ccb9588ab",
+        "rev": "8035c3435b866926169307ec54914b359aa4fbfd",
         "type": "github"
       },
       "original": {
