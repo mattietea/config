@@ -43,6 +43,18 @@
         commit = "";
         pr = "";
       };
+      enabledPlugins = {
+        "claude-mem@thedotmack" = true;
+        "superpowers@claude-plugins-official" = true;
+      };
+      extraKnownMarketplaces = {
+        thedotmack = {
+          source = {
+            source = "github";
+            repo = "thedotmack/claude-mem";
+          };
+        };
+      };
     };
   };
 }
