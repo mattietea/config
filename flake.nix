@@ -13,12 +13,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    claude-code-nix.url = "github:sadjow/claude-code-nix";
-    claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    # NOTE: no nixpkgs follows — opencode ships pre-built binaries;
-    # overriding nixpkgs breaks its binary cache and forces ~1000 source builds.
-    opencode.url = "github:anomalyco/opencode/dev";
+    # NOTE: no nixpkgs follows — llm-agents ships pre-built binaries via cache.numtide.com;
+    # overriding nixpkgs would invalidate their binary cache.
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,13 +28,13 @@
       flake = false;
     };
 
-    vercel-skills = {
-      url = "github:vercel-labs/agent-skills";
+    vercel-skills-cli = {
+      url = "github:vercel-labs/skills";
       flake = false;
     };
 
-    vercel-skills-cli = {
-      url = "github:vercel-labs/skills";
+    cmux-skills = {
+      url = "github:manaflow-ai/cmux";
       flake = false;
     };
   };

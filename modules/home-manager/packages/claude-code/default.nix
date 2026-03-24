@@ -6,7 +6,7 @@
 {
   programs.claude-code = {
     enable = true;
-    package = inputs.claude-code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = inputs.llm-agents.packages.${pkgs.system}.claude-code;
     enableMcpIntegration = true;
     settings = {
       # Model & Mode
@@ -42,17 +42,6 @@
       attribution = {
         commit = "";
         pr = "";
-      };
-      enabledPlugins = {
-        "code-simplifier@claude-plugins-official" = true;
-      };
-      extraKnownMarketplaces = {
-        claude-plugins-official = {
-          source = {
-            source = "github";
-            repo = "anthropics/claude-plugins-official";
-          };
-        };
       };
     };
   };
