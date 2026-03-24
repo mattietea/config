@@ -1,18 +1,9 @@
 {
   pkgs,
-  lib,
   inputs,
-  config,
   ...
 }:
 {
-  home.activation.linkConductorClaude = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    conductorBin="$HOME/Library/Application Support/com.conductor.app/bin"
-    if [ -d "$conductorBin" ]; then
-      run ln -sf "${config.programs.claude-code.finalPackage}/bin/claude" "$conductorBin/claude"
-    fi
-  '';
-
   programs.claude-code = {
     enable = true;
     package = inputs.llm-agents.packages.${pkgs.system}.claude-code;
