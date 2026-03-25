@@ -18,5 +18,7 @@ let
   };
 in
 {
+  imports = [ ../opencode ];
+
   home.file.".config/opencode/oh-my-opencode.json".text = builtins.toJSON config;
 }
