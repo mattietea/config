@@ -122,11 +122,11 @@
     "cmux-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1774402351,
-        "narHash": "sha256-1VG7a0o4FcPsYlmWkUV68pQm1WL2P9Il/KmzJq1ESpE=",
+        "lastModified": 1774437663,
+        "narHash": "sha256-u9pDZOolGn+jr0LMwX+IN4KgvcV6FqID7MooliElt/I=",
         "owner": "manaflow-ai",
         "repo": "cmux",
-        "rev": "9b3a6ba28bb6bc9bbbfa1780639aafc40db56a04",
+        "rev": "99ca3c9b9a115f9219d93a371edfb90c9caa4a88",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1774392031,
-        "narHash": "sha256-WJGB0bKHPiDyQlIMOkOgNCSJ4MaZfji+hwmhg88plIM=",
+        "lastModified": 1774429526,
+        "narHash": "sha256-9wFjSnMqCIAm4qwJrkZUyTVVhdWdpKZchFEqVx4Slys=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "b5623a6406c3ecbd25fad79a655eae545f08023a",
+        "rev": "2b396327eb892fd0a5569f9e28cdc2163e0d0781",
         "type": "github"
       },
       "original": {
