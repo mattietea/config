@@ -30,6 +30,7 @@
         lazy = "!${pkgs.lazygit}/bin/lazygit";
         fixup = "commit --fixup";
         tidy = "rebase --interactive --autosquash";
+        tree = "!${pkgs.worktrunk}/bin/wt";
         bare = "!${pkgs.writeShellScript "git-bare" ''
           set -euo pipefail
           url="$1"
