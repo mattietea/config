@@ -14,6 +14,7 @@
       ".Spotlight-V100"
       ".Trashes"
       ".sisyphus"
+      "docs/superpowers/"
     ];
 
     settings = {
