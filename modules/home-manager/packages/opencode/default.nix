@@ -1,12 +1,17 @@
 {
-  inputs,
   pkgs,
+  inputs,
   ...
 }:
+let
+  llm-agents = inputs.llm-agents.packages.${pkgs.system};
+in
 {
+  home.packages = [ llm-agents.oh-my-opencode ];
+
   programs.opencode = {
     enable = true;
-    package = inputs.opencode.packages.${pkgs.system}.default;
+    package = llm-agents.opencode;
     enableMcpIntegration = true;
     settings = {
       autoshare = false;
