@@ -39,7 +39,8 @@
           echo "gitdir: ./.bare" > .git
           ${pkgs.git}/bin/git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
           ${pkgs.git}/bin/git fetch origin
-          default_branch=$(${pkgs.git}/bin/git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | ${pkgs.coreutils}/bin/sed 's|refs/remotes/origin/||')
+          default_branch=$(${pkgs.git}/bin/git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null)
+          default_branch="''${default_branch##refs/remotes/origin/}"
           : "''${default_branch:=main}"
           ${pkgs.git}/bin/git worktree add "$default_branch"
           echo "Set up bare clone in $dir/ with worktree for $default_branch"
