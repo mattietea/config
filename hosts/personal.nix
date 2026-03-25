@@ -23,7 +23,6 @@ mkHost {
     (app "brave")
     (app "discord")
     (app "google-chrome")
-    (app "opencode-desktop")
     (app "raycast")
     (app "safari")
     (app "spotify")

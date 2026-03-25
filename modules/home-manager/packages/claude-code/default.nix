@@ -6,7 +6,7 @@
 {
   programs.claude-code = {
     enable = true;
-    package = inputs.claude-code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = inputs.llm-agents.packages.${pkgs.system}.claude-code;
     enableMcpIntegration = true;
     settings = {
       # Model & Mode
@@ -44,13 +44,14 @@
         pr = "";
       };
       enabledPlugins = {
-        "code-simplifier@claude-plugins-official" = true;
+        "claude-mem@thedotmack" = true;
+        "superpowers@claude-plugins-official" = true;
       };
       extraKnownMarketplaces = {
-        claude-plugins-official = {
+        thedotmack = {
           source = {
             source = "github";
-            repo = "anthropics/claude-plugins-official";
+            repo = "thedotmack/claude-mem";
           };
         };
       };
