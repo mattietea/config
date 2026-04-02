@@ -17,6 +17,7 @@ in
       autoshare = false;
       plugin = [
         "oh-my-opencode"
+        "opencode-claude-auth"
       ];
     };
   };
