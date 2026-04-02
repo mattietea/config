@@ -14,9 +14,15 @@ in
     package = llm-agents.opencode;
     enableMcpIntegration = true;
     settings = {
-      autoshare = false;
+      "$schema" = "https://opencode.ai/config.json";
+      share = "disabled";
+      snapshot = true;
+      compaction = {
+        auto = true;
+        prune = true;
+      };
       plugin = [
-        "oh-my-opencode"
+        "oh-my-openagent"
         "opencode-claude-auth"
       ];
     };

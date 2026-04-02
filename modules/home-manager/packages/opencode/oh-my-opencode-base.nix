@@ -7,6 +7,8 @@
 
   google_auth = false;
 
+  model_fallback = true;
+
   ralph_loop = {
     enabled = true;
     default_max_iterations = 100;
@@ -80,6 +82,10 @@
     Sisyphus = {
       model = "anthropic/claude-opus-4-6";
       thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
     };
 
     sisyphus-junior.model = "anthropic/claude-sonnet-4-6";
@@ -91,18 +97,38 @@
     prometheus = {
       model = "anthropic/claude-opus-4-6";
       thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
     };
 
     metis = {
       model = "anthropic/claude-opus-4-6";
       thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
     };
 
     # Review — host configs may override model + add thinking/reasoningEffort
-    momus.model = "anthropic/claude-opus-4-6";
+    momus = {
+      model = "anthropic/claude-opus-4-6";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
+    };
 
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
-    oracle.model = "anthropic/claude-opus-4-6";
+    oracle = {
+      model = "anthropic/claude-opus-4-6";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
+    };
 
     # Search & research — read-only, no edit/write permissions
     explore = {
