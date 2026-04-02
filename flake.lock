@@ -119,22 +119,6 @@
         "type": "github"
       }
     },
-    "cmux-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775092455,
-        "narHash": "sha256-+U2gIOFomSQclmFoqhHZKVusgqU+/0+vRZGjZOSVZVo=",
-        "owner": "manaflow-ai",
-        "repo": "cmux",
-        "rev": "8bf93df2c53e6e385cebe3e811712e0c5698fce5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "manaflow-ai",
-        "repo": "cmux",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -355,7 +339,6 @@
         "agenix": "agenix",
         "agent-skills-nix": "agent-skills-nix",
         "anthropic-skills": "anthropic-skills",
-        "cmux-skills": "cmux-skills",
         "darwin": "darwin_2",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
