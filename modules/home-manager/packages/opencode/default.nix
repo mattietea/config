@@ -22,7 +22,7 @@ in
       plugin = [
         "oh-my-openagent"
         "opencode-claude-auth"
-        "opencode-dynamic-context-pruning"
+        "@tarquinen/opencode-dcp"
         "@tarquinen/opencode-smart-title"
       ];
     };
