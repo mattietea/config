@@ -16,15 +16,10 @@
         path = inputs.vercel-skills-cli;
         subdir = "skills";
       };
-      cmux = {
-        path = inputs.cmux-skills;
-        subdir = "skills";
-      };
     };
     skills.enable = [
       "skill-creator"
       "find-skills"
-      "cmux"
     ];
     targets.claude.enable = true;
   };

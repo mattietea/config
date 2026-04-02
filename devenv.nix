@@ -49,7 +49,10 @@
     config = {
       programs = {
         nixfmt.enable = true;
-        prettier.enable = true;
+        prettier = {
+          enable = true;
+          package = pkgs.prettier;
+        };
         yamlfmt.enable = true;
       };
     };
