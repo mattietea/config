@@ -23,6 +23,7 @@ in
         "oh-my-openagent"
         "opencode-claude-auth"
         "opencode-dynamic-context-pruning"
+        "@tarquinen/opencode-smart-title"
       ];
     };
   };
