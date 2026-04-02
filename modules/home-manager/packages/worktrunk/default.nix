@@ -5,7 +5,7 @@
 {
   home.packages = [ pkgs.worktrunk ];
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     eval "$(${pkgs.worktrunk}/bin/wt config shell init zsh)"
   '';
 }
