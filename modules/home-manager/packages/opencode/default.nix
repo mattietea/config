@@ -22,6 +22,8 @@ in
       plugin = [
         "oh-my-openagent"
         "opencode-claude-auth"
+        "@tarquinen/opencode-dcp"
+        "@tarquinen/opencode-smart-title"
       ];
     };
   };
