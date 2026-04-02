@@ -33,10 +33,6 @@
       flake = false;
     };
 
-    cmux-skills = {
-      url = "github:manaflow-ai/cmux";
-      flake = false;
-    };
   };
 
   outputs =

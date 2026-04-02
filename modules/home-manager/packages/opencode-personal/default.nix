@@ -9,10 +9,18 @@ let
       oracle = {
         model = "anthropic/claude-opus-4-6";
         thinking.type = "adaptive";
+        fallback_models = [
+          "anthropic/claude-sonnet-4-6"
+        ];
+        compaction.model = "anthropic/claude-haiku-4-5";
       };
       momus = {
         model = "anthropic/claude-opus-4-6";
         thinking.type = "adaptive";
+        fallback_models = [
+          "anthropic/claude-sonnet-4-6"
+        ];
+        compaction.model = "anthropic/claude-haiku-4-5";
       };
     };
   };

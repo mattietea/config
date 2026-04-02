@@ -17,16 +17,7 @@ inputs.darwin.lib.darwinSystem {
     {
       nixpkgs = {
         hostPlatform = system;
-        # TODO: remove overlay once nixpkgs-unstable picks up NixOS/nixpkgs#502769
-        overlays = [
-          (_final: prev: {
-            direnv = prev.direnv.overrideAttrs (_: {
-              postPatch = ''
-                substituteInPlace GNUmakefile --replace-fail " -linkmode=external" ""
-              '';
-            });
-          })
-        ];
+        overlays = [ ];
         config = {
           allowUnfree = true;
           allowInsecurePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "google-chrome" ];
