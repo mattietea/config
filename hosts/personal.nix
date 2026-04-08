@@ -33,7 +33,8 @@ mkHost {
 
   packages = [
     (pkg "agenix")
-    (pkg "agent-skills")
+    (pkg "skills")
+    (pkg "skills-personal")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")

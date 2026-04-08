@@ -33,6 +33,51 @@
       flake = false;
     };
 
+    pup-skills = {
+      url = "github:datadog-labs/pup";
+      flake = false;
+    };
+
+    linear-cli-skills = {
+      url = "github:schpet/linear-cli";
+      flake = false;
+    };
+
+    context7-skills = {
+      url = "github:upstash/context7";
+      flake = false;
+    };
+
+    agent-browser-skills = {
+      url = "github:vercel-labs/agent-browser";
+      flake = false;
+    };
+
+    wshobson-agents = {
+      url = "github:wshobson/agents";
+      flake = false;
+    };
+
+    worktrunk-skills = {
+      url = "github:max-sixty/worktrunk";
+      flake = false;
+    };
+
+    dot-skills = {
+      url = "github:pproenca/dot-skills";
+      flake = false;
+    };
+
+    chrome-devtools-mcp-skills = {
+      url = "github:ChromeDevTools/chrome-devtools-mcp";
+      flake = false;
+    };
+
+    itechmeat-skills = {
+      url = "github:itechmeat/llm-code";
+      flake = false;
+    };
+
   };
 
   outputs =

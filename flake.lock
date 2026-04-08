@@ -23,6 +23,22 @@
         "type": "github"
       }
     },
+    "agent-browser-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775543341,
+        "narHash": "sha256-Cq4F07cpQSudTJmT1WMFPllnc3gHJzQlubZjuxNhr0E=",
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "rev": "e4e2fe8633be35e2e4567a464604e6a314e74279",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "type": "github"
+      }
+    },
     "agent-skills-nix": {
       "inputs": {
         "home-manager": "home-manager_2",
@@ -119,6 +135,38 @@
         "type": "github"
       }
     },
+    "chrome-devtools-mcp-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775629456,
+        "narHash": "sha256-iRhbD1gdMZJq4sOl2nAcIGwzzIHRicJkH1g3QdmGqq8=",
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "rev": "fb6e857d4e6e37388efa74bb3d9fd60d70d4439e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "type": "github"
+      }
+    },
+    "context7-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775497312,
+        "narHash": "sha256-u0sFNX19ZBWvA7HYWdM4iI9AvEVz/CK6dLfZ80Rxa9c=",
+        "owner": "upstash",
+        "repo": "context7",
+        "rev": "36463ad6e36f68c21ae8e609e80c309d609c22ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "upstash",
+        "repo": "context7",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -158,6 +206,22 @@
       "original": {
         "owner": "LnL7",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "dot-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775210624,
+        "narHash": "sha256-q9ocUoeHMKRtS5cVOOtHTuusg1+IexwYX4JJFKUh/3A=",
+        "owner": "pproenca",
+        "repo": "dot-skills",
+        "rev": "ae3ab254389cf29c6ab208c35ae0d5d3107f1f2b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pproenca",
+        "repo": "dot-skills",
         "type": "github"
       }
     },
@@ -279,6 +343,38 @@
         "type": "github"
       }
     },
+    "itechmeat-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774975618,
+        "narHash": "sha256-7qjmfQY84KboiOPz7xDc3fKLxdE8uLRroZsodbgIDEU=",
+        "owner": "itechmeat",
+        "repo": "llm-code",
+        "rev": "738e8dba748bd2c707cef7b893c66b7fb826085e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "itechmeat",
+        "repo": "llm-code",
+        "type": "github"
+      }
+    },
+    "linear-cli-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775246627,
+        "narHash": "sha256-x9Zudz7k5HQRuu2/nL/E6bDJm9caIL3AvtDT21eTWH8=",
+        "owner": "schpet",
+        "repo": "linear-cli",
+        "rev": "90767cbd072e02efaf9a12335df848743fa953b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "schpet",
+        "repo": "linear-cli",
+        "type": "github"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -334,17 +430,42 @@
         "type": "github"
       }
     },
+    "pup-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775523686,
+        "narHash": "sha256-/l3hFXIKTmOHaY2z5nQodbEaavclXOrpga2defsuIVA=",
+        "owner": "datadog-labs",
+        "repo": "pup",
+        "rev": "50b013713663f9f8f7576675b22d71fa32784846",
+        "type": "github"
+      },
+      "original": {
+        "owner": "datadog-labs",
+        "repo": "pup",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "agent-browser-skills": "agent-browser-skills",
         "agent-skills-nix": "agent-skills-nix",
         "anthropic-skills": "anthropic-skills",
+        "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
+        "context7-skills": "context7-skills",
         "darwin": "darwin_2",
+        "dot-skills": "dot-skills",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
+        "itechmeat-skills": "itechmeat-skills",
+        "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_2",
-        "vercel-skills-cli": "vercel-skills-cli"
+        "pup-skills": "pup-skills",
+        "vercel-skills-cli": "vercel-skills-cli",
+        "worktrunk-skills": "worktrunk-skills",
+        "wshobson-agents": "wshobson-agents"
       }
     },
     "systems": {
@@ -411,6 +532,38 @@
       "original": {
         "owner": "vercel-labs",
         "repo": "skills",
+        "type": "github"
+      }
+    },
+    "worktrunk-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775624055,
+        "narHash": "sha256-TsSbjIncXBxQ+OD4r7p6J+j2ZBNy1O8CjObguwgFr7w=",
+        "owner": "max-sixty",
+        "repo": "worktrunk",
+        "rev": "65e58d364794799bd7af78f214d9f44e0cc7b592",
+        "type": "github"
+      },
+      "original": {
+        "owner": "max-sixty",
+        "repo": "worktrunk",
+        "type": "github"
+      }
+    },
+    "wshobson-agents": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775250356,
+        "narHash": "sha256-2D47P2shN4etixbN92/VPiZm90q6AizHbV1M/mLJC4s=",
+        "owner": "wshobson",
+        "repo": "agents",
+        "rev": "70444e5b1fae2237f3cb087c70db043ab633fe11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wshobson",
+        "repo": "agents",
         "type": "github"
       }
     }
