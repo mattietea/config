@@ -7,15 +7,6 @@
   programs.mcp = {
     enable = true;
     servers = {
-      filesystem = {
-        type = "stdio";
-        command = "npx";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-filesystem"
-          "/Users/${settings.username}"
-        ];
-      };
       exa = {
         type = "stdio";
         command = "${pkgs.writeShellScript "exa-mcp" ''
