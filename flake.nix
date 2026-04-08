@@ -58,6 +58,11 @@
       flake = false;
     };
 
+    worktrunk-skills = {
+      url = "github:max-sixty/worktrunk";
+      flake = false;
+    };
+
   };
 
   outputs =

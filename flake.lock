@@ -413,6 +413,7 @@
         "nixpkgs": "nixpkgs_2",
         "pup-skills": "pup-skills",
         "vercel-skills-cli": "vercel-skills-cli",
+        "worktrunk-skills": "worktrunk-skills",
         "wshobson-agents": "wshobson-agents"
       }
     },
@@ -480,6 +481,22 @@
       "original": {
         "owner": "vercel-labs",
         "repo": "skills",
+        "type": "github"
+      }
+    },
+    "worktrunk-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775624055,
+        "narHash": "sha256-TsSbjIncXBxQ+OD4r7p6J+j2ZBNy1O8CjObguwgFr7w=",
+        "owner": "max-sixty",
+        "repo": "worktrunk",
+        "rev": "65e58d364794799bd7af78f214d9f44e0cc7b592",
+        "type": "github"
+      },
+      "original": {
+        "owner": "max-sixty",
+        "repo": "worktrunk",
         "type": "github"
       }
     },

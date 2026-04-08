@@ -9,6 +9,11 @@ _: {
         input = "linear-cli-skills";
         subdir = "skills";
       };
+      worktrunk = {
+        input = "worktrunk-skills";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
     };
     skills.enable = [
       "dd-pup"
@@ -21,6 +26,7 @@ _: {
       "dd-debugger"
       "dd-symdb"
       "linear-cli"
+      "worktrunk"
     ];
   };
 }
