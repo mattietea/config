@@ -20,11 +20,16 @@
         input = "context7-skills";
         subdir = "skills";
       };
+      agent-browser = {
+        input = "agent-browser-skills";
+        subdir = "skills";
+      };
     };
     skills.enable = [
       "skill-creator"
       "find-skills"
       "find-docs"
+      "agent-browser"
     ];
     targets = {
       claude.enable = true;

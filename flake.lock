@@ -23,6 +23,22 @@
         "type": "github"
       }
     },
+    "agent-browser-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775543341,
+        "narHash": "sha256-Cq4F07cpQSudTJmT1WMFPllnc3gHJzQlubZjuxNhr0E=",
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "rev": "e4e2fe8633be35e2e4567a464604e6a314e74279",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "type": "github"
+      }
+    },
     "agent-skills-nix": {
       "inputs": {
         "home-manager": "home-manager_2",
@@ -385,6 +401,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "agent-browser-skills": "agent-browser-skills",
         "agent-skills-nix": "agent-skills-nix",
         "anthropic-skills": "anthropic-skills",
         "context7-skills": "context7-skills",

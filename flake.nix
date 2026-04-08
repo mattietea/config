@@ -48,6 +48,11 @@
       flake = false;
     };
 
+    agent-browser-skills = {
+      url = "github:vercel-labs/agent-browser";
+      flake = false;
+    };
+
   };
 
   outputs =
