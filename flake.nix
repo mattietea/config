@@ -63,6 +63,11 @@
       flake = false;
     };
 
+    dot-skills = {
+      url = "github:pproenca/dot-skills";
+      flake = false;
+    };
+
   };
 
   outputs =

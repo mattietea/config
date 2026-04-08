@@ -193,6 +193,22 @@
         "type": "github"
       }
     },
+    "dot-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775210624,
+        "narHash": "sha256-q9ocUoeHMKRtS5cVOOtHTuusg1+IexwYX4JJFKUh/3A=",
+        "owner": "pproenca",
+        "repo": "dot-skills",
+        "rev": "ae3ab254389cf29c6ab208c35ae0d5d3107f1f2b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pproenca",
+        "repo": "dot-skills",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -406,6 +422,7 @@
         "anthropic-skills": "anthropic-skills",
         "context7-skills": "context7-skills",
         "darwin": "darwin_2",
+        "dot-skills": "dot-skills",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
         "linear-cli-skills": "linear-cli-skills",

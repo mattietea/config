@@ -28,6 +28,10 @@
         input = "wshobson-agents";
         subdir = "plugins/javascript-typescript/skills";
       };
+      dot-skills = {
+        input = "dot-skills";
+        subdir = "skills/.curated";
+      };
     };
     skills.enable = [
       "skill-creator"
@@ -35,6 +39,7 @@
       "find-docs"
       "agent-browser"
       "typescript-advanced-types"
+      "vitest"
     ];
     targets = {
       claude.enable = true;
