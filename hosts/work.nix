@@ -55,6 +55,7 @@ mkHost {
     (pkg "pup")
     (pkg "pure")
     (pkg "rename-utils")
+    (pkg "sentry-cli")
     (pkg "tldr")
     (pkg "worktrunk-work")
     (pkg "zoxide")
