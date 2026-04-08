@@ -33,6 +33,11 @@
       flake = false;
     };
 
+    pup-skills = {
+      url = "github:datadog-labs/pup";
+      flake = false;
+    };
+
   };
 
   outputs =

@@ -9,11 +9,11 @@
     enable = true;
     sources = {
       anthropic = {
-        path = inputs.anthropic-skills;
+        input = "anthropic-skills";
         subdir = "skills";
       };
       vercel-cli = {
-        path = inputs.vercel-skills-cli;
+        input = "vercel-skills-cli";
         subdir = "skills";
       };
     };
@@ -21,6 +21,10 @@
       "skill-creator"
       "find-skills"
     ];
-    targets.claude.enable = true;
+    targets = {
+      claude.enable = true;
+      codex.enable = true;
+      agents.enable = true;
+    };
   };
 }

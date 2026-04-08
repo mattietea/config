@@ -334,6 +334,22 @@
         "type": "github"
       }
     },
+    "pup-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775523686,
+        "narHash": "sha256-/l3hFXIKTmOHaY2z5nQodbEaavclXOrpga2defsuIVA=",
+        "owner": "datadog-labs",
+        "repo": "pup",
+        "rev": "50b013713663f9f8f7576675b22d71fa32784846",
+        "type": "github"
+      },
+      "original": {
+        "owner": "datadog-labs",
+        "repo": "pup",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -344,6 +360,7 @@
         "home-manager": "home-manager_3",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_2",
+        "pup-skills": "pup-skills",
         "vercel-skills-cli": "vercel-skills-cli"
       }
     },

@@ -29,7 +29,8 @@ mkHost {
 
   packages = [
     (pkg "agenix")
-    (pkg "agent-skills")
+    (pkg "skills")
+    (pkg "skills-work")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")
@@ -50,6 +51,7 @@ mkHost {
     (pkg "mise")
     (pkg "node")
     (pkg "opencode-work")
+    (pkg "pup")
     (pkg "pure")
     (pkg "rename-utils")
     (pkg "tldr")
