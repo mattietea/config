@@ -32,6 +32,11 @@
         input = "dot-skills";
         subdir = "skills/.curated";
       };
+      itechmeat = {
+        input = "itechmeat-skills";
+        subdir = "skills";
+        idPrefix = "itechmeat";
+      };
     };
     skills.enable = [
       "skill-creator"
@@ -40,6 +45,7 @@
       "agent-browser"
       "typescript-advanced-types"
       "vitest"
+      "itechmeat/react-testing-library"
     ];
     targets = {
       claude.enable = true;

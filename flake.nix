@@ -68,6 +68,11 @@
       flake = false;
     };
 
+    itechmeat-skills = {
+      url = "github:itechmeat/llm-code";
+      flake = false;
+    };
+
   };
 
   outputs =

@@ -327,6 +327,22 @@
         "type": "github"
       }
     },
+    "itechmeat-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774975618,
+        "narHash": "sha256-7qjmfQY84KboiOPz7xDc3fKLxdE8uLRroZsodbgIDEU=",
+        "owner": "itechmeat",
+        "repo": "llm-code",
+        "rev": "738e8dba748bd2c707cef7b893c66b7fb826085e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "itechmeat",
+        "repo": "llm-code",
+        "type": "github"
+      }
+    },
     "linear-cli-skills": {
       "flake": false,
       "locked": {
@@ -425,6 +441,7 @@
         "dot-skills": "dot-skills",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
+        "itechmeat-skills": "itechmeat-skills",
         "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_2",
