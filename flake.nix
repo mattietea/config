@@ -43,6 +43,11 @@
       flake = false;
     };
 
+    context7-skills = {
+      url = "github:upstash/context7";
+      flake = false;
+    };
+
   };
 
   outputs =
