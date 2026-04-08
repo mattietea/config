@@ -68,6 +68,11 @@
       flake = false;
     };
 
+    chrome-devtools-mcp-skills = {
+      url = "github:ChromeDevTools/chrome-devtools-mcp";
+      flake = false;
+    };
+
     itechmeat-skills = {
       url = "github:itechmeat/llm-code";
       flake = false;

@@ -7,6 +7,14 @@ _: {
       type = "remote";
       url = "https://mcp.notion.com/mcp";
     };
+    chrome-devtools = {
+      type = "stdio";
+      command = "npx";
+      args = [
+        "-y"
+        "chrome-devtools-mcp@latest"
+      ];
+    };
     slack = {
       type = "remote";
       url = "https://mcp.slack.com/mcp";

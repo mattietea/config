@@ -135,6 +135,22 @@
         "type": "github"
       }
     },
+    "chrome-devtools-mcp-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775629456,
+        "narHash": "sha256-iRhbD1gdMZJq4sOl2nAcIGwzzIHRicJkH1g3QdmGqq8=",
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "rev": "fb6e857d4e6e37388efa74bb3d9fd60d70d4439e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "type": "github"
+      }
+    },
     "context7-skills": {
       "flake": false,
       "locked": {
@@ -436,6 +452,7 @@
         "agent-browser-skills": "agent-browser-skills",
         "agent-skills-nix": "agent-skills-nix",
         "anthropic-skills": "anthropic-skills",
+        "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
         "context7-skills": "context7-skills",
         "darwin": "darwin_2",
         "dot-skills": "dot-skills",
