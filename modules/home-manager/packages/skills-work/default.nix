@@ -1,8 +1,14 @@
 _: {
   programs.agent-skills = {
-    sources.pup = {
-      input = "pup-skills";
-      subdir = "skills";
+    sources = {
+      pup = {
+        input = "pup-skills";
+        subdir = "skills";
+      };
+      linear-cli = {
+        input = "linear-cli-skills";
+        subdir = "skills";
+      };
     };
     skills.enable = [
       "dd-pup"
@@ -14,6 +20,7 @@ _: {
       "dd-file-issue"
       "dd-debugger"
       "dd-symdb"
+      "linear-cli"
     ];
   };
 }

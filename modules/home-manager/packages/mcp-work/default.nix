@@ -7,10 +7,6 @@ _: {
       type = "remote";
       url = "https://mcp.notion.com/mcp";
     };
-    linear = {
-      type = "remote";
-      url = "https://mcp.linear.app/mcp";
-    };
     slack = {
       type = "remote";
       url = "https://mcp.slack.com/mcp";

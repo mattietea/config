@@ -279,6 +279,22 @@
         "type": "github"
       }
     },
+    "linear-cli-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775246627,
+        "narHash": "sha256-x9Zudz7k5HQRuu2/nL/E6bDJm9caIL3AvtDT21eTWH8=",
+        "owner": "schpet",
+        "repo": "linear-cli",
+        "rev": "90767cbd072e02efaf9a12335df848743fa953b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "schpet",
+        "repo": "linear-cli",
+        "type": "github"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -358,6 +374,7 @@
         "darwin": "darwin_2",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
+        "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_2",
         "pup-skills": "pup-skills",

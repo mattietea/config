@@ -47,6 +47,7 @@ mkHost {
     (pkg "git")
     (pkg "git-absorb")
     (pkg "lazygit")
+    (pkg "linear-cli")
     (pkg "mcp-work")
     (pkg "mise")
     (pkg "node")

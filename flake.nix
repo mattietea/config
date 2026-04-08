@@ -38,6 +38,11 @@
       flake = false;
     };
 
+    linear-cli-skills = {
+      url = "github:schpet/linear-cli";
+      flake = false;
+    };
+
   };
 
   outputs =
