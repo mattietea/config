@@ -53,6 +53,11 @@
       flake = false;
     };
 
+    wshobson-agents = {
+      url = "github:wshobson/agents";
+      flake = false;
+    };
+
   };
 
   outputs =

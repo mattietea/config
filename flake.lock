@@ -412,7 +412,8 @@
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_2",
         "pup-skills": "pup-skills",
-        "vercel-skills-cli": "vercel-skills-cli"
+        "vercel-skills-cli": "vercel-skills-cli",
+        "wshobson-agents": "wshobson-agents"
       }
     },
     "systems": {
@@ -479,6 +480,22 @@
       "original": {
         "owner": "vercel-labs",
         "repo": "skills",
+        "type": "github"
+      }
+    },
+    "wshobson-agents": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775250356,
+        "narHash": "sha256-2D47P2shN4etixbN92/VPiZm90q6AizHbV1M/mLJC4s=",
+        "owner": "wshobson",
+        "repo": "agents",
+        "rev": "70444e5b1fae2237f3cb087c70db043ab633fe11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wshobson",
+        "repo": "agents",
         "type": "github"
       }
     }

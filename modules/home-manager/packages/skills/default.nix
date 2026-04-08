@@ -24,12 +24,17 @@
         input = "agent-browser-skills";
         subdir = "skills";
       };
+      wshobson-agents = {
+        input = "wshobson-agents";
+        subdir = "plugins/javascript-typescript/skills";
+      };
     };
     skills.enable = [
       "skill-creator"
       "find-skills"
       "find-docs"
       "agent-browser"
+      "typescript-advanced-types"
     ];
     targets = {
       claude.enable = true;
