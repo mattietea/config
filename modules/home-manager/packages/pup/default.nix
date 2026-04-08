@@ -11,7 +11,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/datadog-labs/pup/releases/download/v${version}/pup_${version}_Darwin_arm64.tar.gz";
-      hash = "sha256-0cQXBcmWpzTA06nl/ZnOFbMJuXX/S1KL7l/HikFuJCM=";
+      hash = "sha256-tNiTakRvm7gaFyU3QLaFt34NRpWckD+HotqpB7LvNoo=";
     };
 
     sourceRoot = ".";
