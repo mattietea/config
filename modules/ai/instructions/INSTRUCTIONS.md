@@ -19,3 +19,9 @@ Use **Exa** (MCP server) first — higher quality, focused results. Fall back to
 Use the **agent-browser** skill. Only use Chrome DevTools MCP when the user explicitly asks for DevTools, debugging, performance analysis, or network inspection.
 
 </important>
+
+<important if="you are splitting a large PR, creating stacked PRs, managing branch dependencies, or rebasing a chain of branches">
+
+Use the **git-machete** skill (`/git-machete`). Use `git m` (alias for `git machete`) to manage stacked branch trees and create PRs that show their position in the stack.
+
+</important>
