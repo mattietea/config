@@ -33,12 +33,9 @@ mkHost {
 
   packages = [
     (pkg "agenix")
-    (pkg "skills")
-    (pkg "skills-personal")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")
-    (pkg "claude-code")
     (pkg "dock")
     (pkg "delta")
     (pkg "devenv")
@@ -51,14 +48,17 @@ mkHost {
     (pkg "git")
     (pkg "git-absorb")
     (pkg "lazygit")
-    (pkg "mcp-personal")
     (pkg "mise")
     (pkg "node")
-    (pkg "opencode-personal")
     (pkg "pure")
     (pkg "rename-utils")
     (pkg "tldr")
     (pkg "zoxide")
     (pkg "zsh")
+  ];
+
+  ai = [
+    ../modules/ai
+    ../modules/ai/personal.nix
   ];
 }
