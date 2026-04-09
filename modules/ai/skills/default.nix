@@ -37,6 +37,10 @@
         subdir = "skills";
         idPrefix = "itechmeat";
       };
+      humanlayer = {
+        input = "humanlayer-skills";
+        subdir = "plugins/improve-claude-md/skills";
+      };
     };
     skills.enable = [
       "skill-creator"
@@ -46,6 +50,7 @@
       "typescript-advanced-types"
       "vitest"
       "itechmeat/react-testing-library"
+      "improve-claude-md"
     ];
     targets = {
       claude.enable = true;
