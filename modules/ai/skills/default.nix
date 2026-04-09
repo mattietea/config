@@ -37,10 +37,6 @@
         subdir = "skills";
         idPrefix = "itechmeat";
       };
-      anthropic-plugins = {
-        input = "anthropic-plugins";
-        subdir = "plugins/code-simplifier/agents";
-      };
     };
     skills.enable = [
       "skill-creator"
@@ -50,7 +46,6 @@
       "typescript-advanced-types"
       "vitest"
       "itechmeat/react-testing-library"
-      "code-simplifier"
     ];
     targets = {
       claude.enable = true;

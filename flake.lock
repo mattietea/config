@@ -60,22 +60,6 @@
         "type": "github"
       }
     },
-    "anthropic-plugins": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775688123,
-        "narHash": "sha256-kIH6mocPgQTAECQBWyQOjM6INFfVVd8iXYW/Us3mFjU=",
-        "owner": "anthropics",
-        "repo": "claude-plugins-official",
-        "rev": "98c01d3fbf621892e437fc64a10d38950690e2c6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anthropics",
-        "repo": "claude-plugins-official",
-        "type": "github"
-      }
-    },
     "anthropic-skills": {
       "flake": false,
       "locked": {
@@ -467,7 +451,6 @@
         "agenix": "agenix",
         "agent-browser-skills": "agent-browser-skills",
         "agent-skills-nix": "agent-skills-nix",
-        "anthropic-plugins": "anthropic-plugins",
         "anthropic-skills": "anthropic-skills",
         "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
         "context7-skills": "context7-skills",

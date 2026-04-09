@@ -78,11 +78,6 @@
       flake = false;
     };
 
-    anthropic-plugins = {
-      url = "github:anthropics/claude-plugins-official";
-      flake = false;
-    };
-
   };
 
   outputs =
