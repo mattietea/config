@@ -328,6 +328,22 @@
         "type": "github"
       }
     },
+    "humanlayer-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773804323,
+        "narHash": "sha256-xRlJS7kYEtAZ+pCphIVGbOyuRhwuW4JuJG1qDF9ns7o=",
+        "owner": "humanlayer",
+        "repo": "skills",
+        "rev": "ecf602e2f9bb445831e36592af92c36bfad18960",
+        "type": "github"
+      },
+      "original": {
+        "owner": "humanlayer",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "import-tree": {
       "locked": {
         "lastModified": 1763762820,
@@ -458,6 +474,7 @@
         "dot-skills": "dot-skills",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
+        "humanlayer-skills": "humanlayer-skills",
         "itechmeat-skills": "itechmeat-skills",
         "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",

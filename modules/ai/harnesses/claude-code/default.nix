@@ -46,6 +46,7 @@
       enabledPlugins = {
         "claude-mem@thedotmack" = true;
         "codex@openai-codex" = true;
+        "improve-claude-md@skills" = true;
         "superpowers@claude-plugins-official" = true;
       };
       extraKnownMarketplaces = {
@@ -59,6 +60,12 @@
           source = {
             source = "github";
             repo = "openai/codex-plugin-cc";
+          };
+        };
+        skills = {
+          source = {
+            source = "github";
+            repo = "humanlayer/skills";
           };
         };
       };

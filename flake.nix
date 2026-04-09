@@ -78,6 +78,11 @@
       flake = false;
     };
 
+    humanlayer-skills = {
+      url = "github:humanlayer/skills";
+      flake = false;
+    };
+
     superpowers = {
       url = "github:obra/superpowers";
       flake = false;
