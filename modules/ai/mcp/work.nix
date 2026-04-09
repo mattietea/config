@@ -1,6 +1,4 @@
 _: {
-  imports = [ ../mcp ];
-
   # Work-only MCP servers
   programs.mcp.servers = {
     notion = {
