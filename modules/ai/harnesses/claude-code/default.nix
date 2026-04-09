@@ -45,6 +45,7 @@
       };
       enabledPlugins = {
         "claude-mem@thedotmack" = true;
+        "codex@openai-codex" = true;
         "superpowers@claude-plugins-official" = true;
       };
       extraKnownMarketplaces = {
@@ -52,6 +53,12 @@
           source = {
             source = "github";
             repo = "thedotmack/claude-mem";
+          };
+        };
+        openai-codex = {
+          source = {
+            source = "github";
+            repo = "openai/codex-plugin-cc";
           };
         };
       };
