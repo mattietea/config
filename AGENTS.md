@@ -70,6 +70,14 @@ sudo determinate-nixd upgrade
 │   ├── personal.nix             # Self-contained personal config (settings + apps + packages)
 │   └── work.nix                 # Self-contained work config (settings + apps + packages)
 └── modules/
+    ├── ai/                      # AI tool configuration
+    │   ├── default.nix          # Aggregator: imports all base AI modules
+    │   ├── work.nix             # Aggregator: imports work-specific AI overrides
+    │   ├── personal.nix         # Aggregator: imports personal-specific AI overrides
+    │   ├── harnesses/           # AI coding tools (claude-code, opencode)
+    │   ├── skills/              # Agent skills configuration
+    │   ├── mcp/                 # MCP server configuration
+    │   └── instructions/        # Global instruction file (INSTRUCTIONS.md)
     ├── darwin/system/           # macOS system defaults
     │   ├── default.nix          # Importer + meta settings
     │   ├── dock.nix             # Dock, Spaces, Mission Control
@@ -80,7 +88,6 @@ sudo determinate-nixd upgrade
         ├── applications/        # GUI apps (brave, zed, discord, etc.)
         │   └── */default.nix
         └── packages/            # CLI tools (git, fzf, zsh, etc.)
-            ├── mcp/             # Standalone MCP server configuration
             └── */default.nix
 ```
 
@@ -106,7 +113,10 @@ sudo determinate-nixd upgrade
 - `modules/darwin/system/finder.nix` - Finder preferences
 - `modules/darwin/system/input.nix` - Keyboard, trackpad, input settings
 - `modules/darwin/system/updates.nix` - Software Update settings
-- `modules/home-manager/packages/mcp/default.nix` - MCP server configuration
+- `modules/ai/mcp/default.nix` - MCP server configuration
+- `modules/ai/default.nix` - AI module aggregator (imports harnesses, skills, mcp, instructions)
+- `modules/ai/harnesses/claude-code/default.nix` - Claude Code configuration
+- `modules/ai/instructions/INSTRUCTIONS.md` - Global instruction file for all AI harnesses
 - `.github/workflows/check.yml` - CI: flake check + devenv test
 - `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv)
 
@@ -164,6 +174,10 @@ mkHost {
   hostname = "Matts-Personal-Macbook-Air";
   applications = [ (app "brave") (app "zed") /* ... */ ];
   packages = [ (pkg "git") (pkg "fzf") /* ... */ ];
+  ai = [
+    ../modules/ai
+    ../modules/ai/personal.nix
+  ];
 }
 ```
 
@@ -178,21 +192,29 @@ shellAliases = { g = "${pkgs.git}/bin/git"; cat = "${pkgs.bat}/bin/bat"; };
 
 ### AI Tool Configuration
 
-AI tools (claude-code, opencode, zed) configure independently:
+AI tools are consolidated under `modules/ai/` with a clear taxonomy:
 
-- Each tool uses `enableMcpIntegration = true` to connect to shared MCP module
-- MCP servers defined in `modules/home-manager/packages/mcp/default.nix`
-- No shared rules or agent definitions - tools configure their own settings
-- Claude Code config: `modules/home-manager/packages/claude-code/default.nix` (read the file for current settings)
+- **harnesses/** — AI coding tools (claude-code, opencode), each with `enableMcpIntegration = true`
+- **skills/** — Agent skills shared across harnesses
+- **mcp/** — MCP server configuration shared via `enableMcpIntegration`
+- **instructions/** — Global instruction file deployed to Claude Code, Codex, and OpenCode
+
+Host files import AI modules via aggregators:
+
+```nix
+ai = [
+  ../modules/ai          # base (all harnesses, skills, mcp, instructions)
+  ../modules/ai/work.nix # work-specific overrides
+];
+```
 
 **Package sources**:
 
-- claude-code: External flake input `claude-code-nix`
-- opencode, zed: nixpkgs packages
+- claude-code, opencode: External flake input `llm-agents`
 
 **Model configuration**:
 
-- claude-code: `settings.model` using shorthand names (currently `"opusplan"`)
+- claude-code: `settings.model` using shorthand names (currently `"opus[1m]"`)
 - opencode: Per-agent models in `oh-my-opencode.json`
 
 ### External Package Inputs
@@ -201,11 +223,10 @@ AI tools (claude-code, opencode, zed) configure independently:
 
 ```nix
 # flake.nix
-claude-code-nix.url = "github:sadjow/claude-code-nix";
-claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
+llm-agents.url = "github:numtide/llm-agents.nix";
 ```
 
-Access in modules via `inputs.claude-code-nix.packages.${pkgs.system}.default`.
+Access in modules via `inputs.llm-agents.packages.${pkgs.system}.claude-code`.
 
 **Source-only packages** (build yourself): Use `flake = false` input, access via `inputs.tool-src`.
 
@@ -238,7 +259,7 @@ Note: Each host independently lists its packages — adding to one host does not
 
 To add MCP servers for AI tools:
 
-1. Edit `modules/home-manager/packages/mcp/default.nix`
+1. Edit `modules/ai/mcp/default.nix`
 2. Add server to `programs.mcp.servers` attribute set
 3. Changes available to all tools with `enableMcpIntegration = true`
 
