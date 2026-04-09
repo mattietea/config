@@ -5,6 +5,7 @@
     ./harnesses/opencode
     ./skills
     ./mcp
+    ./plugins
     ./instructions
   ];
 }
