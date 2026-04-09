@@ -5,12 +5,14 @@
 {
   imports = [ ../worktrunk ];
 
-  home.file.".config/worktrunk/config.toml".text = ''
+  xdg.configFile."worktrunk/config.toml".text = ''
     worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 
-    [projects."github.com/harveyai/frontend".post-create]
+    [pre-start]
+    rebase = "git fetch {{ remote }} {{ default_branch }} && git rebase {{ remote }}/{{ default_branch }}"
+
+    [projects."github.com/harveyai/frontend".post-start]
     copy-env = "${pkgs.worktrunk}/bin/wt step copy-ignored"
-    symlink-superpowers = "rm -rf docs/superpowers && ln -s {{ primary_worktree_path }}/docs/superpowers docs/superpowers"
     install = "${pkgs.mise}/bin/mise exec node@22 -- pnpm install"
   '';
 }
