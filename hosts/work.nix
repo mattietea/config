@@ -29,12 +29,9 @@ mkHost {
 
   packages = [
     (pkg "agenix")
-    (pkg "skills")
-    (pkg "skills-work")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")
-    (pkg "claude-code")
     (pkg "dock")
     (pkg "delta")
     (pkg "devenv")
@@ -48,10 +45,8 @@ mkHost {
     (pkg "git-absorb")
     (pkg "lazygit")
     (pkg "linear")
-    (pkg "mcp-work")
     (pkg "mise")
     (pkg "node")
-    (pkg "opencode-work")
     (pkg "pup")
     (pkg "pure")
     (pkg "rename-utils")
@@ -60,5 +55,10 @@ mkHost {
     (pkg "worktrunk-work")
     (pkg "zoxide")
     (pkg "zsh")
+  ];
+
+  ai = [
+    ../modules/ai
+    ../modules/ai/work.nix
   ];
 }

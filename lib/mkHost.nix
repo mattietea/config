@@ -5,6 +5,7 @@
   system ? "aarch64-darwin",
   applications ? [ ],
   packages ? [ ],
+  ai ? [ ],
 }:
 let
   applicationNames = map builtins.baseNameOf applications;
@@ -53,7 +54,7 @@ inputs.darwin.lib.darwinSystem {
         useUserPackages = true;
         backupFileExtension = "bak";
         extraSpecialArgs = { inherit settings inputs applicationNames; };
-        sharedModules = applications ++ packages;
+        sharedModules = applications ++ packages ++ ai;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           home = {
