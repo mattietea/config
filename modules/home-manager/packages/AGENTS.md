@@ -14,7 +14,6 @@ Houses individual tool configurations for CLI utilities, development tools, and 
 - Shell & navigation: zsh, fzf, zoxide, eza
 - Development: devenv, mise, node, bun
 - Editor integration: bat, delta
-- AI tools: claude-code, opencode
 
 <!-- END AUTO-MANAGED -->
 
@@ -26,11 +25,9 @@ Houses individual tool configurations for CLI utilities, development tools, and 
 packages/
 ├── aerospace/       # Window manager
 ├── bat/             # Cat replacement with syntax highlighting
-├── claude-code/     # AI coding assistant
 ├── devenv/          # Development environments
 ├── fzf/             # Fuzzy finder
 ├── git/             # Git configuration
-├── mcp/             # MCP server configuration
 ├── zsh/             # Shell configuration
 └── ... (25+ more)
 ```
@@ -67,8 +64,6 @@ Tools needing user info receive `settings` via `specialArgs`:
 - fzf -> bat, eza (preview integration)
 - git -> delta (diff viewer)
 - zsh -> multiple tools (shell integration)
-- claude-code -> terminal-notifier (plugin dependencies)
-- AI tools -> mcp (MCP server configuration via enableMcpIntegration)
 
 <!-- END AUTO-MANAGED -->
 

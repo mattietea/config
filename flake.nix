@@ -78,6 +78,11 @@
       flake = false;
     };
 
+    superpowers = {
+      url = "github:obra/superpowers";
+      flake = false;
+    };
+
   };
 
   outputs =
