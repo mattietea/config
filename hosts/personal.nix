@@ -54,7 +54,6 @@ mkHost {
     (pkg "pure")
     (pkg "rename-utils")
     (pkg "tldr")
-    (pkg "tmux")
     (pkg "zoxide")
     (pkg "zsh")
   ];

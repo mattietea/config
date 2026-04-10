@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  programs.zsh.initContent = ''
+    if [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+      source "${pkgs.ghostty-bin}/share/ghostty/shell-integration/zsh/ghostty-integration"
+    fi
+  '';
+
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty-bin;

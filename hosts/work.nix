@@ -53,7 +53,6 @@ mkHost {
     (pkg "rename-utils")
     (pkg "sentry")
     (pkg "tldr")
-    (pkg "tmux")
     (pkg "worktrunk-work")
     (pkg "zoxide")
     (pkg "zsh")
