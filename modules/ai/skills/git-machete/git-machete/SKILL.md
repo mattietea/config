@@ -1,112 +1,81 @@
 ---
 name: git-machete
-description: "Stacked PRs and branch dependency management with git machete. Use when splitting large PRs into stacked branches, creating dependent PR chains, rebasing branch stacks, or managing branch hierarchies. Triggers: 'stack PRs', 'split this PR', 'stacked branches', 'dependent PRs', 'branch dependencies', 'rebase stack'."
+description: "Stacked PRs and branch dependency management with git machete. Use when a PR is too large to review, when splitting work into reviewable pieces that build on each other, when creating dependent PR chains, or when rebasing a chain of branches. Also use when asked to 'break this up', 'this PR is too big', 'split this into smaller PRs', or anything involving stacked/dependent branches."
 ---
 
 # Git Machete — Stacked PRs
 
-Use `git machete` (aliased as `git m`) to manage branch dependency trees and stacked PRs.
+Use `git machete` (aliased as `git m`) to manage stacked PRs — a chain of individually shippable branches where each builds on the one before it.
 
-## When to Use
+## When to Stack
 
-- Splitting a large PR into smaller, reviewable stacked PRs
-- Creating a chain of dependent branches that build on each other
-- Keeping a stack of branches in sync after upstream changes
-- Creating GitHub PRs that show their position in a stack
+Target 2-3 PRs per feature, each 200-500 lines. Stack for these reasons:
 
-## Core Workflow: Splitting a Large PR into a Stack
+- **You're blocked on review.** PR 1 is out for review and you need to keep working. Stack PR 2 on top instead of waiting.
+- **Different reviewers for different parts.** Backend doesn't need to review frontend code. Split where the reviewer changes.
+- **Risk isolation.** A migration or schema change that should be independently revertable from the feature code that uses it.
 
-### 1. Plan the split
+Don't stack when the feature is under 500 lines, when the split would create PRs that don't make sense independently, or when the work is a single concern.
 
-Before touching git, identify logical chunks of the work. Each chunk becomes a branch. Order matters — later branches depend on earlier ones.
+## How to Split
 
-### 2. Create the branch stack
+Each branch in the stack must be **individually shippable** — passing tests, no dead code, no half-built abstractions. A reviewer should be able to approve any PR without seeing what comes after it.
 
-```bash
-# Start from main
-git checkout main
+Common split patterns:
 
-# Create first branch with the base changes
-git checkout -b stack/part-1
-# Make changes, commit
+1. **Functional layers** — data model → API → UI
+2. **Refactor then change** — cleanup in one PR, behavior change in the next
+3. **Risk isolation** — migration separate from the code that uses it
+4. **Generated/mechanical** — codegen, version bumps, lockfile updates separate from logic
 
-# Create second branch on top of first
-git checkout -b stack/part-2
-# Make changes, commit
+Use `git m diff` and `git m log` to see what's unique to each branch when deciding where to cut.
 
-# And so on
-git checkout -b stack/part-3
-```
+## Workflow
 
-### 3. Define the dependency tree
+### Build the tree
+
+Use `git m add` to register branches as you create them:
 
 ```bash
-git m edit
+git checkout -b feat/add-user-model
+# make changes, commit
+git m add
+
+git checkout -b feat/user-api
+# make changes, commit
+git m add
 ```
 
-This opens `.git/machete`. Define the tree with indentation:
+Check the tree with `git m s`. To rearrange, use `git m edit` which opens `.git/machete`:
 
 ```
 main
-    stack/part-1
-        stack/part-2
-            stack/part-3
+    feat/add-user-model
+        feat/user-api
 ```
 
-Or auto-discover from current branch structure:
+### Create stacked PRs
+
+From each branch:
 
 ```bash
-git m discover
-```
-
-### 4. Check the stack status
-
-```bash
-git m s
-```
-
-Shows sync status — green means in sync, red means needs rebase.
-
-### 5. Create stacked PRs
-
-```bash
-# From each branch in the stack:
 git m github create-pr
 ```
 
-Each PR targets its parent branch (not main), and the description includes the full stack visualization.
+Each PR targets its parent branch and the description shows the full stack.
 
-### 6. Keep the stack in sync
-
-After making changes to an earlier branch:
+### Keep the stack in sync
 
 ```bash
-# Rebase all downstream branches
-git m traverse
+git m traverse -H    # rebase, push, create/retarget PRs, slide out merged branches
 ```
 
-Or update just the current branch from its parent:
+This single command handles everything: rebases each branch onto its parent, pushes, creates GitHub PRs if missing, retargets PRs if the base changed, and offers to slide out merged branches.
+
+For just the current branch without PR sync:
 
 ```bash
-git m update
-```
-
-Then update all PR descriptions to reflect current state:
-
-```bash
-git m github update-pr-descriptions --related
-```
-
-### 7. After a PR merges
-
-When a PR in the stack gets merged:
-
-```bash
-# Slide out the merged branch and rebase its children onto its parent
-git m slide-out
-
-# Update PR targets
-git m github restack-pr
+git m update         # rebase onto parent
 ```
 
 ## Quick Reference
@@ -114,24 +83,14 @@ git m github restack-pr
 | Command                                         | What it does                                       |
 | ----------------------------------------------- | -------------------------------------------------- |
 | `git m s`                                       | Show branch tree with sync status                  |
-| `git m edit`                                    | Edit the branch dependency file                    |
-| `git m discover`                                | Auto-detect branch tree from git history           |
+| `git m add`                                     | Add current branch to the tree under its parent    |
+| `git m edit`                                    | Edit the full branch dependency file               |
+| `git m discover`                                | Auto-detect tree from git history                  |
 | `git m update`                                  | Rebase current branch onto its parent              |
-| `git m traverse`                                | Walk entire tree, rebase and push each branch      |
+| `git m traverse`                                | Walk entire tree — rebase and push each branch     |
 | `git m slide-out`                               | Remove current branch, rebase children onto parent |
-| `git m github create-pr`                        | Create PR targeting parent branch with stack info  |
-| `git m github restack-pr`                       | Retarget PR + update descriptions after rebase     |
+| `git m github create-pr`                        | Create PR targeting parent with stack info         |
+| `git m github restack-pr`                       | Retarget PR and update descriptions after merge    |
 | `git m github update-pr-descriptions --related` | Update stack info in all related PRs               |
-| `git m diff`                                    | Show only this branch's changes (vs fork point)    |
+| `git m diff`                                    | Show only this branch's changes vs fork point      |
 | `git m log`                                     | Show only this branch's commits                    |
-
-## With Worktrees
-
-Git machete works with worktrees. The `.git/machete` file is shared across all worktrees. When `traverse` encounters a branch checked out in another worktree, it operates in the current worktree (configured via `stay-in-the-current-worktree`).
-
-## Tips
-
-- Branch names in a stack should share a prefix (e.g., `stack/auth-model`, `stack/auth-api`, `stack/auth-ui`)
-- Use `git m anno` to add custom annotations to branches (shown in `status`)
-- After squash-merging a PR, machete detects it and marks the branch as merged
-- Use `-U` flag with `create-pr`, `restack-pr`, or `retarget-pr` to auto-update all related PR descriptions
