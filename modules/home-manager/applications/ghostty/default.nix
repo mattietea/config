@@ -3,7 +3,7 @@
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty-bin;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
     settings = {
       font-family = "JetBrainsMono NFM Bold";
       font-size = 14;
