@@ -41,6 +41,9 @@
         input = "humanlayer-skills";
         subdir = "plugins/improve-claude-md/skills";
       };
+      local = {
+        path = ./git-machete;
+      };
     };
     skills.enable = [
       "skill-creator"
@@ -51,6 +54,7 @@
       "vitest"
       "itechmeat/react-testing-library"
       "improve-claude-md"
+      "git-machete"
     ];
     targets = {
       claude.enable = true;
