@@ -12,7 +12,7 @@ let
         variant = "high";
         reasoningEffort = "high";
         fallback_models = [
-          "anthropic/claude-opus-4-6"
+          "anthropic/claude-opus-4-7"
           "anthropic/claude-sonnet-4-6"
         ];
         compaction.model = "anthropic/claude-haiku-4-5";
@@ -22,7 +22,7 @@ let
         model = "openai/gpt-5.4";
         variant = "high";
         fallback_models = [
-          "anthropic/claude-opus-4-6"
+          "anthropic/claude-opus-4-7"
           "anthropic/claude-sonnet-4-6"
         ];
         compaction.model = "anthropic/claude-haiku-4-5";

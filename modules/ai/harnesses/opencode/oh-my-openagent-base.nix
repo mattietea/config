@@ -41,7 +41,7 @@
       anthropic = 3;
     };
     modelConcurrency = {
-      "anthropic/claude-opus-4-6" = 2;
+      "anthropic/claude-opus-4-7" = 2;
     };
   };
 
@@ -80,7 +80,7 @@
   agents = {
     # Primary orchestrator
     Sisyphus = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       thinking.type = "adaptive";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -95,7 +95,7 @@
 
     # Planning & strategy
     prometheus = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       thinking.type = "adaptive";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -104,7 +104,7 @@
     };
 
     metis = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       thinking.type = "adaptive";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -114,7 +114,7 @@
 
     # Review — host configs may override model + add thinking/reasoningEffort
     momus = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -123,7 +123,7 @@
 
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
     oracle = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -156,15 +156,15 @@
     quick.model = "anthropic/claude-haiku-4-5";
     unspecified-low.model = "anthropic/claude-sonnet-4-6";
     unspecified-high = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       variant = "max";
     };
     deep = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       variant = "max";
     };
     ultrabrain = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       variant = "max";
     };
     visual-engineering.model = "anthropic/claude-sonnet-4-6";
