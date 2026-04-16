@@ -52,8 +52,8 @@
         local hash
         hash=$(nix-prefetch-url "$url" 2>/dev/null | xargs nix hash convert --hash-algo sha256 --to sri)
 
-        sed -i "" "s|version = \"$current_version\"|version = \"$latest_version\"|" "$file"
-        sed -i "" "s|hash = \"sha256-.*\"|hash = \"$hash\"|" "$file"
+        sed -i "s|version = \"$current_version\"|version = \"$latest_version\"|" "$file"
+        sed -i "s|hash = \"sha256-.*\"|hash = \"$hash\"|" "$file"
 
         echo "$name: updated to $latest_version"
       }
