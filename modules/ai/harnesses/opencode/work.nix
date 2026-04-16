@@ -1,6 +1,6 @@
 _:
 let
-  baseConfig = import ./oh-my-opencode-base.nix;
+  baseConfig = import ./oh-my-openagent-base.nix;
 
   # Anthropic + OpenAI: GPT-5.4 for oracle/momus, GPT-5.3-codex for deep work, hephaestus enabled
   config = baseConfig // {
@@ -63,5 +63,5 @@ let
   };
 in
 {
-  home.file.".config/opencode/oh-my-opencode.json".text = builtins.toJSON config;
+  home.file.".config/opencode/oh-my-openagent.json".text = builtins.toJSON config;
 }

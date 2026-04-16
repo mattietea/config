@@ -21,9 +21,17 @@ in
       };
       plugin = [
         "oh-my-openagent"
+        "opencode-with-claude"
         "@tarquinen/opencode-dcp"
-        "@tarquinen/opencode-smart-title"
       ];
+      provider = {
+        anthropic = {
+          options = {
+            baseURL = "http://127.0.0.1:3456";
+            apiKey = "dummy";
+          };
+        };
+      };
     };
   };
 }

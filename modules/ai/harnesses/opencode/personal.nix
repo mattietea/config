@@ -1,6 +1,6 @@
 _:
 let
-  baseConfig = import ./oh-my-opencode-base.nix;
+  baseConfig = import ./oh-my-openagent-base.nix;
 
   # Anthropic-only: disable hephaestus, add adaptive thinking for oracle/momus
   config = baseConfig // {
@@ -26,7 +26,5 @@ let
   };
 in
 {
-  programs.opencode.settings.plugin = [ "opencode-claude-auth" ];
-
-  home.file.".config/opencode/oh-my-opencode.json".text = builtins.toJSON config;
+  home.file.".config/opencode/oh-my-openagent.json".text = builtins.toJSON config;
 }

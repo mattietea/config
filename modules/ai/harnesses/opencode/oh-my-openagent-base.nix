@@ -1,4 +1,4 @@
-# Shared oh-my-opencode configuration
+# Shared oh-my-openagent configuration
 # Pure data file — imported by opencode-personal and opencode-work
 # Base defaults are Anthropic-only; work host overrides with OpenAI where appropriate
 {
