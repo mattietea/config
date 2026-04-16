@@ -17,6 +17,8 @@
     # overriding nixpkgs would invalidate their binary cache.
     llm-agents.url = "github:numtide/llm-agents.nix";
 
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 

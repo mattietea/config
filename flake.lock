@@ -151,6 +151,25 @@
         "type": "github"
       }
     },
+    "claude-code-nix": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1776353369,
+        "narHash": "sha256-/RO9Wrz4RzMogdR/kIBoRpSLjiaATVAmlIOuuXuZIGI=",
+        "owner": "sadjow",
+        "repo": "claude-code-nix",
+        "rev": "69fc1a6069ff38820fbbc042cc14f93b2539297f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sadjow",
+        "repo": "claude-code-nix",
+        "type": "github"
+      }
+    },
     "context7-skills": {
       "flake": false,
       "locked": {
@@ -263,6 +282,24 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -396,8 +433,8 @@
         "blueprint": "blueprint",
         "bun2nix": "bun2nix",
         "flake-parts": "flake-parts_2",
-        "nixpkgs": "nixpkgs",
-        "systems": "systems_2",
+        "nixpkgs": "nixpkgs_2",
+        "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -446,6 +483,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1776255774,
+        "narHash": "sha256-psVTpH6PK3q1htMJpmdz1hLF5pQgEshu7gQWgKO6t6Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "566acc07c54dc807f91625bb286cb9b321b5f42a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "pup-skills": {
       "flake": false,
       "locked": {
@@ -469,6 +522,7 @@
         "agent-skills-nix": "agent-skills-nix",
         "anthropic-skills": "anthropic-skills",
         "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
+        "claude-code-nix": "claude-code-nix",
         "context7-skills": "context7-skills",
         "darwin": "darwin_2",
         "dot-skills": "dot-skills",
@@ -478,7 +532,7 @@
         "itechmeat-skills": "itechmeat-skills",
         "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "pup-skills": "pup-skills",
         "superpowers": "superpowers",
         "vercel-skills-cli": "vercel-skills-cli",
@@ -518,6 +572,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
