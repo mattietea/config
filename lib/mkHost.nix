@@ -5,6 +5,8 @@
   system ? "aarch64-darwin",
   applications ? [ ],
   packages ? [ ],
+  ai ? [ ],
+  darwinModules ? [ ],
 }:
 let
   applicationNames = map builtins.baseNameOf applications;
@@ -24,6 +26,7 @@ inputs.darwin.lib.darwinSystem {
         };
       };
       nix.enable = false;
+      documentation.enable = false;
       users.users.${settings.username} = {
         name = settings.username;
         home = "/Users/${settings.username}";
@@ -51,11 +54,17 @@ inputs.darwin.lib.darwinSystem {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        backupFileExtension = "bak";
+        backupFileExtension = null;
+        backupCommand = "/bin/rm -f";
         extraSpecialArgs = { inherit settings inputs applicationNames; };
-        sharedModules = applications ++ packages;
+        sharedModules = applications ++ packages ++ ai;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
+          manual = {
+            json.enable = false;
+            html.enable = false;
+            manpages.enable = false;
+          };
           home = {
             inherit (settings) username;
             homeDirectory = "/Users/${settings.username}";
@@ -66,5 +75,6 @@ inputs.darwin.lib.darwinSystem {
       };
     }
     { networking.hostName = hostname; }
-  ];
+  ]
+  ++ darwinModules;
 }

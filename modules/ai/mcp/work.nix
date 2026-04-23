@@ -5,13 +5,17 @@ _: {
       type = "remote";
       url = "https://mcp.notion.com/mcp";
     };
-    datadog = {
-      type = "remote";
-      url = "https://mcp.us3.datadoghq.com/api/unstable/mcp-server/mcp";
+    incident-io = {
+      type = "http";
+      url = "https://mcp.incident.io/mcp";
     };
-    linear = {
-      type = "remote";
-      url = "https://mcp.linear.app/mcp";
+    chrome-devtools = {
+      type = "stdio";
+      command = "npx";
+      args = [
+        "-y"
+        "chrome-devtools-mcp@latest"
+      ];
     };
     slack = {
       type = "remote";

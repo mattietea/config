@@ -1,0 +1,45 @@
+# Global Instructions
+
+Universal preferences for all AI coding tools.
+
+<important if="you are looking up documentation, API references, or library usage">
+
+Use **context7** first — it has up-to-date docs with code examples. Fall back to web search only if context7 doesn't cover it.
+
+</important>
+
+<important if="you need to search the web for information">
+
+Use **Exa** (MCP server) first — higher quality, focused results. Fall back to generic web search only when Exa doesn't cover the topic.
+
+</important>
+
+<important if="you are asked to load a website, visit a URL, fill a form, or interact with a web page">
+
+Use the **agent-browser** skill. Only use Chrome DevTools MCP when the user explicitly asks for DevTools, debugging, performance analysis, or network inspection.
+
+</important>
+
+<important if="you are splitting a large PR, creating stacked PRs, managing branch dependencies, or rebasing a chain of branches">
+
+Use the **git-machete** skill (`/git-machete`). Use `git m` (alias for `git machete`) to manage stacked branch trees and create PRs that show their position in the stack.
+
+</important>
+
+<important if="you are working with Datadog — monitors, dashboards, logs, APM, incidents, or any observability task">
+
+Use the **pup** skill (`/dd-pup`) for Datadog CLI operations. Related skills: `/dd-logs`, `/dd-apm`, `/dd-monitors`, `/dd-debugger`.
+
+</important>
+
+<important if="you are managing Linear issues, creating tickets, updating status, or working with project tracking">
+
+Use the **linear-cli** skill (`/linear-cli`) to manage Linear issues from the command line.
+
+</important>
+
+<important if="you are managing git worktrees, configuring worktrunk, setting up hooks, or using wt commands">
+
+Use the **worktrunk** skill (`/worktrunk`) for worktree management, hooks, and commit message generation.
+
+</important>

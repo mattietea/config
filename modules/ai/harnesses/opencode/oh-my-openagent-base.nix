@@ -1,4 +1,4 @@
-# Shared oh-my-opencode configuration
+# Shared oh-my-openagent configuration
 # Pure data file — imported by opencode-personal and opencode-work
 # Base defaults are Anthropic-only; work host overrides with OpenAI where appropriate
 {
@@ -6,6 +6,8 @@
     "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
 
   google_auth = false;
+
+  model_fallback = true;
 
   ralph_loop = {
     enabled = true;
@@ -39,7 +41,7 @@
       anthropic = 3;
     };
     modelConcurrency = {
-      "anthropic/claude-opus-4-6" = 2;
+      "anthropic/claude-opus-4-7" = 2;
     };
   };
 
@@ -78,8 +80,12 @@
   agents = {
     # Primary orchestrator
     Sisyphus = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
     };
 
     sisyphus-junior.model = "anthropic/claude-sonnet-4-6";
@@ -89,20 +95,40 @@
 
     # Planning & strategy
     prometheus = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
     };
 
     metis = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
     };
 
     # Review — host configs may override model + add thinking/reasoningEffort
-    momus.model = "anthropic/claude-opus-4-6";
+    momus = {
+      model = "anthropic/claude-opus-4-7";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
+    };
 
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
-    oracle.model = "anthropic/claude-opus-4-6";
+    oracle = {
+      model = "anthropic/claude-opus-4-7";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-haiku-4-5";
+    };
 
     # Search & research — read-only, no edit/write permissions
     explore = {
@@ -130,15 +156,15 @@
     quick.model = "anthropic/claude-haiku-4-5";
     unspecified-low.model = "anthropic/claude-sonnet-4-6";
     unspecified-high = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       variant = "max";
     };
     deep = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       variant = "max";
     };
     ultrabrain = {
-      model = "anthropic/claude-opus-4-6";
+      model = "anthropic/claude-opus-4-7";
       variant = "max";
     };
     visual-engineering.model = "anthropic/claude-sonnet-4-6";

@@ -14,6 +14,7 @@
       ".Spotlight-V100"
       ".Trashes"
       ".sisyphus"
+      "docs/superpowers/"
     ];
 
     settings = {
@@ -30,6 +31,22 @@
         lazy = "!${pkgs.lazygit}/bin/lazygit";
         fixup = "commit --fixup";
         tidy = "rebase --interactive --autosquash";
+        tree = "!${pkgs.worktrunk}/bin/wt";
+        bare = "!${pkgs.writeShellScript "git-bare" ''
+          set -euo pipefail
+          url="$1"
+          dir="''${2:-$(basename "$url" .git)}"
+          mkdir -p "$dir" && cd "$dir"
+          ${pkgs.git}/bin/git clone --bare "$url" .bare
+          echo "gitdir: ./.bare" > .git
+          ${pkgs.git}/bin/git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+          ${pkgs.git}/bin/git fetch origin
+          default_branch=$(${pkgs.git}/bin/git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null)
+          default_branch="''${default_branch##refs/remotes/origin/}"
+          : "''${default_branch:=main}"
+          ${pkgs.git}/bin/git worktree add "$default_branch"
+          echo "Set up bare clone in $dir/ with worktree for $default_branch"
+        ''}";
       };
 
       # https://jvns.ca/blog/2024/02/16/popular-git-config-options

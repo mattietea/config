@@ -13,12 +13,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    claude-code-nix.url = "github:sadjow/claude-code-nix";
-    claude-code-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # NOTE: no nixpkgs follows — llm-agents ships pre-built binaries via cache.numtide.com;
+    # overriding nixpkgs would invalidate their binary cache.
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
-    # NOTE: no nixpkgs follows — opencode ships pre-built binaries;
-    # overriding nixpkgs breaks its binary cache and forces ~1000 source builds.
-    opencode.url = "github:anomalyco/opencode/dev";
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,15 +30,66 @@
       flake = false;
     };
 
-    vercel-skills = {
-      url = "github:vercel-labs/agent-skills";
-      flake = false;
-    };
-
     vercel-skills-cli = {
       url = "github:vercel-labs/skills";
       flake = false;
     };
+
+    pup-skills = {
+      url = "github:datadog-labs/pup";
+      flake = false;
+    };
+
+    linear-cli-skills = {
+      url = "github:schpet/linear-cli";
+      flake = false;
+    };
+
+    context7-skills = {
+      url = "github:upstash/context7";
+      flake = false;
+    };
+
+    agent-browser-skills = {
+      url = "github:vercel-labs/agent-browser";
+      flake = false;
+    };
+
+    wshobson-agents = {
+      url = "github:wshobson/agents";
+      flake = false;
+    };
+
+    worktrunk-skills = {
+      url = "github:max-sixty/worktrunk";
+      flake = false;
+    };
+
+    dot-skills = {
+      url = "github:pproenca/dot-skills";
+      flake = false;
+    };
+
+    chrome-devtools-mcp-skills = {
+      url = "github:ChromeDevTools/chrome-devtools-mcp";
+      flake = false;
+    };
+
+    itechmeat-skills = {
+      url = "github:itechmeat/llm-code";
+      flake = false;
+    };
+
+    humanlayer-skills = {
+      url = "github:humanlayer/skills";
+      flake = false;
+    };
+
+    superpowers = {
+      url = "github:obra/superpowers";
+      flake = false;
+    };
+
   };
 
   outputs =

@@ -23,7 +23,6 @@ mkHost {
     (app "brave")
     (app "discord")
     (app "google-chrome")
-    (app "opencode-desktop")
     (app "raycast")
     (app "safari")
     (app "spotify")
@@ -34,11 +33,9 @@ mkHost {
 
   packages = [
     (pkg "agenix")
-    (pkg "agent-skills")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")
-    (pkg "claude-code")
     (pkg "dock")
     (pkg "delta")
     (pkg "devenv")
@@ -50,17 +47,19 @@ mkHost {
     (pkg "gh")
     (pkg "git")
     (pkg "git-absorb")
+    (pkg "git-machete")
     (pkg "lazygit")
-    (pkg "mcp")
-    (pkg "mcp-personal")
     (pkg "mise")
     (pkg "node")
-    (pkg "opencode")
-    (pkg "opencode-personal")
     (pkg "pure")
     (pkg "rename-utils")
     (pkg "tldr")
     (pkg "zoxide")
     (pkg "zsh")
+  ];
+
+  ai = [
+    ../modules/ai
+    ../modules/ai/personal.nix
   ];
 }

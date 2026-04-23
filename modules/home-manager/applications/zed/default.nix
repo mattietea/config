@@ -20,14 +20,8 @@
       tab_size = 2;
       bottom_dock_layout = "left_aligned";
       agent = {
-        always_allow_tool_actions = true;
         notify_when_agent_waiting = "all_screens";
         play_sound_when_agent_done = true;
-      };
-      agent_servers = {
-        claude = {
-          default_mode = "bypassPermissions";
-        };
       };
       minimap.show = "never";
       tabs.git_status = true;
@@ -47,9 +41,6 @@
         max_scroll_history_lines = 100000;
       };
       git.branch_picker.show_author_name = true;
-      lsp = {
-        biome.settings.require_config_file = true;
-      };
     };
     userKeymaps = [
       {
@@ -78,10 +69,6 @@
           ];
           cmd-shift-b = "pane::RevealInProjectPanel";
           "cmd-k l" = "dev::OpenLanguageServerLogs";
-          "cmd-alt-c" = [
-            "agent::NewExternalAgentThread"
-            { agent = "claude_code"; }
-          ];
         };
       }
     ];

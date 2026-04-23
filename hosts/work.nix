@@ -21,7 +21,6 @@ mkHost {
 
   applications = [
     # (app "google-chrome")
-    (app "opencode-desktop")
     # (app "raycast")
     # (app "spotify")
     (app "ghostty")
@@ -30,11 +29,9 @@ mkHost {
 
   packages = [
     (pkg "agenix")
-    (pkg "agent-skills")
     (pkg "aerospace")
     (pkg "bat")
     (pkg "bun")
-    (pkg "claude-code")
     (pkg "dock")
     (pkg "delta")
     (pkg "devenv")
@@ -46,17 +43,32 @@ mkHost {
     (pkg "gh")
     (pkg "git")
     (pkg "git-absorb")
+    (pkg "git-machete")
     (pkg "lazygit")
-    (pkg "mcp")
-    (pkg "mcp-work")
+    (pkg "linear")
     (pkg "mise")
     (pkg "node")
-    (pkg "opencode")
-    (pkg "opencode-work")
+    (pkg "pup")
     (pkg "pure")
     (pkg "rename-utils")
+    (pkg "sentry")
     (pkg "tldr")
+    (pkg "worktrunk-work")
     (pkg "zoxide")
     (pkg "zsh")
+  ];
+
+  ai = [
+    ../modules/ai
+    ../modules/ai/work.nix
+  ];
+
+  darwinModules = [
+    {
+      age.secrets.anthropic-api-key = {
+        file = ../secrets/anthropic-api-key.age;
+        owner = settings.username;
+      };
+    }
   ];
 }

@@ -1,6 +1,6 @@
 _:
 let
-  baseConfig = import ../opencode/oh-my-opencode-base.nix;
+  baseConfig = import ./oh-my-openagent-base.nix;
 
   # Anthropic + OpenAI: GPT-5.4 for oracle/momus, GPT-5.3-codex for deep work, hephaestus enabled
   config = baseConfig // {
@@ -11,21 +11,38 @@ let
         model = "openai/gpt-5.4";
         variant = "high";
         reasoningEffort = "high";
+        fallback_models = [
+          "anthropic/claude-opus-4-7"
+          "anthropic/claude-sonnet-4-6"
+        ];
+        compaction.model = "anthropic/claude-haiku-4-5";
       };
       # Review — GPT-5.4 with high reasoning effort
       momus = {
         model = "openai/gpt-5.4";
         variant = "high";
+        fallback_models = [
+          "anthropic/claude-opus-4-7"
+          "anthropic/claude-sonnet-4-6"
+        ];
+        compaction.model = "anthropic/claude-haiku-4-5";
       };
       # Autonomous deep worker — GPT-5.3-codex
       hephaestus = {
         model = "openai/gpt-5.3-codex";
         variant = "medium";
+        fallback_models = [
+          "anthropic/claude-sonnet-4-6"
+        ];
       };
     };
     background_task = baseConfig.background_task // {
       providerConcurrency = baseConfig.background_task.providerConcurrency // {
         openai = 5;
+      };
+      modelConcurrency = baseConfig.background_task.modelConcurrency // {
+        "openai/gpt-5.4" = 3;
+        "openai/gpt-5.3-codex" = 3;
       };
     };
     categories = baseConfig.categories // {
@@ -46,5 +63,9 @@ let
   };
 in
 {
-  home.file.".config/opencode/oh-my-opencode.json".text = builtins.toJSON config;
+  home.file.".config/opencode/oh-my-openagent.json".text = builtins.toJSON config;
+
+  programs.zsh.initContent = ''
+    export ANTHROPIC_API_KEY="$(cat /run/agenix/anthropic-api-key)"
+  '';
 }

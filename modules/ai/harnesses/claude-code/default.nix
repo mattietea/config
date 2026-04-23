@@ -6,7 +6,7 @@
 {
   programs.claude-code = {
     enable = true;
-    package = inputs.claude-code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = inputs.claude-code-nix.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
     enableMcpIntegration = true;
     settings = {
       # Model & Mode
@@ -44,13 +44,28 @@
         pr = "";
       };
       enabledPlugins = {
-        "code-simplifier@claude-plugins-official" = true;
+        "claude-mem@thedotmack" = true;
+        "codex@openai-codex" = true;
+        "improve-claude-md@skills" = true;
+        "superpowers@claude-plugins-official" = true;
       };
       extraKnownMarketplaces = {
-        claude-plugins-official = {
+        thedotmack = {
           source = {
             source = "github";
-            repo = "anthropics/claude-plugins-official";
+            repo = "thedotmack/claude-mem";
+          };
+        };
+        openai-codex = {
+          source = {
+            source = "github";
+            repo = "openai/codex-plugin-cc";
+          };
+        };
+        skills = {
+          source = {
+            source = "github";
+            repo = "humanlayer/skills";
           };
         };
       };
