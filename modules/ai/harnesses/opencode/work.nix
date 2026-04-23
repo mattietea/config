@@ -15,7 +15,7 @@ let
           "anthropic/claude-opus-4-7"
           "anthropic/claude-sonnet-4-6"
         ];
-        compaction.model = "anthropic/claude-haiku-4-5";
+        compaction.model = "anthropic/claude-sonnet-4-6";
       };
       # Review — GPT-5.4 with high reasoning effort
       momus = {
@@ -25,7 +25,7 @@ let
           "anthropic/claude-opus-4-7"
           "anthropic/claude-sonnet-4-6"
         ];
-        compaction.model = "anthropic/claude-haiku-4-5";
+        compaction.model = "anthropic/claude-sonnet-4-6";
       };
       # Autonomous deep worker — GPT-5.3-codex
       hephaestus = {
