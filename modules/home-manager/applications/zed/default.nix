@@ -69,10 +69,6 @@
           ];
           cmd-shift-b = "pane::RevealInProjectPanel";
           "cmd-k l" = "dev::OpenLanguageServerLogs";
-          "cmd-alt-c" = [
-            "agent::NewExternalAgentThread"
-            { agent = "custom"; }
-          ];
         };
       }
     ];
