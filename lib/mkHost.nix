@@ -52,7 +52,8 @@ inputs.darwin.lib.darwinSystem {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        backupFileExtension = "bak";
+        backupFileExtension = null;
+        backupCommand = "/bin/rm -f";
         extraSpecialArgs = { inherit settings inputs applicationNames; };
         sharedModules = applications ++ packages ++ ai;
         users.${settings.username} = {
