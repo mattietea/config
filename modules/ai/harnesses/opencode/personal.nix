@@ -12,7 +12,7 @@ let
         fallback_models = [
           "anthropic/claude-sonnet-4-6"
         ];
-        compaction.model = "anthropic/claude-haiku-4-5";
+        compaction.model = "anthropic/claude-sonnet-4-6";
       };
       momus = {
         model = "anthropic/claude-opus-4-7";
@@ -20,7 +20,7 @@ let
         fallback_models = [
           "anthropic/claude-sonnet-4-6"
         ];
-        compaction.model = "anthropic/claude-haiku-4-5";
+        compaction.model = "anthropic/claude-sonnet-4-6";
       };
     };
   };

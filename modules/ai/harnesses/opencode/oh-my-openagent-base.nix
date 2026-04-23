@@ -78,6 +78,17 @@
   };
 
   agents = {
+    # Default opencode agent — needs explicit adaptive thinking for Opus 4.7
+    # (the "enabled" default the Anthropic API previously accepted is now rejected)
+    build = {
+      model = "anthropic/claude-opus-4-7";
+      thinking.type = "adaptive";
+      fallback_models = [
+        "anthropic/claude-sonnet-4-6"
+      ];
+      compaction.model = "anthropic/claude-sonnet-4-6";
+    };
+
     # Primary orchestrator
     Sisyphus = {
       model = "anthropic/claude-opus-4-7";
@@ -85,7 +96,7 @@
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
-      compaction.model = "anthropic/claude-haiku-4-5";
+      compaction.model = "anthropic/claude-sonnet-4-6";
     };
 
     sisyphus-junior.model = "anthropic/claude-sonnet-4-6";
@@ -100,7 +111,7 @@
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
-      compaction.model = "anthropic/claude-haiku-4-5";
+      compaction.model = "anthropic/claude-sonnet-4-6";
     };
 
     metis = {
@@ -109,25 +120,27 @@
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
-      compaction.model = "anthropic/claude-haiku-4-5";
+      compaction.model = "anthropic/claude-sonnet-4-6";
     };
 
     # Review — host configs may override model + add thinking/reasoningEffort
     momus = {
       model = "anthropic/claude-opus-4-7";
+      thinking.type = "adaptive";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
-      compaction.model = "anthropic/claude-haiku-4-5";
+      compaction.model = "anthropic/claude-sonnet-4-6";
     };
 
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
     oracle = {
       model = "anthropic/claude-opus-4-7";
+      thinking.type = "adaptive";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
-      compaction.model = "anthropic/claude-haiku-4-5";
+      compaction.model = "anthropic/claude-sonnet-4-6";
     };
 
     # Search & research — read-only, no edit/write permissions
@@ -158,14 +171,17 @@
     unspecified-high = {
       model = "anthropic/claude-opus-4-7";
       variant = "max";
+      thinking.type = "adaptive";
     };
     deep = {
       model = "anthropic/claude-opus-4-7";
       variant = "max";
+      thinking.type = "adaptive";
     };
     ultrabrain = {
       model = "anthropic/claude-opus-4-7";
       variant = "max";
+      thinking.type = "adaptive";
     };
     visual-engineering.model = "anthropic/claude-sonnet-4-6";
     writing.model = "anthropic/claude-sonnet-4-6";
