@@ -27,4 +27,8 @@ let
 in
 {
   home.file.".config/opencode/oh-my-openagent.json".text = builtins.toJSON config;
+
+  programs.opencode.settings.plugin = [
+    "opencode-with-claude"
+  ];
 }

@@ -21,8 +21,6 @@ in
       };
       plugin = [
         "oh-my-openagent"
-        "opencode-with-claude"
-        "@tarquinen/opencode-dcp"
       ];
       provider = {
         anthropic = {
