@@ -4,7 +4,7 @@
   ...
 }:
 let
-  llm-agents = inputs.llm-agents.packages.${pkgs.system};
+  llm-agents = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   programs.opencode = {

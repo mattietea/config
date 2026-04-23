@@ -25,6 +25,7 @@ inputs.darwin.lib.darwinSystem {
         };
       };
       nix.enable = false;
+      documentation.enable = false;
       users.users.${settings.username} = {
         name = settings.username;
         home = "/Users/${settings.username}";
@@ -58,6 +59,11 @@ inputs.darwin.lib.darwinSystem {
         sharedModules = applications ++ packages ++ ai;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
+          manual = {
+            json.enable = false;
+            html.enable = false;
+            manpages.enable = false;
+          };
           home = {
             inherit (settings) username;
             homeDirectory = "/Users/${settings.username}";
