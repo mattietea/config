@@ -6,6 +6,7 @@
   applications ? [ ],
   packages ? [ ],
   ai ? [ ],
+  darwinModules ? [ ],
 }:
 let
   applicationNames = map builtins.baseNameOf applications;
@@ -74,5 +75,6 @@ inputs.darwin.lib.darwinSystem {
       };
     }
     { networking.hostName = hostname; }
-  ];
+  ]
+  ++ darwinModules;
 }

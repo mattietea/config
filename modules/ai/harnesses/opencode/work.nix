@@ -64,4 +64,8 @@ let
 in
 {
   home.file.".config/opencode/oh-my-openagent.json".text = builtins.toJSON config;
+
+  programs.zsh.initContent = ''
+    export ANTHROPIC_API_KEY="$(cat /run/agenix/anthropic-api-key)"
+  '';
 }

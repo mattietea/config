@@ -62,4 +62,13 @@ mkHost {
     ../modules/ai
     ../modules/ai/work.nix
   ];
+
+  darwinModules = [
+    {
+      age.secrets.anthropic-api-key = {
+        file = ../secrets/anthropic-api-key.age;
+        owner = settings.username;
+      };
+    }
+  ];
 }
