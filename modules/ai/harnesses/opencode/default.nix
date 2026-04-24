@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }:
@@ -24,4 +25,14 @@ in
       ];
     };
   };
+
+  # Clean stale opencode runtime state on each activation.
+  # model.json holds a remembered model picker that can reference old/invalid models.
+  # The plugin creates .bak.* and .migrations.json files when it tries (and fails)
+  # to rewrite the nix-managed read-only symlink.
+  home.activation.cleanOpencodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    rm -f "$HOME/.local/state/opencode/model.json"
+    rm -f "$HOME/.config/opencode/oh-my-openagent.json.bak."*
+    rm -f "$HOME/.config/opencode/oh-my-openagent.json.migrations.json"
+  '';
 }
