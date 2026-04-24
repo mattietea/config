@@ -2,13 +2,13 @@ _:
 let
   baseConfig = import ./oh-my-openagent-base.nix;
 
-  # Anthropic + OpenAI: GPT-5.4 for oracle/momus, GPT-5.3-codex for deep work, hephaestus enabled
+  # Anthropic + OpenAI: GPT-5.5 for oracle/momus, GPT-5.3-codex for deep work, hephaestus enabled
   config = baseConfig // {
     disabled_agents = [ ];
     agents = baseConfig.agents // {
       # Architecture & debugging — GPT-5.4 with high reasoning effort
       oracle = {
-        model = "openai/gpt-5.4";
+        model = "openai/gpt-5.5";
         variant = "high";
         reasoningEffort = "high";
         fallback_models = [
@@ -19,7 +19,7 @@ let
       };
       # Review — GPT-5.4 with high reasoning effort
       momus = {
-        model = "openai/gpt-5.4";
+        model = "openai/gpt-5.5";
         variant = "high";
         fallback_models = [
           "anthropic/claude-opus-4-7"
@@ -41,7 +41,7 @@ let
         openai = 5;
       };
       modelConcurrency = baseConfig.background_task.modelConcurrency // {
-        "openai/gpt-5.4" = 3;
+        "openai/gpt-5.5" = 3;
         "openai/gpt-5.3-codex" = 3;
       };
     };
@@ -51,12 +51,12 @@ let
         variant = "medium";
       };
       ultrabrain = {
-        model = "openai/gpt-5.4";
+        model = "openai/gpt-5.5";
         variant = "xhigh";
         reasoningEffort = "xhigh";
       };
       unspecified-high = {
-        model = "openai/gpt-5.4";
+        model = "openai/gpt-5.5";
         variant = "high";
       };
     };
