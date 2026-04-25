@@ -139,11 +139,11 @@
     "chrome-devtools-mcp-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1776969334,
-        "narHash": "sha256-vQ72zqzSxMOvSkB+6kC2mAdjXOGLTvdJitXhF68FQ3s=",
+        "lastModified": 1777059609,
+        "narHash": "sha256-3om6ooV6Oy0KvIcBIs9RLDYHkuie3D2RCUhzuUBfdUI=",
         "owner": "ChromeDevTools",
         "repo": "chrome-devtools-mcp",
-        "rev": "136da6a350323d18b1992b22605833dacea21108",
+        "rev": "c9c1683b67ac927a5cd5178692d1de7d8e06617b",
         "type": "github"
       },
       "original": {
@@ -174,11 +174,11 @@
     "context7-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1776880541,
-        "narHash": "sha256-j/hdKvUT39LyDBb9gZLD6Ea/RQ3B2YBXinLSZc76LKY=",
+        "lastModified": 1777052988,
+        "narHash": "sha256-MFHajv1f+Xj8BtiiDQs4Sct1IhYS4+hYY+PdVAYqkNw=",
         "owner": "upstash",
         "repo": "context7",
-        "rev": "4ed5db533e92ff7429f128fd2b82ce7d20e3172e",
+        "rev": "5d284f215471c341e0e3d9bb4f9c24bb1345ada1",
         "type": "github"
       },
       "original": {
@@ -353,11 +353,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776989775,
-        "narHash": "sha256-sIIeTZz5sWfrkV/SplDAthZNAzLhSxnJ7Foia6bAxB4=",
+        "lastModified": 1777054018,
+        "narHash": "sha256-tTNS7V6xN/LX1KZ0TrdOnj375ZrsUlLoce4qxZwDN9U=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5bba6a1e027b79ba56dd6ed8e6edbed80aa8e3cb",
+        "rev": "ffbd94a1c9d7d3e1258e51c084ab2109da04f2b1",
         "type": "github"
       },
       "original": {
@@ -439,11 +439,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1776992723,
-        "narHash": "sha256-tD6ngOVJ91pevxuA/HVCxU56/E+DPhWJzOPtzubkTmU=",
+        "lastModified": 1777078377,
+        "narHash": "sha256-2EykR9XvDFwO2t/pWgKzfmwwjGX2YsD6LPU4D2PuWyY=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "5c7895e3b5ea1746365a347c8245577ef08ad4f2",
+        "rev": "f5f1cc1c90316b8ef96cf009ce3a290e6955da80",
         "type": "github"
       },
       "original": {
@@ -486,11 +486,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1776329215,
-        "narHash": "sha256-a8BYi3mzoJ/AcJP8UldOx8emoPRLeWqALZWu4ZvjPXw=",
+        "lastModified": 1776949667,
+        "narHash": "sha256-GMSVw35Q+294GlrTUKlx087E31z7KurReQ1YHSKp5iw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b86751bc4085f48661017fa226dee99fab6c651b",
+        "rev": "01fbdeef22b76df85ea168fbfe1bfd9e63681b30",
         "type": "github"
       },
       "original": {
@@ -503,11 +503,11 @@
     "pup-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1776991945,
-        "narHash": "sha256-HvDZDJgSKS4CHCmahKv1jUgttvRNaCJZN2TKMj+Msn0=",
+        "lastModified": 1777060470,
+        "narHash": "sha256-k+TFbpaMM1VNzCbX326BZQ+FQqBJdzItGaVX7sYiTFE=",
         "owner": "datadog-labs",
         "repo": "pup",
-        "rev": "ec59956716e7a2255604983284282cc186e3cae0",
+        "rev": "b38b0935c02323016fa43482f93600a3cd46e39f",
         "type": "github"
       },
       "original": {
@@ -544,11 +544,11 @@
     "superpowers": {
       "flake": false,
       "locked": {
-        "lastModified": 1776369046,
-        "narHash": "sha256-cobQloF7Y6K0IC0/6xSnA2Io+fKgk2SRmCwoZZtVCco=",
+        "lastModified": 1776996157,
+        "narHash": "sha256-0WupTacT1jIwVBloj1i0RF7wIllVtP8eMPRl7VrXdbE=",
         "owner": "obra",
         "repo": "superpowers",
-        "rev": "b55764852ac78870e65c6565fb585b6cd8b3c5c9",
+        "rev": "6efe32c9e2dd002d0c394e861e0529675d1ab32e",
         "type": "github"
       },
       "original": {
@@ -642,11 +642,11 @@
     "worktrunk-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1776990801,
-        "narHash": "sha256-z1fgsFgSKBgf0WL6Xm7wyRalBHzhv1QOilhhsXhW2uY=",
+        "lastModified": 1777074021,
+        "narHash": "sha256-POpfIv6VpW0jY6ybFIAZObrmyBJLoeNjjVqXCux5RdE=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "89dceed12ea007a06334cb88dfad7220ed418dd7",
+        "rev": "5f126d21fe1b4edfc06af7ab436bb3d493089938",
         "type": "github"
       },
       "original": {
