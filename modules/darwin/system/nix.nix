@@ -15,17 +15,23 @@
   ##########################################################################
   # Automatic garbage collection
   #
-  # Runs weekly, deletes store paths not referenced in the last 30 days.
+  # Runs weekly (Sunday 3am) via launchd, deletes store paths older than
+  # 30 days. Uses launchd directly since Determinate Nix owns nix.conf.
   ##########################################################################
 
-  nix.gc = {
-    automatic = true;
-    interval = {
-      Weekday = 0;
-      Hour = 3;
-      Minute = 0;
+  launchd.daemons.nix-gc = {
+    command = "/nix/var/nix/profiles/default/bin/nix-collect-garbage --delete-older-than 30d";
+    serviceConfig = {
+      StartCalendarInterval = [
+        {
+          Weekday = 0;
+          Hour = 3;
+          Minute = 0;
+        }
+      ];
+      StandardOutPath = "/var/log/nix-gc.log";
+      StandardErrorPath = "/var/log/nix-gc.log";
     };
-    options = "--delete-older-than 30d";
   };
 
   ##########################################################################
