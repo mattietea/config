@@ -55,6 +55,7 @@ mkHost {
     (pkg "rename-utils")
     (pkg "tldr")
     (pkg "zoxide")
+    (pkg "whatsapp-mcp")
     (pkg "zsh")
   ];
 
