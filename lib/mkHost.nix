@@ -19,7 +19,12 @@ inputs.darwin.lib.darwinSystem {
     {
       nixpkgs = {
         hostPlatform = system;
-        overlays = [ ];
+        overlays = [
+          # TODO: remove once nixpkgs-unstable includes zsh sigsuspend fix (NixOS/nixpkgs#513971)
+          (_final: prev: {
+            direnv = prev.direnv.overrideAttrs { doCheck = false; };
+          })
+        ];
         config = {
           allowUnfree = true;
           allowInsecurePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "google-chrome" ];
