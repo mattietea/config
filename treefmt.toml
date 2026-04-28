@@ -1,0 +1,12 @@
+[formatter.nix]
+command = "nixfmt"
+includes = ["*.nix"]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = ["*.md", "*.json"]
+
+[formatter.yaml]
+command = "yamlfmt"
+includes = ["*.yml", "*.yaml"]

@@ -1,0 +1,83 @@
+[tasks.switch]
+description = "Apply nix-darwin configuration"
+run = """
+rm -rf ~/Applications/Home\\ Manager\\ Apps/
+sudo darwin-rebuild switch --flake .
+"""
+
+[tasks.format]
+description = "Format Nix, YAML, and markdown files"
+run = "treefmt"
+
+[tasks.lint]
+description = "Lint Nix files"
+run = "statix check ."
+
+[tasks.clean]
+description = "Run garbage collection"
+run = "nix-collect-garbage"
+
+[tasks.deadnix]
+description = "Find dead Nix code"
+run = "deadnix --no-lambda-pattern-names ."
+
+[tasks.update]
+description = "Update flake inputs"
+run = """
+nix flake update
+mise run update-clis
+"""
+
+[tasks.update-clis]
+description = "Update CLI packages to latest GitHub releases"
+hide = true
+run = """
+update_cli() {
+  local name="$1" file="$2" repo="$3" asset_pattern="$4"
+
+  local current_version
+  current_version=$(grep 'version = "' "$file" | head -1 | sed 's/.*version = "//;s/".*//')
+
+  local latest_version
+  latest_version=$(curl -sL "https://api.github.com/repos/$repo/releases/latest" | jq -r '.tag_name' | sed 's/^v//')
+
+  if [ "$current_version" = "$latest_version" ]; then
+    echo "$name: already at $current_version"
+    return
+  fi
+
+  echo "$name: $current_version -> $latest_version"
+
+  local url
+  url=$(echo "$asset_pattern" | sed "s/VERSION/$latest_version/g")
+
+  local hash
+  hash=$(nix-prefetch-url "$url" 2>/dev/null | xargs nix hash convert --hash-algo sha256 --to sri)
+
+  sed -i '' "s|version = \"$current_version\"|version = \"$latest_version\"|" "$file"
+  sed -i '' "s|hash = \"sha256-.*\"|hash = \"$hash\"|" "$file"
+
+  echo "$name: updated to $latest_version"
+}
+
+MODULES="modules/home-manager/packages"
+
+update_cli "pup" \
+  "$MODULES/pup/default.nix" \
+  "datadog-labs/pup" \
+  "https://github.com/datadog-labs/pup/releases/download/vVERSION/pup_VERSION_Darwin_arm64.tar.gz"
+
+update_cli "linear" \
+  "$MODULES/linear/default.nix" \
+  "schpet/linear-cli" \
+  "https://github.com/schpet/linear-cli/releases/download/vVERSION/linear-aarch64-apple-darwin.tar.xz"
+"""
+
+[tasks.pre-commit]
+description = "Run pre-commit checks"
+run = """
+treefmt --fail-on-change --no-cache
+statix check .
+deadnix --no-lambda-pattern-names --fail .
+nix flake check --no-build
+"""

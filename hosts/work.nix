@@ -34,9 +34,7 @@ mkHost {
     (pkg "bun")
     (pkg "dock")
     (pkg "delta")
-    (pkg "devenv")
-    (pkg "direnv")
-
+    (pkg "nix-tools")
     (pkg "eza")
     (pkg "fonts")
     (pkg "fzf")

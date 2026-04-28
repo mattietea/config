@@ -15,17 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
-        with:
-          name: devenv
-      - name: Install devenv
-        run: nix profile install nixpkgs#devenv
-      - name: Update all dependencies
-        run: devenv shell -- update
+      - name: Update flake inputs
+        run: nix flake update
       - name: Validate flake
         run: nix flake check --no-build --no-warn-dirty
-      - name: Run devenv tests
-        run: devenv test
       - name: Create PR
         id: create-pr
         uses: peter-evans/create-pull-request@v7
