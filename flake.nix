@@ -108,6 +108,11 @@
         { pkgs, ... }:
         {
           formatter = pkgs.nixfmt;
+
+          devShells.default = pkgs.mkShell {
+            buildInputs = [ pkgs.devenv ];
+            shellHook = ''echo "Use 'devenv shell' for full environment"'';
+          };
         };
     };
 }
