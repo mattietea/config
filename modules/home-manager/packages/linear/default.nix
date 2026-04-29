@@ -3,7 +3,7 @@
   ...
 }:
 let
-  version = "2.0.0";
+  version = "null";
 
   linear-cli = pkgs.stdenv.mkDerivation {
     pname = "linear-cli";
@@ -11,7 +11,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/schpet/linear-cli/releases/download/v${version}/linear-aarch64-apple-darwin.tar.xz";
-      hash = "sha256-Eh/h7ubZCyLnbk6Yy7YkR07s2XCkpMYi/U1QiJtX2sw=";
+      hash = "";
     };
 
     sourceRoot = "linear-aarch64-apple-darwin";
