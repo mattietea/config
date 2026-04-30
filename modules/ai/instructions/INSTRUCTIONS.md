@@ -14,9 +14,15 @@ Use **Exa** (MCP server) first — higher quality, focused results. Fall back to
 
 </important>
 
-<important if="you are asked to load a website, visit a URL, fill a form, or interact with a web page">
+<important if="I ask you to look at a tab, browser tab, or any of my open tabs">
 
-Use the **agent-browser** skill. Only use Chrome DevTools MCP when the user explicitly asks for DevTools, debugging, performance analysis, or network inspection.
+Use the **playwriter** skill. Playwriter connects to my running Chrome via a browser extension, so my logins, cookies, and extensions are already there — unlike agent-browser which spawns a fresh browser.
+
+</important>
+
+<important if="you are asked to load a website, visit a URL, fill a form, or interact with a web page (and it is NOT one of my already-open browser tabs)">
+
+Use the **agent-browser** skill. Only use Chrome DevTools MCP when I explicitly ask for DevTools, debugging, performance analysis, or network inspection. If I am referring to a tab in my running Chrome, use the **playwriter** skill instead.
 
 </important>
 

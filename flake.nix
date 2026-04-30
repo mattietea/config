@@ -55,6 +55,11 @@
       flake = false;
     };
 
+    playwriter-skills = {
+      url = "github:remorses/playwriter";
+      flake = false;
+    };
+
     wshobson-agents = {
       url = "github:wshobson/agents";
       flake = false;

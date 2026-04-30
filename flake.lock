@@ -484,6 +484,22 @@
         "type": "github"
       }
     },
+    "playwriter-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777029091,
+        "narHash": "sha256-op5OPm2hesCwjT1kwhy6dbrkA+JJPb6C3leWvKrNKbQ=",
+        "owner": "remorses",
+        "repo": "playwriter",
+        "rev": "e9918fcadc2462576dc0afb5942d77317d8b593d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "remorses",
+        "repo": "playwriter",
+        "type": "github"
+      }
+    },
     "pup-skills": {
       "flake": false,
       "locked": {
@@ -518,6 +534,7 @@
         "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_3",
+        "playwriter-skills": "playwriter-skills",
         "pup-skills": "pup-skills",
         "superpowers": "superpowers",
         "vercel-skills-cli": "vercel-skills-cli",
