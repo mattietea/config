@@ -24,6 +24,10 @@
         input = "agent-browser-skills";
         subdir = "skills";
       };
+      playwriter = {
+        input = "playwriter-skills";
+        subdir = "skills";
+      };
       wshobson-agents = {
         input = "wshobson-agents";
         subdir = "plugins/javascript-typescript/skills";
@@ -50,6 +54,7 @@
       "find-skills"
       "find-docs"
       "agent-browser"
+      "playwriter"
       "typescript-advanced-types"
       "vitest"
       "itechmeat/react-testing-library"
