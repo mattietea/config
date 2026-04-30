@@ -30,9 +30,12 @@ in
   # model.json holds a remembered model picker that can reference old/invalid models.
   # The plugin creates .bak.* and .migrations.json files when it tries (and fails)
   # to rewrite the nix-managed read-only symlink.
+  # The oh-my-openagent@latest cache pins to whatever was first fetched and never
+  # updates — wipe it so each switch picks up the current npm release.
   home.activation.cleanOpencodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     rm -f "$HOME/.local/state/opencode/model.json"
     rm -f "$HOME/.config/opencode/oh-my-openagent.json.bak."*
     rm -f "$HOME/.config/opencode/oh-my-openagent.json.migrations.json"
+    rm -rf "$HOME/.cache/opencode/packages/oh-my-openagent@latest"
   '';
 }
