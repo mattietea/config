@@ -35,6 +35,14 @@ let
           "anthropic/claude-sonnet-4-6"
         ];
       };
+      # Fast utility runners — pin to claude-sonnet-4-6 (override base haiku/plugin gpt defaults)
+      explore = baseConfig.agents.explore // {
+        model = "anthropic/claude-sonnet-4-6";
+      };
+      librarian = baseConfig.agents.librarian // {
+        model = "anthropic/claude-sonnet-4-6";
+      };
+      multimodal-looker.model = "anthropic/claude-sonnet-4-6";
     };
     background_task = baseConfig.background_task // {
       providerConcurrency = baseConfig.background_task.providerConcurrency // {
@@ -46,6 +54,7 @@ let
       };
     };
     categories = baseConfig.categories // {
+      quick.model = "anthropic/claude-sonnet-4-6";
       deep = {
         model = "openai/gpt-5.3-codex";
         variant = "medium";
