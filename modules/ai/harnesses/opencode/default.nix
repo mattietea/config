@@ -14,7 +14,6 @@ in
     enableMcpIntegration = true;
     settings = {
       "$schema" = "https://opencode.ai/config.json";
-      theme = "system";
       share = "disabled";
       snapshot = true;
       compaction = {
@@ -24,6 +23,9 @@ in
       plugin = [
         "oh-my-openagent"
       ];
+    };
+    tui = {
+      theme = "system";
     };
   };
 
