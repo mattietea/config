@@ -3,7 +3,7 @@
   ...
 }:
 let
-  version = "null";
+  version = "0.55.0";
 
   pup = pkgs.stdenv.mkDerivation {
     pname = "pup";
