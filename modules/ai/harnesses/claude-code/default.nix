@@ -15,7 +15,7 @@
       defaultMode = "plan";
 
       # UI Settings
-      theme = "ansi-light";
+      theme = "light";
       terminalProgressBarEnabled = true;
       spinnerTipsEnabled = true;
       outputStyle = "default";
