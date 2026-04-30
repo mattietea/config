@@ -521,6 +521,7 @@
         "pup-skills": "pup-skills",
         "superpowers": "superpowers",
         "vercel-skills-cli": "vercel-skills-cli",
+        "whatsapp-mcp-src": "whatsapp-mcp-src",
         "worktrunk-skills": "worktrunk-skills",
         "wshobson-agents": "wshobson-agents"
       }
@@ -620,6 +621,23 @@
       "original": {
         "owner": "vercel-labs",
         "repo": "skills",
+        "type": "github"
+      }
+    },
+    "whatsapp-mcp-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775930293,
+        "narHash": "sha256-81uGZQW92i2xaYIySofJhLHPsMc5CJop5FK5YErkdzg=",
+        "owner": "ewega",
+        "repo": "whatsapp-mcp",
+        "rev": "2f693695eee102e5addcc294a579568236e06716",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ewega",
+        "ref": "fix/whatsmeow-client-outdated",
+        "repo": "whatsapp-mcp",
         "type": "github"
       }
     },
