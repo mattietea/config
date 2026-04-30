@@ -3,7 +3,7 @@
   ...
 }:
 let
-  version = "null";
+  version = "2.0.0";
 
   linear-cli = pkgs.stdenv.mkDerivation {
     pname = "linear-cli";
