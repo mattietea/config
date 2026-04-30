@@ -9,6 +9,10 @@
 
   model_fallback = true;
 
+  browser_automation_engine = {
+    provider = "agent-browser";
+  };
+
   ralph_loop = {
     enabled = true;
     default_max_iterations = 100;
