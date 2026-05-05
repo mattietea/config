@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -17,6 +18,18 @@
       grep = {
         type = "http";
         url = "https://mcp.grep.app";
+      };
+      # claude-mem MCP search tools (search / timeline / get_observations).
+      # Workaround for upstream issue #2295 — opencode integration does not
+      # auto-register the MCP server. The CJS bundle is installed under the
+      # claude-code marketplace cache (claude-mem@thedotmack is enabled there).
+      # See modules/ai/harnesses/opencode/default.nix for the plugin install.
+      claude-mem = {
+        type = "stdio";
+        command = "${pkgs.nodejs}/bin/node";
+        args = [
+          "${config.home.homeDirectory}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/mcp-server.cjs"
+        ];
       };
     };
   };
