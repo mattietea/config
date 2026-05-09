@@ -63,11 +63,11 @@
     "anthropic-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1778083549,
-        "narHash": "sha256-5NGI0gojBGoXXus8CPhIrigyWSEYJg8gnCzWYl6PsLA=",
+        "lastModified": 1778286877,
+        "narHash": "sha256-jKNYFom6R+Qw7LQ8vFPBe51JpqIP0tTSY8LM4aPlnT4=",
         "owner": "anthropics",
         "repo": "skills",
-        "rev": "d211d437443a7b2496a3dad9575e7dddd724c585",
+        "rev": "f458cee31a7577a47ba0c9a101976fa599385174",
         "type": "github"
       },
       "original": {
@@ -138,11 +138,11 @@
     "chrome-devtools-mcp-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1778195178,
-        "narHash": "sha256-FdHrgLkGUahWtqYRh5VnyBpmh4RCtdWVztQrUF8v5dY=",
+        "lastModified": 1778245945,
+        "narHash": "sha256-6q81TYxAhRAdJGk+dpeFwS42NUOuB1cG08NAVpGHs+s=",
         "owner": "ChromeDevTools",
         "repo": "chrome-devtools-mcp",
-        "rev": "06e0ab602258edf90adafd954f9a7d55f5ca05e4",
+        "rev": "88e543f53e2aeb3fbf74d56963718daa55fe6b00",
         "type": "github"
       },
       "original": {
@@ -157,11 +157,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1778199440,
-        "narHash": "sha256-neEu92AczcHfO4tENmyFnzQXvk5b/Tp+VM7hsevCYOk=",
+        "lastModified": 1778285890,
+        "narHash": "sha256-VadFMNuLO/nj6CNsqU5EKQjXZXXGTxUBqiWj0EhMqf0=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "bacfe205bb986634fe4c60d2aaf3e3ce2fe40c11",
+        "rev": "e8bd79cc402ba39213d9c8fbf1165d6f780123bc",
         "type": "github"
       },
       "original": {
@@ -352,11 +352,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778144356,
-        "narHash": "sha256-dGM+QCstz/DyLB68+JK5GWyMx4QSqmOJEVgZmy63d/g=",
+        "lastModified": 1778248595,
+        "narHash": "sha256-dhFgEjoeJMYN/7OY6xfxS799YB4IjbbYXTjyGIJyLpc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e4419d3123b780d5f4c0bceeace450424387638c",
+        "rev": "fdb2ccba9d5e1238d32e0c4a3ec1a277efa80c1d",
         "type": "github"
       },
       "original": {
@@ -423,11 +423,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1778201855,
-        "narHash": "sha256-A40W0Xa+PQ0p+Mmmei2Ji0oxNKmePhWN7AmvZmWQxV8=",
+        "lastModified": 1778288159,
+        "narHash": "sha256-WgpbAQ3ugdhtMLM5OnK2o+ivSCWi4aFGLLh19s9T/ow=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "a4f00b54a1c7838f2ab3445bb13a02e6db96bae2",
+        "rev": "80d270f93dd4e320593dd1474f2fdc9e84d983d3",
         "type": "github"
       },
       "original": {
@@ -503,11 +503,11 @@
     "pup-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1778200859,
-        "narHash": "sha256-laxnbg2F190DmP24Ve0lzP4T6z9XMzMYWMAfwtfc6XA=",
+        "lastModified": 1778266606,
+        "narHash": "sha256-LKb4GDMbVZ3FhT25lUuev8VD2BbJpRC9ZUe33/8CsVY=",
         "owner": "datadog-labs",
         "repo": "pup",
-        "rev": "cd9975e06ab391e7578c577be8f096f42e75d912",
+        "rev": "ab4ed85e335a164aa2ebaf913e52a607a93b2336",
         "type": "github"
       },
       "original": {
@@ -628,11 +628,11 @@
     "vercel-skills-cli": {
       "flake": false,
       "locked": {
-        "lastModified": 1778015882,
-        "narHash": "sha256-w6nu4n8Z9hfY4Aw5wErU2Fd7+TE/xk6DixO3lOW9nL4=",
+        "lastModified": 1778275952,
+        "narHash": "sha256-RYwgUf173N4lGalTta4HkBR7sdZwuzRoAY6M8JsT+RY=",
         "owner": "vercel-labs",
         "repo": "skills",
-        "rev": "eec87fd44fca572d5275a472ea13c31aaceb65d0",
+        "rev": "c99a72b371b5b4da865f5afa87c5a686f3a46766",
         "type": "github"
       },
       "original": {
@@ -661,11 +661,11 @@
     "worktrunk-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1778173077,
-        "narHash": "sha256-xEHKKC5prFdTnMPhP7UGpke/ub2gWwZ+7fF9Zy+2f4s=",
+        "lastModified": 1778288749,
+        "narHash": "sha256-Y12g4bHYgiHfiSMSjzYdchdnF0AQYnlMd0qLc3YNLgw=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "2f8807eb368a6528303ce2fedb2765b848683973",
+        "rev": "a5a8a49820e33d4ab075d03196a2569ce4d67569",
         "type": "github"
       },
       "original": {
