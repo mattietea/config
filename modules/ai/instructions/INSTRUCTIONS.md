@@ -60,3 +60,9 @@ Use the **agent-browser** skill. Only use Chrome DevTools MCP when I explicitly 
 Use the **git-machete** skill (`/git-machete`). Use `git m` (alias for `git machete`) to manage stacked branch trees and create PRs that show their position in the stack.
 
 </important>
+
+<important if="you need to read or send a Slack message, search Slack, browse channel history, or interact with Slack in any way">
+
+Use the **agent-slack** skill (`/agent-slack`). Run `agent-slack` CLI commands — it handles messages, threads, search, reactions, channels, and more. Auth is already bootstrapped.
+
+</important>
