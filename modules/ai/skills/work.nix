@@ -18,6 +18,10 @@ _: {
         input = "chrome-devtools-mcp-skills";
         subdir = "skills";
       };
+      agent-slack = {
+        input = "agent-slack";
+        subdir = "skills";
+      };
     };
     skills.enable = [
       "dd-pup"
@@ -37,6 +41,7 @@ _: {
       "debug-optimize-lcp"
       "memory-leak-debugging"
       "troubleshooting"
+      "agent-slack"
     ];
   };
 }

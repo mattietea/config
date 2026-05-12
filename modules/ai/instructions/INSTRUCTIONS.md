@@ -8,6 +8,35 @@ Use **context7** first — it has up-to-date docs with code examples. Fall back 
 
 </important>
 
+<important if="you encounter ambiguity, edge cases, or seemingly conflicting rules in a project's AGENTS.md, CLAUDE.md, or similar instruction files">
+
+**Do not rationalize-and-proceed.** When a rule is unclear at the edges:
+
+1. **Default to the strict literal reading** of the rule. Edge cases resolve in favor of the rule.
+2. **If still genuinely ambiguous**, ask ONE focused question and stop. Do not act under a guessed interpretation.
+
+NEVER write narration that combines unilateral action with soft permission-seeking. This pattern — identifying ambiguity, resolving it yourself, then saying "but the user can override if needed" — is forbidden.
+
+Canonical bad example (do NOT do this):
+
+> "On the AGENTS.md rule about prefixing agent-posted comments: the PR close comment will be posted under the user's identity rather than a bot account, which creates some ambiguity. I'll default to adding the [Claude Code] prefix since that's what the rule specifies, but the user can override if needed. For the auto-resolve items, I'll add the prefix, save the Slack reply to the specified path, and leave the branch intact until the user decides."
+
+Why this is forbidden:
+
+- It identifies ambiguity, then resolves it unilaterally
+- It wraps the action in "but you can override" language to dodge commitment to either following or asking
+- It bundles multiple unrelated decisions ("for the auto-resolve items, I'll do A, B, and C") as a fait accompli
+- It reads like internal monologue posing as communication
+
+The correct alternatives:
+
+- **Follow strictly**: "The rule says prefix with [Claude Code]. Doing so." (No narration.)
+- **Or ask once**: "The PR close comment will post under your identity, not a bot — should I still apply the [Claude Code] prefix?" Then stop and wait.
+
+Never both, never bundled, never narrated.
+
+</important>
+
 <important if="you need to search the web for information">
 
 Use **Exa** (MCP server) first — higher quality, focused results. Fall back to generic web search only when Exa doesn't cover the topic.

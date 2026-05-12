@@ -60,6 +60,27 @@
         "type": "github"
       }
     },
+    "agent-slack": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777963306,
+        "narHash": "sha256-kv4VNACqDhwI/FSZhESsdbJ1veRbPx6+4Vf1odKC3KI=",
+        "owner": "stablyai",
+        "repo": "agent-slack",
+        "rev": "4a9bd21fad0c402940d725d828321ceac32e4fca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stablyai",
+        "repo": "agent-slack",
+        "type": "github"
+      }
+    },
     "anthropic-skills": {
       "flake": false,
       "locked": {
@@ -153,7 +174,7 @@
     },
     "claude-code-nix": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
@@ -303,6 +324,24 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -419,7 +458,7 @@
         "bun2nix": "bun2nix",
         "flake-parts": "flake-parts_2",
         "nixpkgs": "nixpkgs_2",
-        "systems": "systems_3",
+        "systems": "systems_4",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -521,6 +560,7 @@
         "agenix": "agenix",
         "agent-browser-skills": "agent-browser-skills",
         "agent-skills-nix": "agent-skills-nix",
+        "agent-slack": "agent-slack",
         "anthropic-skills": "anthropic-skills",
         "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
         "claude-code-nix": "claude-code-nix",
@@ -590,6 +630,21 @@
       }
     },
     "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_4": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

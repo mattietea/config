@@ -30,6 +30,7 @@ mkHost {
   packages = [
     (pkg "agenix")
     (pkg "aerospace")
+    (pkg "agent-slack")
     (pkg "bat")
     (pkg "bun")
     (pkg "dock")
