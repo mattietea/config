@@ -5,8 +5,6 @@
   "$schema" =
     "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
 
-  google_auth = false;
-
   model_fallback = true;
 
   browser_automation_engine = {
@@ -82,11 +80,10 @@
   };
 
   agents = {
-    # Default opencode agent — needs explicit adaptive thinking for Opus 4.7
-    # (the "enabled" default the Anthropic API previously accepted is now rejected)
+    # Default opencode agent
     build = {
       model = "anthropic/claude-opus-4-7";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -94,9 +91,9 @@
     };
 
     # Primary orchestrator
-    Sisyphus = {
+    sisyphus = {
       model = "anthropic/claude-opus-4-7";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -111,7 +108,7 @@
     # Planning & strategy
     prometheus = {
       model = "anthropic/claude-opus-4-7";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -120,7 +117,7 @@
 
     metis = {
       model = "anthropic/claude-opus-4-7";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -130,7 +127,7 @@
     # Review — host configs may override model + add thinking/reasoningEffort
     momus = {
       model = "anthropic/claude-opus-4-7";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -140,7 +137,7 @@
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
     oracle = {
       model = "anthropic/claude-opus-4-7";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
       ];
@@ -175,17 +172,17 @@
     unspecified-high = {
       model = "anthropic/claude-opus-4-7";
       variant = "max";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
     };
     deep = {
       model = "anthropic/claude-opus-4-7";
       variant = "max";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
     };
     ultrabrain = {
       model = "anthropic/claude-opus-4-7";
       variant = "max";
-      thinking.type = "adaptive";
+      thinking.type = "enabled";
     };
     visual-engineering.model = "anthropic/claude-sonnet-4-6";
     writing.model = "anthropic/claude-sonnet-4-6";
