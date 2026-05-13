@@ -2,13 +2,13 @@ _:
 let
   baseConfig = import ./oh-my-openagent-base.nix;
 
-  # Anthropic-only: disable hephaestus, add adaptive thinking for oracle/momus
+  # Anthropic-only: disable hephaestus, enable extended thinking for oracle/momus
   config = baseConfig // {
     disabled_agents = [ "hephaestus" ];
     agents = baseConfig.agents // {
       oracle = {
         model = "anthropic/claude-opus-4-7";
-        thinking.type = "adaptive";
+        thinking.type = "enabled";
         fallback_models = [
           "anthropic/claude-sonnet-4-6"
         ];
@@ -16,7 +16,7 @@ let
       };
       momus = {
         model = "anthropic/claude-opus-4-7";
-        thinking.type = "adaptive";
+        thinking.type = "enabled";
         fallback_models = [
           "anthropic/claude-sonnet-4-6"
         ];
