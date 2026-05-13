@@ -38,6 +38,13 @@
     default_builder_enabled = false;
   };
 
+  team_mode = {
+    enabled = true;
+    max_parallel_members = 4;
+    max_members = 8;
+    tmux_visualization = false;
+  };
+
   background_task = {
     providerConcurrency = {
       anthropic = 3;
