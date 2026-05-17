@@ -98,11 +98,6 @@
       flake = false;
     };
 
-    whatsapp-mcp-src = {
-      url = "github:ewega/whatsapp-mcp/fix/whatsmeow-client-outdated";
-      flake = false;
-    };
-
   };
 
   outputs =
