@@ -25,6 +25,7 @@ mkHost {
     # (app "spotify")
     (app "ghostty")
     (app "zed")
+    (app "orca")
   ];
 
   packages = [

@@ -522,6 +522,22 @@
         "type": "github"
       }
     },
+    "orca-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779356023,
+        "narHash": "sha256-qMNX+XHJLujqaTrQ/VMGTCRLwiIHjtDB5ZYnnrQ395Q=",
+        "owner": "stablyai",
+        "repo": "orca",
+        "rev": "a7d77aabaa4ab7ac0e817920feb169b26493eedb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stablyai",
+        "repo": "orca",
+        "type": "github"
+      }
+    },
     "playwriter-skills": {
       "flake": false,
       "locked": {
@@ -573,6 +589,7 @@
         "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_3",
+        "orca-skills": "orca-skills",
         "playwriter-skills": "playwriter-skills",
         "pup-skills": "pup-skills",
         "superpowers": "superpowers",
