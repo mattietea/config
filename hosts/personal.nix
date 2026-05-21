@@ -28,6 +28,7 @@ mkHost {
     (app "spotify")
     (app "utm")
     (app "zed")
+    (app "orca")
     (app "ghostty")
   ];
 

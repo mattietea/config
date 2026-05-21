@@ -45,6 +45,10 @@
         input = "humanlayer-skills";
         subdir = "plugins/improve-claude-md/skills";
       };
+      orca = {
+        input = "orca-skills";
+        subdir = "skills";
+      };
       local = {
         path = ./git-machete;
       };
@@ -60,6 +64,7 @@
       "itechmeat/react-testing-library"
       "improve-claude-md"
       "git-machete"
+      "orchestration"
     ];
     targets = {
       claude.enable = true;
