@@ -284,3 +284,86 @@ To add MCP servers for AI tools:
 - `/nix-darwin` — When modifying macOS system defaults, flake inputs, host files, or mkHost builder
 
 <!-- END MANUAL -->
+
+<claude-mem-context>
+# Memory Context
+
+# [nix] recent context, 2026-05-26 7:42am EDT
+
+Legend: 🎯session 🔴bugfix 🟣feature 🔄refactor ✅change 🔵discovery ⚖️decision 🚨security_alert 🔐security_note
+Format: ID TIME TYPE TITLE
+Fetch details: get_observations([IDs]) | Search: mem-search skill
+
+Stats: 50 obs (20,155t read) | 254,153t work | 92% savings
+
+### Apr 23, 2026
+
+S2585 Code review of devenv→mise migration branch to assess whether removing devenv was the right decision (Apr 23 at 5:37 PM)
+
+### Apr 29, 2026
+
+S2586 Follow-up on devenv→mise migration reversibility and alternative approaches to address original pain points (Apr 29 at 7:01 PM)
+S2587 Verified upstream zsh sigsuspend fix availability and determined if reverting devenv→mise migration is viable (Apr 29 at 7:16 PM)
+3082 7:16p 🔵 Upstream zsh sigsuspend fix merged two days ago
+3083 " 🔵 Current flake predates the zsh sigsuspend fix by 4 days
+3084 7:17p 🔵 zsh sigsuspend fix is already in nixpkgs-unstable channel
+S2588 Completed surgical revert of devenv→mise migration after confirming upstream zsh sigsuspend fix availability (Apr 29 at 7:17 PM)
+3085 7:20p ✅ Started surgical revert of devenv→mise migration
+3086 " ✅ Verified surgical revert correctly restores devenv infrastructure and removes workarounds
+3087 7:21p ✅ Updated flake inputs to pull in zsh sigsuspend fix
+3088 " ✅ Verified direnv builds with tests enabled after zsh sigsuspend fix
+3089 " ✅ Validated personal host system configuration builds successfully
+3090 7:22p 🔵 Dry-run reveals zsh-5.9 with sigsuspend fix will be deployed
+3091 7:23p ✅ Work host dry-run validates successfully with zsh-5.9
+S2589 Completed surgical revert of devenv→mise migration, committed changes, and prepared for deployment (Apr 29 at 7:23 PM)
+3092 7:30p 🔵 Pre-commit hook still calls mise after revert, breaking git hooks
+3093 7:31p 🔵 devenv command not available until system rebuild, blocking hook reinstallation
+3094 7:33p ✅ Removed broken mise pre-commit hook to unblock commit
+3095 " ✅ Committed surgical revert with comprehensive explanation
+3096 7:34p ✅ Committed deletion of leftover mise migration files
+S2590 Finalized surgical revert of devenv→mise migration, branch ready for deployment (Apr 29 at 7:34 PM)
+S2591 Verification of deployed opencode configuration and investigation of model usage after nix configuration updates (Apr 29 at 7:36 PM)
+3097 7:36p ✅ Pushed surgical revert commits to remote branch
+3098 " 🔵 Net branch changes show only AI improvements after surgical revert
+3099 7:37p ✅ Created PR #103 with auto-merge enabled for squash merge
+S2592 Investigation: Why opencode sessions use different Claude models (opus-4-6 vs opus-4-7) despite Nix configuration specifying opus-4-7 (Apr 29 at 7:44 PM)
+S3049 Resolve Home Manager 26.05 vs Nixpkgs 26.11 mismatch warning on matthewthomas profile (Apr 29 at 7:52 PM)
+
+### May 26, 2026
+
+5140 7:22a 🔵 Home Manager / Nixpkgs version mismatch warning surfaced
+5141 " 🔵 Nix flake tracks nixpkgs-unstable while Home Manager input lags behind
+5142 7:23a 🔵 Home Manager input pinned to master rev older than current nixpkgs-unstable
+5143 " 🔵 mkHost central wiring confirms home-manager integration shape
+5144 " ✅ Disabled Home Manager Nixpkgs release check in mkHost
+5145 7:24a 🔵 nix flake check passes on dirty tree after enableNixpkgsReleaseCheck patch
+5146 " 🔵 Upstream confirms no Home Manager release-26.11 branch yet; nixpkgs is mid-cutover
+5147 7:25a 🔵 Home Manager FAQ recommends release-pinned input or unstable overlay pattern
+5148 " ⚖️ Reverted release-check suppression and repinned flake to release-26.05 branches
+5149 " ✅ Flake re-locking against nixpkgs-26.05-darwin and home-manager release-26.05
+5150 " ✅ flake.lock re-locked to release-26.05 nixpkgs and home-manager
+5151 7:26a 🔵 Home Manager release-check mechanism and post-repin alignment verified
+5152 " 🔵 Post-fix verification: flake check passes and all release markers report 26.05
+S3050 Resolve Home Manager 26.05 vs Nixpkgs 26.11 mismatch warning on matthewthomas profile by aligning inputs rather than suppressing the check (May 26 at 7:27 AM)
+5153 7:31a 🔴 Ghostty zsh integration path stale in .zshrc
+5154 " 🔵 Nix config repo has uncommitted flake changes
+5155 7:32a 🔵 Ghostty zsh integration sourced via Home Manager initContent
+5156 " 🔵 Ghostty 1.3.1 derivation split shell-integration into a separate store output
+5157 7:34a 🔵 pkgs.ghostty-bin exposes shell_integration as a named output
+5158 " 🔵 shell_integration output uses flat layout under zsh/, not share/ghostty
+5159 " 🔵 Ghostty zsh integration features gated by GHOSTTY_SHELL_FEATURES
+5160 7:35a 🔴 Switched Ghostty zsh integration source to $GHOSTTY_RESOURCES_DIR
+5161 7:36a ✅ Verified Ghostty module diff and ran nix fmt
+5162 " 🔵 Two darwin hosts both consume the Ghostty module
+5163 7:37a 🔴 Verified rendered zshrc init now uses runtime $GHOSTTY_RESOURCES_DIR
+5164 " 🔴 Personal host also renders fixed Ghostty source line
+5165 7:38a 🔵 ~/.zshrc is a Home Manager symlink — requires switch to refresh
+5166 " 🔄 Removed manual Ghostty zsh integration source block
+5167 " ✅ Patch applied removing zsh initContent from Ghostty module
+5168 7:39a ✅ Final Ghostty module diff confirms initContent removed
+5169 " 🔴 Verified rendered zsh init no longer mentions Ghostty for either host
+5170 7:40a 🔵 Working tree status after Ghostty fix
+5171 " 🔵 Active ~/.zshrc still contains broken source line until activation
+
+Access 254k tokens of past work via get_observations([IDs]) or mem-search skill.
+</claude-mem-context>
