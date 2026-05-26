@@ -16,6 +16,12 @@
       model = "gpt-5.5";
       model_reasoning_effort = "high";
       sandbox_mode = "danger-full-access";
+      features.plugin_hooks = true;
+      marketplaces.claude-mem-local = {
+        source_type = "git";
+        source = "https://github.com/thedotmack/claude-mem.git";
+      };
+      plugins."claude-mem@claude-mem-local".enabled = true;
     };
   };
 }
