@@ -1,0 +1,8 @@
+{
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  home.packages = [ inputs.agent-slack.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+}

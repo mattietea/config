@@ -1,0 +1,9 @@
+Using config file: .pre-commit-config.yaml
+deadnix..................................................................Passed
+flake-check..............................................................Passed
+shellcheck...........................................(no files to check)Skipped
+statix...................................................................Passed
+treefmt..................................................................Passed
+[main 81bf70d] feat(ai/work): replace slack mcp with agent-slack CLI + skill, add anti-rationalization rule
+ 7 files changed, 103 insertions(+), 10 deletions(-)
+ create mode 100644 modules/home-manager/packages/agent-slack/default.nix

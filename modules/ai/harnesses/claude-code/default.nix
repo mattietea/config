@@ -71,4 +71,8 @@
       };
     };
   };
+
+  # Drop --dangerously-skip-permissions into every interactive `claude`
+  # invocation. Non-interactive uses (SDK, scripts) still get the prompt.
+  programs.zsh.shellAliases.claude = "claude --dangerously-skip-permissions";
 }

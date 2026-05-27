@@ -1,0 +1,33 @@
+==> Deployed at: ~/.agents/skills/agent-slack/ <==
+
+==> Symlink target <==
+/nix/store/ipv9d0r741sp9qqw05g2a7j86n72xxx2-agent-skill-agent-slack
+
+==> Contents of agent-slack skill dir <==
+total 12
+dr-xr-xr-x     4 root nixbld    128 Dec 31  1969 .
+drwxrwxr-t 26974 root nixbld 863168 May 12 12:01 ..
+-r--r--r--     1 root nixbld  11397 Dec 31  1969 SKILL.md
+dr-xr-xr-x     5 root nixbld    160 Dec 31  1969 references
+
+==> SKILL.md preview (head -20) <==
+---
+name: agent-slack
+description: |
+  Slack automation CLI for AI agents. Use when:
+  - Reading a Slack message or thread (given a URL or channel+ts)
+  - Browsing recent channel messages / channel history
+  - Downloading Slack attachments (snippets, images, files) to local paths
+  - Searching Slack messages or files
+  - Sending, editing, or deleting a message; adding/removing reactions
+  - Listing channels/conversations; creating channels and inviting users
+  - Fetching a Slack canvas as markdown
+  - Looking up Slack users
+  - Marking channels/DMs as read
+  - Opening DM or group DM channels
+  - Discovering and running Slack workflows
+  - Managing saved-for-later messages (Later tab)
+  - Viewing all unread messages (inbox/unreads view)
+  Triggers: "slack message", "slack thread", "slack URL", "slack link", "read slack", "reply on slack", "search slack", "channel history", "recent messages", "channel messages", "latest messages", "mark as read", "mark read", "slack later", "saved for later", "save for later", "slack unreads", "slack inbox", "unread slack"
+---
+
