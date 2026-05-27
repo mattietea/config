@@ -16,6 +16,7 @@
       code = "${settings.variables.VISUAL}";
       config = "cd ~/.config/nix";
       claude = "claude --dangerously-skip-permissions";
+      codex = "codex --dangerously-bypass-hook-trust";
     };
 
     plugins = [
