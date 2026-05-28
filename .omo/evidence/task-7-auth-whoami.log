@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "updated_at": "2026-05-12T16:03:42.627Z",
+  "default_workspace_url": "https://harvey-ai.enterprise.slack.com",
+  "workspaces": [
+    {
+      "workspace_url": "https://harvey-ai.enterprise.slack.com",
+      "workspace_name": "Harvey",
+      "auth_type": "browser",
+      "token": "xoxc-9…92a6",
+      "cookie_d": "xoxd-2…+w=="
+    },
+    {
+      "workspace_url": "https://harvey-ai.slack.com",
+      "workspace_name": "Harvey",
+      "auth_type": "browser",
+      "token": "xoxc-4…92a6",
+      "cookie_d": "xoxd-2…+w=="
+    },
+    {
+      "workspace_url": "https://datadoghq.slack.com",
+      "workspace_name": "Datadog (Public)",
+      "auth_type": "browser",
+      "token": "xoxc-3…68fb",
+      "cookie_d": "xoxd-2…+w=="
+    }
+  ]
+}
+
+Update available: 0.5.2 → 0.9.3. Run "agent-slack update" to upgrade.

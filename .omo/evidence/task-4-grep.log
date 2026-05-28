@@ -1,0 +1,2 @@
+21:      agent-slack = { input = "agent-slack"; subdir = "skills"; };
+41:      "agent-slack"

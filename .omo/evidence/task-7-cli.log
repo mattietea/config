@@ -1,0 +1,33 @@
+=== which agent-slack ===
+/opt/homebrew/bin/agent-slack
+
+=== Note: homebrew/npm install at /opt/homebrew shadows nix install in PATH ===
+
+=== type -a agent-slack ===
+agent-slack is /opt/homebrew/bin/agent-slack
+agent-slack is /etc/profiles/per-user/matthewthomas/bin/agent-slack
+
+=== nix-installed binary (real target) ===
+/nix/store/vgsirmfvzq6gawjjsmvgd2qi5bkwkp2g-agent-slack-0.5.2/bin/agent-slack
+
+=== nix binary --version ===
+0.5.2
+
+=== nix binary --help (head -40) ===
+Usage: agent-slack [options] [command]
+
+Slack automation CLI for AI agents
+
+Options:
+  -V, --version     output the version number
+  -h, --help        display help for command
+
+Commands:
+  auth              Manage Slack authentication
+  message           Read/write Slack messages (token-efficient JSON)
+  canvas            Work with Slack canvases
+  search            Search Slack messages and files (token-efficient JSON)
+  update [options]  Update agent-slack to the latest version
+  user              Workspace user directory
+  channel           List conversations, create channels, and manage invites
+  help [command]    display help for command

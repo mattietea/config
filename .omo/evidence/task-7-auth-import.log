@@ -1,0 +1,25 @@
+Slack Desktop is running. Attempting auth import...
+{
+  "imported": 3,
+  "source": {
+    "leveldb_path": "/Users/matthewthomas/Library/Application Support/Slack/Local Storage/leveldb",
+    "cookies_path": "/Users/matthewthomas/Library/Application Support/Slack/Cookies"
+  },
+  "workspaces": [
+    {
+      "workspace_url": "https://harvey-ai.enterprise.slack.com",
+      "workspace_name": "Harvey"
+    },
+    {
+      "workspace_url": "https://harvey-ai.slack.com",
+      "workspace_name": "Harvey"
+    },
+    {
+      "workspace_url": "https://datadoghq.slack.com",
+      "workspace_name": "Datadog (Public)"
+    }
+  ]
+}
+
+Update available: 0.5.2 → 0.9.3. Run "agent-slack update" to upgrade.
+---

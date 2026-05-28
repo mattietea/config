@@ -19,6 +19,11 @@
 
     claude-code-nix.url = "github:sadjow/claude-code-nix";
 
+    claude-mem = {
+      url = "github:thedotmack/claude-mem";
+      flake = false;
+    };
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -1,0 +1,95 @@
+• Validating lock
+✓ Validating lock in 1.12ms
+• Configuring shell
+• Evaluating shell
+✓ Evaluating shell in 12.3ms (cached)
+✓ Configuring shell in 15.0ms
+• Loading tasks
+• Evaluating devenv.config.task.config
+✓ Evaluating devenv.config.task.config in 801µs (cached)
+✓ Loading tasks in 1.80ms
+• Running tasks
+• Running devenv:files:cleanup
+• Running devenv:treefmt:run
+✓ Running devenv:files:cleanup in 112ms
+• Running devenv:files
+✓ Running devenv:files in 92.6ms
+• Running devenv:git-hooks:install
+✓ Running devenv:git-hooks:install in 148ms
+traversed 100 files
+emitted 93 files for processing
+formatted 6 files (2 changed) in 247ms
+✓ Running devenv:treefmt:run in 395ms
+• Running devenv:enterShell
+✓ Running devenv:enterShell in 72.6ms
+• Running devenv:enterTest
+✓ Running devenv:enterTest in 3.79µs (no command)
+✓ Running tasks in 468ms
+building the system configuration...
+warning: Git tree '/Users/matthewthomas/.config/nix' has uncommitted changes
+unpacking 'github:stablyai/agent-slack/4a9bd21fad0c402940d725d828321ceac32e4fca?narHash=sha256-kv4VNACqDhwI/FSZhESsdbJ1veRbPx6%2B4Vf1odKC3KI%3D' into the Git cache...
+these 5 derivations will be built:
+  /nix/store/ad9n2radarypj5iqdgwfyg04p7nlskcl-ai-instructions.md.drv
+  /nix/store/lqc407iv05sxb7iyqycd75s757xkw5l4-home-manager-files.drv
+  /nix/store/2yjkqzjsc3ylgbm5qgawrk1plz0xs76v-home-manager-generation.drv
+  /nix/store/22n0fiblkmbaaac9i3lwwh58qymvxa36-activation-matthewthomas.drv
+  /nix/store/rn2vy6aky2iz8sry20507fcwpkny3qwf-darwin-system-26.05.8c62fba.drv
+building '/nix/store/ad9n2radarypj5iqdgwfyg04p7nlskcl-ai-instructions.md.drv'...
+building '/nix/store/lqc407iv05sxb7iyqycd75s757xkw5l4-home-manager-files.drv'...
+building '/nix/store/2yjkqzjsc3ylgbm5qgawrk1plz0xs76v-home-manager-generation.drv'...
+building '/nix/store/22n0fiblkmbaaac9i3lwwh58qymvxa36-activation-matthewthomas.drv'...
+building '/nix/store/rn2vy6aky2iz8sry20507fcwpkny3qwf-darwin-system-26.05.8c62fba.drv'...
+setting up /Applications/Nix Apps...
+setting up pam...
+applying patches...
+setting up /etc...
+system defaults...
+user defaults...
+restarting Dock...
+setting up launchd services...
+configuring networking...
+configuring application firewall...
+configuring power...
+configuring keyboard...
+setting up /Library/Fonts/Nix Fonts...
+setting nvram variables...
+Activating home-manager configuration for matthewthomas
+Starting Home Manager activation
+Activating checkLinkTargets
+Activating writeBoundary
+Activating agent-skills
+Activating checkFilesChanged
+Activating migrateGhAccounts
+Activating linkGeneration
+Cleaning up orphan links from /Users/matthewthomas
+Creating home file links in /Users/matthewthomas
+Activating batCache
+No themes were found in '/Users/matthewthomas/.config/bat/themes', using the default set
+Writing theme set to /Users/matthewthomas/.cache/bat/themes.bin ... okay
+Writing syntax set to /Users/matthewthomas/.cache/bat/syntaxes.bin ... okay
+Writing metadata to folder /Users/matthewthomas/.cache/bat ... okay
+Activating checkAppManagementPermission
+Activating cleanOpencodeState
+Activating installPackages
+Activating copyApps
+setting up ~/Applications/Home Manager Apps...
+Activating configureDock
+Configuring dock...
+Fixing app timestamps for macOS Sequoia compatibility...
+Updating dock entries...
+adding /System/Applications/Messages.app
+adding /System/Applications/Mail.app
+adding /System/Applications/Calendar.app
+adding /System/Applications/Reminders.app
+Notice: adding item at /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app rather than /Applications/Safari.app
+adding /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app
+adding /Users/matthewthomas/Applications/Home Manager Apps/Ghostty.app
+adding /Users/matthewthomas/Applications/Home Manager Apps/Zed.app
+adding /System/Applications/System Settings.app
+adding /Users/matthewthomas/Downloads
+Activating installClaudeMemOpencodePlugin
+Activating onFilesChange
+Activating setupLaunchAgents
+Activating zedKeymapActivation
+Activating zedSettingsActivation
+Activating zedTasksActivation

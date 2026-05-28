@@ -190,6 +190,22 @@
         "type": "github"
       }
     },
+    "claude-mem": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779359177,
+        "narHash": "sha256-l5F+p3BGJ3KYN5ppnMQJJGmQIrtOiUB8RSQZAgXV+60=",
+        "owner": "thedotmack",
+        "repo": "claude-mem",
+        "rev": "c3d2af7c144b886e21e6b4721a9a5e5960482766",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thedotmack",
+        "repo": "claude-mem",
+        "type": "github"
+      }
+    },
     "context7-skills": {
       "flake": false,
       "locked": {
@@ -580,6 +596,7 @@
         "anthropic-skills": "anthropic-skills",
         "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
         "claude-code-nix": "claude-code-nix",
+        "claude-mem": "claude-mem",
         "context7-skills": "context7-skills",
         "darwin": "darwin_2",
         "dot-skills": "dot-skills",
