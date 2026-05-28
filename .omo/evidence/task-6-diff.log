@@ -3,9 +3,9 @@ index e860d64..015012f 100644
 --- a/modules/ai/instructions/INSTRUCTIONS.md
 +++ b/modules/ai/instructions/INSTRUCTIONS.md
 @@ -8,6 +8,33 @@ Use **context7** first — it has up-to-date docs with code examples. Fall back
- 
+
  </important>
- 
+
 +<important if="you encounter ambiguity, edge cases, or seemingly conflicting rules in a project's AGENTS.md, CLAUDE.md, or similar instruction files">
 +
 +**Do not rationalize-and-proceed.** When a rule is unclear at the edges:
@@ -34,5 +34,5 @@ index e860d64..015012f 100644
 +</important>
 +
  <important if="you need to search the web for information">
- 
+
  Use **Exa** (MCP server) first — higher quality, focused results. Fall back to generic web search only when Exa doesn't cover the topic.

@@ -30,4 +30,3 @@ description: |
   - Viewing all unread messages (inbox/unreads view)
   Triggers: "slack message", "slack thread", "slack URL", "slack link", "read slack", "reply on slack", "search slack", "channel history", "recent messages", "channel messages", "latest messages", "mark as read", "mark read", "slack later", "saved for later", "save for later", "slack unreads", "slack inbox", "unread slack"
 ---
-
