@@ -3,7 +3,7 @@
   ...
 }:
 let
-  version = "0.64.2";
+  version = "0.65.0";
 
   pup = pkgs.stdenv.mkDerivation {
     pname = "pup";
@@ -11,7 +11,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/datadog-labs/pup/releases/download/v${version}/pup_${version}_Darwin_arm64.tar.gz";
-      hash = "sha256-xRU0XHjN/U96YqNVSS4xtSORwN+s94fYMJnjhcpkx5o=";
+      hash = "sha256-5oSHJ5mQaWyChuc39p5eHoPicU5UMmigggnJm47nWjE=";
     };
 
     sourceRoot = ".";
