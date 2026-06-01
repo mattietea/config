@@ -50,7 +50,7 @@
       anthropic = 3;
     };
     modelConcurrency = {
-      "anthropic/claude-opus-4-7" = 2;
+      "anthropic/claude-opus-4-8" = 2;
     };
   };
 
@@ -89,7 +89,7 @@
   agents = {
     # Default opencode agent
     build = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -99,7 +99,7 @@
 
     # Primary orchestrator
     sisyphus = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -114,7 +114,7 @@
 
     # Planning & strategy
     prometheus = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -123,7 +123,7 @@
     };
 
     metis = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -133,7 +133,7 @@
 
     # Review — host configs may override model + add thinking/reasoningEffort
     momus = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -143,7 +143,7 @@
 
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
     oracle = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       thinking.type = "enabled";
       fallback_models = [
         "anthropic/claude-sonnet-4-6"
@@ -177,17 +177,17 @@
     quick.model = "anthropic/claude-haiku-4-5";
     unspecified-low.model = "anthropic/claude-sonnet-4-6";
     unspecified-high = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       variant = "max";
       thinking.type = "enabled";
     };
     deep = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       variant = "max";
       thinking.type = "enabled";
     };
     ultrabrain = {
-      model = "anthropic/claude-opus-4-7";
+      model = "anthropic/claude-opus-4-8";
       variant = "max";
       thinking.type = "enabled";
     };
