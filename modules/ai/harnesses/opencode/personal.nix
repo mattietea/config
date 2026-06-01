@@ -7,7 +7,7 @@ let
     disabled_agents = [ "hephaestus" ];
     agents = baseConfig.agents // {
       oracle = {
-        model = "anthropic/claude-opus-4-7";
+        model = "anthropic/claude-opus-4-8";
         thinking.type = "enabled";
         fallback_models = [
           "anthropic/claude-sonnet-4-6"
@@ -15,7 +15,7 @@ let
         compaction.model = "anthropic/claude-sonnet-4-6";
       };
       momus = {
-        model = "anthropic/claude-opus-4-7";
+        model = "anthropic/claude-opus-4-8";
         thinking.type = "enabled";
         fallback_models = [
           "anthropic/claude-sonnet-4-6"
