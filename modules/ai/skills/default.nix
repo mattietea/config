@@ -53,19 +53,6 @@
         path = ./git-machete;
       };
     };
-    skills.enable = [
-      "skill-creator"
-      "find-skills"
-      "find-docs"
-      "agent-browser"
-      "playwriter"
-      "typescript-advanced-types"
-      "vitest"
-      "itechmeat/react-testing-library"
-      "improve-claude-md"
-      "git-machete"
-      "orchestration"
-    ];
     targets = {
       claude.enable = true;
       codex.enable = true;

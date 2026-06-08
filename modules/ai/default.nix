@@ -5,6 +5,7 @@
     ./integrations/claude-mem
     ./harnesses/opencode
     ./skills
+    ./tools
     ./mcp
     ./plugins
     ./instructions
