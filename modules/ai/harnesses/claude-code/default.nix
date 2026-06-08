@@ -35,7 +35,6 @@
       env = {
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
         BASH_DEFAULT_TIMEOUT_MS = "30000";
-        FORCE_AUTOUPDATE_PLUGINS = "true";
       };
       autoConnectIde = true;
       claudeInChromeDefaultEnabled = true;

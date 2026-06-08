@@ -17,6 +17,8 @@
     # overriding nixpkgs would invalidate their binary cache.
     llm-agents.url = "github:numtide/llm-agents.nix";
 
+    # NOTE: no nixpkgs follows — claude-code-nix ships a prebuilt claude-code via
+    # its own binary cache; overriding nixpkgs would force a source rebuild.
     claude-code-nix.url = "github:sadjow/claude-code-nix";
 
     claude-mem = {
@@ -126,11 +128,6 @@
         { pkgs, ... }:
         {
           formatter = pkgs.nixfmt;
-
-          devShells.default = pkgs.mkShell {
-            buildInputs = [ pkgs.devenv ];
-            shellHook = ''echo "Use 'devenv shell' for full environment"'';
-          };
         };
     };
 }

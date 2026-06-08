@@ -54,8 +54,7 @@ inputs.darwin.lib.darwinSystem {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        backupFileExtension = null;
-        backupCommand = "/bin/rm -f";
+        backupFileExtension = "hm-bak";
         extraSpecialArgs = { inherit settings inputs applicationNames; };
         sharedModules = [
           # Expose nvfetcher-generated sources (pup, linear, oh-my-openagent, …)
