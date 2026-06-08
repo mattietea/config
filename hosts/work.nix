@@ -2,6 +2,7 @@
 let
   inherit (import ../lib/hosts.nix)
     pkg
+    trivialPkg
     commonApps
     commonPackages
     commonVariables
@@ -26,11 +27,11 @@ mkHost {
   packages =
     commonPackages
     ++ map pkg [
-      "gws"
       "pup"
       "sentry"
       "worktrunk-work"
-    ];
+    ]
+    ++ map trivialPkg [ "gws" ];
 
   ai = [
     ../modules/ai

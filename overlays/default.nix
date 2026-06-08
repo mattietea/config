@@ -10,4 +10,8 @@ in
   linear-cli = final.callPackage ../modules/home-manager/packages/linear/package.nix {
     inherit (sources.linear) version src;
   };
+
+  wacli = final.callPackage ../modules/home-manager/packages/wacli/package.nix {
+    inherit (sources.wacli) version src;
+  };
 }

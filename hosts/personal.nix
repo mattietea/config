@@ -2,7 +2,7 @@
 let
   inherit (import ../lib/hosts.nix)
     app
-    pkg
+    trivialPkg
     commonApps
     commonPackages
     commonVariables
@@ -33,11 +33,7 @@ mkHost {
       "spotify"
     ];
 
-  packages =
-    commonPackages
-    ++ map pkg [
-      "wacli"
-    ];
+  packages = commonPackages ++ map trivialPkg [ "wacli" ];
 
   ai = [
     ../modules/ai

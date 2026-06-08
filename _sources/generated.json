@@ -1,47 +1,62 @@
 {
-  "linear": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "linear",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-Eh/h7ubZCyLnbk6Yy7YkR07s2XCkpMYi/U1QiJtX2sw=",
-      "type": "url",
-      "url": "https://github.com/schpet/linear-cli/releases/download/v2.0.0/linear-aarch64-apple-darwin.tar.xz"
+    "linear": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "linear",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Eh/h7ubZCyLnbk6Yy7YkR07s2XCkpMYi/U1QiJtX2sw=",
+            "type": "url",
+            "url": "https://github.com/schpet/linear-cli/releases/download/v2.0.0/linear-aarch64-apple-darwin.tar.xz"
+        },
+        "version": "2.0.0"
     },
-    "version": "2.0.0"
-  },
-  "oh-my-openagent": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "oh-my-openagent",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-Do7fCd6oMCH6K22oXbs3ymuAhZEbxqskm5/qa2lmQcE=",
-      "type": "url",
-      "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.7.5.tar.gz"
+    "oh-my-openagent": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "oh-my-openagent",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Do7fCd6oMCH6K22oXbs3ymuAhZEbxqskm5/qa2lmQcE=",
+            "type": "url",
+            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.7.5.tar.gz"
+        },
+        "version": "4.7.5"
     },
-    "version": "4.7.5"
-  },
-  "pup": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "pup",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-nSjSG6lO/K5kzeE89xEZxgIJ0h94miV/lq0dJ4+0HfQ=",
-      "type": "url",
-      "url": "https://github.com/datadog-labs/pup/releases/download/v0.65.4/pup_0.65.4_Darwin_arm64.tar.gz"
+    "pup": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pup",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-nSjSG6lO/K5kzeE89xEZxgIJ0h94miV/lq0dJ4+0HfQ=",
+            "type": "url",
+            "url": "https://github.com/datadog-labs/pup/releases/download/v0.65.4/pup_0.65.4_Darwin_arm64.tar.gz"
+        },
+        "version": "0.65.4"
     },
-    "version": "0.65.4"
-  }
+    "wacli": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-7dooiNYYE+bTqxdLd38WOCrwY5i9eKIIIu8i56FtKcU=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.11.0/wacli_0.11.0_darwin_universal.tar.gz"
+        },
+        "version": "0.11.0"
+    }
 }

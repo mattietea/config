@@ -30,4 +30,12 @@
       sha256 = "sha256-nSjSG6lO/K5kzeE89xEZxgIJ0h94miV/lq0dJ4+0HfQ=";
     };
   };
+  wacli = {
+    pname = "wacli";
+    version = "0.11.0";
+    src = fetchurl {
+      url = "https://github.com/openclaw/wacli/releases/download/v0.11.0/wacli_0.11.0_darwin_universal.tar.gz";
+      sha256 = "sha256-7dooiNYYE+bTqxdLd38WOCrwY5i9eKIIIu8i56FtKcU=";
+    };
+  };
 }
