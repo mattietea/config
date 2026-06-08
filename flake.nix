@@ -118,6 +118,8 @@
       systems = [ "aarch64-darwin" ];
 
       flake = {
+        overlays.default = import ./overlays;
+
         darwinConfigurations = {
           Castula-KQPN = import ./hosts/work.nix { inherit inputs; };
           Matts-Personal-Macbook-Air = import ./hosts/personal.nix { inherit inputs; };

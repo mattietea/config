@@ -19,7 +19,7 @@ inputs.darwin.lib.darwinSystem {
     {
       nixpkgs = {
         hostPlatform = system;
-        overlays = [ ];
+        overlays = [ (import ../overlays) ];
         config = {
           allowUnfree = true;
           allowInsecurePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "google-chrome" ];
