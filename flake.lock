@@ -84,11 +84,11 @@
     "anthropic-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1780020146,
-        "narHash": "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=",
+        "lastModified": 1780863693,
+        "narHash": "sha256-szcnow0yO1ViQt6Mxrd+PNdfZ5jzPqqSmqA0jEQnS1o=",
         "owner": "anthropics",
         "repo": "skills",
-        "rev": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
+        "rev": "c30d329f5814647c1e2f071020c1e8c1c9893ef1",
         "type": "github"
       },
       "original": {
@@ -193,11 +193,11 @@
     "claude-mem": {
       "flake": false,
       "locked": {
-        "lastModified": 1780727030,
-        "narHash": "sha256-IhO+Iaj/8AKkkz31GomwW71slw2R9WrQU1oc8q701EM=",
+        "lastModified": 1780883238,
+        "narHash": "sha256-78kwiyQutQs+wFRrKo8JhkvLIrF0JHbMUZ9fW3b5vTY=",
         "owner": "thedotmack",
         "repo": "claude-mem",
-        "rev": "671de5e3e20544f1d50e7488088063ffb5275646",
+        "rev": "f267d1d43b9b6652831c7ceff8084a556a25480e",
         "type": "github"
       },
       "original": {
@@ -406,11 +406,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780361225,
-        "narHash": "sha256-wnV9ttf4fPWNonBIQmvlrSlNpQYgx5HgWWd007mwIFA=",
+        "lastModified": 1780883961,
+        "narHash": "sha256-WU6SUrESuPiEXEUvX4D51AgWrXRJty+sLJBwBaDBGqE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e28654b71096e08c019d4861ca26acb646f583d8",
+        "rev": "4eb4fec41674d5b059aa2eedf0f98453890546fa",
         "type": "github"
       },
       "original": {
@@ -478,11 +478,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1780797182,
-        "narHash": "sha256-5Yp63fv0PstyhRT5ZplfJhRSySYGSq7ODrt7SCOFYQA=",
+        "lastModified": 1780881774,
+        "narHash": "sha256-rerEuAetLDa/0drxCKlG3FOm+IaERC85bjePsEAgNqI=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "da5168402a5969313814f437962a2b04c2601471",
+        "rev": "d2516f1045bcce250f7116232899b33252c2866a",
         "type": "github"
       },
       "original": {
@@ -509,11 +509,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1780686478,
-        "narHash": "sha256-zLfvU5+FhNZVpdpAdCToKbxvJMtGWPOw1xfjkV45od0=",
+        "lastModified": 1780747962,
+        "narHash": "sha256-IX7G1dlKrOqPOImfbo7ADDfV5yU1+j+MRChI3TL4tAA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "891eaa77f0eed53352194677991bd30978f9b0ad",
+        "rev": "cbb5cf358f50aa6acc9efd6113b7bcfbc352cd73",
         "type": "github"
       },
       "original": {
@@ -525,11 +525,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1780614800,
-        "narHash": "sha256-xq6r60DU54c2C//D+ok+y5A7fp/zpFcNUeX5uGqKyMQ=",
+        "lastModified": 1780773863,
+        "narHash": "sha256-t0AXyb11HJHwyRkCed8y15unmgwVlbgcIEVdV1XxYvA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cc598dfd09b0a543d574a238d4b3473bb1c6d587",
+        "rev": "20872773637de0b44f7ac04cde2098db1286e6d5",
         "type": "github"
       },
       "original": {
@@ -542,11 +542,11 @@
     "orca-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1780784863,
-        "narHash": "sha256-5+FV+a6i5QoOugHuJYyaGP+1RNRBVzJMNCRLqF9Ix5s=",
+        "lastModified": 1780883509,
+        "narHash": "sha256-PMDWOdQC/+rJrVw40GmdeN8CydFiFPuHWvyx+jYBhg0=",
         "owner": "stablyai",
         "repo": "orca",
-        "rev": "ca5ccdd126d10ea0d0cea2ae97e64561f552657e",
+        "rev": "e35deb9720f8154faeceb0bddbb336a49671ef62",
         "type": "github"
       },
       "original": {
@@ -732,11 +732,11 @@
     "worktrunk-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1780797054,
-        "narHash": "sha256-1sJ4RKIkx8yEAzmhQGorUCwg+kWEeMm88w7vU8CNJfM=",
+        "lastModified": 1780822225,
+        "narHash": "sha256-YjNAyoQANwJPrq7nBtn7gz1o1MkQSS9f3sMlhUcJ/54=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "7cb56c368bdb47486b68928cb2bfe818e4250f6a",
+        "rev": "0fbcdb3b371a41e3dc4db8a9bd83031618caa5e4",
         "type": "github"
       },
       "original": {
