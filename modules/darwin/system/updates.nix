@@ -1,24 +1,12 @@
-_:
-
-{
-  ########################################################################
-  # Software Update
-  ########################################################################
-
+_: {
   system.defaults = {
-    # Automatically install macOS software updates
-    SoftwareUpdate = {
-      AutomaticallyInstallMacOSUpdates = true;
-    };
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
-    # Also enforce Software Update behaviors via CustomSystemPreferences below.
-    CustomSystemPreferences = {
-      "com.apple.SoftwareUpdate" = {
-        AutomaticCheckEnabled = true; # enable automatic checking
-        ScheduleFrequency = 1; # check daily
-        AutomaticDownload = 1; # download updates in background
-        CriticalUpdateInstall = 1; # install critical updates automatically
-      };
+    CustomSystemPreferences."com.apple.SoftwareUpdate" = {
+      AutomaticCheckEnabled = true;
+      ScheduleFrequency = 1;
+      AutomaticDownload = 1;
+      CriticalUpdateInstall = 1;
     };
   };
 }
