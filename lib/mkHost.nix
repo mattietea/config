@@ -57,7 +57,19 @@ inputs.darwin.lib.darwinSystem {
         backupFileExtension = null;
         backupCommand = "/bin/rm -f";
         extraSpecialArgs = { inherit settings inputs applicationNames; };
-        sharedModules = applications ++ packages ++ ai;
+        sharedModules = [
+          # Expose nvfetcher-generated sources (pup, linear, oh-my-openagent, …)
+          # to every home-manager module as the `sources` arg.
+          (
+            { pkgs, ... }:
+            {
+              _module.args.sources = pkgs.callPackage ../_sources/generated.nix { };
+            }
+          )
+        ]
+        ++ applications
+        ++ packages
+        ++ ai;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           manual = {

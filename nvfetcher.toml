@@ -1,0 +1,25 @@
+# Auto-updatable prebuilt sources. Run `nvfetcher` to refresh pins.
+# Generates ./_sources/generated.nix (consumed via pkgs.callPackage).
+# This replaces the hand-rolled `update-clis` script.
+#
+# src.prefix = "v" strips the leading "v" from the release tag, so $ver is the
+# bare version (e.g. 0.65.0); we re-add the "v" in the URL path where needed.
+
+[pup]
+src.github = "datadog-labs/pup"
+src.prefix = "v"
+fetch.url = "https://github.com/datadog-labs/pup/releases/download/v$ver/pup_$ver_Darwin_arm64.tar.gz"
+
+[linear]
+src.github = "schpet/linear-cli"
+src.prefix = "v"
+fetch.url = "https://github.com/schpet/linear-cli/releases/download/v$ver/linear-aarch64-apple-darwin.tar.xz"
+
+# opencode loads this by npm name, so we only need its VERSION tracked here
+# (the same one mechanism as the binaries). fetch.github just gives nvfetcher a
+# source to resolve the version from; the src itself is unused — the opencode
+# plugin string consumes `sources.oh-my-openagent.version`.
+[oh-my-openagent]
+src.github = "code-yeongyu/oh-my-openagent"
+src.prefix = "v"
+fetch.url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v$ver.tar.gz"

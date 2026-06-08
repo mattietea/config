@@ -34,8 +34,4 @@ in
     force = true;
     text = builtins.toJSON config;
   };
-
-  programs.opencode.settings.plugin = [
-    "opencode-with-claude"
-  ];
 }
