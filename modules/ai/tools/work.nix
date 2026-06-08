@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  sources,
   ...
 }:
 {
@@ -10,7 +11,7 @@
     pup = {
       enable = true;
       sources.pup = {
-        input = "pup-skills";
+        path = sources.pup-skills.src;
         subdir = "skills";
       };
       skills = [
@@ -28,7 +29,7 @@
     linear-cli = {
       enable = true;
       sources.linear-cli = {
-        input = "linear-cli-skills";
+        path = sources.linear-cli-skills.src;
         subdir = "skills";
       };
       skills = [ "linear-cli" ];
@@ -37,7 +38,7 @@
     worktrunk = {
       enable = true;
       sources.worktrunk = {
-        input = "worktrunk-skills";
+        path = sources.worktrunk-skills.src;
         subdir = "skills";
         filter.maxDepth = 1;
       };
@@ -46,7 +47,7 @@
     chrome-devtools = {
       enable = true;
       sources.chrome-devtools-mcp = {
-        input = "chrome-devtools-mcp-skills";
+        path = sources.chrome-devtools-mcp-skills.src;
         subdir = "skills";
       };
       skills = [

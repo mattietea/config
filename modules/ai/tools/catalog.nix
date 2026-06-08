@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, sources, ... }:
 let
   # Tools whose skills come from a shared base source (anthropic et al.) and so
   # carry no source of their own.
@@ -22,7 +22,7 @@ in
       enable = true;
       skills = [ "agent-browser" ];
       sources.agent-browser = {
-        input = "agent-browser-skills";
+        path = sources.agent-browser-skills.src;
         subdir = "skills";
       };
     };
@@ -30,7 +30,7 @@ in
       enable = true;
       skills = [ "playwriter" ];
       sources.playwriter = {
-        input = "playwriter-skills";
+        path = sources.playwriter-skills.src;
         subdir = "skills";
       };
     };
@@ -38,7 +38,7 @@ in
       enable = true;
       skills = [ "orchestration" ];
       sources.orca = {
-        input = "orca-skills";
+        path = sources.orca-skills.src;
         subdir = "skills";
       };
     };
@@ -46,7 +46,7 @@ in
       enable = true;
       skills = [ "improve-claude-md" ];
       sources.humanlayer = {
-        input = "humanlayer-skills";
+        path = sources.humanlayer-skills.src;
         subdir = "plugins/improve-claude-md/skills";
       };
     };
@@ -59,7 +59,7 @@ in
       enable = true;
       skills = [ "itechmeat/react-testing-library" ];
       sources.itechmeat = {
-        input = "itechmeat-skills";
+        path = sources.itechmeat-skills.src;
         subdir = "skills";
         idPrefix = "itechmeat";
       };
