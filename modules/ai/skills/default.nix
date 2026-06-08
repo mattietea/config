@@ -7,6 +7,8 @@
 
   programs.agent-skills = {
     enable = true;
+    # Shared sources that feed multiple base skills (or are not yet owned by a
+    # single tool). Tool-specific sources live with their tool in tools/.
     sources = {
       anthropic = {
         input = "anthropic-skills";
@@ -20,14 +22,6 @@
         input = "context7-skills";
         subdir = "skills";
       };
-      agent-browser = {
-        input = "agent-browser-skills";
-        subdir = "skills";
-      };
-      playwriter = {
-        input = "playwriter-skills";
-        subdir = "skills";
-      };
       wshobson-agents = {
         input = "wshobson-agents";
         subdir = "plugins/javascript-typescript/skills";
@@ -35,22 +29,6 @@
       dot-skills = {
         input = "dot-skills";
         subdir = "skills/.curated";
-      };
-      itechmeat = {
-        input = "itechmeat-skills";
-        subdir = "skills";
-        idPrefix = "itechmeat";
-      };
-      humanlayer = {
-        input = "humanlayer-skills";
-        subdir = "plugins/improve-claude-md/skills";
-      };
-      orca = {
-        input = "orca-skills";
-        subdir = "skills";
-      };
-      local = {
-        path = ./git-machete;
       };
     };
     targets = {

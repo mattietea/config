@@ -29,10 +29,15 @@ in
     # aggregators (work.nix / personal.nix) append their own segments after.
     programs.aiInstructions.segments = lib.mkBefore [ ./INSTRUCTIONS.md ];
 
-    home.file = {
-      ".claude/CLAUDE.md".source = mergedFile;
-      ".codex/AGENTS.md".source = mergedFile;
-      ".config/opencode/AGENTS.md".source = mergedFile;
-    };
+    home.file =
+      lib.genAttrs
+        [
+          ".claude/CLAUDE.md"
+          ".codex/AGENTS.md"
+          ".config/opencode/AGENTS.md"
+        ]
+        (_: {
+          source = mergedFile;
+        });
   };
 }

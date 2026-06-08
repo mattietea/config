@@ -4,28 +4,42 @@
   ...
 }:
 let
-  enabled = lib.filter (t: t.enable) (lib.attrValues config.ai.tools);
+  inherit (lib)
+    filter
+    attrValues
+    concatMap
+    mkMerge
+    mkOption
+    mkEnableOption
+    types
+    ;
+  enabled = filter (t: t.enable) (attrValues config.ai.tools);
 in
 {
   imports = [ ./catalog.nix ];
 
-  options.ai.tools = lib.mkOption {
+  options.ai.tools = mkOption {
     default = { };
-    description = "AI tools. Enabling one registers its skills, instructions, and packages across every harness.";
-    type = lib.types.attrsOf (
-      lib.types.submodule {
+    description = "AI tools. Enabling one registers its skills, skill sources, instructions, and packages across every harness.";
+    type = types.attrsOf (
+      types.submodule {
         options = {
-          enable = lib.mkEnableOption "this AI tool";
-          skills = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
+          enable = mkEnableOption "this AI tool";
+          skills = mkOption {
+            type = types.listOf types.str;
             default = [ ];
           };
-          instructions = lib.mkOption {
-            type = lib.types.nullOr lib.types.path;
+          sources = mkOption {
+            type = types.attrsOf types.anything;
+            default = { };
+            description = "agent-skills sources this tool provides; merged into programs.agent-skills.sources.";
+          };
+          instructions = mkOption {
+            type = types.nullOr types.path;
             default = null;
           };
-          packages = lib.mkOption {
-            type = lib.types.listOf lib.types.package;
+          packages = mkOption {
+            type = types.listOf types.package;
             default = [ ];
           };
         };
@@ -34,8 +48,13 @@ in
   };
 
   config = {
-    programs.agent-skills.skills.enable = lib.concatMap (t: t.skills) enabled;
-    programs.aiInstructions.segments = lib.filter (x: x != null) (map (t: t.instructions) enabled);
-    home.packages = lib.concatMap (t: t.packages) enabled;
+    programs = {
+      agent-skills = {
+        skills.enable = concatMap (t: t.skills) enabled;
+        sources = mkMerge (map (t: t.sources) enabled);
+      };
+      aiInstructions.segments = filter (x: x != null) (map (t: t.instructions) enabled);
+    };
+    home.packages = concatMap (t: t.packages) enabled;
   };
 }

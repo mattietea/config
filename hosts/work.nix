@@ -26,9 +26,7 @@ mkHost {
   packages =
     commonPackages
     ++ map pkg [
-      "agent-slack"
       "gws"
-      "linear"
       "pup"
       "sentry"
       "worktrunk-work"
