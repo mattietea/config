@@ -1,5 +1,6 @@
 {
   inputs,
+  sources,
   ...
 }:
 {
@@ -7,65 +8,31 @@
 
   programs.agent-skills = {
     enable = true;
+    # Shared sources that feed multiple base skills (or are not yet owned by a
+    # single tool). Tool-specific sources live with their tool in tools/.
+    # Pinned via nvfetcher (sources.*.src) rather than flake inputs.
     sources = {
       anthropic = {
-        input = "anthropic-skills";
+        path = sources.anthropic-skills.src;
         subdir = "skills";
       };
       vercel-cli = {
-        input = "vercel-skills-cli";
+        path = sources.vercel-skills-cli.src;
         subdir = "skills";
       };
       context7 = {
-        input = "context7-skills";
-        subdir = "skills";
-      };
-      agent-browser = {
-        input = "agent-browser-skills";
-        subdir = "skills";
-      };
-      playwriter = {
-        input = "playwriter-skills";
+        path = sources.context7-skills.src;
         subdir = "skills";
       };
       wshobson-agents = {
-        input = "wshobson-agents";
+        path = sources.wshobson-agents.src;
         subdir = "plugins/javascript-typescript/skills";
       };
       dot-skills = {
-        input = "dot-skills";
+        path = sources.dot-skills.src;
         subdir = "skills/.curated";
       };
-      itechmeat = {
-        input = "itechmeat-skills";
-        subdir = "skills";
-        idPrefix = "itechmeat";
-      };
-      humanlayer = {
-        input = "humanlayer-skills";
-        subdir = "plugins/improve-claude-md/skills";
-      };
-      orca = {
-        input = "orca-skills";
-        subdir = "skills";
-      };
-      local = {
-        path = ./git-machete;
-      };
     };
-    skills.enable = [
-      "skill-creator"
-      "find-skills"
-      "find-docs"
-      "agent-browser"
-      "playwriter"
-      "typescript-advanced-types"
-      "vitest"
-      "itechmeat/react-testing-library"
-      "improve-claude-md"
-      "git-machete"
-      "orchestration"
-    ];
     targets = {
       claude.enable = true;
       codex.enable = true;

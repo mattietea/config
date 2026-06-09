@@ -74,9 +74,12 @@ sudo determinate-nixd upgrade
     │   ├── default.nix          # Aggregator: imports all base AI modules
     │   ├── work.nix             # Aggregator: imports work-specific AI overrides
     │   ├── personal.nix         # Aggregator: imports personal-specific AI overrides
-    │   ├── harnesses/           # AI coding tools (claude-code, opencode)
-    │   ├── skills/              # Agent skills configuration
+    │   ├── harnesses/           # AI coding tools (claude-code, codex, opencode)
+    │   ├── tools/               # ai.tools catalog: one toggle = skills + sources + instructions + packages
+    │   ├── skills/              # Agent skills sources + targets
+    │   ├── integrations/        # Harness integrations (claude-mem)
     │   ├── mcp/                 # MCP server configuration
+    │   ├── plugins/             # Harness plugins (superpowers)
     │   └── instructions/        # Global instruction file (INSTRUCTIONS.md)
     ├── darwin/system/           # macOS system defaults
     │   ├── default.nix          # Importer + meta settings
@@ -114,7 +117,8 @@ sudo determinate-nixd upgrade
 - `modules/darwin/system/input.nix` - Keyboard, trackpad, input settings
 - `modules/darwin/system/updates.nix` - Software Update settings
 - `modules/ai/mcp/default.nix` - MCP server configuration
-- `modules/ai/default.nix` - AI module aggregator (imports harnesses, skills, mcp, instructions)
+- `modules/ai/default.nix` - AI module aggregator (imports harnesses, tools, skills, integrations, mcp, plugins, instructions)
+- `modules/ai/tools/{default,catalog,work}.nix` - `ai.tools` catalog: one toggle registers a tool's skills, sources, instructions, and packages
 - `modules/ai/harnesses/claude-code/default.nix` - Claude Code configuration
 - `modules/ai/instructions/INSTRUCTIONS.md` - Global instruction file for all AI harnesses
 - `.github/workflows/check.yml` - CI: flake check + devenv test
@@ -194,9 +198,12 @@ shellAliases = { g = "${pkgs.git}/bin/git"; cat = "${pkgs.bat}/bin/bat"; };
 
 AI tools are consolidated under `modules/ai/` with a clear taxonomy:
 
-- **harnesses/** — AI coding tools (claude-code, opencode), each with `enableMcpIntegration = true`
-- **skills/** — Agent skills shared across harnesses
+- **harnesses/** — AI coding tools (claude-code, codex, opencode), each with `enableMcpIntegration = true`
+- **tools/** — the `ai.tools` catalog; enabling one tool registers its skills, skill sources, instructions, and packages across every harness (base catalog in `catalog.nix`, work tools in `work.nix`)
+- **skills/** — shared agent-skills sources + deploy targets (tool-specific sources live with their tool in `tools/`)
+- **integrations/** — harness integrations (claude-mem)
 - **mcp/** — MCP server configuration shared via `enableMcpIntegration`
+- **plugins/** — harness plugins (superpowers)
 - **instructions/** — Global instruction file deployed to Claude Code, Codex, and OpenCode
 
 Host files import AI modules via aggregators:

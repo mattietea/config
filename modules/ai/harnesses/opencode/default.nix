@@ -3,6 +3,7 @@
   lib,
   inputs,
   config,
+  sources,
   ...
 }:
 let
@@ -28,7 +29,10 @@ in
         prune = true;
       };
       plugin = [
-        "oh-my-openagent"
+        # Version tracked by nvfetcher (nvfetcher.toml → _sources/generated.nix).
+        # Bump by running `nvfetcher`, not by editing here. Version-keyed so
+        # opencode's bun cache stays deterministic.
+        "oh-my-openagent@${sources.oh-my-openagent.version}"
         "file://${claudeMemOpencodePlugin}"
       ];
     };
@@ -46,14 +50,13 @@ in
   # model.json holds a remembered model picker that can reference old/invalid models.
   # The plugin creates .bak.* and .migrations.json files when it tries (and fails)
   # to rewrite the nix-managed read-only symlink.
-  # The oh-my-openagent@latest cache pins to whatever was first fetched and never
-  # updates — wipe it so each switch picks up the current npm release.
+  # (oh-my-openagent is now version-pinned in the plugin list above, so the bun
+  # cache is version-keyed and refetches on bump — the @latest cache wipe is gone.)
   home.activation = {
     cleanOpencodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       rm -f "$HOME/.local/state/opencode/model.json"
       rm -f "$HOME/.config/opencode/oh-my-openagent.json.bak."*
       rm -f "$HOME/.config/opencode/oh-my-openagent.json.migrations.json"
-      rm -rf "$HOME/.cache/opencode/packages/oh-my-openagent@latest"
     '';
 
     # Orca launches opencode with OPENCODE_CONFIG_DIR pointed at its hook

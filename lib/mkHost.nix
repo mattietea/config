@@ -19,7 +19,7 @@ inputs.darwin.lib.darwinSystem {
     {
       nixpkgs = {
         hostPlatform = system;
-        overlays = [ ];
+        overlays = [ (import ../overlays) ];
         config = {
           allowUnfree = true;
           allowInsecurePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "google-chrome" ];
@@ -54,10 +54,21 @@ inputs.darwin.lib.darwinSystem {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        backupFileExtension = null;
-        backupCommand = "/bin/rm -f";
+        backupFileExtension = "hm-bak";
         extraSpecialArgs = { inherit settings inputs applicationNames; };
-        sharedModules = applications ++ packages ++ ai;
+        sharedModules = [
+          # Expose nvfetcher-generated sources (pup, linear, oh-my-openagent, …)
+          # to every home-manager module as the `sources` arg.
+          (
+            { pkgs, ... }:
+            {
+              _module.args.sources = pkgs.callPackage ../_sources/generated.nix { };
+            }
+          )
+        ]
+        ++ applications
+        ++ packages
+        ++ ai;
         users.${settings.username} = {
           targets.darwin.copyApps.enable = true;
           manual = {

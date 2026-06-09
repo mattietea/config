@@ -9,6 +9,11 @@ _: {
       type = "http";
       url = "https://mcp.incident.io/mcp";
     };
+    # Remote server; client handles OAuth on first use (no API key needed).
+    statsig = {
+      type = "http";
+      url = "https://api.statsig.com/v1/mcp";
+    };
     chrome-devtools = {
       type = "stdio";
       command = "npx";

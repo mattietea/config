@@ -7,7 +7,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    darwin.url = "github:LnL7/nix-darwin";
+    darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -17,6 +17,8 @@
     # overriding nixpkgs would invalidate their binary cache.
     llm-agents.url = "github:numtide/llm-agents.nix";
 
+    # NOTE: no nixpkgs follows — claude-code-nix ships a prebuilt claude-code via
+    # its own binary cache; overriding nixpkgs would force a source rebuild.
     claude-code-nix.url = "github:sadjow/claude-code-nix";
 
     claude-mem = {
@@ -33,81 +35,10 @@
     agent-slack.url = "github:stablyai/agent-slack";
     agent-slack.inputs.nixpkgs.follows = "nixpkgs";
 
-    anthropic-skills = {
-      url = "github:anthropics/skills";
-      flake = false;
-    };
-
-    vercel-skills-cli = {
-      url = "github:vercel-labs/skills";
-      flake = false;
-    };
-
-    pup-skills = {
-      url = "github:datadog-labs/pup";
-      flake = false;
-    };
-
-    linear-cli-skills = {
-      url = "github:schpet/linear-cli";
-      flake = false;
-    };
-
-    context7-skills = {
-      url = "github:upstash/context7";
-      flake = false;
-    };
-
-    agent-browser-skills = {
-      url = "github:vercel-labs/agent-browser";
-      flake = false;
-    };
-
-    playwriter-skills = {
-      url = "github:remorses/playwriter";
-      flake = false;
-    };
-
-    wshobson-agents = {
-      url = "github:wshobson/agents";
-      flake = false;
-    };
-
-    worktrunk-skills = {
-      url = "github:max-sixty/worktrunk";
-      flake = false;
-    };
-
-    dot-skills = {
-      url = "github:pproenca/dot-skills";
-      flake = false;
-    };
-
-    chrome-devtools-mcp-skills = {
-      url = "github:ChromeDevTools/chrome-devtools-mcp";
-      flake = false;
-    };
-
-    itechmeat-skills = {
-      url = "github:itechmeat/llm-code";
-      flake = false;
-    };
-
-    humanlayer-skills = {
-      url = "github:humanlayer/skills";
-      flake = false;
-    };
-
     superpowers = {
       url = "github:obra/superpowers";
       flake = false;
     };
-
-    orca-skills = {
-      url = "github:stablyai/orca";
-      flake = false;
-    };
-
   };
 
   outputs =
@@ -116,6 +47,8 @@
       systems = [ "aarch64-darwin" ];
 
       flake = {
+        overlays.default = import ./overlays;
+
         darwinConfigurations = {
           Castula-KQPN = import ./hosts/work.nix { inherit inputs; };
           Matts-Personal-Macbook-Air = import ./hosts/personal.nix { inherit inputs; };
@@ -126,11 +59,6 @@
         { pkgs, ... }:
         {
           formatter = pkgs.nixfmt;
-
-          devShells.default = pkgs.mkShell {
-            buildInputs = [ pkgs.devenv ];
-            shellHook = ''echo "Use 'devenv shell' for full environment"'';
-          };
         };
     };
 }

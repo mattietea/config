@@ -1,0 +1,102 @@
+# Auto-updatable prebuilt sources. Run `nvfetcher` to refresh pins.
+# Generates ./_sources/generated.nix (consumed via pkgs.callPackage).
+# This replaces the hand-rolled `update-clis` script.
+#
+# src.prefix = "v" strips the leading "v" from the release tag, so $ver is the
+# bare version (e.g. 0.65.0); we re-add the "v" in the URL path where needed.
+
+[pup]
+src.github = "datadog-labs/pup"
+src.prefix = "v"
+fetch.url = "https://github.com/datadog-labs/pup/releases/download/v$ver/pup_$ver_Darwin_arm64.tar.gz"
+
+[linear]
+src.github = "schpet/linear-cli"
+src.prefix = "v"
+fetch.url = "https://github.com/schpet/linear-cli/releases/download/v$ver/linear-aarch64-apple-darwin.tar.xz"
+
+# opencode loads this by npm name, so we only need its VERSION tracked here
+# (the same one mechanism as the binaries). fetch.github just gives nvfetcher a
+# source to resolve the version from; the src itself is unused — the opencode
+# plugin string consumes `sources.oh-my-openagent.version`.
+[oh-my-openagent]
+src.github = "code-yeongyu/oh-my-openagent"
+src.prefix = "v"
+fetch.url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v$ver.tar.gz"
+
+[wacli]
+src.github = "openclaw/wacli"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_universal.tar.gz"
+
+# Agent-skill sources — repos consumed by agent-skills-nix via path = sources.X.src.
+# Tracked at branch HEAD (these repos cut no releases), pinned by commit + hash.
+[anthropic-skills]
+src.git = "https://github.com/anthropics/skills"
+src.branch = "main"
+fetch.git = "https://github.com/anthropics/skills"
+
+[vercel-skills-cli]
+src.git = "https://github.com/vercel-labs/skills"
+src.branch = "main"
+fetch.git = "https://github.com/vercel-labs/skills"
+
+[pup-skills]
+src.git = "https://github.com/datadog-labs/pup"
+src.branch = "main"
+fetch.git = "https://github.com/datadog-labs/pup"
+
+[linear-cli-skills]
+src.git = "https://github.com/schpet/linear-cli"
+src.branch = "main"
+fetch.git = "https://github.com/schpet/linear-cli"
+
+[context7-skills]
+src.git = "https://github.com/upstash/context7"
+src.branch = "master"
+fetch.git = "https://github.com/upstash/context7"
+
+[agent-browser-skills]
+src.git = "https://github.com/vercel-labs/agent-browser"
+src.branch = "main"
+fetch.git = "https://github.com/vercel-labs/agent-browser"
+
+[playwriter-skills]
+src.git = "https://github.com/remorses/playwriter"
+src.branch = "main"
+fetch.git = "https://github.com/remorses/playwriter"
+
+[wshobson-agents]
+src.git = "https://github.com/wshobson/agents"
+src.branch = "main"
+fetch.git = "https://github.com/wshobson/agents"
+
+[worktrunk-skills]
+src.git = "https://github.com/max-sixty/worktrunk"
+src.branch = "main"
+fetch.git = "https://github.com/max-sixty/worktrunk"
+
+[dot-skills]
+src.git = "https://github.com/pproenca/dot-skills"
+src.branch = "master"
+fetch.git = "https://github.com/pproenca/dot-skills"
+
+[chrome-devtools-mcp-skills]
+src.git = "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+src.branch = "main"
+fetch.git = "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+
+[itechmeat-skills]
+src.git = "https://github.com/itechmeat/llm-code"
+src.branch = "master"
+fetch.git = "https://github.com/itechmeat/llm-code"
+
+[humanlayer-skills]
+src.git = "https://github.com/humanlayer/skills"
+src.branch = "main"
+fetch.git = "https://github.com/humanlayer/skills"
+
+[orca-skills]
+src.git = "https://github.com/stablyai/orca"
+src.branch = "main"
+fetch.git = "https://github.com/stablyai/orca"

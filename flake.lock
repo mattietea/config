@@ -23,22 +23,6 @@
         "type": "github"
       }
     },
-    "agent-browser-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780683647,
-        "narHash": "sha256-MaN0yoOyRuNhv+e6//1QtEwH7C5dXGu2s+OdCowYf4I=",
-        "owner": "vercel-labs",
-        "repo": "agent-browser",
-        "rev": "328ce8a98560ac7bac8fa81f53a718822550b94e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vercel-labs",
-        "repo": "agent-browser",
-        "type": "github"
-      }
-    },
     "agent-skills-nix": {
       "inputs": {
         "home-manager": "home-manager_2",
@@ -78,22 +62,6 @@
       "original": {
         "owner": "stablyai",
         "repo": "agent-slack",
-        "type": "github"
-      }
-    },
-    "anthropic-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780863693,
-        "narHash": "sha256-szcnow0yO1ViQt6Mxrd+PNdfZ5jzPqqSmqA0jEQnS1o=",
-        "owner": "anthropics",
-        "repo": "skills",
-        "rev": "c30d329f5814647c1e2f071020c1e8c1c9893ef1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anthropics",
-        "repo": "skills",
         "type": "github"
       }
     },
@@ -155,33 +123,17 @@
         "type": "github"
       }
     },
-    "chrome-devtools-mcp-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780937413,
-        "narHash": "sha256-eXK32N2oiWWnsPLZ5sdCc/tSnhkBsyFVNRVOv6WqclM=",
-        "owner": "ChromeDevTools",
-        "repo": "chrome-devtools-mcp",
-        "rev": "702d3734f276a18efd67561ae00b88ce954cc515",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ChromeDevTools",
-        "repo": "chrome-devtools-mcp",
-        "type": "github"
-      }
-    },
     "claude-code-nix": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1780957729,
-        "narHash": "sha256-Z4oBmSU00hsjnHWDK080Bpij5lIQGBebMMoYeHC8enY=",
+        "lastModified": 1781026565,
+        "narHash": "sha256-sL9ZxUqeNFK2TXg0o0swSeJz0KlgkpLiyPSOq+Durug=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "59e10450c92bad9a327b067b85d418255e6e62f0",
+        "rev": "4b0229ec9e37c594156b492653eada8413446f09",
         "type": "github"
       },
       "original": {
@@ -193,32 +145,16 @@
     "claude-mem": {
       "flake": false,
       "locked": {
-        "lastModified": 1780883238,
-        "narHash": "sha256-78kwiyQutQs+wFRrKo8JhkvLIrF0JHbMUZ9fW3b5vTY=",
+        "lastModified": 1780984217,
+        "narHash": "sha256-2SUNQAqgRnsyKTK3KXJp/D1DcKRTE8011dmXtuJsfdE=",
         "owner": "thedotmack",
         "repo": "claude-mem",
-        "rev": "f267d1d43b9b6652831c7ceff8084a556a25480e",
+        "rev": "f7f82e2f177f02209cd2db326e023d526735d718",
         "type": "github"
       },
       "original": {
         "owner": "thedotmack",
         "repo": "claude-mem",
-        "type": "github"
-      }
-    },
-    "context7-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780926130,
-        "narHash": "sha256-HHXb7Ww4ay6zFKD1RPQ0v98aM2KGJfOW4FgMwi7Szzk=",
-        "owner": "upstash",
-        "repo": "context7",
-        "rev": "428af3e06753d92d8ec5879de097868232d8bef3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "upstash",
-        "repo": "context7",
         "type": "github"
       }
     },
@@ -230,16 +166,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1744478979,
-        "narHash": "sha256-dyN+teG9G82G+m+PX/aSAagkC+vUv0SgUw3XkPhQodQ=",
-        "owner": "lnl7",
+        "lastModified": 1780789116,
+        "narHash": "sha256-+/LcDMJGYQVLp3ECZ1jBhj3GcQU+Yt+OTsDsQFz8cMs=",
+        "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "43975d782b418ebf4969e9ccba82466728c2851b",
+        "rev": "731951a251ca96cbd12a8e1bde63737e21947644",
         "type": "github"
       },
       "original": {
-        "owner": "lnl7",
-        "ref": "master",
+        "owner": "nix-darwin",
+        "ref": "nix-darwin-26.05",
         "repo": "nix-darwin",
         "type": "github"
       }
@@ -251,32 +187,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1780795403,
-        "narHash": "sha256-AkWx4Zt9pQbD/f82Z8N57+d0HGLN/rV3gdMKJTpBPKs=",
-        "owner": "LnL7",
+        "lastModified": 1780789116,
+        "narHash": "sha256-+/LcDMJGYQVLp3ECZ1jBhj3GcQU+Yt+OTsDsQFz8cMs=",
+        "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "6a771120d607dcccb279a27d227650e324815c35",
+        "rev": "731951a251ca96cbd12a8e1bde63737e21947644",
         "type": "github"
       },
       "original": {
-        "owner": "LnL7",
+        "owner": "nix-darwin",
+        "ref": "nix-darwin-26.05",
         "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
-    "dot-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780265331,
-        "narHash": "sha256-Aihfefulnrne5r1wYNwttAy2DtDW3EKcN1e47F7lSw4=",
-        "owner": "pproenca",
-        "repo": "dot-skills",
-        "rev": "a86ba91476c0a3df3c7702f176c53023ea2ffe7c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pproenca",
-        "repo": "dot-skills",
         "type": "github"
       }
     },
@@ -420,54 +341,6 @@
         "type": "github"
       }
     },
-    "humanlayer-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1773804323,
-        "narHash": "sha256-xRlJS7kYEtAZ+pCphIVGbOyuRhwuW4JuJG1qDF9ns7o=",
-        "owner": "humanlayer",
-        "repo": "skills",
-        "rev": "ecf602e2f9bb445831e36592af92c36bfad18960",
-        "type": "github"
-      },
-      "original": {
-        "owner": "humanlayer",
-        "repo": "skills",
-        "type": "github"
-      }
-    },
-    "itechmeat-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780292764,
-        "narHash": "sha256-AeZxH2PXNOqzN8VLniC0sL6/kAJZrA5u90Uy+2XCEVQ=",
-        "owner": "itechmeat",
-        "repo": "llm-code",
-        "rev": "0ba69fd9bfdecae0dc0b555652cb9d3e3522eec2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "itechmeat",
-        "repo": "llm-code",
-        "type": "github"
-      }
-    },
-    "linear-cli-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779231354,
-        "narHash": "sha256-nmF834DXqLmHDKiAys8FARsXmRWyMKyUF7uDVpq5a8w=",
-        "owner": "schpet",
-        "repo": "linear-cli",
-        "rev": "fc85b919cdb62a668eecea6ea5484aad9da8f655",
-        "type": "github"
-      },
-      "original": {
-        "owner": "schpet",
-        "repo": "linear-cli",
-        "type": "github"
-      }
-    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -478,11 +351,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1780968254,
-        "narHash": "sha256-XetM3ACVYFpAoLTBVmpM6bY1I7ObXWp8WPN8EerPN9Y=",
+        "lastModified": 1781026777,
+        "narHash": "sha256-qlnS33kYPTWEwBtAg7XyKMMgDc20zOE0gkO+8Szl+a4=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "01273c66aa45c8ddd9573831c6e40eb0a39ae07d",
+        "rev": "df17b17dc4dea65ae4d58331b507e3845cd78501",
         "type": "github"
       },
       "original": {
@@ -493,11 +366,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1780747962,
-        "narHash": "sha256-IX7G1dlKrOqPOImfbo7ADDfV5yU1+j+MRChI3TL4tAA=",
+        "lastModified": 1780930886,
+        "narHash": "sha256-rppURzHviaQN131F+nLiLdGfcb0uCd9gGP0E5+iw9MI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cbb5cf358f50aa6acc9efd6113b7bcfbc352cd73",
+        "rev": "8c3cede7ddc26bd659d2d383b5610efbd2c7a16e",
         "type": "github"
       },
       "original": {
@@ -539,81 +412,19 @@
         "type": "github"
       }
     },
-    "orca-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780968532,
-        "narHash": "sha256-g+SHzllo7EEO34VV9mYrsoBoluA/XTftL2QqtyHXpbc=",
-        "owner": "stablyai",
-        "repo": "orca",
-        "rev": "edadb1d7b7a965df14681697b61f5949c5c4be39",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stablyai",
-        "repo": "orca",
-        "type": "github"
-      }
-    },
-    "playwriter-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779875855,
-        "narHash": "sha256-Edro54JOXIRho1be/1gaCBH5e6k1uu+Dia7CJoZL6CY=",
-        "owner": "remorses",
-        "repo": "playwriter",
-        "rev": "9d837c0a8cfb573bc084edbd1d1b7d4e9654c965",
-        "type": "github"
-      },
-      "original": {
-        "owner": "remorses",
-        "repo": "playwriter",
-        "type": "github"
-      }
-    },
-    "pup-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780944950,
-        "narHash": "sha256-zx3IrmGWNAjrulxKUSq3jPZ3lxbPcrYrIIBzkIQmeFk=",
-        "owner": "datadog-labs",
-        "repo": "pup",
-        "rev": "b18851f09839636c42d69797f3175ffa30950865",
-        "type": "github"
-      },
-      "original": {
-        "owner": "datadog-labs",
-        "repo": "pup",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "agent-browser-skills": "agent-browser-skills",
         "agent-skills-nix": "agent-skills-nix",
         "agent-slack": "agent-slack",
-        "anthropic-skills": "anthropic-skills",
-        "chrome-devtools-mcp-skills": "chrome-devtools-mcp-skills",
         "claude-code-nix": "claude-code-nix",
         "claude-mem": "claude-mem",
-        "context7-skills": "context7-skills",
         "darwin": "darwin_2",
-        "dot-skills": "dot-skills",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
-        "humanlayer-skills": "humanlayer-skills",
-        "itechmeat-skills": "itechmeat-skills",
-        "linear-cli-skills": "linear-cli-skills",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_3",
-        "orca-skills": "orca-skills",
-        "playwriter-skills": "playwriter-skills",
-        "pup-skills": "pup-skills",
-        "superpowers": "superpowers",
-        "vercel-skills-cli": "vercel-skills-cli",
-        "worktrunk-skills": "worktrunk-skills",
-        "wshobson-agents": "wshobson-agents"
+        "superpowers": "superpowers"
       }
     },
     "superpowers": {
@@ -710,54 +521,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "vercel-skills-cli": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780670293,
-        "narHash": "sha256-y9AFt7xLzmaX3+6+N+97zg8QXJyt4G3m9ymrB6m/pmA=",
-        "owner": "vercel-labs",
-        "repo": "skills",
-        "rev": "a561e790756b2785b9ddb82285c4eb0a08258ac9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vercel-labs",
-        "repo": "skills",
-        "type": "github"
-      }
-    },
-    "worktrunk-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780926460,
-        "narHash": "sha256-FXm6TglYAJglwrnDq1djHXHIbTKH8Rozohw8rAy0flU=",
-        "owner": "max-sixty",
-        "repo": "worktrunk",
-        "rev": "ba6a3c2b56c34ef60ae8ca85dadcaf46524401fd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "max-sixty",
-        "repo": "worktrunk",
-        "type": "github"
-      }
-    },
-    "wshobson-agents": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780647781,
-        "narHash": "sha256-QpfeAwDp9Oj3J9RZUaZPlrYsJvp2UxOwwU/JHWSUcas=",
-        "owner": "wshobson",
-        "repo": "agents",
-        "rev": "cf6059d030bf4fe96623ae2e596d2f31e35fedc0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wshobson",
-        "repo": "agents",
         "type": "github"
       }
     }

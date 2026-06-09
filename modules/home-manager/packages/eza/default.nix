@@ -20,10 +20,13 @@
       };
 
       initContent = ''
-        # When we change directory, run the ls command
+        # Auto-list on cd — but only in an interactive terminal. In scripts or
+        # backgrounded shells (e.g. `zsh -c`, no controlling tty) eza would block
+        # on SIGTTOU trying to write to the terminal and hang the whole shell.
         function chpwd() {
           emulate -L zsh
-          ${pkgs.eza}/bin/eza --grid --icons --git;
+          [[ -o interactive && -t 1 ]] || return
+          ${pkgs.eza}/bin/eza --grid --icons --git
         }
       '';
     };
