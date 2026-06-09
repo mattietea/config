@@ -2,27 +2,10 @@ _:
 let
   baseConfig = import ./oh-my-openagent-base.nix;
 
-  # Anthropic-only: disable hephaestus, enable extended thinking for oracle/momus
+  # Anthropic-only: disable hephaestus (Codex-backed). The base agents already
+  # run Opus with extended thinking and Sonnet fallback, so no overrides needed.
   config = baseConfig // {
     disabled_agents = [ "hephaestus" ];
-    agents = baseConfig.agents // {
-      oracle = {
-        model = "anthropic/claude-opus-4-8";
-        thinking.type = "enabled";
-        fallback_models = [
-          "anthropic/claude-sonnet-4-6"
-        ];
-        compaction.model = "anthropic/claude-sonnet-4-6";
-      };
-      momus = {
-        model = "anthropic/claude-opus-4-8";
-        thinking.type = "enabled";
-        fallback_models = [
-          "anthropic/claude-sonnet-4-6"
-        ];
-        compaction.model = "anthropic/claude-sonnet-4-6";
-      };
-    };
   };
 in
 {

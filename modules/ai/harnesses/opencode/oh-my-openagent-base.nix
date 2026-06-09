@@ -1,6 +1,25 @@
 # Shared oh-my-openagent configuration
 # Pure data file — imported by opencode-personal and opencode-work
 # Base defaults are Anthropic-only; work host overrides with OpenAI where appropriate
+let
+  models = import ./models.nix;
+
+  # Default profile for heavyweight agents: Opus with extended thinking,
+  # Sonnet for fallback and compaction.
+  opusAgent = {
+    model = models.opus;
+    thinking.type = "enabled";
+    fallback_models = [ models.sonnet ];
+    compaction.model = models.sonnet;
+  };
+
+  # Default profile for heavyweight categories.
+  opusMax = {
+    model = models.opus;
+    variant = "max";
+    thinking.type = "enabled";
+  };
+in
 {
   "$schema" =
     "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
@@ -50,7 +69,7 @@
       anthropic = 3;
     };
     modelConcurrency = {
-      "anthropic/claude-opus-4-8" = 2;
+      "${models.opus}" = 2;
     };
   };
 
@@ -88,72 +107,30 @@
 
   agents = {
     # Default opencode agent
-    build = {
-      model = "anthropic/claude-opus-4-8";
-      thinking.type = "enabled";
-      fallback_models = [
-        "anthropic/claude-sonnet-4-6"
-      ];
-      compaction.model = "anthropic/claude-sonnet-4-6";
-    };
+    build = opusAgent;
 
     # Primary orchestrator
-    sisyphus = {
-      model = "anthropic/claude-opus-4-8";
-      thinking.type = "enabled";
-      fallback_models = [
-        "anthropic/claude-sonnet-4-6"
-      ];
-      compaction.model = "anthropic/claude-sonnet-4-6";
-    };
+    sisyphus = opusAgent;
 
-    sisyphus-junior.model = "anthropic/claude-sonnet-4-6";
+    sisyphus-junior.model = models.sonnet;
 
     # Plan execution orchestrator
-    atlas.model = "anthropic/claude-sonnet-4-6";
+    atlas.model = models.sonnet;
 
     # Planning & strategy
-    prometheus = {
-      model = "anthropic/claude-opus-4-8";
-      thinking.type = "enabled";
-      fallback_models = [
-        "anthropic/claude-sonnet-4-6"
-      ];
-      compaction.model = "anthropic/claude-sonnet-4-6";
-    };
+    prometheus = opusAgent;
 
-    metis = {
-      model = "anthropic/claude-opus-4-8";
-      thinking.type = "enabled";
-      fallback_models = [
-        "anthropic/claude-sonnet-4-6"
-      ];
-      compaction.model = "anthropic/claude-sonnet-4-6";
-    };
+    metis = opusAgent;
 
     # Review — host configs may override model + add thinking/reasoningEffort
-    momus = {
-      model = "anthropic/claude-opus-4-8";
-      thinking.type = "enabled";
-      fallback_models = [
-        "anthropic/claude-sonnet-4-6"
-      ];
-      compaction.model = "anthropic/claude-sonnet-4-6";
-    };
+    momus = opusAgent;
 
     # Architecture & debugging — host configs may override model + add thinking/reasoningEffort
-    oracle = {
-      model = "anthropic/claude-opus-4-8";
-      thinking.type = "enabled";
-      fallback_models = [
-        "anthropic/claude-sonnet-4-6"
-      ];
-      compaction.model = "anthropic/claude-sonnet-4-6";
-    };
+    oracle = opusAgent;
 
     # Search & research — read-only, no edit/write permissions
     explore = {
-      model = "anthropic/claude-haiku-4-5";
+      model = models.haiku;
       permission = {
         edit = "deny";
         webfetch = "allow";
@@ -161,7 +138,7 @@
     };
 
     librarian = {
-      model = "anthropic/claude-sonnet-4-6";
+      model = models.sonnet;
       permission = {
         edit = "deny";
         webfetch = "allow";
@@ -169,30 +146,18 @@
     };
 
     # Visual analysis
-    multimodal-looker.model = "anthropic/claude-haiku-4-5";
+    multimodal-looker.model = models.haiku;
   };
 
   # Category defaults (Anthropic); work host overrides deep/ultrabrain/unspecified-high with OpenAI
   categories = {
-    quick.model = "anthropic/claude-haiku-4-5";
-    unspecified-low.model = "anthropic/claude-sonnet-4-6";
-    unspecified-high = {
-      model = "anthropic/claude-opus-4-8";
-      variant = "max";
-      thinking.type = "enabled";
-    };
-    deep = {
-      model = "anthropic/claude-opus-4-8";
-      variant = "max";
-      thinking.type = "enabled";
-    };
-    ultrabrain = {
-      model = "anthropic/claude-opus-4-8";
-      variant = "max";
-      thinking.type = "enabled";
-    };
-    visual-engineering.model = "anthropic/claude-sonnet-4-6";
-    writing.model = "anthropic/claude-sonnet-4-6";
-    artistry.model = "anthropic/claude-sonnet-4-6";
+    quick.model = models.haiku;
+    unspecified-low.model = models.sonnet;
+    unspecified-high = opusMax;
+    deep = opusMax;
+    ultrabrain = opusMax;
+    visual-engineering.model = models.sonnet;
+    writing.model = models.sonnet;
+    artistry.model = models.sonnet;
   };
 }
