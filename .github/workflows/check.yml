@@ -6,11 +6,18 @@ on:
     branches: [main]
 jobs:
   check:
-    runs-on: ubuntu-latest
+    # arm64 macOS runner: the darwinConfigurations are aarch64-darwin, and
+    # `nix flake check` skips them (non-standard output) — the explicit
+    # dry-run builds below are what actually evaluate both hosts.
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
       - uses: ./.github/actions/setup-devenv
       - name: Check flake
         run: nix flake check --no-build --no-warn-dirty
+      - name: Evaluate host configurations
+        run: |
+          nix build --dry-run --no-warn-dirty .#darwinConfigurations.Castula-KQPN.system
+          nix build --dry-run --no-warn-dirty .#darwinConfigurations.Matts-Personal-Macbook-Air.system
       - name: Run devenv tests
         run: devenv test
