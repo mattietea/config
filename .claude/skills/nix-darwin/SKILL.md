@@ -21,7 +21,7 @@ tool-src = { url = "github:owner/tool"; flake = false; };
 
 ## Host Files
 
-Each host is self-contained at `hosts/<name>.nix`. To add a tool, add `(pkg "tool")` to both files.
+Each host lives at `hosts/<name>.nix` and extends the shared baseline in `lib/hosts.nix` (`commonApps`, `commonPackages`, plus `app`/`pkg`/`trivialPkg` helpers). To add a tool for both hosts, add it to `commonPackages` in `lib/hosts.nix`; for one host only, add it to that host's `map pkg [ ... ]` list.
 
 ## macOS System Defaults
 

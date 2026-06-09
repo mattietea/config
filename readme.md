@@ -5,11 +5,11 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 ## Key Features
 
 - **Modular architecture**: 40+ tool configurations, each with its own `default.nix`
-- **Multi-host support**: Self-contained personal and work configurations with independent settings
-- **AI-powered development**: Independent configuration for claude-code, opencode, and zed with MCP integration
+- **Multi-host support**: Personal and work hosts share a common app/package baseline (`lib/hosts.nix`) with per-host settings and additions
+- **AI-powered development**: Independent configuration for claude-code, codex, and opencode with MCP integration
 - **Cross-tool integrations**: fzf + bat/eza, git + delta, and more
 - **Reproducible builds**: Everything managed via Nix flakes for complete reproducibility
-- **Automated CI/CD**: GitHub Actions for flake validation, testing, and weekly dependency updates
+- **Automated CI/CD**: GitHub Actions evaluate both host configurations on every PR, plus weekly auto-merged dependency updates
 
 ## Setup
 
@@ -64,7 +64,7 @@ sudo darwin-rebuild switch --flake .
 # Format code
 nix fmt
 
-# Update packages
+# Update packages (flake inputs only — `update` also refreshes devenv + nvfetcher pins)
 nix flake update
 
 # Clean up old generations
@@ -108,16 +108,16 @@ The configuration uses a modular architecture following standard nix-darwin and 
 
 **Entry Point (`flake.nix`):**
 
-- Defines flake inputs (nixpkgs, nix-darwin, home-manager)
-- Creates host configurations by hostname (e.g., `Matts-Work-MacBook-Pro`)
+- Defines flake inputs (nixpkgs, nix-darwin, home-manager, agenix, AI tooling)
+- Creates host configurations by hostname (`Matts-Personal-Macbook-Air`, `Castula-KQPN`)
 - Passes `inputs` directly to host configurations
 
 **Host Configurations (`hosts/personal.nix`, `hosts/work.nix`):**
 
-- Each host is a self-contained file defining settings, applications, and packages
-- Defines `settings` inline: username, email, environment variables
+- Each host defines `settings` inline: username, email, environment variables
+- Shared app/package lists and helpers (`commonApps`, `commonPackages`, `app`, `pkg`, `trivialPkg`) live in `lib/hosts.nix`
+- Hosts extend the shared baseline with host-specific applications and packages
 - Calls `lib/mkHost.nix` builder which handles all darwinSystem boilerplate
-- Lists applications and packages explicitly — hosts are fully independent
 
 **Darwin Modules (`modules/darwin/`):**
 
@@ -143,26 +143,35 @@ The configuration uses a modular architecture following standard nix-darwin and 
 .
 ├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
+├── nvfetcher.toml               # Pinned non-flake sources (prebuilt CLIs, agent-skill repos)
+├── _sources/                    # nvfetcher-generated pins (do not edit by hand)
+├── overlays/
+│   └── default.nix              # Packages built from nvfetcher sources (pup, linear-cli, wacli)
+├── secrets/
+│   ├── secrets.nix              # agenix recipients per secret
+│   └── *.age                    # Encrypted secrets
 ├── .github/workflows/           # GitHub Actions CI
-│   ├── check.yml                # Flake validation and devenv tests
-│   └── update.yml               # Scheduled dependency updates (flake + devenv)
+│   ├── check.yml                # Flake check + host evaluation (macOS runner) + devenv tests
+│   └── update.yml               # Scheduled dependency updates (flake + devenv + nvfetcher)
 ├── lib/
-│   └── mkHost.nix               # Shared darwinSystem builder function
+│   ├── mkHost.nix               # Shared darwinSystem builder function
+│   └── hosts.nix                # Shared app/package lists + helpers (app, pkg, trivialPkg)
 ├── hosts/
-│   ├── personal.nix             # Self-contained personal config (settings + apps + packages)
-│   └── work.nix                 # Self-contained work config (settings + apps + packages)
+│   ├── personal.nix             # Personal host: settings + host-specific apps/packages
+│   └── work.nix                 # Work host: settings + host-specific apps/packages
 └── modules/
+    ├── ai/                      # AI tooling (harnesses, tools, skills, mcp, plugins, instructions)
     ├── darwin/system/           # macOS system defaults
     │   ├── default.nix          # Importer + meta settings
     │   ├── dock.nix             # Dock, Spaces, Mission Control
     │   ├── finder.nix           # Finder preferences
     │   ├── input.nix            # Keyboard, trackpad, input settings
+    │   ├── nix.nix              # Nix settings + binary caches
     │   └── updates.nix          # Software Update settings
     └── home-manager/
         ├── applications/        # GUI apps (brave, zed, discord, etc.)
         │   └── */default.nix
         └── packages/            # CLI tools (git, fzf, zsh, etc.)
-            ├── mcp/             # Standalone MCP server configuration
             └── */default.nix
 ```
 
@@ -170,7 +179,7 @@ The configuration uses a modular architecture following standard nix-darwin and 
 
 1. `flake.nix` uses `flake-parts.lib.mkFlake` for modular flake structure
 2. `flake.nix` imports `hosts/personal.nix` and `hosts/work.nix` directly
-3. Each host defines settings inline and lists its applications and packages
+3. Each host defines settings inline and extends the shared app/package baseline from `lib/hosts.nix`
 4. Hosts call `lib/mkHost.nix` which handles all darwinSystem boilerplate
 5. Each module configures a tool using home-manager or `home.packages`
 6. AI tools use `enableMcpIntegration` to connect to shared MCP module
