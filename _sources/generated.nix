@@ -22,29 +22,29 @@
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "5d25128289ff72bc9c7839ac3d245f4d57515447";
+    version = "57546260929473d4e0d1c1bb75297be2fdfa1949";
     src = fetchgit {
       url = "https://github.com/anthropics/skills";
-      rev = "5d25128289ff72bc9c7839ac3d245f4d57515447";
+      rev = "57546260929473d4e0d1c1bb75297be2fdfa1949";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-x+WBEdGE8Nnk51PCM8/YtbFNcwAeVqt04dBW2Y5F+ZE=";
+      sha256 = "sha256-1D9otXxDvmKASBu/vtAEWv6kE+U+jG4OxZpRLZbGEF0=";
     };
-    date = "2026-06-10";
+    date = "2026-06-09";
   };
   chrome-devtools-mcp-skills = {
     pname = "chrome-devtools-mcp-skills";
-    version = "6bd8c91678035b5aa18ee40f72e1f630aa528837";
+    version = "4f8eb7ad6beecc58f56ec383f9ff43549a5604d4";
     src = fetchgit {
       url = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
-      rev = "6bd8c91678035b5aa18ee40f72e1f630aa528837";
+      rev = "4f8eb7ad6beecc58f56ec383f9ff43549a5604d4";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-pB4UBBlBulhrvz5wbQgmjpSOYOsL7oO1wtEikGbr4yY=";
+      sha256 = "sha256-gQ5wRg721pvJ6xeze7DsIKrOjfW70GjFgBwfArx+HIE=";
     };
     date = "2026-06-09";
   };
@@ -136,15 +136,15 @@
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "9369708f6bdaab009450b6b85b9c8a6fd867ae4f";
+    version = "ad66692e7c65b23461578b10f56d6ec5c08e410e";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "9369708f6bdaab009450b6b85b9c8a6fd867ae4f";
+      rev = "ad66692e7c65b23461578b10f56d6ec5c08e410e";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-rB+nX2lUgM6eaB+tX/787JmXfG66ZsJAmWpCuCC5q70=";
+      sha256 = "sha256-34R3suyAzb1PCsbA5LbD/S4zGOWnW98bD1AGIsXoLYw=";
     };
     date = "2026-06-09";
   };
