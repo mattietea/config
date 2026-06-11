@@ -8,17 +8,17 @@
 {
   agent-browser-skills = {
     pname = "agent-browser-skills";
-    version = "328ce8a98560ac7bac8fa81f53a718822550b94e";
+    version = "5185339ca3fdab9848e11b8ec676eecfdec3733f";
     src = fetchgit {
       url = "https://github.com/vercel-labs/agent-browser";
-      rev = "328ce8a98560ac7bac8fa81f53a718822550b94e";
+      rev = "5185339ca3fdab9848e11b8ec676eecfdec3733f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-MaN0yoOyRuNhv+e6//1QtEwH7C5dXGu2s+OdCowYf4I=";
+      sha256 = "sha256-3XDgN/iZvsR54cYIwBeS/3Ls2L+MJShJxvva8EkIBfo=";
     };
-    date = "2026-06-05";
+    date = "2026-06-10";
   };
   anthropic-skills = {
     pname = "anthropic-skills";
@@ -50,17 +50,17 @@
   };
   context7-skills = {
     pname = "context7-skills";
-    version = "cc011a470743a38839a9fd54ff160a26d7680240";
+    version = "1f6212baa889c8e3685db7c740b173e61f8702cb";
     src = fetchgit {
       url = "https://github.com/upstash/context7";
-      rev = "cc011a470743a38839a9fd54ff160a26d7680240";
+      rev = "1f6212baa889c8e3685db7c740b173e61f8702cb";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-2UFFrDcXcyUbTLu112Qm2pLYH6pGmbevYiv/X3GPn6c=";
+      sha256 = "sha256-0O6lvOHXZfKs7olqfwtMDKIvff3JbFgyBSWJKrTG3jQ=";
     };
-    date = "2026-06-09";
+    date = "2026-06-10";
   };
   dot-skills = {
     pname = "dot-skills";
@@ -136,17 +136,17 @@
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "ad66692e7c65b23461578b10f56d6ec5c08e410e";
+    version = "47fb9df898fe9dea17a7363da3e06a7c3bb4942f";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "ad66692e7c65b23461578b10f56d6ec5c08e410e";
+      rev = "47fb9df898fe9dea17a7363da3e06a7c3bb4942f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-34R3suyAzb1PCsbA5LbD/S4zGOWnW98bD1AGIsXoLYw=";
+      sha256 = "sha256-WqFKYT8yRyWzyCZL1t4/qHF0v43pNeNyiF7ngy52ExA=";
     };
-    date = "2026-06-09";
+    date = "2026-06-11";
   };
   playwriter-skills = {
     pname = "playwriter-skills";
@@ -186,17 +186,17 @@
   };
   vercel-skills-cli = {
     pname = "vercel-skills-cli";
-    version = "a561e790756b2785b9ddb82285c4eb0a08258ac9";
+    version = "be0dd25b4a8665894a56f45ef582cc02ca802c39";
     src = fetchgit {
       url = "https://github.com/vercel-labs/skills";
-      rev = "a561e790756b2785b9ddb82285c4eb0a08258ac9";
+      rev = "be0dd25b4a8665894a56f45ef582cc02ca802c39";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-y9AFt7xLzmaX3+6+N+97zg8QXJyt4G3m9ymrB6m/pmA=";
+      sha256 = "sha256-IAbkeN1ZP8z5xTaZafRLMhAlhXBDw+fkfTvjZBoGeqw=";
     };
-    date = "2026-06-05";
+    date = "2026-06-11";
   };
   wacli = {
     pname = "wacli";
@@ -208,17 +208,17 @@
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "3f3c05bd4923cc84d583cfcf010b2fc776684b4e";
+    version = "89b21bb07ef23da451bec73f85f3dddbeab479f9";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "3f3c05bd4923cc84d583cfcf010b2fc776684b4e";
+      rev = "89b21bb07ef23da451bec73f85f3dddbeab479f9";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-fC4bEGYQ1OyontoyxfPJ5KoP4src3GihbvALu+aS3W0=";
+      sha256 = "sha256-QhAHuLR1ManSzAatI8dGZyo10sm0rd19MSO/NdCkbk8=";
     };
-    date = "2026-06-09";
+    date = "2026-06-10";
   };
   wshobson-agents = {
     pname = "wshobson-agents";

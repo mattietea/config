@@ -1,7 +1,7 @@
 {
     "agent-browser-skills": {
         "cargoLock": null,
-        "date": "2026-06-05",
+        "date": "2026-06-10",
         "extract": null,
         "name": "agent-browser-skills",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "328ce8a98560ac7bac8fa81f53a718822550b94e",
-            "sha256": "sha256-MaN0yoOyRuNhv+e6//1QtEwH7C5dXGu2s+OdCowYf4I=",
+            "rev": "5185339ca3fdab9848e11b8ec676eecfdec3733f",
+            "sha256": "sha256-3XDgN/iZvsR54cYIwBeS/3Ls2L+MJShJxvva8EkIBfo=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vercel-labs/agent-browser"
         },
-        "version": "328ce8a98560ac7bac8fa81f53a718822550b94e"
+        "version": "5185339ca3fdab9848e11b8ec676eecfdec3733f"
     },
     "anthropic-skills": {
         "cargoLock": null,
@@ -61,7 +61,7 @@
     },
     "context7-skills": {
         "cargoLock": null,
-        "date": "2026-06-09",
+        "date": "2026-06-10",
         "extract": null,
         "name": "context7-skills",
         "passthru": null,
@@ -71,13 +71,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "cc011a470743a38839a9fd54ff160a26d7680240",
-            "sha256": "sha256-2UFFrDcXcyUbTLu112Qm2pLYH6pGmbevYiv/X3GPn6c=",
+            "rev": "1f6212baa889c8e3685db7c740b173e61f8702cb",
+            "sha256": "sha256-0O6lvOHXZfKs7olqfwtMDKIvff3JbFgyBSWJKrTG3jQ=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/upstash/context7"
         },
-        "version": "cc011a470743a38839a9fd54ff160a26d7680240"
+        "version": "1f6212baa889c8e3685db7c740b173e61f8702cb"
     },
     "dot-skills": {
         "cargoLock": null,
@@ -191,7 +191,7 @@
     },
     "orca-skills": {
         "cargoLock": null,
-        "date": "2026-06-09",
+        "date": "2026-06-11",
         "extract": null,
         "name": "orca-skills",
         "passthru": null,
@@ -201,13 +201,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "ad66692e7c65b23461578b10f56d6ec5c08e410e",
-            "sha256": "sha256-34R3suyAzb1PCsbA5LbD/S4zGOWnW98bD1AGIsXoLYw=",
+            "rev": "47fb9df898fe9dea17a7363da3e06a7c3bb4942f",
+            "sha256": "sha256-WqFKYT8yRyWzyCZL1t4/qHF0v43pNeNyiF7ngy52ExA=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/stablyai/orca"
         },
-        "version": "ad66692e7c65b23461578b10f56d6ec5c08e410e"
+        "version": "47fb9df898fe9dea17a7363da3e06a7c3bb4942f"
     },
     "playwriter-skills": {
         "cargoLock": null,
@@ -266,7 +266,7 @@
     },
     "vercel-skills-cli": {
         "cargoLock": null,
-        "date": "2026-06-05",
+        "date": "2026-06-11",
         "extract": null,
         "name": "vercel-skills-cli",
         "passthru": null,
@@ -276,13 +276,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "a561e790756b2785b9ddb82285c4eb0a08258ac9",
-            "sha256": "sha256-y9AFt7xLzmaX3+6+N+97zg8QXJyt4G3m9ymrB6m/pmA=",
+            "rev": "be0dd25b4a8665894a56f45ef582cc02ca802c39",
+            "sha256": "sha256-IAbkeN1ZP8z5xTaZafRLMhAlhXBDw+fkfTvjZBoGeqw=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vercel-labs/skills"
         },
-        "version": "a561e790756b2785b9ddb82285c4eb0a08258ac9"
+        "version": "be0dd25b4a8665894a56f45ef582cc02ca802c39"
     },
     "wacli": {
         "cargoLock": null,
@@ -301,7 +301,7 @@
     },
     "worktrunk-skills": {
         "cargoLock": null,
-        "date": "2026-06-09",
+        "date": "2026-06-10",
         "extract": null,
         "name": "worktrunk-skills",
         "passthru": null,
@@ -311,13 +311,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "3f3c05bd4923cc84d583cfcf010b2fc776684b4e",
-            "sha256": "sha256-fC4bEGYQ1OyontoyxfPJ5KoP4src3GihbvALu+aS3W0=",
+            "rev": "89b21bb07ef23da451bec73f85f3dddbeab479f9",
+            "sha256": "sha256-QhAHuLR1ManSzAatI8dGZyo10sm0rd19MSO/NdCkbk8=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/max-sixty/worktrunk"
         },
-        "version": "3f3c05bd4923cc84d583cfcf010b2fc776684b4e"
+        "version": "89b21bb07ef23da451bec73f85f3dddbeab479f9"
     },
     "wshobson-agents": {
         "cargoLock": null,
