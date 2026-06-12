@@ -48,6 +48,14 @@
     };
     date = "2026-06-09";
   };
+  claude-mem = {
+    pname = "claude-mem";
+    version = "13.5.5";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/claude-mem/-/claude-mem-13.5.5.tgz";
+      sha256 = "sha256-BoKqWLfEWSA0rvf6aPbaNd0fFdkUsHZ3r9vS/H8gAas=";
+    };
+  };
   context7-skills = {
     pname = "context7-skills";
     version = "1f6212baa889c8e3685db7c740b173e61f8702cb";
