@@ -11,7 +11,7 @@ Declarative macOS dotfiles managing system settings, GUI applications, and CLI t
 **Key Features**:
 
 - Modular tool configurations (each tool gets own `default.nix`)
-- Two self-contained host configurations with inline settings
+- Two host configurations sharing a common app/package baseline (`lib/hosts.nix`) with inline per-host settings
 - Independent AI tool configuration (claude-code, opencode, zed) with MCP integration
 - Cross-tool integrations (fzf + bat/eza, git + delta)
 - Reproducible builds via Nix flakes
@@ -33,7 +33,7 @@ format    # Format Nix, YAML, and markdown files (treefmt)
 lint      # Lint Nix files (statix)
 
 # Maintenance
-update    # Update flake and devenv inputs
+update    # Update flake, devenv, and nvfetcher-pinned sources
 clean     # Run garbage collection
 ```
 
@@ -48,6 +48,7 @@ sudo determinate-nixd upgrade
 
 - treefmt (formatting)
 - statix (Nix linting)
+- deadnix (dead code detection)
 - shellcheck (shell script linting)
 - flake-check (validate flake structure)
 
@@ -61,14 +62,22 @@ sudo determinate-nixd upgrade
 .
 ├── flake.nix                    # flake-parts based inputs and outputs
 ├── devenv.nix                   # Development environment & scripts
+├── nvfetcher.toml               # Pinned non-flake sources (prebuilt CLIs, agent-skill repos)
+├── _sources/                    # nvfetcher-generated pins (do not edit by hand)
+├── overlays/
+│   └── default.nix              # Packages built from nvfetcher sources (pup, linear-cli, wacli)
+├── secrets/
+│   ├── secrets.nix              # agenix recipients per secret
+│   └── *.age                    # Encrypted secrets
 ├── .github/workflows/           # GitHub Actions CI
-│   ├── check.yml                # Flake validation and devenv tests
-│   └── update.yml               # Scheduled dependency updates (flake + devenv)
+│   ├── check.yml                # Flake check + host evaluation (macOS runner) + devenv tests
+│   └── update.yml               # Scheduled dependency updates (flake + devenv + nvfetcher)
 ├── lib/
-│   └── mkHost.nix               # Shared darwinSystem builder function
+│   ├── mkHost.nix               # Shared darwinSystem builder function
+│   └── hosts.nix                # Shared app/package lists + helpers (app, pkg, trivialPkg)
 ├── hosts/
-│   ├── personal.nix             # Self-contained personal config (settings + apps + packages)
-│   └── work.nix                 # Self-contained work config (settings + apps + packages)
+│   ├── personal.nix             # Personal host: settings + host-specific apps/packages
+│   └── work.nix                 # Work host: settings + host-specific apps/packages
 └── modules/
     ├── ai/                      # AI tool configuration
     │   ├── default.nix          # Aggregator: imports all base AI modules
@@ -99,7 +108,7 @@ sudo determinate-nixd upgrade
 1. `flake.nix` uses `flake-parts.lib.mkFlake` for modular flake structure
 2. `flake.nix` imports `hosts/personal.nix` and `hosts/work.nix` directly
 3. Each host file defines its own settings (username, email, env vars) inline
-4. Each host file lists its own applications and packages explicitly
+4. Each host file builds its app/package lists from the shared baseline in `lib/hosts.nix` (`commonApps`, `commonPackages`) plus host-specific additions
 5. Host files call `lib/mkHost.nix` which handles all darwinSystem boilerplate
 6. Each module configures a tool using home-manager or `home.packages`
 7. AI tools use `enableMcpIntegration` to connect to shared MCP module
@@ -107,9 +116,12 @@ sudo determinate-nixd upgrade
 **Key Files**:
 
 - `flake.nix` - flake-parts structure with `flake` and `perSystem` outputs, flake inputs
-- `lib/mkHost.nix` - Shared darwinSystem builder (nixpkgs, home-manager, networking)
-- `hosts/personal.nix` - Self-contained personal host (settings, apps, packages)
-- `hosts/work.nix` - Self-contained work host (settings, apps, packages)
+- `lib/mkHost.nix` - Shared darwinSystem builder (nixpkgs, home-manager, agenix, networking)
+- `lib/hosts.nix` - Shared app/package baseline + `app`/`pkg`/`trivialPkg` helpers
+- `hosts/personal.nix` - Personal host (settings + host-specific apps/packages)
+- `hosts/work.nix` - Work host (settings + host-specific apps/packages + work secrets)
+- `overlays/default.nix` - Custom packages built from nvfetcher sources (`pup`, `linear-cli`, `wacli`)
+- `nvfetcher.toml` / `_sources/generated.nix` - Pinned non-flake sources (prebuilt CLIs, agent-skill repos)
 - `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
 - `modules/darwin/system/default.nix` - System defaults importer + meta settings
 - `modules/darwin/system/dock.nix` - Dock, Spaces, Mission Control settings
@@ -121,8 +133,8 @@ sudo determinate-nixd upgrade
 - `modules/ai/tools/{default,catalog,work}.nix` - `ai.tools` catalog: one toggle registers a tool's skills, sources, instructions, and packages
 - `modules/ai/harnesses/claude-code/default.nix` - Claude Code configuration
 - `modules/ai/instructions/INSTRUCTIONS.md` - Global instruction file for all AI harnesses
-- `.github/workflows/check.yml` - CI: flake check + devenv test
-- `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv)
+- `.github/workflows/check.yml` - CI: flake check + evaluation of both darwin hosts (macOS runner) + devenv test
+- `.github/workflows/update.yml` - Automated weekly dependency updates (flake + devenv + nvfetcher), auto-merged once checks pass
 
 <!-- END AUTO-MANAGED -->
 
@@ -158,32 +170,43 @@ sudo determinate-nixd upgrade
 
 ### Host Configuration Pattern
 
-Each host is a self-contained file that defines settings, apps, and packages, then calls `mkHost`:
+Shared app/package lists and helpers live in `lib/hosts.nix` (`commonApps`, `commonPackages`, `commonVariables`, plus the `app`/`pkg`/`trivialPkg` helpers). Each host file defines its settings inline, extends the shared baseline with host-specific entries, then calls `mkHost`:
 
 ```nix
 # hosts/personal.nix
 { inputs }:
 let
+  inherit (import ../lib/hosts.nix)
+    app
+    trivialPkg
+    commonApps
+    commonPackages
+    commonVariables
+    ;
+
   settings = {
     username = "mattietea";
+    name = "Matt Thomas";
+    github = "mattietea";
     email = "mattcthomas@me.com";
-    variables = { EDITOR = "zed --wait"; VISUAL = "zed --wait"; };
+    variables = commonVariables;
   };
+
   mkHost = import ../lib/mkHost.nix;
-  app = name: ../modules/home-manager/applications/${name};
-  pkg = name: ../modules/home-manager/packages/${name};
 in
 mkHost {
   inherit inputs settings;
   hostname = "Matts-Personal-Macbook-Air";
-  applications = [ (app "brave") (app "zed") /* ... */ ];
-  packages = [ (pkg "git") (pkg "fzf") /* ... */ ];
+  applications = commonApps ++ map app [ "brave" "spotify" /* ... */ ];
+  packages = commonPackages ++ map trivialPkg [ "wacli" ];
   ai = [
     ../modules/ai
     ../modules/ai/personal.nix
   ];
 }
 ```
+
+Use `trivialPkg "tool"` for tools that need no configuration beyond installing a single nixpkgs attribute — they get no module directory.
 
 ### Cross-Tool Integration
 
@@ -217,12 +240,13 @@ ai = [
 
 **Package sources**:
 
-- claude-code, opencode: External flake input `llm-agents`
+- claude-code: External flake input `claude-code-nix` (own binary cache)
+- opencode: External flake input `llm-agents`
 
 **Model configuration**:
 
 - claude-code: `settings.model` using shorthand names (currently `"opus[1m]"`)
-- opencode: Per-agent models in `oh-my-opencode.json`
+- opencode: Model ids centralized in `modules/ai/harnesses/opencode/models.nix`; per-agent assignments in `oh-my-openagent-base.nix` + per-host overrides
 
 ### External Package Inputs
 
@@ -255,12 +279,10 @@ Key dirs: `$out/libexec/` for internal binaries, `$out/bin/` for user-facing com
 ### Adding New Tools
 
 1. **Check home-manager first**: Run `nix search nixpkgs <tool>` and check home-manager docs
-2. **Create module directory**: `modules/home-manager/packages/<tool>/`
-3. **Add default.nix**: Use standard template (see Conventions)
-4. **Add to host files**: Add `(pkg "tool-name")` to each host that should have it (`hosts/personal.nix`, `hosts/work.nix`)
+2. **No config needed?** Skip the module directory — add `"tool"` to the `trivialPkg` list in `lib/hosts.nix` (both hosts) or in a single host file (one host)
+3. **Needs config?** Create `modules/home-manager/packages/<tool>/default.nix` using the standard template (see Conventions)
+4. **Wire it up**: Add `"tool"` to the `pkg` list in `lib/hosts.nix` `commonPackages` (both hosts), or to `map pkg [ ... ]` in a single host file (one host)
 5. **Test**: Run `devenv shell -- switch`
-
-Note: Each host independently lists its packages — adding to one host does not affect the other.
 
 ### MCP Server Configuration
 

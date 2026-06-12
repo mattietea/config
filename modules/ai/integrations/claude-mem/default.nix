@@ -2,36 +2,36 @@
   config,
   pkgs,
   lib,
-  inputs,
+  sources,
   ...
 }:
 let
-  claudeMemSrc = inputs.claude-mem;
-  claudeMemManifest = builtins.fromJSON (
-    builtins.readFile "${claudeMemSrc}/.codex-plugin/plugin.json"
-  );
-  inherit (claudeMemManifest) version;
+  inherit (sources.claude-mem) version;
 
   # Build-time wrapped marketplace tree.
   #
-  # Pure derivation: copies the claude-mem source then runs wrap-codex-hooks.js
-  # over plugin/hooks/codex-hooks.json (pure JSON in / pure JSON out — no
-  # network, no impurity). The result is a Nix-store path containing the full
-  # claude-mem marketplace with codex hook commands already wrapped to strip
-  # Claude-Code-style output fields ({suppressOutput,status,message}) that
-  # Codex rejects.
+  # claude-mem's published npm tarball is fully self-contained: the CLI
+  # (dist/npx-cli/index.js) and every plugin script (plugin/scripts/*.cjs) are
+  # pre-bundled with their dependencies inlined, so there are no node_modules to
+  # install — plain tarball extraction is the complete, supported install.
   #
-  # Replaces the previous activation-time `wrap_codex_hook_commands` step
-  # which rewrote the hooks JSON in-place inside ~/.claude/plugins/... on
-  # every `switch`.
+  # sources.claude-mem (nvfetcher) tracks npm's dist-tags `latest` and fetches
+  # that exact tarball by its own integrity hash — no FOD output hashes to
+  # maintain, no activation-time network; `update` refreshes the pin.
+  #
+  # Pure derivation: unpacks the tarball, then runs wrap-codex-hooks.js over
+  # plugin/hooks/codex-hooks.json (pure JSON in / pure JSON out) to strip the
+  # Claude-Code-style output fields ({suppressOutput,status,message}) that Codex
+  # rejects. The result is a Nix-store path with the full claude-mem marketplace.
   wrappedMarketplace =
     pkgs.runCommand "claude-mem-codex-marketplace-${version}"
       {
         nativeBuildInputs = [ pkgs.nodejs ];
-        src = claudeMemSrc;
+        src = sources.claude-mem.src;
       }
       ''
-        cp -R $src $out
+        mkdir -p $out
+        tar xzf $src --strip-components=1 -C $out
         chmod -R u+w $out
         ${pkgs.nodejs}/bin/node ${./wrap-codex-hooks.js} \
           "$out/plugin/hooks/codex-hooks.json" \
@@ -62,15 +62,14 @@ in
   # Mirror the build-time wrapped marketplace into ~/.claude/plugins/marketplaces/
   # because:
   #   - Claude Code's plugin loader scans this path
-  #   - bun install + npm install need a writable copy to populate node_modules
+  #   - the runtime expects a writable copy (state, markers)
   #   - modules/ai/mcp/default.nix references the mcp-server.cjs path here
   #
-  # The .nix-source-path marker lets activation skip the copy + reinstall when
-  # the source derivation hasn't changed since the previous generation.
+  # The .nix-source-path marker lets activation skip the copy when the source
+  # derivation hasn't changed since the previous generation.
   #
-  # NOTE: bun install + npm install remain impure (network). Tracked as v2:
-  # FOD-ifying these via a two-FOD pattern (per nixpkgs idiom for npm + bun
-  # plugin trees) requires per-platform output hashes — deferred.
+  # node_modules for both trees are baked into wrappedMarketplace at build
+  # time (see above) — activation only copies, it never touches the network.
   home.activation.installClaudeMemRuntime = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     version="${version}"
     source="${wrappedMarketplace}"
@@ -85,7 +84,7 @@ in
 
     if [ "$copy_marketplace" -eq 1 ]; then
       mkdir -p "$marketplace"
-      for entry in .agents .codex-plugin plugin package.json package-lock.json openclaw dist LICENSE README.md CHANGELOG.md; do
+      for entry in .agents .codex-plugin plugin package.json openclaw dist LICENSE README.md; do
         if [ -e "$source/$entry" ]; then
           rm -rf "$marketplace/$entry"
           cp -R "$source/$entry" "$marketplace/$entry"
@@ -134,14 +133,7 @@ in
     uv_version="$(${pkgs.uv}/bin/uv --version)"
     export CLAUDE_MEM_UV_VERSION="''${uv_version#uv }"
 
-    if [ "$copy_cache" -eq 1 ] || [ ! -d "$cache/node_modules" ]; then
-      ${pkgs.bun}/bin/bun install --cwd "$cache"
-    fi
     write_marker "$cache"
-
-    if [ "$copy_marketplace" -eq 1 ] || [ ! -d "$marketplace/node_modules" ]; then
-      ${pkgs.nodejs}/bin/npm install --omit=dev --legacy-peer-deps --prefix "$marketplace"
-    fi
     write_marker "$marketplace/plugin"
 
     export CLAUDE_MEM_MARKETPLACE="$marketplace"

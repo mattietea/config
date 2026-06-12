@@ -37,6 +37,35 @@ Never both, never bundled, never narrated.
 
 </important>
 
+<important if="you are starting a coding task, especially a non-trivial or multi-step one">
+
+These guidelines bias toward caution over speed; for trivial tasks, use judgment.
+
+- State your assumptions explicitly. If a request has multiple reasonable interpretations, present them — don't silently pick one. If a simpler approach exists, say so; push back when warranted.
+- Turn the task into verifiable success criteria, then loop until met ("fix the bug" → "write a failing test, then make it pass"; "add validation" → "write tests for invalid inputs, then make them pass").
+- For multi-step work, state a brief plan up front, each step paired with how you'll verify it.
+
+</important>
+
+<important if="you are writing new code or deciding how much to build">
+
+Write the minimum code that solves the stated problem — nothing speculative.
+
+- No features beyond what was asked; no abstractions for single-use code.
+- No configurability or error handling for scenarios that weren't requested or can't occur.
+- If it's 200 lines and could be 50, rewrite it. Ask: would a senior engineer call this overcomplicated?
+
+</important>
+
+<important if="you are editing existing code">
+
+Make surgical changes — every changed line should trace directly to the request.
+
+- Don't "improve" adjacent code, comments, or formatting; don't refactor what isn't broken. Match the existing style even if you'd do it differently.
+- Remove imports/variables/functions that YOUR change orphaned; leave pre-existing dead code alone (mention it, don't delete) unless asked.
+
+</important>
+
 <important if="you need to search the web for information">
 
 Use **Exa** (MCP server) first — higher quality, focused results. Fall back to generic web search only when Exa doesn't cover the topic.
