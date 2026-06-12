@@ -2,7 +2,7 @@ _:
 let
   baseConfig = import ./oh-my-openagent-base.nix;
 
-  # Anthropic-only: disable hephaestus (Codex-backed). The base agents already
+  # Anthropic-only: disable hephaestus (OpenAI-backed). The base agents already
   # run Opus with extended thinking and Sonnet fallback, so no overrides needed.
   config = baseConfig // {
     disabled_agents = [ "hephaestus" ];
