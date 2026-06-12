@@ -3,7 +3,8 @@ let
   models = import ./models.nix;
   baseConfig = import ./oh-my-openagent-base.nix;
 
-  # Anthropic + OpenAI: GPT for oracle/momus, Codex for deep work, hephaestus enabled
+  # Anthropic + OpenAI: base default agents stay on Opus, GPT for oracle/momus,
+  # hephaestus, and deep work
   config = baseConfig // {
     disabled_agents = [ ];
     agents = baseConfig.agents // {
@@ -28,10 +29,10 @@ let
         ];
         compaction.model = models.sonnet;
       };
-      # Autonomous deep worker — Codex
+      # Autonomous deep worker — GPT
       hephaestus = {
-        model = models.codex;
-        variant = "medium";
+        model = models.gpt;
+        variant = "xhigh";
         fallback_models = [
           models.sonnet
         ];
@@ -51,14 +52,13 @@ let
       };
       modelConcurrency = baseConfig.background_task.modelConcurrency // {
         "${models.gpt}" = 3;
-        "${models.codex}" = 3;
       };
     };
     categories = baseConfig.categories // {
       quick.model = models.sonnet;
       deep = {
-        model = models.codex;
-        variant = "medium";
+        model = models.gpt;
+        variant = "xhigh";
       };
       ultrabrain = {
         model = models.gpt;
