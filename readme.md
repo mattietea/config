@@ -48,7 +48,7 @@ format
 # Lint Nix files (uses statix)
 lint
 
-# Update flake inputs
+# Update flake, devenv, and nvfetcher pins
 update
 
 # Clean up old Nix generations

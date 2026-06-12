@@ -29,6 +29,16 @@ src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_universal.tar.gz"
 
+# claude-mem ships a fully self-contained prebuilt npm tarball: the CLI
+# (dist/npx-cli/index.js) and every plugin script (plugin/scripts/*.cjs) are
+# pre-bundled with dependencies inlined, so there are no node_modules to build.
+# Version tracks npm's dist-tags `latest` (not the GitHub tag) so the fetched
+# tarball always exists — avoids the npm-publish-lags-GitHub-tag race.
+[claude-mem]
+src.webpage = "https://registry.npmjs.org/-/package/claude-mem/dist-tags"
+src.regex = '"latest":"([^"]+)"'
+fetch.url = "https://registry.npmjs.org/claude-mem/-/claude-mem-$ver.tgz"
+
 # Agent-skill sources — repos consumed by agent-skills-nix via path = sources.X.src.
 # Tracked at branch HEAD (these repos cut no releases), pinned by commit + hash.
 [anthropic-skills]
