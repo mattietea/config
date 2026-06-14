@@ -50,17 +50,17 @@
   };
   context7-skills = {
     pname = "context7-skills";
-    version = "574fc642ab4ba6e178b56f436928cb564349cf57";
+    version = "dec6cf361c58a09968a7f76b3c12c225b5eed39a";
     src = fetchgit {
       url = "https://github.com/upstash/context7";
-      rev = "574fc642ab4ba6e178b56f436928cb564349cf57";
+      rev = "dec6cf361c58a09968a7f76b3c12c225b5eed39a";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-HTdzxNV/lAt2TYqS+0u4gbLoPQhYdPBK78fP+hGsQgY=";
+      sha256 = "sha256-Gf3GnVOceAMzsc1SYGQVriDzDD/dQYSoBSrCuQ5M4UI=";
     };
-    date = "2026-06-12";
+    date = "2026-06-13";
   };
   dot-skills = {
     pname = "dot-skills";
@@ -92,17 +92,17 @@
   };
   itechmeat-skills = {
     pname = "itechmeat-skills";
-    version = "0ba69fd9bfdecae0dc0b555652cb9d3e3522eec2";
+    version = "0ebb36c887c350d9d52c389503386bb781112ad8";
     src = fetchgit {
       url = "https://github.com/itechmeat/llm-code";
-      rev = "0ba69fd9bfdecae0dc0b555652cb9d3e3522eec2";
+      rev = "0ebb36c887c350d9d52c389503386bb781112ad8";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-AeZxH2PXNOqzN8VLniC0sL6/kAJZrA5u90Uy+2XCEVQ=";
+      sha256 = "sha256-9apDAbQXeyLTtA+KH2yHdOAvkkz++H+v9gK4cFMy04c=";
     };
-    date = "2026-06-01";
+    date = "2026-06-13";
   };
   linear = {
     pname = "linear";
@@ -136,31 +136,31 @@
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "0b318882f30ae827bcbaeaa602ee10556d7045f6";
+    version = "36277801e4b2b50867c6a2a09b453a974abd209d";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "0b318882f30ae827bcbaeaa602ee10556d7045f6";
+      rev = "36277801e4b2b50867c6a2a09b453a974abd209d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-IvRjZ6fhWtAE/xfqWQ01t+bd+fEn1LE9IBm8u32VagY=";
+      sha256 = "sha256-y/rrZJDiatb8DIirpgqKShkSgq3JvhNt49CibfZMSzA=";
     };
     date = "2026-06-13";
   };
   playwriter-skills = {
     pname = "playwriter-skills";
-    version = "9d837c0a8cfb573bc084edbd1d1b7d4e9654c965";
+    version = "9c222f2bd95d73de444566618fdd642f922aebbd";
     src = fetchgit {
       url = "https://github.com/remorses/playwriter";
-      rev = "9d837c0a8cfb573bc084edbd1d1b7d4e9654c965";
+      rev = "9c222f2bd95d73de444566618fdd642f922aebbd";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-Edro54JOXIRho1be/1gaCBH5e6k1uu+Dia7CJoZL6CY=";
+      sha256 = "sha256-6gSs47T+CxlM9WospJcYL590wPyiK3EVK9bDA6Wbs7k=";
     };
-    date = "2026-05-27";
+    date = "2026-06-13";
   };
   pup = {
     pname = "pup";
@@ -208,17 +208,17 @@
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "5fba0bdc9b058e5454869f6e8720b4f11bd5d91f";
+    version = "465b8fd0229f1b29dff42c73817074543dbff647";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "5fba0bdc9b058e5454869f6e8720b4f11bd5d91f";
+      rev = "465b8fd0229f1b29dff42c73817074543dbff647";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-imPqoM+IF8vVd0h6dtHlq68aiL0VNtUafoJXhvH4GwQ=";
+      sha256 = "sha256-ggJ/wFwA1dYPL1BfQTcju0tsS3ZwjPRpxHqwAD9Sca8=";
     };
-    date = "2026-06-12";
+    date = "2026-06-13";
   };
   wshobson-agents = {
     pname = "wshobson-agents";
