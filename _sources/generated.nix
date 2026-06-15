@@ -128,25 +128,25 @@
   };
   oh-my-openagent = {
     pname = "oh-my-openagent";
-    version = "4.9.2";
+    version = "4.10.0";
     src = fetchurl {
-      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.9.2.tar.gz";
-      sha256 = "sha256-Kb1s+mGkMgiI/5qwJZgQ3DZk+ZDZQYWHcGGwpkR4Arg=";
+      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.10.0.tar.gz";
+      sha256 = "sha256-FtjG0LaaHB3vt5XMakYFOAmZbeAue1Es1CdhojKcGEQ=";
     };
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "36277801e4b2b50867c6a2a09b453a974abd209d";
+    version = "98806ffe380c36131a8917d890b156f4cfe3bc6f";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "36277801e4b2b50867c6a2a09b453a974abd209d";
+      rev = "98806ffe380c36131a8917d890b156f4cfe3bc6f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-y/rrZJDiatb8DIirpgqKShkSgq3JvhNt49CibfZMSzA=";
+      sha256 = "sha256-2ixqQY91lm6F3jy/5ed6ClISeQ8Wxr/4bnpSmoh6c5E=";
     };
-    date = "2026-06-13";
+    date = "2026-06-14";
   };
   playwriter-skills = {
     pname = "playwriter-skills";
@@ -208,17 +208,17 @@
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "465b8fd0229f1b29dff42c73817074543dbff647";
+    version = "a01a9020caf5147f08e7d812b700ad6b9edf877d";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "465b8fd0229f1b29dff42c73817074543dbff647";
+      rev = "a01a9020caf5147f08e7d812b700ad6b9edf877d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-ggJ/wFwA1dYPL1BfQTcju0tsS3ZwjPRpxHqwAD9Sca8=";
+      sha256 = "sha256-eFv1jCgiYBcFSyEJma5j8goKK6kHgFnYpbErBohfcTI=";
     };
-    date = "2026-06-13";
+    date = "2026-06-14";
   };
   wshobson-agents = {
     pname = "wshobson-agents";
