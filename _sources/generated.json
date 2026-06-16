@@ -59,6 +59,21 @@
         },
         "version": "ed02047ae90f25c4c15adb8fd7e224b963f43135"
     },
+    "claude-mem": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "claude-mem",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-BoKqWLfEWSA0rvf6aPbaNd0fFdkUsHZ3r9vS/H8gAas=",
+            "type": "url",
+            "url": "https://registry.npmjs.org/claude-mem/-/claude-mem-13.5.5.tgz"
+        },
+        "version": "13.5.5"
+    },
     "context7-skills": {
         "cargoLock": null,
         "date": "2026-06-13",

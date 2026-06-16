@@ -142,22 +142,6 @@
         "type": "github"
       }
     },
-    "claude-mem": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1781507162,
-        "narHash": "sha256-P6Qvedj0Mw8VToOK2jM7aP6SvJrXWMWy/a6PDK0r170=",
-        "owner": "thedotmack",
-        "repo": "claude-mem",
-        "rev": "b7479f818b09d5e871126027868036d4b6a212a7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "thedotmack",
-        "repo": "claude-mem",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -418,7 +402,6 @@
         "agent-skills-nix": "agent-skills-nix",
         "agent-slack": "agent-slack",
         "claude-code-nix": "claude-code-nix",
-        "claude-mem": "claude-mem",
         "darwin": "darwin_2",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_3",
