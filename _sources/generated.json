@@ -191,7 +191,7 @@
     },
     "orca-skills": {
         "cargoLock": null,
-        "date": "2026-06-14",
+        "date": "2026-06-15",
         "extract": null,
         "name": "orca-skills",
         "passthru": null,
@@ -201,17 +201,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "98806ffe380c36131a8917d890b156f4cfe3bc6f",
-            "sha256": "sha256-2ixqQY91lm6F3jy/5ed6ClISeQ8Wxr/4bnpSmoh6c5E=",
+            "rev": "a325ac467c7aaf6b52a64a2dcf09310207e2260c",
+            "sha256": "sha256-Fppot0aQ4qiKa088kkDHLpo8TlRNqQFEpy4c/2OpSnY=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/stablyai/orca"
         },
-        "version": "98806ffe380c36131a8917d890b156f4cfe3bc6f"
+        "version": "a325ac467c7aaf6b52a64a2dcf09310207e2260c"
     },
     "playwriter-skills": {
         "cargoLock": null,
-        "date": "2026-06-13",
+        "date": "2026-06-15",
         "extract": null,
         "name": "playwriter-skills",
         "passthru": null,
@@ -221,13 +221,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "9c222f2bd95d73de444566618fdd642f922aebbd",
-            "sha256": "sha256-6gSs47T+CxlM9WospJcYL590wPyiK3EVK9bDA6Wbs7k=",
+            "rev": "730feeadfd94169ac3d073a46405d63dc59e124a",
+            "sha256": "sha256-zHHO6+a42tAkGBcsr0jwJPb9hXoCR0mUzAguEyoIsIs=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/remorses/playwriter"
         },
-        "version": "9c222f2bd95d73de444566618fdd642f922aebbd"
+        "version": "730feeadfd94169ac3d073a46405d63dc59e124a"
     },
     "pup": {
         "cargoLock": null,
@@ -301,7 +301,7 @@
     },
     "worktrunk-skills": {
         "cargoLock": null,
-        "date": "2026-06-14",
+        "date": "2026-06-15",
         "extract": null,
         "name": "worktrunk-skills",
         "passthru": null,
@@ -311,13 +311,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "a01a9020caf5147f08e7d812b700ad6b9edf877d",
-            "sha256": "sha256-eFv1jCgiYBcFSyEJma5j8goKK6kHgFnYpbErBohfcTI=",
+            "rev": "8059c7e18f20ae39b4622f20aee5d65239f7ebd3",
+            "sha256": "sha256-oRyROS0JwMP5tOuXfsgDfOEpEKQovXOkIpzuCNwyVzg=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/max-sixty/worktrunk"
         },
-        "version": "a01a9020caf5147f08e7d812b700ad6b9edf877d"
+        "version": "8059c7e18f20ae39b4622f20aee5d65239f7ebd3"
     },
     "wshobson-agents": {
         "cargoLock": null,
