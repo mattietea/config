@@ -136,31 +136,31 @@
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "98806ffe380c36131a8917d890b156f4cfe3bc6f";
+    version = "a325ac467c7aaf6b52a64a2dcf09310207e2260c";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "98806ffe380c36131a8917d890b156f4cfe3bc6f";
+      rev = "a325ac467c7aaf6b52a64a2dcf09310207e2260c";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-2ixqQY91lm6F3jy/5ed6ClISeQ8Wxr/4bnpSmoh6c5E=";
+      sha256 = "sha256-Fppot0aQ4qiKa088kkDHLpo8TlRNqQFEpy4c/2OpSnY=";
     };
-    date = "2026-06-14";
+    date = "2026-06-15";
   };
   playwriter-skills = {
     pname = "playwriter-skills";
-    version = "9c222f2bd95d73de444566618fdd642f922aebbd";
+    version = "730feeadfd94169ac3d073a46405d63dc59e124a";
     src = fetchgit {
       url = "https://github.com/remorses/playwriter";
-      rev = "9c222f2bd95d73de444566618fdd642f922aebbd";
+      rev = "730feeadfd94169ac3d073a46405d63dc59e124a";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-6gSs47T+CxlM9WospJcYL590wPyiK3EVK9bDA6Wbs7k=";
+      sha256 = "sha256-zHHO6+a42tAkGBcsr0jwJPb9hXoCR0mUzAguEyoIsIs=";
     };
-    date = "2026-06-13";
+    date = "2026-06-15";
   };
   pup = {
     pname = "pup";
@@ -208,17 +208,17 @@
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "a01a9020caf5147f08e7d812b700ad6b9edf877d";
+    version = "8059c7e18f20ae39b4622f20aee5d65239f7ebd3";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "a01a9020caf5147f08e7d812b700ad6b9edf877d";
+      rev = "8059c7e18f20ae39b4622f20aee5d65239f7ebd3";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-eFv1jCgiYBcFSyEJma5j8goKK6kHgFnYpbErBohfcTI=";
+      sha256 = "sha256-oRyROS0JwMP5tOuXfsgDfOEpEKQovXOkIpzuCNwyVzg=";
     };
-    date = "2026-06-14";
+    date = "2026-06-15";
   };
   wshobson-agents = {
     pname = "wshobson-agents";
