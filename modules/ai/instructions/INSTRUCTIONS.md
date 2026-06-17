@@ -8,6 +8,16 @@ Use **context7** first — it has up-to-date docs with code examples. Fall back 
 
 </important>
 
+<important if="you are writing any prose — chat replies, commit messages, PR descriptions, docs, comments">
+
+Be as concise as possible.
+
+- Cut filler, preamble, and restating the question. Lead with the answer.
+- Use bullet points wherever they're clearer than paragraphs.
+- No padding for politeness or to sound thorough.
+
+</important>
+
 <important if="you encounter ambiguity, edge cases, or seemingly conflicting rules in a project's AGENTS.md, CLAUDE.md, or similar instruction files">
 
 **Do not rationalize-and-proceed.** When a rule is unclear at the edges:
