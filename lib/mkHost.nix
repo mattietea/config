@@ -70,13 +70,12 @@ inputs.darwin.lib.darwinSystem {
         ++ packages
         ++ ai;
         users.${settings.username} = {
-          # Symlink GUI apps into ~/Applications/Home Manager Apps instead of
-          # copying them (copyApps is the default at stateVersion >= 25.11).
-          # Linking is instant and uses ~no disk; copyApps rsync'd ~13GB of app
-          # bundles on every switch. Trade-off: symlinked .apps aren't indexed by
-          # Spotlight/Launchpad and some may not launch from the read-only store.
-          targets.darwin.copyApps.enable = false;
-          targets.darwin.linkApps.enable = true;
+          # Copy GUI apps into ~/Applications/Home Manager Apps. linkApps
+          # (symlinks into the read-only store) is faster but macOS won't launch
+          # symlinked .apps, so copyApps is required. The switch script no longer
+          # rm -rf's this folder, so rsync copies incrementally (only changed
+          # apps) instead of re-copying everything every time.
+          targets.darwin.copyApps.enable = true;
           manual = {
             json.enable = false;
             html.enable = false;
