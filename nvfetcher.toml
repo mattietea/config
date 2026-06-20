@@ -29,6 +29,15 @@ src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_universal.tar.gz"
 
+# mole is a shell CLI (mole/mo + lib/ + bin/*.sh) plus two Go binaries
+# (cmd/analyze, cmd/status). We build from source via buildGoModule and assemble
+# the shell tree — see modules/home-manager/packages/mole/package.nix. Tags are
+# capitalised (V1.43.1), so prefix = "V" yields the bare $ver.
+[mole]
+src.github = "tw93/mole"
+src.prefix = "V"
+fetch.url = "https://github.com/tw93/mole/archive/refs/tags/V$ver.tar.gz"
+
 # claude-mem ships a fully self-contained prebuilt npm tarball: the CLI
 # (dist/npx-cli/index.js) and every plugin script (plugin/scripts/*.cjs) are
 # pre-bundled with dependencies inlined, so there are no node_modules to build.

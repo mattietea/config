@@ -45,6 +45,7 @@ in
     ]
     ++ map trivialPkg [
       "devenv"
+      "mole"
       "nodejs"
     ];
 }
