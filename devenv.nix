@@ -17,7 +17,6 @@
   # https://devenv.sh/scripts/
   scripts = {
     switch.exec = ''
-      rm -rf ~/Applications/Home\ Manager\ Apps/;
       sudo darwin-rebuild switch --flake .
     '';
 
