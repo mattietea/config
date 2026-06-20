@@ -189,6 +189,21 @@
         },
         "version": "fc85b919cdb62a668eecea6ea5484aad9da8f655"
     },
+    "mole": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "mole",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-NSssoDwH2Ti/LrSo1ZLqkuJfZFZJn3Qw18hxAvPIPxM=",
+            "type": "url",
+            "url": "https://github.com/tw93/mole/archive/refs/tags/V1.43.1.tar.gz"
+        },
+        "version": "1.43.1"
+    },
     "oh-my-openagent": {
         "cargoLock": null,
         "date": null,

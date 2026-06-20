@@ -14,4 +14,8 @@ in
   wacli = final.callPackage ../modules/home-manager/packages/wacli/package.nix {
     inherit (sources.wacli) version src;
   };
+
+  mole = final.callPackage ../modules/home-manager/packages/mole/package.nix {
+    inherit (sources.mole) version src;
+  };
 }
