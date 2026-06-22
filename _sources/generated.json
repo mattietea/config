@@ -1,7 +1,7 @@
 {
     "agent-browser-skills": {
         "cargoLock": null,
-        "date": "2026-06-12",
+        "date": "2026-06-20",
         "extract": null,
         "name": "agent-browser-skills",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "2c7991c9eccca1c9db6eee1a26a713414778de5a",
-            "sha256": "sha256-XDTGYcDodP4hQ7fx3dAV2FYhHKIqLuiGz6+gPfgp8Rg=",
+            "rev": "4572acf0d71c0086009206c9c1e2136fc54ec9e5",
+            "sha256": "sha256-Jb1O2BQFBkFqwtEFtAwTpPi7P3pmY8gDjKWqsQVYzg0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vercel-labs/agent-browser"
         },
-        "version": "2c7991c9eccca1c9db6eee1a26a713414778de5a"
+        "version": "4572acf0d71c0086009206c9c1e2136fc54ec9e5"
     },
     "anthropic-skills": {
         "cargoLock": null,
@@ -41,7 +41,7 @@
     },
     "chrome-devtools-mcp-skills": {
         "cargoLock": null,
-        "date": "2026-06-12",
+        "date": "2026-06-19",
         "extract": null,
         "name": "chrome-devtools-mcp-skills",
         "passthru": null,
@@ -51,13 +51,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "ed02047ae90f25c4c15adb8fd7e224b963f43135",
-            "sha256": "sha256-Zv39CScq13XLq1PE62yrLIRnFMW6JxisAD1cLd28L8c=",
+            "rev": "38dd346805416c8bff2196e73c1410ca78d6f397",
+            "sha256": "sha256-FJtX0TO3WicsQuhXUryNt+j9PP0Wm/oHPW8qHOC3GVc=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
         },
-        "version": "ed02047ae90f25c4c15adb8fd7e224b963f43135"
+        "version": "38dd346805416c8bff2196e73c1410ca78d6f397"
     },
     "claude-mem": {
         "cargoLock": null,
@@ -68,15 +68,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-BoKqWLfEWSA0rvf6aPbaNd0fFdkUsHZ3r9vS/H8gAas=",
+            "sha256": "sha256-ETMPwGBXIKzsklxZ9cZMAcNehrdJtuxV0OJ2HJIeH8w=",
             "type": "url",
-            "url": "https://registry.npmjs.org/claude-mem/-/claude-mem-13.5.5.tgz"
+            "url": "https://registry.npmjs.org/claude-mem/-/claude-mem-13.8.0.tgz"
         },
-        "version": "13.5.5"
+        "version": "13.8.0"
     },
     "context7-skills": {
         "cargoLock": null,
-        "date": "2026-06-13",
+        "date": "2026-06-19",
         "extract": null,
         "name": "context7-skills",
         "passthru": null,
@@ -86,13 +86,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "dec6cf361c58a09968a7f76b3c12c225b5eed39a",
-            "sha256": "sha256-Gf3GnVOceAMzsc1SYGQVriDzDD/dQYSoBSrCuQ5M4UI=",
+            "rev": "73542b72d57e3592cf70c55ab6745e16661e1994",
+            "sha256": "sha256-j3w+XA03uZTVQlPSC0picKOodMd0by8a6iowOixOVl0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/upstash/context7"
         },
-        "version": "dec6cf361c58a09968a7f76b3c12c225b5eed39a"
+        "version": "73542b72d57e3592cf70c55ab6745e16661e1994"
     },
     "dot-skills": {
         "cargoLock": null,
@@ -116,7 +116,7 @@
     },
     "humanlayer-skills": {
         "cargoLock": null,
-        "date": "2026-03-17",
+        "date": "2026-06-20",
         "extract": null,
         "name": "humanlayer-skills",
         "passthru": null,
@@ -126,13 +126,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "ecf602e2f9bb445831e36592af92c36bfad18960",
-            "sha256": "sha256-xRlJS7kYEtAZ+pCphIVGbOyuRhwuW4JuJG1qDF9ns7o=",
+            "rev": "59edd0a6eee51d58d57e5a7190d22c755725c51c",
+            "sha256": "sha256-GUFm75dIR7BWWS767MZQ2wfyPQokvjUNRcIYc3Cpy0Q=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/humanlayer/skills"
         },
-        "version": "ecf602e2f9bb445831e36592af92c36bfad18960"
+        "version": "59edd0a6eee51d58d57e5a7190d22c755725c51c"
     },
     "itechmeat-skills": {
         "cargoLock": null,
@@ -198,11 +198,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-NSssoDwH2Ti/LrSo1ZLqkuJfZFZJn3Qw18hxAvPIPxM=",
+            "sha256": "sha256-o5NNjP97KSwXPrlJ3uCUpGTZJPnWnt5niXXbuBRcj74=",
             "type": "url",
-            "url": "https://github.com/tw93/mole/archive/refs/tags/V1.43.1.tar.gz"
+            "url": "https://github.com/tw93/mole/archive/refs/tags/V1.44.0.tar.gz"
         },
-        "version": "1.43.1"
+        "version": "1.44.0"
     },
     "oh-my-openagent": {
         "cargoLock": null,
@@ -213,15 +213,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-FtjG0LaaHB3vt5XMakYFOAmZbeAue1Es1CdhojKcGEQ=",
+            "sha256": "sha256-c23raL3s5iQdzwvrcyuiHpF2ompflEC149MDWwSo9Q0=",
             "type": "url",
-            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.10.0.tar.gz"
+            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.12.1.tar.gz"
         },
-        "version": "4.10.0"
+        "version": "4.12.1"
     },
     "orca-skills": {
         "cargoLock": null,
-        "date": "2026-06-15",
+        "date": "2026-06-21",
         "extract": null,
         "name": "orca-skills",
         "passthru": null,
@@ -231,17 +231,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "a325ac467c7aaf6b52a64a2dcf09310207e2260c",
-            "sha256": "sha256-Fppot0aQ4qiKa088kkDHLpo8TlRNqQFEpy4c/2OpSnY=",
+            "rev": "c1e071870ba73e7db854fb344ff9ca99d3013254",
+            "sha256": "sha256-43Wd0YcYZ7/hQIulBZC5e+At90fXWKnBspilo/Y4Qic=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/stablyai/orca"
         },
-        "version": "a325ac467c7aaf6b52a64a2dcf09310207e2260c"
+        "version": "c1e071870ba73e7db854fb344ff9ca99d3013254"
     },
     "playwriter-skills": {
         "cargoLock": null,
-        "date": "2026-06-15",
+        "date": "2026-06-18",
         "extract": null,
         "name": "playwriter-skills",
         "passthru": null,
@@ -251,13 +251,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "730feeadfd94169ac3d073a46405d63dc59e124a",
-            "sha256": "sha256-zHHO6+a42tAkGBcsr0jwJPb9hXoCR0mUzAguEyoIsIs=",
+            "rev": "205ceaa0e3688f48995280be90803a2c7f90651e",
+            "sha256": "sha256-cBsD5JduiRAuYT7rMaXG1vG9tJjlg6BtGDJrrjoMERE=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/remorses/playwriter"
         },
-        "version": "730feeadfd94169ac3d073a46405d63dc59e124a"
+        "version": "205ceaa0e3688f48995280be90803a2c7f90651e"
     },
     "pup": {
         "cargoLock": null,
@@ -268,15 +268,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-6HVRlvgYXh7/mC36ZRFewPwJWr2C+s3UoJd3c4LIK7Y=",
+            "sha256": "sha256-NVhArSPMnt59lze0zbLfyDnZj5Xmc6rt42+BJ/oEw4c=",
             "type": "url",
-            "url": "https://github.com/datadog-labs/pup/releases/download/v1.1.0/pup_1.1.0_Darwin_arm64.tar.gz"
+            "url": "https://github.com/datadog-labs/pup/releases/download/v1.2.1/pup_1.2.1_Darwin_arm64.tar.gz"
         },
-        "version": "1.1.0"
+        "version": "1.2.1"
     },
     "pup-skills": {
         "cargoLock": null,
-        "date": "2026-06-12",
+        "date": "2026-06-18",
         "extract": null,
         "name": "pup-skills",
         "passthru": null,
@@ -286,17 +286,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "652a6fd2f35428c719347715025a4e6168be4607",
-            "sha256": "sha256-Q92ulh4Sv177te2/xu0nac5NqwHO54EEwHa97i439mY=",
+            "rev": "d99f88bffcdf750362e0792f2d8f10bfeca0bb14",
+            "sha256": "sha256-3Q3DRe9PAlZY90FEjoGnTxHQbOlBqCsIPXhMdAna0n0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/datadog-labs/pup"
         },
-        "version": "652a6fd2f35428c719347715025a4e6168be4607"
+        "version": "d99f88bffcdf750362e0792f2d8f10bfeca0bb14"
     },
     "vercel-skills-cli": {
         "cargoLock": null,
-        "date": "2026-06-11",
+        "date": "2026-06-19",
         "extract": null,
         "name": "vercel-skills-cli",
         "passthru": null,
@@ -306,13 +306,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "be0dd25b4a8665894a56f45ef582cc02ca802c39",
-            "sha256": "sha256-IAbkeN1ZP8z5xTaZafRLMhAlhXBDw+fkfTvjZBoGeqw=",
+            "rev": "e5c075e3a84b37c5eb398ab74e581558d3fceb0e",
+            "sha256": "sha256-BBN0MWqXNury3gLfm9Fmq7g+lB5ruAnCyCiTfieZcu8=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vercel-labs/skills"
         },
-        "version": "be0dd25b4a8665894a56f45ef582cc02ca802c39"
+        "version": "e5c075e3a84b37c5eb398ab74e581558d3fceb0e"
     },
     "wacli": {
         "cargoLock": null,
@@ -331,7 +331,7 @@
     },
     "worktrunk-skills": {
         "cargoLock": null,
-        "date": "2026-06-15",
+        "date": "2026-06-21",
         "extract": null,
         "name": "worktrunk-skills",
         "passthru": null,
@@ -341,13 +341,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "8059c7e18f20ae39b4622f20aee5d65239f7ebd3",
-            "sha256": "sha256-oRyROS0JwMP5tOuXfsgDfOEpEKQovXOkIpzuCNwyVzg=",
+            "rev": "333d630ef4edfd8d2c768dad6a32be458515b08d",
+            "sha256": "sha256-kMtBpZW/jnv1J8qcGzee3OwTq0wohIAbtZT47dExtYg=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/max-sixty/worktrunk"
         },
-        "version": "8059c7e18f20ae39b4622f20aee5d65239f7ebd3"
+        "version": "333d630ef4edfd8d2c768dad6a32be458515b08d"
     },
     "wshobson-agents": {
         "cargoLock": null,
