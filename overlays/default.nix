@@ -18,4 +18,8 @@ in
   mole = final.callPackage ../modules/home-manager/packages/mole/package.nix {
     inherit (sources.mole) version src;
   };
+
+  agent-slack = final.callPackage ../modules/home-manager/packages/agent-slack/package.nix {
+    inherit (sources.agent-slack) version src;
+  };
 }

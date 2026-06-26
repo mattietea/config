@@ -19,6 +19,41 @@
         },
         "version": "4572acf0d71c0086009206c9c1e2136fc54ec9e5"
     },
+    "agent-slack": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "agent-slack",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-ISvecKk6btX0kRyOc4jLH1a1HuCFABa8K9VbdByiBZY=",
+            "type": "url",
+            "url": "https://github.com/stablyai/agent-slack/releases/download/v0.9.3/agent-slack-darwin-arm64"
+        },
+        "version": "0.9.3"
+    },
+    "agent-slack-skills": {
+        "cargoLock": null,
+        "date": "2026-06-04",
+        "extract": null,
+        "name": "agent-slack-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "6775fa878dfe7d38ca15899c765a2e19c9718a39",
+            "sha256": "sha256-nxpBZisxvnXD0xEoC9Vr2T6sthLIDW6NoTp5tEbM+I4=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://github.com/stablyai/agent-slack"
+        },
+        "version": "6775fa878dfe7d38ca15899c765a2e19c9718a39"
+    },
     "anthropic-skills": {
         "cargoLock": null,
         "date": "2026-06-09",

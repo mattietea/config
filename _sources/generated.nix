@@ -20,6 +20,28 @@
     };
     date = "2026-06-20";
   };
+  agent-slack = {
+    pname = "agent-slack";
+    version = "0.9.3";
+    src = fetchurl {
+      url = "https://github.com/stablyai/agent-slack/releases/download/v0.9.3/agent-slack-darwin-arm64";
+      sha256 = "sha256-ISvecKk6btX0kRyOc4jLH1a1HuCFABa8K9VbdByiBZY=";
+    };
+  };
+  agent-slack-skills = {
+    pname = "agent-slack-skills";
+    version = "6775fa878dfe7d38ca15899c765a2e19c9718a39";
+    src = fetchgit {
+      url = "https://github.com/stablyai/agent-slack";
+      rev = "6775fa878dfe7d38ca15899c765a2e19c9718a39";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-nxpBZisxvnXD0xEoC9Vr2T6sthLIDW6NoTp5tEbM+I4=";
+    };
+    date = "2026-06-04";
+  };
   anthropic-skills = {
     pname = "anthropic-skills";
     version = "57546260929473d4e0d1c1bb75297be2fdfa1949";
