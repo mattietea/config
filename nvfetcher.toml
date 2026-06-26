@@ -38,6 +38,14 @@ src.github = "tw93/mole"
 src.prefix = "V"
 fetch.url = "https://github.com/tw93/mole/archive/refs/tags/V$ver.tar.gz"
 
+# agent-slack ships a raw prebuilt binary per platform as a release asset
+# (no archive). Tracks the latest GitHub release so update.yml bumps it
+# automatically — upstream's in-repo nix/sources.json lags their releases.
+[agent-slack]
+src.github = "stablyai/agent-slack"
+src.prefix = "v"
+fetch.url = "https://github.com/stablyai/agent-slack/releases/download/v$ver/agent-slack-darwin-arm64"
+
 # claude-mem ships a fully self-contained prebuilt npm tarball: the CLI
 # (dist/npx-cli/index.js) and every plugin script (plugin/scripts/*.cjs) are
 # pre-bundled with dependencies inlined, so there are no node_modules to build.
@@ -119,3 +127,8 @@ fetch.git = "https://github.com/humanlayer/skills"
 src.git = "https://github.com/stablyai/orca"
 src.branch = "main"
 fetch.git = "https://github.com/stablyai/orca"
+
+[agent-slack-skills]
+src.git = "https://github.com/stablyai/agent-slack"
+src.branch = "main"
+fetch.git = "https://github.com/stablyai/agent-slack"

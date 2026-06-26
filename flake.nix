@@ -27,9 +27,6 @@
     agent-skills-nix.url = "github:Kyure-A/agent-skills-nix";
     agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    agent-slack.url = "github:stablyai/agent-slack";
-    agent-slack.inputs.nixpkgs.follows = "nixpkgs";
-
     superpowers = {
       url = "github:obra/superpowers";
       flake = false;

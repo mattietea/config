@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   sources,
   ...
@@ -62,11 +61,11 @@
     agent-slack = {
       enable = true;
       sources.agent-slack = {
-        input = "agent-slack";
+        path = sources.agent-slack-skills.src;
         subdir = "skills";
       };
       skills = [ "agent-slack" ];
-      packages = [ inputs.agent-slack.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+      packages = [ pkgs.agent-slack ];
     };
   };
 }
