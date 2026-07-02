@@ -25,7 +25,6 @@ in
       "aerospace"
       "bat"
       "bun"
-      "dock"
       "delta"
       "direnv"
       "eza"

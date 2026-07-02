@@ -25,13 +25,8 @@ in
         return 0
       fi
 
-      # Check if signed into App Store
-      if ! ${masPath} account >/dev/null 2>&1; then
-        echo "[WARN] Not signed into App Store - skipping $name"
-        echo "       Sign in via App Store.app to enable automatic installation"
-        return 0
-      fi
-
+      # No signed-in check: `mas account` is broken on macOS 12+ (mas-cli/mas#417),
+      # so just attempt the install and let it fail per-app with a warning.
       echo "[..] Installing $name..."
       if timeout ${toString timeout} ${masPath} install "$id" 2>/dev/null; then
         echo "[OK] $name installed successfully"
