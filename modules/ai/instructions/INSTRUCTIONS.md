@@ -10,7 +10,7 @@ Use **context7** first — it has up-to-date docs with code examples. Fall back 
 
 <important if="you are writing any prose — chat replies, commit messages, PR descriptions, docs, comments">
 
-Be as concise as possible.
+Be extremely concise.
 
 - Cut filler, preamble, and restating the question. Lead with the answer.
 - Use bullet points wherever they're clearer than paragraphs.
@@ -59,11 +59,24 @@ These guidelines bias toward caution over speed; for trivial tasks, use judgment
 
 <important if="you are writing new code or deciding how much to build">
 
-Write the minimum code that solves the stated problem — nothing speculative.
+Write the minimum code that solves the stated problem — nothing speculative. Less code is always better, but what you add must be simple and easy to read.
 
+- Before writing anything new, search the codebase for an existing helper, pattern, or utility that does it — never reinvent what already exists; reuse or extend it.
 - No features beyond what was asked; no abstractions for single-use code.
 - No configurability or error handling for scenarios that weren't requested or can't occur.
+- Do consider failure modes that CAN occur (bad input, error paths, empty results) and handle them in the simplest way that is safe.
+- Write idiomatic, testable code: small units, style native to the language and the surrounding codebase.
 - If it's 200 lines and could be 50, rewrite it. Ask: would a senior engineer call this overcomplicated?
+
+</important>
+
+<important if="you are about to write a code comment">
+
+Default to zero comments — code should explain itself; prefer a better name or a smaller function over a comment.
+
+- Comment only what the code cannot express: a non-obvious constraint, invariant, or workaround (link the issue).
+- Never comment what the next line does, why your change is correct, or what the code used to be.
+- Match the surrounding file's comment density — in most files that is none.
 
 </important>
 
