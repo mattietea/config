@@ -38,8 +38,10 @@
       treefmt
     '';
 
+    # Run as the user: also expires home-manager/user profile generations,
+    # which the root nix-gc daemon can't reach.
     clean.exec = ''
-      nix-collect-garbage
+      nix-collect-garbage --delete-older-than 30d
     '';
 
     deadnix.exec = ''

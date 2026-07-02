@@ -20,7 +20,7 @@ in
 
   options.ai.tools = mkOption {
     default = { };
-    description = "AI tools. Enabling one registers its skills, skill sources, instructions, and packages across every harness.";
+    description = "AI tools. Enabling one registers its skills, skill sources, and packages across every harness.";
     type = types.attrsOf (
       types.submodule {
         options = {
@@ -34,10 +34,6 @@ in
             default = { };
             description = "agent-skills sources this tool provides; merged into programs.agent-skills.sources.";
           };
-          instructions = mkOption {
-            type = types.nullOr types.path;
-            default = null;
-          };
           packages = mkOption {
             type = types.listOf types.package;
             default = [ ];
@@ -48,12 +44,9 @@ in
   };
 
   config = {
-    programs = {
-      agent-skills = {
-        skills.enable = concatMap (t: t.skills) enabled;
-        sources = mkMerge (map (t: t.sources) enabled);
-      };
-      aiInstructions.segments = filter (x: x != null) (map (t: t.instructions) enabled);
+    programs.agent-skills = {
+      skills.enable = concatMap (t: t.skills) enabled;
+      sources = mkMerge (map (t: t.sources) enabled);
     };
     home.packages = concatMap (t: t.packages) enabled;
   };

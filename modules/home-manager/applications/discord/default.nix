@@ -1,6 +1,3 @@
 _: {
-  programs.discord = {
-
-    enable = true;
-  };
+  programs.discord.enable = true;
 }
