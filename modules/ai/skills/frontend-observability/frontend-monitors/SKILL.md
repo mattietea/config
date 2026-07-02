@@ -19,6 +19,7 @@ Methodology distilled from the Google SRE Book/Workbook, translated to RUM. Use 
 A spike in raw error *events* is compatible with one user in a retry loop, a broken extension, or a hostile network. Regressions are wide; storms are deep. Per-user ratios on low volume are also meaningless (a one-request user sits at 0% or 100%).
 
 - Make the paging SLI **user/session-denominated**: distinct users (or sessions) with ≥1 error on the route ÷ distinct users overall, or error-free session rate. In Datadog: `count_distinct(@usr.id)` over error events vs overall.
+- **Error Tracking monitors implement this natively**: measures `Error Occurrences` vs `Impacted Users` vs `Impacted Sessions` (Browser/Mobile issues), grouped by issue fingerprint — e.g. `error-tracking("...").source("browser").impact().rollup("count").by("@issue.id")`. Use the two condition types deliberately: **New Issue** (qualitatively new failure or regression) and **High Impact** (breadth) — they answer different questions.
 - Keep raw event counts for debugging dashboards only.
 - Before declaring an incident from any spike, check: distinct users affected, distinct sessions, geographic/browser spread, and whether one fingerprint dominates.
 
@@ -54,7 +55,7 @@ Burn rate = budget-consumption speed; burn 1 = exactly exhausting the budget ove
 
 ## Route classes, not per-route tuning
 
-Never hand-tune windows/burn rates per route. Tag views with a class and apply one standard template per class:
+Never hand-tune windows/burn rates per route. Also note the hard limit: multi-alert grouping caps top values per facet (1 facet: top 1000; 2 facets: 30 each; 3: 10; 4: 5) — per-route multi-alerts on a large app **silently skip low-traffic views** beyond the cutoff. Tag views with a class and apply one standard template per class:
 
 | Class | Example | Availability | Latency |
 |---|---|---|---|
@@ -74,6 +75,12 @@ At 10 views/hour, one bad view = 1000× burn = an instant page; only ~7 failures
 - **Client retries with backoff** on chunk/API loads — converts ephemeral failures into good views and de-noises the SLI.
 - **Lower the SLO or drop the fast-burn page** for genuinely low-stakes routes.
 - Sanity-check extremes: against a lenient SLO (90%), the 2%-in-1h page can be mathematically unfireable; near-perfect targets exhaust budget faster than monitors evaluate — defend those with 1% canary releases (RUM `version` tag comparison) and auto-rollback, not alerting.
+
+## Proving improvements
+
+- **Denominate impact in error budget, not anecdotes**: "this incident consumed 30% of the quarterly budget"; rank incidents and candidate platform projects by budget consumed/saved. Continuous low-grade errors (0.4% of views, always) routinely dwarf dramatic outages in budget terms — surface that.
+- **Before/after by release**: tag every deploy via `version` at SDK init; compare error rate and p75 vitals across versions (deployment tracking). Never compare across a sampling-rate change — sampled CWV are proportionally biased.
+- **Report SLO compliance weekly (task prioritization) and quarterly (planning)** on rolling 28-day windows; track aspirational SLOs separately from enforced ones.
 
 ## Alert review checklist (apply to every existing monitor)
 

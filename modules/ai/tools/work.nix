@@ -67,5 +67,16 @@
       skills = [ "agent-slack" ];
       packages = [ pkgs.agent-slack ];
     };
+    # Local methodology skills that pair with the pup Datadog skills: pup is
+    # the hands, these are the judgment (SRE Book/Workbook + Datadog docs).
+    frontend-observability = {
+      enable = true;
+      sources.frontend-observability.path = ../skills/frontend-observability;
+      skills = [
+        "frontend-instrumentation"
+        "frontend-monitors"
+        "rum-gap-audit"
+      ];
+    };
   };
 }
