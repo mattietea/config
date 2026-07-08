@@ -28,7 +28,9 @@ let
     }
     {
       moduleName = null;
-      appPath = "/Applications/Safari.app";
+      # /Applications/Safari.app is a symlink into the System Cryptex; the Dock
+      # badges symlinked tiles with an alias arrow. Point at the real bundle.
+      appPath = "/System/Cryptexes/App/System/Applications/Safari.app";
     }
     {
       moduleName = "brave";
