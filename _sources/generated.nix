@@ -272,4 +272,12 @@
     };
     date = "2026-07-11";
   };
+  zed = {
+    pname = "zed";
+    version = "1.9.0";
+    src = fetchurl {
+      url = "https://github.com/zed-industries/zed/releases/download/v1.9.0/Zed-aarch64.dmg";
+      sha256 = "sha256-Dcir+ZSOqj4+Xnb/db9TfZO7bx0qV/vaL3zHO/jSgFU=";
+    };
+  };
 }
