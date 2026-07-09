@@ -23,6 +23,9 @@ in
     settings = {
       "$schema" = "https://opencode.ai/config.json";
       share = "disabled";
+      # Hide OpenCode Zen (provider id "opencode") from the model picker —
+      # all agents run on anthropic/openai models (see models.nix).
+      disabled_providers = [ "opencode" ];
       snapshot = true;
       compaction = {
         auto = true;
