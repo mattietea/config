@@ -51,11 +51,18 @@
       lsp.oxlint.initialization_options.settings.typeAware = true;
       languages =
         let
-          # tsgo (typescript-go) instead of the legacy vtsls; oxlint for
-          # diagnostics and oxfmt as formatter (both resolved from the
-          # project's node_modules by the oxc extension, so repos without
-          # them are unaffected).
-          typescript = {
+          # oxfmt formatter stack, following the oxc-zed example (minus Vue):
+          # https://github.com/oxc-project/oxc-zed/blob/main/examples/both/.zed/settings.json
+          # oxfmt/oxlint resolve from the project's node_modules, so repos
+          # without them are unaffected.
+          oxfmt = {
+            format_on_save = "on";
+            prettier.allowed = false;
+            formatter = [ { language_server.name = "oxfmt"; } ];
+          };
+          # tsgo (typescript-go) instead of the legacy vtsls; oxlint
+          # diagnostics with fixAll applied on save.
+          typescript = oxfmt // {
             language_servers = [
               "tsgo"
               "oxlint"
@@ -64,8 +71,10 @@
               "!typescript-language-server"
               "..."
             ];
-            formatter.language_server.name = "oxfmt";
-            code_actions_on_format."source.fixAll.oxc" = true;
+            formatter = [
+              { language_server.name = "oxfmt"; }
+              { code_action = "source.fixAll.oxc"; }
+            ];
           };
         in
         {
@@ -73,6 +82,18 @@
           TSX = typescript;
           JavaScript = typescript;
           JSX = typescript;
+          CSS = oxfmt;
+          GraphQL = oxfmt;
+          Handlebars = oxfmt;
+          HTML = oxfmt;
+          JSON = oxfmt;
+          JSON5 = oxfmt;
+          JSONC = oxfmt;
+          Less = oxfmt;
+          Markdown = oxfmt;
+          MDX = oxfmt;
+          SCSS = oxfmt;
+          YAML = oxfmt;
         };
     };
     userKeymaps = [
