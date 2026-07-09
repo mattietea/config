@@ -49,26 +49,23 @@
       }
 
       {
-        context = "!ProjectPanel";
-        bindings.cmd-1 = "pane::RevealInProjectPanel";
-      }
-      {
-        context = "ProjectPanel";
-        bindings.cmd-1 = "workspace::ToggleLeftDock";
-      }
-      {
         context = "Workspace";
         bindings = {
-          cmd-2 = "workspace::ToggleBottomDock";
-          cmd-3 = [
-            "task::Spawn"
-            {
-              task_name = "LazyGit";
-              target = "center";
-            }
-          ];
+          cmd-1 = "project_panel::ToggleFocus";
+          cmd-2 = "terminal_panel::ToggleFocus";
+          cmd-3 = "git_panel::ToggleFocus";
+          cmd-r = "agent::ToggleFocus";
           cmd-shift-b = "pane::RevealInProjectPanel";
           "cmd-k l" = "dev::OpenLanguageServerLogs";
+        };
+      }
+      {
+        # Defaults bind cmd-1/2 to git tab switching inside the git panel,
+        # which would shadow the Workspace toggles (deeper context wins).
+        context = "GitPanel";
+        bindings = {
+          cmd-1 = "project_panel::ToggleFocus";
+          cmd-2 = "terminal_panel::ToggleFocus";
         };
       }
     ];
