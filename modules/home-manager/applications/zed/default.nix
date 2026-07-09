@@ -44,6 +44,11 @@
         max_scroll_history_lines = 100000;
       };
       git.branch_picker.show_author_name = true;
+      # Type-aware oxlint rules (no-floating-promises etc., via tsgolint).
+      # `options.typeAware = true` in an extended oxlint config doesn't reach
+      # the language server, so it must be enabled as an LSP option — same
+      # reason work's CLI scripts pass --type-aware explicitly.
+      lsp.oxlint.initialization_options.settings.typeAware = true;
       languages =
         let
           # tsgo (typescript-go) instead of the legacy vtsls; oxlint for
