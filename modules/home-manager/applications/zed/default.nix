@@ -7,6 +7,8 @@
       "git-firefly"
       "github-theme"
       "opencode"
+      "tsgo"
+      "oxc"
     ];
     userSettings = {
       base_keymap = "VSCode";
@@ -42,6 +44,30 @@
         max_scroll_history_lines = 100000;
       };
       git.branch_picker.show_author_name = true;
+      languages =
+        let
+          # tsgo (typescript-go) instead of the legacy vtsls; oxlint for
+          # diagnostics and oxfmt as formatter (both resolved from the
+          # project's node_modules by the oxc extension, so repos without
+          # them are unaffected).
+          typescript = {
+            language_servers = [
+              "tsgo"
+              "oxlint"
+              "oxfmt"
+              "!vtsls"
+              "!typescript-language-server"
+              "..."
+            ];
+            formatter.language_server.name = "oxfmt";
+          };
+        in
+        {
+          TypeScript = typescript;
+          TSX = typescript;
+          JavaScript = typescript;
+          JSX = typescript;
+        };
     };
     userKeymaps = [
       {
