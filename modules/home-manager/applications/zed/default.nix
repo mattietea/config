@@ -60,6 +60,7 @@
               "..."
             ];
             formatter.language_server.name = "oxfmt";
+            code_actions_on_format."source.fixAll.oxc" = true;
           };
         in
         {
