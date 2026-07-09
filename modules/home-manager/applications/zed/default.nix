@@ -11,6 +11,10 @@
       "oxc"
     ];
     userSettings = {
+      # Nix owns the Zed version (nvfetcher pin, bumped weekly by update.yml).
+      # The built-in updater otherwise overwrites the copyApps bundle in place
+      # and quit/relaunch-loops the app, restarting every language server.
+      auto_update = false;
       base_keymap = "VSCode";
       ui_font_size = 14;
       buffer_font_size = 14;
