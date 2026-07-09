@@ -49,6 +49,11 @@
       # the language server, so it must be enabled as an LSP option — same
       # reason work's CLI scripts pass --type-aware explicitly.
       lsp.oxlint.initialization_options.settings.typeAware = true;
+      # Zed's default 50ms debounce pulls diagnostics per keystroke; a
+      # type-aware oxlint pass costs ~2s on the work monorepo, so the queue
+      # grows unboundedly and requests hit Zed's 120s cancellation (which
+      # also stalls fixAll-on-save and formatting). Pull at typing pauses.
+      diagnostics.lsp_pull_diagnostics.debounce_ms = 1500;
       languages =
         let
           # oxfmt formatter stack, following the oxc-zed example (minus Vue):
