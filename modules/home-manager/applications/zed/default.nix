@@ -59,14 +59,32 @@
           "cmd-k l" = "dev::OpenLanguageServerLogs";
         };
       }
+      # ToggleFocus only shows/focuses a panel; it never hides one. Pressing
+      # the same shortcut while the panel is focused should hide it and return
+      # focus to the editor, so each panel's own context rebinds the shortcut
+      # to toggle (close) its dock. These deeper contexts beat Workspace.
       {
-        # Defaults bind cmd-1/2 to git tab switching inside the git panel,
-        # which would shadow the Workspace toggles (deeper context wins).
+        context = "ProjectPanel";
+        bindings.cmd-1 = "workspace::ToggleLeftDock";
+      }
+      {
+        context = "Terminal";
+        bindings.cmd-2 = "workspace::ToggleBottomDock";
+      }
+      {
+        # cmd-1/2 also need overriding here: defaults bind them to git tab
+        # switching inside the git panel, which would shadow the Workspace
+        # toggles (deeper context wins).
         context = "GitPanel";
         bindings = {
           cmd-1 = "project_panel::ToggleFocus";
           cmd-2 = "terminal_panel::ToggleFocus";
+          cmd-3 = "workspace::ToggleLeftDock";
         };
+      }
+      {
+        context = "AgentPanel";
+        bindings.cmd-r = "workspace::ToggleRightDock";
       }
     ];
     userTasks = [
