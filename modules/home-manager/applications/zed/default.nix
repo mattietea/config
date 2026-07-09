@@ -21,8 +21,10 @@
       bottom_dock_layout = "left_aligned";
       agent = {
         notify_when_agent_waiting = "all_screens";
-        play_sound_when_agent_done = true;
+        play_sound_when_agent_done = "always";
       };
+      # Fullscreen file finder: no horizontal padding, whole viewport width.
+      file_finder.modal_max_width = "full";
       minimap.show = "never";
       tabs.git_status = true;
       project_panel = {
@@ -30,7 +32,6 @@
         hide_gitignore = false;
       };
       collaboration_panel.button = false;
-      git_panel.sort_by_path = true;
       theme = {
         mode = "system";
         light = "One Light";
