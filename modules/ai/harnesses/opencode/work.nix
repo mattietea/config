@@ -3,11 +3,28 @@ let
   models = import ./models.nix;
   baseConfig = import ./oh-my-openagent-base.nix;
 
-  # Anthropic + OpenAI: base default agents stay on Opus, GPT for oracle/momus,
-  # hephaestus, and deep work
+  # Heavyweight Anthropic agents run on Fable 5 (work org has the required 30-day
+  # data retention); fall back to Opus then Sonnet on refusal/error.
+  fableAgent = {
+    model = models.fable;
+    thinking.type = "enabled";
+    fallback_models = [
+      models.opus
+      models.sonnet
+    ];
+    compaction.model = models.sonnet;
+  };
+
+  # Anthropic + OpenAI: Fable for the default/orchestrator/planning agents,
+  # GPT for oracle/momus, hephaestus, and deep work
   config = baseConfig // {
     disabled_agents = [ ];
     agents = baseConfig.agents // {
+      # Default, orchestrator, and planning agents — Fable 5 (override base Opus)
+      build = fableAgent;
+      sisyphus = fableAgent;
+      prometheus = fableAgent;
+      metis = fableAgent;
       # Architecture & debugging — GPT with high reasoning effort
       oracle = {
         model = models.gpt;
@@ -51,6 +68,7 @@ let
         openai = 5;
       };
       modelConcurrency = baseConfig.background_task.modelConcurrency // {
+        "${models.fable}" = 2;
         "${models.gpt}" = 3;
       };
     };
