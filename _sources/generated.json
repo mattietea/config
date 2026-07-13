@@ -1,7 +1,7 @@
 {
     "agent-browser-skills": {
         "cargoLock": null,
-        "date": "2026-06-26",
+        "date": "2026-07-08",
         "extract": null,
         "name": "agent-browser-skills",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "ed2e10598c9064aecfaeb7cf21b540684db4be2c",
-            "sha256": "sha256-uCLzNQ0NAeg1TtA6tcBhTu5VTyjkumsyiEpAhYLPQD0=",
+            "rev": "afae698a51242166170b6fe4809dd57fe9f75798",
+            "sha256": "sha256-2x5/Nc5KCrgk9dYXur7y9Y9z4JzcJVW4WSYWarcL61k=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vercel-labs/agent-browser"
         },
-        "version": "ed2e10598c9064aecfaeb7cf21b540684db4be2c"
+        "version": "afae698a51242166170b6fe4809dd57fe9f75798"
     },
     "agent-slack": {
         "cargoLock": null,
@@ -76,7 +76,7 @@
     },
     "chrome-devtools-mcp-skills": {
         "cargoLock": null,
-        "date": "2026-07-03",
+        "date": "2026-07-12",
         "extract": null,
         "name": "chrome-devtools-mcp-skills",
         "passthru": null,
@@ -86,13 +86,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "913308263bdc8042af74924b68dc39a374ad071d",
-            "sha256": "sha256-qDji1ZA46H3+jEZ5SL7ga/pyRhJ9SAdBWYH1jKC/TVg=",
+            "rev": "78ccb193e08137b48cef6f665ad0b3a98c9538da",
+            "sha256": "sha256-zsbJwQvUCYKOllmUbSK+3QKU1EZ/mY8SQk7m8glWipc=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
         },
-        "version": "913308263bdc8042af74924b68dc39a374ad071d"
+        "version": "78ccb193e08137b48cef6f665ad0b3a98c9538da"
     },
     "claude-mem": {
         "cargoLock": null,
@@ -103,15 +103,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-McX5S+ormRweq7EEpQ0tZi4hp98muawN9Jy8dKWN+i8=",
+            "sha256": "sha256-i5zI03v3O+nP4UenSEqcsjicAYQWl+cUOr7Enp8MIdg=",
             "type": "url",
-            "url": "https://registry.npmjs.org/claude-mem/-/claude-mem-13.10.0.tgz"
+            "url": "https://registry.npmjs.org/claude-mem/-/claude-mem-13.10.4.tgz"
         },
-        "version": "13.10.0"
+        "version": "13.10.4"
     },
     "context7-skills": {
         "cargoLock": null,
-        "date": "2026-07-03",
+        "date": "2026-07-10",
         "extract": null,
         "name": "context7-skills",
         "passthru": null,
@@ -121,17 +121,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "84620bd48380b1cac66b9b25180987116e2ce2fe",
-            "sha256": "sha256-TpoR1rf2CB+tcZN1SOQu0kMZPFh5n0bfBL86GqmjZZw=",
+            "rev": "a9d7c77f5e4c93c1c875b109d6d057487f2dc437",
+            "sha256": "sha256-KVan21ojVN04/9cDoQEWZMo7Qyd6vvJLYBSfLbhr5UE=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/upstash/context7"
         },
-        "version": "84620bd48380b1cac66b9b25180987116e2ce2fe"
+        "version": "a9d7c77f5e4c93c1c875b109d6d057487f2dc437"
     },
     "dot-skills": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-12",
         "extract": null,
         "name": "dot-skills",
         "passthru": null,
@@ -141,13 +141,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "b5ec0192e8ad0a003c4d1160a63d8ad6695f2cc8",
-            "sha256": "sha256-z57Z8v52eYgaoE9p+2/48r7YFUPs2di+VoK8uGEtbkk=",
+            "rev": "da0f2e92b4a5485d47cc2f9c5106242bce7097cd",
+            "sha256": "sha256-0XBKiQraxJKUkgAm5AbAIoTbGdjPS05hdSux7Ms2d0A=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/pproenca/dot-skills"
         },
-        "version": "b5ec0192e8ad0a003c4d1160a63d8ad6695f2cc8"
+        "version": "da0f2e92b4a5485d47cc2f9c5106242bce7097cd"
     },
     "humanlayer-skills": {
         "cargoLock": null,
@@ -206,7 +206,7 @@
     },
     "linear-cli-skills": {
         "cargoLock": null,
-        "date": "2026-05-19",
+        "date": "2026-07-11",
         "extract": null,
         "name": "linear-cli-skills",
         "passthru": null,
@@ -216,13 +216,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "fc85b919cdb62a668eecea6ea5484aad9da8f655",
-            "sha256": "sha256-nmF834DXqLmHDKiAys8FARsXmRWyMKyUF7uDVpq5a8w=",
+            "rev": "ad1563877b5ebc18053a15b276066ec790d7f9b1",
+            "sha256": "sha256-5CuMUeHLahvxQ/z68GWlj3U3Rggp54FqW9nTdkTQMSQ=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/schpet/linear-cli"
         },
-        "version": "fc85b919cdb62a668eecea6ea5484aad9da8f655"
+        "version": "ad1563877b5ebc18053a15b276066ec790d7f9b1"
     },
     "mole": {
         "cargoLock": null,
@@ -233,11 +233,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-KJZoHl4UgqLozhfwvKDdv0Vre2T/MdjSV1et9VuFSzM=",
+            "sha256": "sha256-C/w6FdbbV2WrH+jM60Fvu9xpVFWsA7uUBjCHn8k7et4=",
             "type": "url",
-            "url": "https://github.com/tw93/mole/archive/refs/tags/V1.45.0.tar.gz"
+            "url": "https://github.com/tw93/mole/archive/refs/tags/V1.46.0.tar.gz"
         },
-        "version": "1.45.0"
+        "version": "1.46.0"
     },
     "oh-my-openagent": {
         "cargoLock": null,
@@ -248,15 +248,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-7snt8mNr5k13JPmCDadJ/Z5ViZFVV0VwXuDcnkVc4Ow=",
+            "sha256": "sha256-fXNhvnGeuXKLnSnd2YPkiXrbB6/gD+GB1folVssON0g=",
             "type": "url",
-            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.15.1.tar.gz"
+            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.17.0.tar.gz"
         },
-        "version": "4.15.1"
+        "version": "4.17.0"
     },
     "orca-skills": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-12",
         "extract": null,
         "name": "orca-skills",
         "passthru": null,
@@ -266,13 +266,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "7c1d58e288568f73734b202dad366e13200fb701",
-            "sha256": "sha256-ZKBrRscxoM57LcQ1I1ehS2ANkmIaFeK8orusmRmOHWQ=",
+            "rev": "8abe093e86e58eb2f5a1d506ae0dd091b25cb280",
+            "sha256": "sha256-DYiHXfVv8Kp7O4AawX2fVN5W2rWUT7NjfjznfpZ9pg0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/stablyai/orca"
         },
-        "version": "7c1d58e288568f73734b202dad366e13200fb701"
+        "version": "8abe093e86e58eb2f5a1d506ae0dd091b25cb280"
     },
     "playwriter-skills": {
         "cargoLock": null,
@@ -303,15 +303,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-er8nzA57pJbr667eWDdmWUC2nThWBor4lntnkGh/pvY=",
+            "sha256": "sha256-8bCda72v8vb9KGcuHN1EYj7NFv0ppukjhV60uhNlaw8=",
             "type": "url",
-            "url": "https://github.com/datadog-labs/pup/releases/download/v1.6.2/pup_1.6.2_Darwin_arm64.tar.gz"
+            "url": "https://github.com/datadog-labs/pup/releases/download/v1.6.3/pup_1.6.3_Darwin_arm64.tar.gz"
         },
-        "version": "1.6.2"
+        "version": "1.6.3"
     },
     "pup-skills": {
         "cargoLock": null,
-        "date": "2026-07-03",
+        "date": "2026-07-12",
         "extract": null,
         "name": "pup-skills",
         "passthru": null,
@@ -321,17 +321,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "3cc1bbdb3105b09f2700d19da1c365e4c33ccbba",
-            "sha256": "sha256-b0gZzFgCceRMbZhgft5BhaC3q2uA3c4ssiFQO39gyJs=",
+            "rev": "ca8181a00c862acce07308e6d04be5e450cb58cd",
+            "sha256": "sha256-hhbcGCLBVH4aF0fAWDs7jI+ymameoKowbKaN4MSyoN4=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/datadog-labs/pup"
         },
-        "version": "3cc1bbdb3105b09f2700d19da1c365e4c33ccbba"
+        "version": "ca8181a00c862acce07308e6d04be5e450cb58cd"
     },
     "vercel-skills-cli": {
         "cargoLock": null,
-        "date": "2026-06-29",
+        "date": "2026-07-10",
         "extract": null,
         "name": "vercel-skills-cli",
         "passthru": null,
@@ -341,13 +341,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "2adcfe5a4cce0ce5f4d5547a997b2a161ec5d127",
-            "sha256": "sha256-176EeM1VhNSBH1cYUUy3oLST21PbV0v+tCNglfM9+6Y=",
+            "rev": "3176ae424e50bb7d3f20a7e085f31912b3f325d2",
+            "sha256": "sha256-gL8uNkS3gsRGXIunIsYLYykLYs2c1gO9PFVTE69nWKU=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vercel-labs/skills"
         },
-        "version": "2adcfe5a4cce0ce5f4d5547a997b2a161ec5d127"
+        "version": "3176ae424e50bb7d3f20a7e085f31912b3f325d2"
     },
     "wacli": {
         "cargoLock": null,
@@ -358,15 +358,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-12tvipDO7gOiWt8rKh9oDY9jwbW7oDIqpeHeB6Bt2eI=",
+            "sha256": "sha256-JThbKGCoDkaavodoU6JY1mX2uYvXTVDGVoJDEfBPL5w=",
             "type": "url",
-            "url": "https://github.com/openclaw/wacli/releases/download/v0.11.2/wacli_0.11.2_darwin_universal.tar.gz"
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.12.0/wacli_0.12.0_darwin_universal.tar.gz"
         },
-        "version": "0.11.2"
+        "version": "0.12.0"
     },
     "worktrunk-skills": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-12",
         "extract": null,
         "name": "worktrunk-skills",
         "passthru": null,
@@ -376,17 +376,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "0beeb3b7382d6052bf8da92d092e7407a57457bb",
-            "sha256": "sha256-umZMWxZd/y9E9lth78O2jp2WsvQ89tHTc7VNmtFZUuU=",
+            "rev": "36ba57bdca4b74353f3797def659618372f0e1f6",
+            "sha256": "sha256-T+scI9+p9LGdqF1ZwPg0vDfgZPB6seWgHjNdECaPjW0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/max-sixty/worktrunk"
         },
-        "version": "0beeb3b7382d6052bf8da92d092e7407a57457bb"
+        "version": "36ba57bdca4b74353f3797def659618372f0e1f6"
     },
     "wshobson-agents": {
         "cargoLock": null,
-        "date": "2026-06-25",
+        "date": "2026-07-11",
         "extract": null,
         "name": "wshobson-agents",
         "passthru": null,
@@ -396,12 +396,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "5cc2549a50fc672230efd0a0307e2fd27ffba792",
-            "sha256": "sha256-wgDN0ytDleqyPQtJHSvrzZVSeY+JPI+SNDl3FFliIqM=",
+            "rev": "2de74ac1c8f6669821dcef13153332c3168033c1",
+            "sha256": "sha256-iPc0YmLI8KHybLpIvCEKc7nEGgqdKh0qDDJ/zxwvff4=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/wshobson/agents"
         },
-        "version": "5cc2549a50fc672230efd0a0307e2fd27ffba792"
+        "version": "2de74ac1c8f6669821dcef13153332c3168033c1"
     }
 }

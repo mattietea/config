@@ -8,17 +8,17 @@
 {
   agent-browser-skills = {
     pname = "agent-browser-skills";
-    version = "ed2e10598c9064aecfaeb7cf21b540684db4be2c";
+    version = "afae698a51242166170b6fe4809dd57fe9f75798";
     src = fetchgit {
       url = "https://github.com/vercel-labs/agent-browser";
-      rev = "ed2e10598c9064aecfaeb7cf21b540684db4be2c";
+      rev = "afae698a51242166170b6fe4809dd57fe9f75798";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-uCLzNQ0NAeg1TtA6tcBhTu5VTyjkumsyiEpAhYLPQD0=";
+      sha256 = "sha256-2x5/Nc5KCrgk9dYXur7y9Y9z4JzcJVW4WSYWarcL61k=";
     };
-    date = "2026-06-26";
+    date = "2026-07-08";
   };
   agent-slack = {
     pname = "agent-slack";
@@ -58,53 +58,53 @@
   };
   chrome-devtools-mcp-skills = {
     pname = "chrome-devtools-mcp-skills";
-    version = "913308263bdc8042af74924b68dc39a374ad071d";
+    version = "78ccb193e08137b48cef6f665ad0b3a98c9538da";
     src = fetchgit {
       url = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
-      rev = "913308263bdc8042af74924b68dc39a374ad071d";
+      rev = "78ccb193e08137b48cef6f665ad0b3a98c9538da";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-qDji1ZA46H3+jEZ5SL7ga/pyRhJ9SAdBWYH1jKC/TVg=";
+      sha256 = "sha256-zsbJwQvUCYKOllmUbSK+3QKU1EZ/mY8SQk7m8glWipc=";
     };
-    date = "2026-07-03";
+    date = "2026-07-12";
   };
   claude-mem = {
     pname = "claude-mem";
-    version = "13.10.0";
+    version = "13.10.4";
     src = fetchurl {
-      url = "https://registry.npmjs.org/claude-mem/-/claude-mem-13.10.0.tgz";
-      sha256 = "sha256-McX5S+ormRweq7EEpQ0tZi4hp98muawN9Jy8dKWN+i8=";
+      url = "https://registry.npmjs.org/claude-mem/-/claude-mem-13.10.4.tgz";
+      sha256 = "sha256-i5zI03v3O+nP4UenSEqcsjicAYQWl+cUOr7Enp8MIdg=";
     };
   };
   context7-skills = {
     pname = "context7-skills";
-    version = "84620bd48380b1cac66b9b25180987116e2ce2fe";
+    version = "a9d7c77f5e4c93c1c875b109d6d057487f2dc437";
     src = fetchgit {
       url = "https://github.com/upstash/context7";
-      rev = "84620bd48380b1cac66b9b25180987116e2ce2fe";
+      rev = "a9d7c77f5e4c93c1c875b109d6d057487f2dc437";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-TpoR1rf2CB+tcZN1SOQu0kMZPFh5n0bfBL86GqmjZZw=";
+      sha256 = "sha256-KVan21ojVN04/9cDoQEWZMo7Qyd6vvJLYBSfLbhr5UE=";
     };
-    date = "2026-07-03";
+    date = "2026-07-10";
   };
   dot-skills = {
     pname = "dot-skills";
-    version = "b5ec0192e8ad0a003c4d1160a63d8ad6695f2cc8";
+    version = "da0f2e92b4a5485d47cc2f9c5106242bce7097cd";
     src = fetchgit {
       url = "https://github.com/pproenca/dot-skills";
-      rev = "b5ec0192e8ad0a003c4d1160a63d8ad6695f2cc8";
+      rev = "da0f2e92b4a5485d47cc2f9c5106242bce7097cd";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-z57Z8v52eYgaoE9p+2/48r7YFUPs2di+VoK8uGEtbkk=";
+      sha256 = "sha256-0XBKiQraxJKUkgAm5AbAIoTbGdjPS05hdSux7Ms2d0A=";
     };
-    date = "2026-07-05";
+    date = "2026-07-12";
   };
   humanlayer-skills = {
     pname = "humanlayer-skills";
@@ -144,47 +144,47 @@
   };
   linear-cli-skills = {
     pname = "linear-cli-skills";
-    version = "fc85b919cdb62a668eecea6ea5484aad9da8f655";
+    version = "ad1563877b5ebc18053a15b276066ec790d7f9b1";
     src = fetchgit {
       url = "https://github.com/schpet/linear-cli";
-      rev = "fc85b919cdb62a668eecea6ea5484aad9da8f655";
+      rev = "ad1563877b5ebc18053a15b276066ec790d7f9b1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-nmF834DXqLmHDKiAys8FARsXmRWyMKyUF7uDVpq5a8w=";
+      sha256 = "sha256-5CuMUeHLahvxQ/z68GWlj3U3Rggp54FqW9nTdkTQMSQ=";
     };
-    date = "2026-05-19";
+    date = "2026-07-11";
   };
   mole = {
     pname = "mole";
-    version = "1.45.0";
+    version = "1.46.0";
     src = fetchurl {
-      url = "https://github.com/tw93/mole/archive/refs/tags/V1.45.0.tar.gz";
-      sha256 = "sha256-KJZoHl4UgqLozhfwvKDdv0Vre2T/MdjSV1et9VuFSzM=";
+      url = "https://github.com/tw93/mole/archive/refs/tags/V1.46.0.tar.gz";
+      sha256 = "sha256-C/w6FdbbV2WrH+jM60Fvu9xpVFWsA7uUBjCHn8k7et4=";
     };
   };
   oh-my-openagent = {
     pname = "oh-my-openagent";
-    version = "4.15.1";
+    version = "4.17.0";
     src = fetchurl {
-      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.15.1.tar.gz";
-      sha256 = "sha256-7snt8mNr5k13JPmCDadJ/Z5ViZFVV0VwXuDcnkVc4Ow=";
+      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v4.17.0.tar.gz";
+      sha256 = "sha256-fXNhvnGeuXKLnSnd2YPkiXrbB6/gD+GB1folVssON0g=";
     };
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "7c1d58e288568f73734b202dad366e13200fb701";
+    version = "8abe093e86e58eb2f5a1d506ae0dd091b25cb280";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "7c1d58e288568f73734b202dad366e13200fb701";
+      rev = "8abe093e86e58eb2f5a1d506ae0dd091b25cb280";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-ZKBrRscxoM57LcQ1I1ehS2ANkmIaFeK8orusmRmOHWQ=";
+      sha256 = "sha256-DYiHXfVv8Kp7O4AawX2fVN5W2rWUT7NjfjznfpZ9pg0=";
     };
-    date = "2026-07-05";
+    date = "2026-07-12";
   };
   playwriter-skills = {
     pname = "playwriter-skills";
@@ -202,74 +202,74 @@
   };
   pup = {
     pname = "pup";
-    version = "1.6.2";
+    version = "1.6.3";
     src = fetchurl {
-      url = "https://github.com/datadog-labs/pup/releases/download/v1.6.2/pup_1.6.2_Darwin_arm64.tar.gz";
-      sha256 = "sha256-er8nzA57pJbr667eWDdmWUC2nThWBor4lntnkGh/pvY=";
+      url = "https://github.com/datadog-labs/pup/releases/download/v1.6.3/pup_1.6.3_Darwin_arm64.tar.gz";
+      sha256 = "sha256-8bCda72v8vb9KGcuHN1EYj7NFv0ppukjhV60uhNlaw8=";
     };
   };
   pup-skills = {
     pname = "pup-skills";
-    version = "3cc1bbdb3105b09f2700d19da1c365e4c33ccbba";
+    version = "ca8181a00c862acce07308e6d04be5e450cb58cd";
     src = fetchgit {
       url = "https://github.com/datadog-labs/pup";
-      rev = "3cc1bbdb3105b09f2700d19da1c365e4c33ccbba";
+      rev = "ca8181a00c862acce07308e6d04be5e450cb58cd";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-b0gZzFgCceRMbZhgft5BhaC3q2uA3c4ssiFQO39gyJs=";
+      sha256 = "sha256-hhbcGCLBVH4aF0fAWDs7jI+ymameoKowbKaN4MSyoN4=";
     };
-    date = "2026-07-03";
+    date = "2026-07-12";
   };
   vercel-skills-cli = {
     pname = "vercel-skills-cli";
-    version = "2adcfe5a4cce0ce5f4d5547a997b2a161ec5d127";
+    version = "3176ae424e50bb7d3f20a7e085f31912b3f325d2";
     src = fetchgit {
       url = "https://github.com/vercel-labs/skills";
-      rev = "2adcfe5a4cce0ce5f4d5547a997b2a161ec5d127";
+      rev = "3176ae424e50bb7d3f20a7e085f31912b3f325d2";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-176EeM1VhNSBH1cYUUy3oLST21PbV0v+tCNglfM9+6Y=";
+      sha256 = "sha256-gL8uNkS3gsRGXIunIsYLYykLYs2c1gO9PFVTE69nWKU=";
     };
-    date = "2026-06-29";
+    date = "2026-07-10";
   };
   wacli = {
     pname = "wacli";
-    version = "0.11.2";
+    version = "0.12.0";
     src = fetchurl {
-      url = "https://github.com/openclaw/wacli/releases/download/v0.11.2/wacli_0.11.2_darwin_universal.tar.gz";
-      sha256 = "sha256-12tvipDO7gOiWt8rKh9oDY9jwbW7oDIqpeHeB6Bt2eI=";
+      url = "https://github.com/openclaw/wacli/releases/download/v0.12.0/wacli_0.12.0_darwin_universal.tar.gz";
+      sha256 = "sha256-JThbKGCoDkaavodoU6JY1mX2uYvXTVDGVoJDEfBPL5w=";
     };
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "0beeb3b7382d6052bf8da92d092e7407a57457bb";
+    version = "36ba57bdca4b74353f3797def659618372f0e1f6";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "0beeb3b7382d6052bf8da92d092e7407a57457bb";
+      rev = "36ba57bdca4b74353f3797def659618372f0e1f6";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-umZMWxZd/y9E9lth78O2jp2WsvQ89tHTc7VNmtFZUuU=";
+      sha256 = "sha256-T+scI9+p9LGdqF1ZwPg0vDfgZPB6seWgHjNdECaPjW0=";
     };
-    date = "2026-07-05";
+    date = "2026-07-12";
   };
   wshobson-agents = {
     pname = "wshobson-agents";
-    version = "5cc2549a50fc672230efd0a0307e2fd27ffba792";
+    version = "2de74ac1c8f6669821dcef13153332c3168033c1";
     src = fetchgit {
       url = "https://github.com/wshobson/agents";
-      rev = "5cc2549a50fc672230efd0a0307e2fd27ffba792";
+      rev = "2de74ac1c8f6669821dcef13153332c3168033c1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-wgDN0ytDleqyPQtJHSvrzZVSeY+JPI+SNDl3FFliIqM=";
+      sha256 = "sha256-iPc0YmLI8KHybLpIvCEKc7nEGgqdKh0qDDJ/zxwvff4=";
     };
-    date = "2026-06-25";
+    date = "2026-07-11";
   };
 }
