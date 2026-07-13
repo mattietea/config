@@ -66,11 +66,11 @@ let
     };
     background_task = baseConfig.background_task // {
       providerConcurrency = baseConfig.background_task.providerConcurrency // {
-        openai = 5;
+        openai = 12;
       };
       modelConcurrency = baseConfig.background_task.modelConcurrency // {
-        "${models.fable}" = 2;
-        "${models.gpt}" = 3;
+        "${models.fable}" = 12;
+        "${models.gpt}" = 12;
       };
     };
     categories = baseConfig.categories // {

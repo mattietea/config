@@ -59,17 +59,17 @@ in
 
   team_mode = {
     enabled = true;
-    max_parallel_members = 4;
-    max_members = 8;
+    max_parallel_members = 12;
+    max_members = 16;
     tmux_visualization = false;
   };
 
   background_task = {
     providerConcurrency = {
-      anthropic = 3;
+      anthropic = 12;
     };
     modelConcurrency = {
-      "${models.opus}" = 2;
+      "${models.opus}" = 12;
     };
   };
 
