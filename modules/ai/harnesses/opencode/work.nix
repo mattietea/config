@@ -7,6 +7,7 @@ let
   # data retention); fall back to Opus then Sonnet on refusal/error.
   fableAgent = {
     model = models.fable;
+    variant = "max";
     thinking.type = "enabled";
     fallback_models = [
       models.opus
