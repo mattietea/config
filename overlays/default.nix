@@ -22,4 +22,8 @@ in
   agent-slack = final.callPackage ../modules/home-manager/packages/agent-slack/package.nix {
     inherit (sources.agent-slack) version src;
   };
+
+  zed-editor = final.callPackage ../modules/home-manager/applications/zed/package.nix {
+    inherit (sources.zed) version src;
+  };
 }

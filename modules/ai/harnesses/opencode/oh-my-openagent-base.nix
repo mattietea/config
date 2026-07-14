@@ -59,17 +59,17 @@ in
 
   team_mode = {
     enabled = true;
-    max_parallel_members = 4;
-    max_members = 8;
+    max_parallel_members = 12;
+    max_members = 16;
     tmux_visualization = false;
   };
 
   background_task = {
     providerConcurrency = {
-      anthropic = 3;
+      anthropic = 12;
     };
     modelConcurrency = {
-      "${models.opus}" = 2;
+      "${models.opus}" = 12;
     };
   };
 
@@ -106,8 +106,11 @@ in
   };
 
   agents = {
-    # Default opencode agent
-    build = opusAgent;
+    # Default opencode agent — fast interactive tier (no extended thinking)
+    build = {
+      model = models.sonnet;
+      fallback_models = [ models.haiku ];
+    };
 
     # Primary orchestrator
     sisyphus = opusAgent;
@@ -138,7 +141,7 @@ in
     };
 
     librarian = {
-      model = models.sonnet;
+      model = models.haiku;
       permission = {
         edit = "deny";
         webfetch = "allow";

@@ -1,2 +1,0 @@
-28:    agent-slack.url = "github:stablyai/agent-slack";
-29:    agent-slack.inputs.nixpkgs.follows = "nixpkgs";

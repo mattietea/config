@@ -56,6 +56,15 @@ src.webpage = "https://registry.npmjs.org/-/package/claude-mem/dist-tags"
 src.regex = '"latest":"([^"]+)"'
 fetch.url = "https://registry.npmjs.org/claude-mem/-/claude-mem-$ver.tgz"
 
+# Zed ships an official signed+notarized aarch64 macOS build as a .dmg release
+# asset. We unpack it (see modules/home-manager/applications/zed/package.nix)
+# instead of the nixpkgs source build, which isn't cached for aarch64-darwin and
+# lags behind Zed's fast release cadence.
+[zed]
+src.github = "zed-industries/zed"
+src.prefix = "v"
+fetch.url = "https://github.com/zed-industries/zed/releases/download/v$ver/Zed-aarch64.dmg"
+
 # Agent-skill sources — repos consumed by agent-skills-nix via path = sources.X.src.
 # Tracked at branch HEAD (these repos cut no releases), pinned by commit + hash.
 [anthropic-skills]

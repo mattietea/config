@@ -7,8 +7,14 @@
       "git-firefly"
       "github-theme"
       "opencode"
+      "tsgo"
+      "oxc"
     ];
     userSettings = {
+      # Nix owns the Zed version (nvfetcher pin, bumped weekly by update.yml).
+      # The built-in updater otherwise overwrites the copyApps bundle in place
+      # and quit/relaunch-loops the app, restarting every language server.
+      auto_update = false;
       base_keymap = "VSCode";
       ui_font_size = 14;
       buffer_font_size = 14;
@@ -21,8 +27,10 @@
       bottom_dock_layout = "left_aligned";
       agent = {
         notify_when_agent_waiting = "all_screens";
-        play_sound_when_agent_done = true;
+        play_sound_when_agent_done = "always";
       };
+      # Fullscreen file finder: no horizontal padding, whole viewport width.
+      file_finder.modal_max_width = "full";
       minimap.show = "never";
       tabs.git_status = true;
       project_panel = {
@@ -30,7 +38,6 @@
         hide_gitignore = false;
       };
       collaboration_panel.button = false;
-      git_panel.sort_by_path = true;
       theme = {
         mode = "system";
         light = "One Light";
@@ -41,6 +48,62 @@
         max_scroll_history_lines = 100000;
       };
       git.branch_picker.show_author_name = true;
+      # Type-aware oxlint rules (no-floating-promises etc., via tsgolint).
+      # `options.typeAware = true` in an extended oxlint config doesn't reach
+      # the language server, so it must be enabled as an LSP option — same
+      # reason work's CLI scripts pass --type-aware explicitly.
+      lsp.oxlint.initialization_options.settings.typeAware = true;
+      # Zed's default 50ms debounce pulls diagnostics per keystroke; a
+      # type-aware oxlint pass costs ~2s on the work monorepo, so the queue
+      # grows unboundedly and requests hit Zed's 120s cancellation (which
+      # also stalls fixAll-on-save and formatting). Pull at typing pauses.
+      diagnostics.lsp_pull_diagnostics.debounce_ms = 1500;
+      languages =
+        let
+          # oxfmt formatter stack, following the oxc-zed example (minus Vue):
+          # https://github.com/oxc-project/oxc-zed/blob/main/examples/both/.zed/settings.json
+          # oxfmt/oxlint resolve from the project's node_modules, so repos
+          # without them are unaffected.
+          oxfmt = {
+            format_on_save = "on";
+            prettier.allowed = false;
+            formatter = [ { language_server.name = "oxfmt"; } ];
+          };
+          # tsgo (typescript-go) instead of the legacy vtsls; oxlint
+          # diagnostics with fixAll applied on save.
+          typescript = oxfmt // {
+            language_servers = [
+              "tsgo"
+              "oxlint"
+              "oxfmt"
+              "!vtsls"
+              "!typescript-language-server"
+              "..."
+            ];
+            formatter = [
+              { language_server.name = "oxfmt"; }
+              { code_action = "source.fixAll.oxc"; }
+            ];
+          };
+        in
+        {
+          TypeScript = typescript;
+          TSX = typescript;
+          JavaScript = typescript;
+          JSX = typescript;
+          CSS = oxfmt;
+          GraphQL = oxfmt;
+          Handlebars = oxfmt;
+          HTML = oxfmt;
+          JSON = oxfmt;
+          JSON5 = oxfmt;
+          JSONC = oxfmt;
+          Less = oxfmt;
+          Markdown = oxfmt;
+          MDX = oxfmt;
+          SCSS = oxfmt;
+          YAML = oxfmt;
+        };
     };
     userKeymaps = [
       {
@@ -49,27 +112,42 @@
       }
 
       {
-        context = "!ProjectPanel";
-        bindings.cmd-1 = "pane::RevealInProjectPanel";
+        context = "Workspace";
+        bindings = {
+          cmd-1 = "project_panel::ToggleFocus";
+          cmd-2 = "terminal_panel::ToggleFocus";
+          cmd-3 = "git_panel::ToggleFocus";
+          cmd-r = "agent::ToggleFocus";
+          cmd-shift-b = "pane::RevealInProjectPanel";
+          "cmd-k l" = "dev::OpenLanguageServerLogs";
+        };
       }
+      # ToggleFocus only shows/focuses a panel; it never hides one. Pressing
+      # the same shortcut while the panel is focused should hide it and return
+      # focus to the editor, so each panel's own context rebinds the shortcut
+      # to toggle (close) its dock. These deeper contexts beat Workspace.
       {
         context = "ProjectPanel";
         bindings.cmd-1 = "workspace::ToggleLeftDock";
       }
       {
-        context = "Workspace";
+        context = "Terminal";
+        bindings.cmd-2 = "workspace::ToggleBottomDock";
+      }
+      {
+        # cmd-1/2 also need overriding here: defaults bind them to git tab
+        # switching inside the git panel, which would shadow the Workspace
+        # toggles (deeper context wins).
+        context = "GitPanel";
         bindings = {
-          cmd-2 = "workspace::ToggleBottomDock";
-          cmd-3 = [
-            "task::Spawn"
-            {
-              task_name = "LazyGit";
-              target = "center";
-            }
-          ];
-          cmd-shift-b = "pane::RevealInProjectPanel";
-          "cmd-k l" = "dev::OpenLanguageServerLogs";
+          cmd-1 = "project_panel::ToggleFocus";
+          cmd-2 = "terminal_panel::ToggleFocus";
+          cmd-3 = "workspace::ToggleLeftDock";
         };
+      }
+      {
+        context = "AgentPanel";
+        bindings.cmd-r = "workspace::ToggleRightDock";
       }
     ];
     userTasks = [

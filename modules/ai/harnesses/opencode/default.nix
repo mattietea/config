@@ -23,6 +23,9 @@ in
     settings = {
       "$schema" = "https://opencode.ai/config.json";
       share = "disabled";
+      # Hide OpenCode Zen (provider id "opencode") from the model picker —
+      # all agents run on anthropic/openai models (see models.nix).
+      disabled_providers = [ "opencode" ];
       snapshot = true;
       compaction = {
         auto = true;
@@ -40,6 +43,12 @@ in
       theme = "system";
     };
   };
+
+  # opencode rewrites tui.json at runtime (pinning the resolved plugin
+  # version), so every activation tries to back it up and trips over the
+  # previous switch's backup. Overwrite instead — opencode regenerates its
+  # runtime edits on next launch.
+  xdg.configFile."opencode/tui.json".force = true;
 
   # The claude-mem opencode plugin defaults to worker port 37700 + (uid % 100),
   # but the worker actually runs on 37777 (set in ~/.claude-mem/settings.json).
