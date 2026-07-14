@@ -106,8 +106,11 @@ in
   };
 
   agents = {
-    # Default opencode agent
-    build = opusAgent;
+    # Default opencode agent — fast interactive tier (no extended thinking)
+    build = {
+      model = models.sonnet;
+      fallback_models = [ models.haiku ];
+    };
 
     # Primary orchestrator
     sisyphus = opusAgent;
@@ -138,7 +141,7 @@ in
     };
 
     librarian = {
-      model = models.sonnet;
+      model = models.haiku;
       permission = {
         edit = "deny";
         webfetch = "allow";

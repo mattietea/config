@@ -21,14 +21,14 @@ let
   config = baseConfig // {
     disabled_agents = [ ];
     agents = baseConfig.agents // {
-      # Default, orchestrator, and planning agents — Fable 5 (override base Opus)
-      build = fableAgent;
+      # Orchestrator and planning agents — Fable 5 (override base Opus).
+      # build inherits the fast base default (Sonnet, no thinking).
       sisyphus = fableAgent;
       prometheus = fableAgent;
       metis = fableAgent;
-      # Architecture & debugging — GPT with high reasoning effort
+      # Architecture & debugging — Sol (non-pro) at high reasoning effort
       oracle = {
-        model = models.gpt;
+        model = models.gptStd;
         variant = "high";
         reasoningEffort = "high";
         fallback_models = [
@@ -37,9 +37,9 @@ let
         ];
         compaction.model = models.sonnet;
       };
-      # Review — GPT with high reasoning effort
+      # Review — Sol (non-pro) at high reasoning effort
       momus = {
-        model = models.gpt;
+        model = models.gptStd;
         variant = "high";
         fallback_models = [
           models.opus
@@ -47,22 +47,15 @@ let
         ];
         compaction.model = models.sonnet;
       };
-      # Autonomous deep worker — GPT
+      # Autonomous deep worker — Sol (non-pro) at medium (author default)
       hephaestus = {
-        model = models.gpt;
-        variant = "xhigh";
+        model = models.gptStd;
+        variant = "medium";
         fallback_models = [
           models.sonnet
         ];
       };
-      # Fast utility runners — pin to Sonnet (override base haiku/plugin gpt defaults)
-      explore = baseConfig.agents.explore // {
-        model = models.sonnet;
-      };
-      librarian = baseConfig.agents.librarian // {
-        model = models.sonnet;
-      };
-      multimodal-looker.model = models.sonnet;
+      # explore / librarian / multimodal-looker inherit the fast base (Haiku)
     };
     background_task = baseConfig.background_task // {
       providerConcurrency = baseConfig.background_task.providerConcurrency // {
@@ -71,13 +64,14 @@ let
       modelConcurrency = baseConfig.background_task.modelConcurrency // {
         "${models.fable}" = 12;
         "${models.gpt}" = 12;
+        "${models.gptStd}" = 12;
       };
     };
     categories = baseConfig.categories // {
-      quick.model = models.sonnet;
+      # quick inherits base Haiku
       deep = {
         model = models.gpt;
-        variant = "xhigh";
+        variant = "high";
       };
       ultrabrain = {
         model = models.gpt;
@@ -85,7 +79,7 @@ let
         reasoningEffort = "xhigh";
       };
       unspecified-high = {
-        model = models.gpt;
+        model = models.gptStd;
         variant = "high";
       };
     };

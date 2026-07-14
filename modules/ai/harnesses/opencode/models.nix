@@ -6,5 +6,6 @@
   opus = "anthropic/claude-opus-4-8";
   sonnet = "anthropic/claude-sonnet-5";
   haiku = "anthropic/claude-haiku-4-5";
-  gpt = "openai/gpt-5.6-sol-pro";
+  gpt = "openai/gpt-5.6-sol-pro"; # pro reasoning — deep, ultrabrain
+  gptStd = "openai/gpt-5.6-sol"; # faster non-pro — oracle, momus, hephaestus, unspecified-high
 }
