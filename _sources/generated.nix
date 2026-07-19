@@ -172,6 +172,14 @@
       sha256 = "sha256-3Rf9diLBdGZdSErLizUPhmq5OEHbyD2rwFKC67URNXs=";
     };
   };
+  omp = {
+    pname = "omp";
+    version = "17.0.5";
+    src = fetchurl {
+      url = "https://github.com/can1357/oh-my-pi/releases/download/v17.0.5/omp-darwin-arm64";
+      sha256 = "sha256-wNQ8R7lp77Z/oYT3edGDu1JBHphnK3afsOcdUdWe7Wg=";
+    };
+  };
   orca-skills = {
     pname = "orca-skills";
     version = "c0f0810dd9c89c57e2130e5d7b5adcbef883845c";
