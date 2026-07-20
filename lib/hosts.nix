@@ -46,6 +46,5 @@ in
       "devenv"
       "mole"
       "nodejs"
-      "omp"
     ];
 }
