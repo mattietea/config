@@ -18,6 +18,12 @@ Be extremely concise.
 
 </important>
 
+<important if="you are capturing research or investigation findings as a file">
+
+Never write notes, research findings, or reports into a work repo — keep working repos free of AI-generated artifacts. Present findings in the conversation; if a durable copy is needed, put it on the relevant Linear issue or a scratch location, and only somewhere else if I name one.
+
+</important>
+
 <important if="you are committing, creating a pull request, or writing an issue/ticket">
 
 Work product must read as if a careful human engineer wrote it. Never mention AI, agents, or tooling in titles, descriptions, commit messages, code comments, or tickets.
