@@ -57,7 +57,7 @@ in
     };
     react-testing-library = {
       enable = true;
-      skills = [ "itechmeat/react-testing-library" ];
+      explicitSkills.react-testing-library.from = "itechmeat";
       sources.itechmeat = {
         path = sources.itechmeat-skills.src;
         subdir = "skills";
@@ -70,18 +70,32 @@ in
     # the instruction files and the Linear-native flow in tools/work.nix.
     mattpocock = {
       enable = true;
-      skills = [
-        "mattpocock/tdd"
-        "mattpocock/diagnosing-bugs"
-        "mattpocock/research"
-        "mattpocock/prototype"
-        "mattpocock/codebase-design"
-        "mattpocock/resolving-merge-conflicts"
-        "mattpocock/grilling"
-        "mattpocock/grill-me"
-        "mattpocock/handoff"
-        "mattpocock/writing-great-skills"
-      ];
+      # Explicit flat ids: harnesses only discover skills one directory deep,
+      # so the idPrefix-namespaced ids (mattpocock/tdd) would be invisible.
+      explicitSkills =
+        lib.genAttrs
+          [
+            "tdd"
+            "diagnosing-bugs"
+            "research"
+            "prototype"
+            "codebase-design"
+            "resolving-merge-conflicts"
+          ]
+          (_: {
+            from = "mattpocock-engineering";
+          })
+        //
+          lib.genAttrs
+            [
+              "grilling"
+              "grill-me"
+              "handoff"
+              "writing-great-skills"
+            ]
+            (_: {
+              from = "mattpocock-productivity";
+            });
       sources = {
         mattpocock-engineering = {
           path = sources.mattpocock-skills.src;

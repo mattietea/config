@@ -34,6 +34,11 @@ in
             default = { };
             description = "agent-skills sources this tool provides; merged into programs.agent-skills.sources.";
           };
+          explicitSkills = mkOption {
+            type = types.attrsOf types.anything;
+            default = { };
+            description = "Explicit skill selections (from/path/rename); merged into programs.agent-skills.skills.explicit. Use to expose skills from idPrefix-namespaced sources under flat ids — harnesses only discover skills one directory deep.";
+          };
           packages = mkOption {
             type = types.listOf types.package;
             default = [ ];
@@ -46,6 +51,7 @@ in
   config = {
     programs.agent-skills = {
       skills.enable = concatMap (t: t.skills) enabled;
+      skills.explicit = mkMerge (map (t: t.explicitSkills) enabled);
       sources = mkMerge (map (t: t.sources) enabled);
     };
     home.packages = concatMap (t: t.packages) enabled;
