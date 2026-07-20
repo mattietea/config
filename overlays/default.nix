@@ -23,6 +23,10 @@ in
     inherit (sources.agent-slack) version src;
   };
 
+  omp = final.callPackage ../modules/home-manager/packages/omp/package.nix {
+    inherit (sources.omp) version src;
+  };
+
   zed-editor = final.callPackage ../modules/home-manager/applications/zed/package.nix {
     inherit (sources.zed) version src;
   };
