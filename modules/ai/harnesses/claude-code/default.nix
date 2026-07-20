@@ -23,6 +23,12 @@
       prStatusFooterEnabled = true;
       editorMode = "normal";
 
+      # Voice
+      voice = {
+        enabled = true;
+        mode = "tap";
+      };
+
       # Features
       alwaysThinkingEnabled = true;
       autoCompactEnabled = true;
