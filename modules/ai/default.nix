@@ -8,7 +8,6 @@
     ./skills
     ./tools
     ./mcp
-    ./plugins
     ./instructions
   ];
 }

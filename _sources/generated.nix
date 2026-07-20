@@ -156,6 +156,20 @@
     };
     date = "2026-07-18";
   };
+  mattpocock-skills = {
+    pname = "mattpocock-skills";
+    version = "9603c1cc8118d08bc1b3bf34cf714f62178dea3b";
+    src = fetchgit {
+      url = "https://github.com/mattpocock/skills";
+      rev = "9603c1cc8118d08bc1b3bf34cf714f62178dea3b";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-S6pARK99oGGSi6XdFm6zYKHT4gjOCN0wIPZFcl1hREE=";
+    };
+    date = "2026-07-16";
+  };
   mole = {
     pname = "mole";
     version = "1.47.1";

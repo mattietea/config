@@ -139,6 +139,11 @@ src.git = "https://github.com/humanlayer/skills"
 src.branch = "main"
 fetch.git = "https://github.com/humanlayer/skills"
 
+[mattpocock-skills]
+src.git = "https://github.com/mattpocock/skills"
+src.branch = "main"
+fetch.git = "https://github.com/mattpocock/skills"
+
 [orca-skills]
 src.git = "https://github.com/stablyai/orca"
 src.branch = "main"

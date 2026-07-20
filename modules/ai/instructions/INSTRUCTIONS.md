@@ -18,6 +18,17 @@ Be extremely concise.
 
 </important>
 
+<important if="you are committing, creating a pull request, or writing an issue/ticket">
+
+Work product must read as if a careful human engineer wrote it. Never mention AI, agents, or tooling in titles, descriptions, commit messages, code comments, or tickets.
+
+- **PR titles**: plain and descriptive. No prefixes, tags, or emoji — even if a repo's AGENTS.md mandates one; this rule wins.
+- **PR descriptions**: a few short bullets a reviewer absorbs in seconds. No boilerplate sections; no test plan unless the repo requires one.
+- **Commit messages**: one concise subject line; a body only when the why isn't obvious from the diff.
+- **Issues/tickets**: one-line title, description ≤4 bullets, written so anyone can pick them up cold. No file paths or code snippets — they go stale.
+
+</important>
+
 <important if="you encounter ambiguity, edge cases, or seemingly conflicting rules in a project's AGENTS.md, CLAUDE.md, or similar instruction files">
 
 **Do not rationalize-and-proceed.** When a rule is unclear at the edges:

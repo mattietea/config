@@ -64,5 +64,36 @@ in
         idPrefix = "itechmeat";
       };
     };
+    # Engineering-process skills from mattpocock/skills, taken verbatim.
+    # Repo-touching skills (grill-with-docs, domain-modeling, to-spec,
+    # to-tickets, triage) are deliberately excluded — tracker facts live in
+    # the instruction files and the Linear-native flow in tools/work.nix.
+    mattpocock = {
+      enable = true;
+      skills = [
+        "mattpocock/tdd"
+        "mattpocock/diagnosing-bugs"
+        "mattpocock/research"
+        "mattpocock/prototype"
+        "mattpocock/codebase-design"
+        "mattpocock/resolving-merge-conflicts"
+        "mattpocock/grilling"
+        "mattpocock/grill-me"
+        "mattpocock/handoff"
+        "mattpocock/writing-great-skills"
+      ];
+      sources = {
+        mattpocock-engineering = {
+          path = sources.mattpocock-skills.src;
+          subdir = "skills/engineering";
+          idPrefix = "mattpocock";
+        };
+        mattpocock-productivity = {
+          path = sources.mattpocock-skills.src;
+          subdir = "skills/productivity";
+          idPrefix = "mattpocock";
+        };
+      };
+    };
   };
 }

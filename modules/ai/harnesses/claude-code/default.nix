@@ -52,7 +52,6 @@
         "claude-mem@thedotmack" = true;
         "codex@openai-codex" = true;
         "improve-claude-md@skills" = true;
-        "superpowers@claude-plugins-official" = true;
       };
       extraKnownMarketplaces = {
         thedotmack = {

@@ -34,6 +34,16 @@
       skills = [ "linear-cli" ];
       packages = [ pkgs.linear-cli ];
     };
+    # FEPLAT ticket flow: /tickets scaffolds parent + tracer-slice sub-issues,
+    # /work drives one ticket to a PR. Conventions live in instructions/work.md.
+    linear-flow = {
+      enable = true;
+      skills = [
+        "tickets"
+        "work"
+      ];
+      sources.linear-flow.path = ../skills/linear-flow;
+    };
     worktrunk = {
       enable = true;
       sources.worktrunk = {
