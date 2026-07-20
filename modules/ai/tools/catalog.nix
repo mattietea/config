@@ -55,6 +55,13 @@ in
       skills = [ "git-machete" ];
       sources.local.path = ../skills/git-machete;
     };
+    # Own take on mattpocock's research skill: same background-agent contract,
+    # but findings land in ~/notes (never in a work repo) per the instructions.
+    research = {
+      enable = true;
+      skills = [ "research" ];
+      sources.research.path = ../skills/research;
+    };
     react-testing-library = {
       enable = true;
       explicitSkills.react-testing-library.from = "itechmeat";
@@ -77,7 +84,6 @@ in
           [
             "tdd"
             "diagnosing-bugs"
-            "research"
             "prototype"
             "codebase-design"
             "resolving-merge-conflicts"
