@@ -20,7 +20,7 @@ Be extremely concise.
 
 <important if="you are capturing research or investigation findings as a file">
 
-Never write notes, research findings, or reports into a work repo — keep working repos free of AI-generated artifacts. Present findings in the conversation; if a durable copy is needed, put it on the relevant Linear issue or a scratch location, and only somewhere else if I name one.
+Never write notes, research findings, or reports into a work repo — keep working repos free of AI-generated artifacts. Present findings in the conversation, and when a durable copy is worth keeping, save it to `~/notes/<area>/<YYYY-MM-DD>-<slug>.md` (`<area>` = repo or topic, e.g. `frontend`, `rum`). Link the related Linear issue at the top when there is one. Check `~/notes` for prior findings before re-researching a topic.
 
 </important>
 
