@@ -32,9 +32,10 @@ Use the **linear-cli** skill (`/linear-cli`) to manage Linear issues from the co
 My team is **FEPLAT** (Frontend Platform). Conventions:
 
 - **States**: `Triage` is the team inbox — never scaffold work there. `Todo` + unassigned = grabbable by anyone. `Needs Info` = waiting on reporter. `Canceled` = wontfix; record the why in a closing comment on the issue.
-- **Projects are the roadmap** (e.g. "Error Monitoring — Q3 2026", "Performance Monitoring — Q3 2026", "Incident Follow-ups"). Put tickets in the matching project; ad-hoc platform work goes projectless.
+- **Projects are the roadmap** — list them with `linear project list` rather than assuming. Put tickets in the matching project; ad-hoc platform work goes projectless.
 - **Scaffolding a chunk of work**: one parent issue holding the terse spec (problem, invariants, how done is measured), sub-issues as slices with native blocked-by relations (`linear issue relation add`), each unassigned in `Todo` with an `effort:S/M/L` label. Use `/tickets`.
 - **Starting a ticket**: `linear issue start <id>` (assigns + branches + moves to In Progress); move to `In Review` when the PR opens. Use `/work`.
+- **Measures live in Datadog** (dashboards, monitors, CI-emitted custom metrics) — use the pup skills to find or create them. Prefer a cheap measure over none; skip when it would be theater.
 
 </important>
 
