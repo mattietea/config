@@ -21,6 +21,7 @@ in
 mkHost {
   inherit inputs settings;
   hostname = "Matts-Personal-Macbook-Air";
+  computerName = "Matt's Personal Macbook Air";
 
   applications =
     commonApps

@@ -2,6 +2,7 @@
   inputs,
   settings,
   hostname,
+  computerName ? null,
   system ? "aarch64-darwin",
   applications ? [ ],
   packages ? [ ],
@@ -103,7 +104,13 @@ inputs.darwin.lib.darwinSystem {
         };
       };
     }
-    { networking.hostName = hostname; }
+    {
+      networking = {
+        hostName = hostname;
+        localHostName = hostname;
+        computerName = if computerName == null then hostname else computerName;
+      };
+    }
   ]
   ++ darwinModules;
 }
