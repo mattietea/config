@@ -23,7 +23,7 @@ in
     inherit (sources.agent-slack) version src;
   };
 
-  omp = final.callPackage ../modules/home-manager/packages/omp/package.nix {
+  omp = final.callPackage ../modules/ai/harnesses/omp/package.nix {
     inherit (sources.omp) version src;
   };
 
