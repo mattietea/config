@@ -82,13 +82,14 @@ Do NOT close or modify any pre-existing parent issue.
 
 ## PR Validation
 
-- The step-by-step recipe the implementer follows to prove the PR works — imperative and concrete: deploy where, do what, observe what, link what. For example:
-  - Deploy to a devbox
-  - Navigate to the core routes (name them)
-  - Query RUM for the new events on the devbox host
-  - Add the devbox link and the query to the PR
-- Match the steps to the change: Datadog queries for telemetry, screenshots plus tests for UI, green re-runs for a flaky fix, a build comparison for a zero-change move. Deploys only reach devboxes; production confirms after the release train.
-- Never outcome statements ("validated in production") — outcomes are acceptance criteria; this section is the recipe whose evidence lands in the PR's Validation section.
+- What to check to prove the PR works, as plain bullets — each a scenario or surface with sub-bullet links to the evidence (devbox, logs/RUM query, metrics explorer, screenshot). For example:
+  - old frontend (dd 5.x) / new backend
+    - devbox link · RUM logs · AMP logs
+  - v5 counter metric (`dp_proxy.v5_validation` by `intake_path`)
+    - metrics explorer
+- The PR's Validation section mirrors this shape: label bullets with links, no prose narration.
+- Match the checks to the change: Datadog queries for telemetry, screenshots plus tests for UI, green re-runs for a flaky fix, a build comparison for a zero-change move. Deploys only reach devboxes; production confirms after the release train.
+- Never outcome statements ("validated in production") — outcomes are acceptance criteria; this section is what to check, with the links as the evidence.
 
 ## Acceptance criteria
 
