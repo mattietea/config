@@ -1,10 +1,10 @@
 ---
-name: tickets
+name: to-tickets
 description: Break a plan, spec, or the current conversation into scaffolded Linear tickets — tracer slices wired with native blocking relations, spec on the project. Use when asked to cut, scaffold, or create tickets for a chunk of work.
 disable-model-invocation: true
 ---
 
-# Tickets
+# To Tickets
 
 Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet vertical slices, each declaring the tickets that **block** it.
 

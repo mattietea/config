@@ -34,12 +34,14 @@
       skills = [ "linear-cli" ];
       packages = [ pkgs.linear-cli ];
     };
-    # FEPLAT ticket flow: /tickets scaffolds parent + tracer-slice sub-issues,
-    # /work drives one ticket to a PR. Conventions live in instructions/work.md.
+    # FEPLAT ticket flow: /to-spec writes the agreed spec to ~/notes,
+    # /to-tickets scaffolds tracer-slice tickets, /work drives one ticket to a
+    # PR. Conventions live in instructions/work.md.
     linear-flow = {
       enable = true;
       skills = [
-        "tickets"
+        "to-spec"
+        "to-tickets"
         "work"
       ];
       sources.linear-flow.path = ../skills/linear-flow;
