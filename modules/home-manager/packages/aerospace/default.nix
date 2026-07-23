@@ -38,6 +38,10 @@ _: {
             "alt-slash" = "layout tiles horizontal vertical";
             "alt-comma" = "layout accordion horizontal vertical";
 
+            # Quick-jot notes doc
+            "alt-n" =
+              "exec-and-forget open 'https://docs.google.com/document/d/1Ekt01p9ZauyQp52dnRgrYBC3u9aM7e-lDQorn9cJTqM/edit?tab=t.0'";
+
             "alt-h" = "focus left";
             "alt-j" = "focus down";
             "alt-k" = "focus up";
