@@ -19,15 +19,16 @@ in
     # built-in model roles. Mirror the nix-managed config into each existing
     # overlay (same pattern as linkOhMyOpenagentOrcaHookConfig for opencode).
     # Overlays created after the last switch are picked up on the next one.
+    # Overlay dirs are nested (<uuid>::/<project path>@@<hash>), so locate the
+    # leaves by their agent.db instead of globbing one level.
     activation.linkOmpOrcaOverlayConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       ORCA_OVERLAYS_DIR="$HOME/Library/Application Support/orca/pi-agent-overlays"
 
       if [ -d "$ORCA_OVERLAYS_DIR" ]; then
-        for overlay_dir in "$ORCA_OVERLAYS_DIR"/*/; do
-          if [ -d "$overlay_dir" ]; then
-            ln -sf "$HOME/.omp/agent/config.yml" "$overlay_dir/config.yml"
-          fi
-        done
+        ${pkgs.findutils}/bin/find "$ORCA_OVERLAYS_DIR" -maxdepth 8 -type f -name agent.db 2>/dev/null |
+          while IFS= read -r db; do
+            ln -sf "$HOME/.omp/agent/config.yml" "$(dirname "$db")/config.yml"
+          done
       fi
     '';
   };
