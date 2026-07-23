@@ -1,38 +1,9 @@
-{ pkgs, ... }:
 let
-  # Summon the quick-jot notes doc: a dedicated Chrome app-mode window whose
-  # id is cached on first launch. alt-n yanks it to the focused workspace, or
-  # launches it if it's gone. AeroSpace has no sticky windows — this is the
-  # summon-on-demand equivalent.
+  # Quick-jot notes doc, kept as a Chrome app-mode window on workspace N.
+  # alt-n toggles there and back; the on-window-detected rule routes the
+  # window (matched by doc title) to N whenever it opens. AeroSpace has no
+  # sticky windows — this is the community-standard scratchpad emulation.
   notesUrl = "https://docs.google.com/document/d/1Ekt01p9ZauyQp52dnRgrYBC3u9aM7e-lDQorn9cJTqM/edit?tab=t.0";
-  summonNotes = pkgs.writeShellScript "summon-notes" ''
-    aero="${pkgs.aerospace}/bin/aerospace"
-    state="$HOME/.cache/notes-window-id"
-
-    if [ -f "$state" ]; then
-      id=$(cat "$state")
-      if [ -n "$id" ] && "$aero" list-windows --all --format '%{window-id}' | grep -qx "$id"; then
-        ws=$("$aero" list-workspaces --focused)
-        "$aero" move-node-to-workspace --focus-follows-window --window-id "$id" "$ws"
-        exit 0
-      fi
-    fi
-
-    before=$("$aero" list-windows --monitor all --app-bundle-id com.google.Chrome --format '%{window-id}' | sort)
-    /usr/bin/open -na "Google Chrome" --args --app="${notesUrl}"
-
-    for _ in $(seq 1 40); do
-      sleep 0.25
-      after=$("$aero" list-windows --monitor all --app-bundle-id com.google.Chrome --format '%{window-id}' | sort)
-      new_id=$(comm -13 <(printf '%s\n' "$before") <(printf '%s\n' "$after") | head -n1)
-      if [ -n "$new_id" ]; then
-        mkdir -p "$(dirname "$state")"
-        printf '%s' "$new_id" > "$state"
-        "$aero" layout floating --window-id "$new_id"
-        break
-      fi
-    done
-  '';
 in
 {
   programs.aerospace = {
@@ -65,6 +36,16 @@ in
         };
       };
 
+      "on-window-detected" = [
+        {
+          "if" = {
+            app-id = "com.google.Chrome";
+            window-title-regex-substring = "Matt's Notes";
+          };
+          run = "move-node-to-workspace N";
+        }
+      ];
+
       "mode" = {
         main = {
           binding = {
@@ -74,8 +55,9 @@ in
             "alt-slash" = "layout tiles horizontal vertical";
             "alt-comma" = "layout accordion horizontal vertical";
 
-            # Quick-jot notes doc: summon its window here, or launch it
-            "alt-n" = "exec-and-forget ${summonNotes}";
+            # Quick-jot notes: toggle to workspace N and back; shift launches
+            "alt-n" = "workspace --auto-back-and-forth N";
+            "alt-shift-n" = "exec-and-forget /usr/bin/open -na 'Google Chrome' --args --app='${notesUrl}'";
 
             "alt-h" = "focus left";
             "alt-j" = "focus down";
