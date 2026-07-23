@@ -18,12 +18,12 @@ let
       fi
     fi
 
-    before=$("$aero" list-windows --all --app-bundle-id com.google.Chrome --format '%{window-id}' | sort)
+    before=$("$aero" list-windows --monitor all --app-bundle-id com.google.Chrome --format '%{window-id}' | sort)
     /usr/bin/open -na "Google Chrome" --args --app="${notesUrl}"
 
     for _ in $(seq 1 40); do
       sleep 0.25
-      after=$("$aero" list-windows --all --app-bundle-id com.google.Chrome --format '%{window-id}' | sort)
+      after=$("$aero" list-windows --monitor all --app-bundle-id com.google.Chrome --format '%{window-id}' | sort)
       new_id=$(comm -13 <(printf '%s\n' "$before") <(printf '%s\n' "$after") | head -n1)
       if [ -n "$new_id" ]; then
         mkdir -p "$(dirname "$state")"
