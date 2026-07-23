@@ -49,7 +49,7 @@
         pr = "";
       };
       enabledPlugins = {
-        "claude-mem@thedotmack" = true;
+        "claude-mem@thedotmack" = false; # temporarily disabled
         "codex@openai-codex" = true;
         "improve-claude-md@skills" = true;
       };
