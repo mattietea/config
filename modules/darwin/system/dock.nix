@@ -90,4 +90,24 @@ in
 
     spaces.spans-displays = false;
   };
+
+  # nix-darwin rewrites the Downloads tile on every activation, resetting its
+  # stack sort to Name. persistent-others carries no sort option, so patch
+  # arrangement (2 = Date Added) into the tile afterwards; home-manager
+  # activation runs after the system defaults + Dock restart.
+  home-manager.users.${settings.username}.home.activation.dockDownloadsSortByDateAdded = {
+    after = [ "writeBoundary" ];
+    before = [ ];
+    data = ''
+      dockPlist="$HOME/Library/Preferences/com.apple.dock.plist"
+      if /usr/libexec/PlistBuddy -c "Print :persistent-others:0:tile-data:file-data:_CFURLString" "$dockPlist" 2>/dev/null | grep -q "/Downloads"; then
+        current=$(/usr/libexec/PlistBuddy -c "Print :persistent-others:0:tile-data:arrangement" "$dockPlist" 2>/dev/null || echo missing)
+        if [ "$current" != "2" ]; then
+          /usr/libexec/PlistBuddy -c "Set :persistent-others:0:tile-data:arrangement 2" "$dockPlist" 2>/dev/null ||
+            /usr/libexec/PlistBuddy -c "Add :persistent-others:0:tile-data:arrangement integer 2" "$dockPlist"
+          /usr/bin/killall Dock || true
+        fi
+      fi
+    '';
+  };
 }
