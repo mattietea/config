@@ -24,13 +24,14 @@
       # auto-register the MCP server. The CJS bundle is installed under the
       # claude-code marketplace cache (claude-mem@thedotmack is enabled there).
       # See modules/ai/harnesses/opencode/default.nix for the plugin install.
-      claude-mem = {
-        type = "stdio";
-        command = "${pkgs.nodejs}/bin/node";
-        args = [
-          "${config.home.homeDirectory}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/mcp-server.cjs"
-        ];
-      };
+      # Temporarily disabled:
+      # claude-mem = {
+      #   type = "stdio";
+      #   command = "${pkgs.nodejs}/bin/node";
+      #   args = [
+      #     "${config.home.homeDirectory}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/mcp-server.cjs"
+      #   ];
+      # };
     };
   };
 }

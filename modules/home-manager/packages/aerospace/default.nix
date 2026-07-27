@@ -1,4 +1,11 @@
-_: {
+let
+  # Quick-jot notes doc, kept as a Chrome app-mode window on workspace N.
+  # alt-n toggles there and back; the on-window-detected rule routes the
+  # window (matched by doc title) to N whenever it opens. AeroSpace has no
+  # sticky windows — this is the community-standard scratchpad emulation.
+  notesUrl = "https://docs.google.com/document/d/1Ekt01p9ZauyQp52dnRgrYBC3u9aM7e-lDQorn9cJTqM/edit?tab=t.0";
+in
+{
   programs.aerospace = {
     enable = true;
     launchd.enable = true;
@@ -29,6 +36,16 @@ _: {
         };
       };
 
+      "on-window-detected" = [
+        {
+          "if" = {
+            app-id = "com.google.Chrome";
+            window-title-regex-substring = "Matt's Notes";
+          };
+          run = "move-node-to-workspace N";
+        }
+      ];
+
       "mode" = {
         main = {
           binding = {
@@ -37,6 +54,10 @@ _: {
 
             "alt-slash" = "layout tiles horizontal vertical";
             "alt-comma" = "layout accordion horizontal vertical";
+
+            # Quick-jot notes: toggle to workspace N and back; shift launches
+            "alt-n" = "workspace --auto-back-and-forth N";
+            "alt-shift-n" = "exec-and-forget /usr/bin/open -na 'Google Chrome' --args --app='${notesUrl}'";
 
             "alt-h" = "focus left";
             "alt-j" = "focus down";

@@ -85,7 +85,14 @@ in
       # don't survive a switch. Paths must be absolute — the Dock stores
       # them verbatim and won't expand `~`.
       persistent-apps = map (e: e.appPath) filteredApps;
-      persistent-others = [ "/Users/${settings.username}/Downloads" ];
+      persistent-others = [
+        {
+          folder = {
+            path = "/Users/${settings.username}/Downloads";
+            arrangement = "date-added";
+          };
+        }
+      ];
     };
 
     spaces.spans-displays = false;

@@ -34,6 +34,18 @@
       skills = [ "linear-cli" ];
       packages = [ pkgs.linear-cli ];
     };
+    # FEPLAT ticket flow: /to-spec writes the agreed spec to ~/notes,
+    # /to-tickets scaffolds tracer-slice tickets, /work drives one ticket to a
+    # PR. Conventions live in instructions/work.md.
+    linear-flow = {
+      enable = true;
+      skills = [
+        "to-spec"
+        "to-tickets"
+        "work"
+      ];
+      sources.linear-flow.path = ../skills/linear-flow;
+    };
     worktrunk = {
       enable = true;
       sources.worktrunk = {

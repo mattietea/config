@@ -55,13 +55,64 @@ in
       skills = [ "git-machete" ];
       sources.local.path = ../skills/git-machete;
     };
+    # Own take on mattpocock's research skill: same background-agent contract,
+    # but findings land in ~/notes (never in a work repo) per the instructions.
+    research = {
+      enable = true;
+      skills = [ "research" ];
+      sources.research.path = ../skills/research;
+    };
     react-testing-library = {
       enable = true;
-      skills = [ "itechmeat/react-testing-library" ];
+      explicitSkills.react-testing-library.from = "itechmeat";
       sources.itechmeat = {
         path = sources.itechmeat-skills.src;
         subdir = "skills";
         idPrefix = "itechmeat";
+      };
+    };
+    # Engineering-process skills from mattpocock/skills, taken verbatim.
+    # Repo-touching skills (grill-with-docs, domain-modeling, to-spec,
+    # to-tickets, triage) are deliberately excluded — tracker facts live in
+    # the instruction files and the Linear-native flow in tools/work.nix.
+    mattpocock = {
+      enable = true;
+      # Explicit flat ids: harnesses only discover skills one directory deep,
+      # so the idPrefix-namespaced ids (mattpocock/tdd) would be invisible.
+      explicitSkills =
+        lib.genAttrs
+          [
+            "tdd"
+            "diagnosing-bugs"
+            "prototype"
+            "codebase-design"
+            "resolving-merge-conflicts"
+          ]
+          (_: {
+            from = "mattpocock-engineering";
+          })
+        //
+          lib.genAttrs
+            [
+              "grilling"
+              "grill-me"
+              "handoff"
+              "writing-great-skills"
+            ]
+            (_: {
+              from = "mattpocock-productivity";
+            });
+      sources = {
+        mattpocock-engineering = {
+          path = sources.mattpocock-skills.src;
+          subdir = "skills/engineering";
+          idPrefix = "mattpocock";
+        };
+        mattpocock-productivity = {
+          path = sources.mattpocock-skills.src;
+          subdir = "skills/productivity";
+          idPrefix = "mattpocock";
+        };
       };
     };
   };
