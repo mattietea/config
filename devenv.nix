@@ -27,9 +27,26 @@
     update.exec = ''
       set -euo pipefail
       ulimit -n 4096
+
+      update_github_token="''${GH_TOKEN:-''${GITHUB_TOKEN:-}}"
+      if [[ -z "$update_github_token" ]]; then
+        update_github_token="$(${pkgs.gh}/bin/gh auth token 2>/dev/null || true)"
+      fi
+      update_nvfetcher_args=()
+      if [[ -n "$update_github_token" ]]; then
+        export NIX_CONFIG="''${NIX_CONFIG:-}
+        extra-access-tokens = github.com=$update_github_token"
+
+        update_nvchecker_keyfile="$(mktemp)"
+        chmod 600 "$update_nvchecker_keyfile"
+        trap 'rm -f "$update_nvchecker_keyfile"' EXIT
+        printf '[keys]\n"github.com" = "%s"\n' "$update_github_token" > "$update_nvchecker_keyfile"
+        update_nvfetcher_args=(--keyfile "$update_nvchecker_keyfile")
+      fi
+
       devenv update
       nix flake update
-      nvfetcher
+      nvfetcher "''${update_nvfetcher_args[@]}"
     '';
 
     lint.exec = ''
