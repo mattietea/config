@@ -126,7 +126,7 @@ Use the **agent-browser** skill. Only use Chrome DevTools MCP when I explicitly 
 
 <important if="you are splitting a large PR, creating stacked PRs, managing branch dependencies, or rebasing a chain of branches">
 
-Use the **git-machete** skill (`/git-machete`). Use `git m` (alias for `git machete`) to manage stacked branch trees and create PRs that show their position in the stack.
+Use the **gh-stack** skill (`/gh-stack`). Use `gh stack` to manage stacked branches and pull requests.
 
 </important>
 
