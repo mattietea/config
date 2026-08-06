@@ -1,4 +1,9 @@
-{ lib, sources, ... }:
+{
+  lib,
+  pkgs,
+  sources,
+  ...
+}:
 let
   # Tools whose skills come from a shared base source (anthropic et al.) and so
   # carry no source of their own.
@@ -50,10 +55,13 @@ in
         subdir = "plugins/improve-claude-md/skills";
       };
     };
-    git-machete = {
+    gh-stack = {
       enable = true;
-      skills = [ "git-machete" ];
-      sources.local.path = ../skills/git-machete;
+      skills = [ "gh-stack" ];
+      sources.gh-stack = {
+        path = pkgs.gh-stack.src;
+        subdir = "skills";
+      };
     };
     # Own take on mattpocock's research skill: same background-agent contract,
     # but findings land in ~/notes (never in a work repo) per the instructions.
@@ -97,7 +105,7 @@ in
               "grilling"
               "grill-me"
               "handoff"
-              "writing-great-skills"
+              "writing-for-agents"
             ]
             (_: {
               from = "mattpocock-productivity";
