@@ -105,7 +105,7 @@ in
               "grilling"
               "grill-me"
               "handoff"
-              "writing-great-skills"
+              "writing-for-agents"
             ]
             (_: {
               from = "mattpocock-productivity";

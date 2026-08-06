@@ -25,9 +25,11 @@
     # One mechanism for every non-flake-input dependency — replaces the old
     # update-clis script.
     update.exec = ''
-      devenv update;
-      nix flake update;
-      nvfetcher;
+      set -euo pipefail
+      ulimit -n 4096
+      devenv update
+      nix flake update
+      nvfetcher
     '';
 
     lint.exec = ''
