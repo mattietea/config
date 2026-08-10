@@ -8,17 +8,17 @@
 {
   agent-browser-skills = {
     pname = "agent-browser-skills";
-    version = "acbc22bdc5d4f6c5a88d97d4a4745d3c5eb0591f";
+    version = "861e76ddf48ea48f4ce5fe0e79dc725b084d0e8b";
     src = fetchgit {
       url = "https://github.com/vercel-labs/agent-browser";
-      rev = "acbc22bdc5d4f6c5a88d97d4a4745d3c5eb0591f";
+      rev = "861e76ddf48ea48f4ce5fe0e79dc725b084d0e8b";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-GtN5IvyBSvOJ76lB5LSYNGr1m9MhpBDNASG/8iH3tVM=";
+      sha256 = "sha256-zsXcEBAdEMdtFX63idphwYerpdgYBMskJ7utuKiHqTI=";
     };
-    date = "2026-08-05";
+    date = "2026-08-10";
   };
   agent-slack = {
     pname = "agent-slack";
@@ -72,10 +72,10 @@
   };
   claude-mem = {
     pname = "claude-mem";
-    version = "13.14.0";
+    version = "13.15.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/claude-mem/-/claude-mem-13.14.0.tgz";
-      sha256 = "sha256-37uDw1ySeT/zArYzAIEhu5fihv+ZJvq2hjFl2J+SFR0=";
+      url = "https://registry.npmjs.org/claude-mem/-/claude-mem-13.15.0.tgz";
+      sha256 = "sha256-bYkIvYqFmsZg7Nf2kiChX+4Y+xDVHwJr+FzLk58Z0E0=";
     };
   };
   context7-skills = {
@@ -196,15 +196,15 @@
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "56b6d845e013f7e94d3a031ad7e22b9de0821056";
+    version = "8da362919e4a79122b6655c778d8808c690ec47e";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "56b6d845e013f7e94d3a031ad7e22b9de0821056";
+      rev = "8da362919e4a79122b6655c778d8808c690ec47e";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-emEEskprW0IWM8Lj445q5vSbA1HaNVekq+sJXErQEZQ=";
+      sha256 = "sha256-uuaMHpDtIRsW+xx1NAQ7ypoBxwSlSw4xRP8Ig8eMFJc=";
     };
     date = "2026-08-10";
   };
@@ -232,31 +232,31 @@
   };
   pup-skills = {
     pname = "pup-skills";
-    version = "5c47c9c49a72417984a9db2540d2dbc5a0150b69";
+    version = "28dd51b42f1cfb8b94f3e7f1661e77c67e9d5907";
     src = fetchgit {
       url = "https://github.com/datadog-labs/pup";
-      rev = "5c47c9c49a72417984a9db2540d2dbc5a0150b69";
+      rev = "28dd51b42f1cfb8b94f3e7f1661e77c67e9d5907";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-PSfWundBHpT0fgkeSB0bB2QANSvtWQy+HbcSfFirBpc=";
+      sha256 = "sha256-rl51fqtaXDoa9l91WsvTbVWBOz/YtCopvcHSUaEtzb4=";
     };
-    date = "2026-08-07";
+    date = "2026-08-10";
   };
   vercel-skills-cli = {
     pname = "vercel-skills-cli";
-    version = "941a7bcfeca4bf07913b9fb6f8ed81f20ff5297c";
+    version = "c6f69c631292444cc541ac6d91e2226b0ff247da";
     src = fetchgit {
       url = "https://github.com/vercel-labs/skills";
-      rev = "941a7bcfeca4bf07913b9fb6f8ed81f20ff5297c";
+      rev = "c6f69c631292444cc541ac6d91e2226b0ff247da";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-PLt/ECv/rg9viV6JzfEoBfBo+ELsMpcXfS6OZ4saDhk=";
+      sha256 = "sha256-ysEI0AfD360OBRSKX+5HX60DCo0gM0eiuUkpfMIqZOg=";
     };
-    date = "2026-08-07";
+    date = "2026-08-10";
   };
   wacli = {
     pname = "wacli";
@@ -268,17 +268,17 @@
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "897f7d71938e15a4b446281c61f1fbb2c5767d18";
+    version = "8bf8ae44a50f58aeba886474f81faf94bb114cf1";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "897f7d71938e15a4b446281c61f1fbb2c5767d18";
+      rev = "8bf8ae44a50f58aeba886474f81faf94bb114cf1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-91e7nnfxmQQFG6df0az9995QSUzWOTj5EdTE7XaihGg=";
+      sha256 = "sha256-bdTHvOvU0kQVxS081ZU8i+jHszbuzijpYLnMpHB8vHo=";
     };
-    date = "2026-08-09";
+    date = "2026-08-10";
   };
   wshobson-agents = {
     pname = "wshobson-agents";
