@@ -58,17 +58,17 @@
   };
   chrome-devtools-mcp-skills = {
     pname = "chrome-devtools-mcp-skills";
-    version = "8028bfe3abaecb67422530d05327c5ec72c53753";
+    version = "073d4a39e9c96b17936d3cdc4bdea69977f0cca6";
     src = fetchgit {
       url = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
-      rev = "8028bfe3abaecb67422530d05327c5ec72c53753";
+      rev = "073d4a39e9c96b17936d3cdc4bdea69977f0cca6";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-h3sfnIoxPK6ckmccE2/g6Za+A6anjFv282nWAqlPlUM=";
+      sha256 = "sha256-YtKbV3d+xNLWR1cdlDW7HwOW8EV3sambcUDDUzfkh2k=";
     };
-    date = "2026-08-07";
+    date = "2026-08-10";
   };
   claude-mem = {
     pname = "claude-mem";
@@ -80,17 +80,17 @@
   };
   context7-skills = {
     pname = "context7-skills";
-    version = "6a799754d01aa27f1eee40d712651ebc31ffedce";
+    version = "895c5c399752109be3bd78fa5f0c2e1f5b5a1420";
     src = fetchgit {
       url = "https://github.com/upstash/context7";
-      rev = "6a799754d01aa27f1eee40d712651ebc31ffedce";
+      rev = "895c5c399752109be3bd78fa5f0c2e1f5b5a1420";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-QTkRTESdC3EeXG+iDRHjjUuhniqIKhPZY4CU+UzcM1g=";
+      sha256 = "sha256-kBESFdZn+zVDnWvAhGgjhRw3mDRyO9jfjl6pZDkT4N0=";
     };
-    date = "2026-08-09";
+    date = "2026-08-10";
   };
   dot-skills = {
     pname = "dot-skills";
@@ -180,10 +180,10 @@
   };
   oh-my-openagent = {
     pname = "oh-my-openagent";
-    version = "5.0.0-beta.3";
+    version = "5.0.0-beta.5";
     src = fetchurl {
-      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.3.tar.gz";
-      sha256 = "sha256-OOP6/4ciaLFn6NbjHUR9rFiE+7GxvvJMXm7kxfFXoz4=";
+      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.5.tar.gz";
+      sha256 = "sha256-ErfX1tMJo3A5DMBXg2mpYoS/E2MAvMJE8xNZ6LIgaZo=";
     };
   };
   omp = {
@@ -196,17 +196,17 @@
   };
   orca-skills = {
     pname = "orca-skills";
-    version = "a3ca887a3c08439a89c9ce7db95f480ef29c5384";
+    version = "56b6d845e013f7e94d3a031ad7e22b9de0821056";
     src = fetchgit {
       url = "https://github.com/stablyai/orca";
-      rev = "a3ca887a3c08439a89c9ce7db95f480ef29c5384";
+      rev = "56b6d845e013f7e94d3a031ad7e22b9de0821056";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-OTgfDmXLRL5KT52+JWbMQrcIVrcy5qVM0cElXENFSuI=";
+      sha256 = "sha256-emEEskprW0IWM8Lj445q5vSbA1HaNVekq+sJXErQEZQ=";
     };
-    date = "2026-08-09";
+    date = "2026-08-10";
   };
   playwriter-skills = {
     pname = "playwriter-skills";
