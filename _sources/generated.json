@@ -76,7 +76,7 @@
     },
     "chrome-devtools-mcp-skills": {
         "cargoLock": null,
-        "date": "2026-08-07",
+        "date": "2026-08-10",
         "extract": null,
         "name": "chrome-devtools-mcp-skills",
         "passthru": null,
@@ -86,13 +86,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "8028bfe3abaecb67422530d05327c5ec72c53753",
-            "sha256": "sha256-h3sfnIoxPK6ckmccE2/g6Za+A6anjFv282nWAqlPlUM=",
+            "rev": "073d4a39e9c96b17936d3cdc4bdea69977f0cca6",
+            "sha256": "sha256-YtKbV3d+xNLWR1cdlDW7HwOW8EV3sambcUDDUzfkh2k=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
         },
-        "version": "8028bfe3abaecb67422530d05327c5ec72c53753"
+        "version": "073d4a39e9c96b17936d3cdc4bdea69977f0cca6"
     },
     "claude-mem": {
         "cargoLock": null,
@@ -111,7 +111,7 @@
     },
     "context7-skills": {
         "cargoLock": null,
-        "date": "2026-08-09",
+        "date": "2026-08-10",
         "extract": null,
         "name": "context7-skills",
         "passthru": null,
@@ -121,13 +121,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "6a799754d01aa27f1eee40d712651ebc31ffedce",
-            "sha256": "sha256-QTkRTESdC3EeXG+iDRHjjUuhniqIKhPZY4CU+UzcM1g=",
+            "rev": "895c5c399752109be3bd78fa5f0c2e1f5b5a1420",
+            "sha256": "sha256-kBESFdZn+zVDnWvAhGgjhRw3mDRyO9jfjl6pZDkT4N0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/upstash/context7"
         },
-        "version": "6a799754d01aa27f1eee40d712651ebc31ffedce"
+        "version": "895c5c399752109be3bd78fa5f0c2e1f5b5a1420"
     },
     "dot-skills": {
         "cargoLock": null,
@@ -268,11 +268,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-OOP6/4ciaLFn6NbjHUR9rFiE+7GxvvJMXm7kxfFXoz4=",
+            "sha256": "sha256-ErfX1tMJo3A5DMBXg2mpYoS/E2MAvMJE8xNZ6LIgaZo=",
             "type": "url",
-            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.3.tar.gz"
+            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.5.tar.gz"
         },
-        "version": "5.0.0-beta.3"
+        "version": "5.0.0-beta.5"
     },
     "omp": {
         "cargoLock": null,
@@ -291,7 +291,7 @@
     },
     "orca-skills": {
         "cargoLock": null,
-        "date": "2026-08-09",
+        "date": "2026-08-10",
         "extract": null,
         "name": "orca-skills",
         "passthru": null,
@@ -301,13 +301,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "a3ca887a3c08439a89c9ce7db95f480ef29c5384",
-            "sha256": "sha256-OTgfDmXLRL5KT52+JWbMQrcIVrcy5qVM0cElXENFSuI=",
+            "rev": "56b6d845e013f7e94d3a031ad7e22b9de0821056",
+            "sha256": "sha256-emEEskprW0IWM8Lj445q5vSbA1HaNVekq+sJXErQEZQ=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/stablyai/orca"
         },
-        "version": "a3ca887a3c08439a89c9ce7db95f480ef29c5384"
+        "version": "56b6d845e013f7e94d3a031ad7e22b9de0821056"
     },
     "playwriter-skills": {
         "cargoLock": null,
