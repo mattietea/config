@@ -27,7 +27,9 @@ in
     provider = "agent-browser";
   };
 
-  ralph_loop = {
+  # Successor of the deprecated ralph_loop (which logged a warning on every
+  # config read and got auto-migrated to this shape anyway).
+  goal = {
     enabled = true;
     default_max_iterations = 100;
   };
