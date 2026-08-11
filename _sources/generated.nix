@@ -194,19 +194,32 @@
       sha256 = "sha256-q0/yTIujrm/Z1LVJaclPRAjMMWZ19VNHKa5QLYyX33Q=";
     };
   };
+  orca-arm64 = {
+    pname = "orca-arm64";
+    version = "1.4.179";
+    src = fetchurl {
+      url = "https://github.com/stablyai/orca/releases/download/v1.4.179/Orca-1.4.179-arm64-mac.zip";
+      sha256 = "sha256-09rOz2odDHy88IiA7DufZLK4oFjunjTfHy4gpqzom8I=";
+    };
+  };
   orca-skills = {
     pname = "orca-skills";
-    version = "8da362919e4a79122b6655c778d8808c690ec47e";
-    src = fetchgit {
-      url = "https://github.com/stablyai/orca";
-      rev = "8da362919e4a79122b6655c778d8808c690ec47e";
+    version = "v1.4.179";
+    src = fetchFromGitHub {
+      owner = "stablyai";
+      repo = "orca";
+      rev = "v1.4.179";
       fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-uuaMHpDtIRsW+xx1NAQ7ypoBxwSlSw4xRP8Ig8eMFJc=";
+      sha256 = "sha256-ORKlOwt0rB65MkjH3NPN8BqVojpkYtDFQ0up8OXqXP8=";
     };
-    date = "2026-08-10";
+  };
+  orca-x64 = {
+    pname = "orca-x64";
+    version = "1.4.179";
+    src = fetchurl {
+      url = "https://github.com/stablyai/orca/releases/download/v1.4.179/Orca-1.4.179-mac.zip";
+      sha256 = "sha256-qB2FfG/zeevSh2qzJoxEYcREWOmAvcOLYgydL3DJ7RE=";
+    };
   };
   playwriter-skills = {
     pname = "playwriter-skills";

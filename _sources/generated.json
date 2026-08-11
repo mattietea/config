@@ -289,9 +289,24 @@
         },
         "version": "17.2.12"
     },
+    "orca-arm64": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "orca-arm64",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-09rOz2odDHy88IiA7DufZLK4oFjunjTfHy4gpqzom8I=",
+            "type": "url",
+            "url": "https://github.com/stablyai/orca/releases/download/v1.4.179/Orca-1.4.179-arm64-mac.zip"
+        },
+        "version": "1.4.179"
+    },
     "orca-skills": {
         "cargoLock": null,
-        "date": "2026-08-10",
+        "date": null,
         "extract": null,
         "name": "orca-skills",
         "passthru": null,
@@ -301,13 +316,29 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "8da362919e4a79122b6655c778d8808c690ec47e",
-            "sha256": "sha256-uuaMHpDtIRsW+xx1NAQ7ypoBxwSlSw4xRP8Ig8eMFJc=",
+            "owner": "stablyai",
+            "repo": "orca",
+            "rev": "v1.4.179",
+            "sha256": "sha256-ORKlOwt0rB65MkjH3NPN8BqVojpkYtDFQ0up8OXqXP8=",
             "sparseCheckout": [],
-            "type": "git",
-            "url": "https://github.com/stablyai/orca"
+            "type": "github"
         },
-        "version": "8da362919e4a79122b6655c778d8808c690ec47e"
+        "version": "v1.4.179"
+    },
+    "orca-x64": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "orca-x64",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-qB2FfG/zeevSh2qzJoxEYcREWOmAvcOLYgydL3DJ7RE=",
+            "type": "url",
+            "url": "https://github.com/stablyai/orca/releases/download/v1.4.179/Orca-1.4.179-mac.zip"
+        },
+        "version": "1.4.179"
     },
     "playwriter-skills": {
         "cargoLock": null,
