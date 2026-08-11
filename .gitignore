@@ -16,3 +16,6 @@ devenv.local.yaml
 
 # oh-my-claudecode
 .omc/
+
+# oh-my-opencode
+.omo/
