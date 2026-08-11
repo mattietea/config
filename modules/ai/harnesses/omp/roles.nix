@@ -5,7 +5,7 @@ let
   models = import ../opencode/models.nix;
 in
 {
-  default = models.sonnet;
+  default = "${models.fable}:high";
   smol = models.haiku;
   slow = "${models.fable}:high";
   plan = "${models.fable}:high";
