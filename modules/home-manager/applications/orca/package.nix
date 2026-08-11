@@ -1,31 +1,21 @@
 {
   lib,
   stdenvNoCC,
-  fetchurl,
+  sources,
   unzip,
 }:
 let
-  version = "1.4.16";
-
-  sources = {
-    aarch64-darwin = {
-      url = "https://github.com/stablyai/orca/releases/download/v${version}/Orca-${version}-arm64-mac.zip";
-      hash = "sha256-8SE6BDZmm9PvvILOwVv6RH3bSp+dwm8c4Q7Ail6p7z8=";
-    };
-    x86_64-darwin = {
-      url = "https://github.com/stablyai/orca/releases/download/v${version}/Orca-${version}-mac.zip";
-      hash = "sha256-a/8sSmH5pmTcmKkrr9/wyR7fFc/dNzGmu4lT8MhhkY4=";
-    };
+  sourceName = {
+    aarch64-darwin = "orca-arm64";
+    x86_64-darwin = "orca-x64";
   };
 
   system = stdenvNoCC.hostPlatform.system;
-  source = sources.${system} or (throw "orca: unsupported system ${system}");
+  source = sources.${sourceName.${system} or (throw "orca: unsupported system ${system}")};
 in
 stdenvNoCC.mkDerivation {
   pname = "orca";
-  inherit version;
-
-  src = fetchurl source;
+  inherit (source) src version;
 
   sourceRoot = ".";
 

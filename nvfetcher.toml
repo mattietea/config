@@ -72,6 +72,17 @@ src.github = "zed-industries/zed"
 src.prefix = "v"
 fetch.url = "https://github.com/zed-industries/zed/releases/download/v$ver/Zed-aarch64.dmg"
 
+# Orca ships separate signed macOS archives for Apple Silicon and Intel.
+[orca-arm64]
+src.github = "stablyai/orca"
+src.prefix = "v"
+fetch.url = "https://github.com/stablyai/orca/releases/download/v$ver/Orca-$ver-arm64-mac.zip"
+
+[orca-x64]
+src.github = "stablyai/orca"
+src.prefix = "v"
+fetch.url = "https://github.com/stablyai/orca/releases/download/v$ver/Orca-$ver-mac.zip"
+
 # Agent-skill sources — repos consumed by agent-skills-nix via path = sources.X.src.
 # Tracked at branch HEAD (these repos cut no releases), pinned by commit + hash.
 [anthropic-skills]
@@ -144,10 +155,10 @@ src.git = "https://github.com/mattpocock/skills"
 src.branch = "main"
 fetch.git = "https://github.com/mattpocock/skills"
 
+# Orca's skill is pinned to its latest stable release rather than branch HEAD.
 [orca-skills]
-src.git = "https://github.com/stablyai/orca"
-src.branch = "main"
-fetch.git = "https://github.com/stablyai/orca"
+src.github = "stablyai/orca"
+fetch.github = "stablyai/orca"
 
 [agent-slack-skills]
 src.git = "https://github.com/stablyai/agent-slack"
