@@ -42,6 +42,10 @@ in
     };
     tui = {
       theme = "system";
+      # The TUI loads plugins from its own list; without this entry the
+      # oh-my-openagent sidebar/commands vanish until opencode rewrites
+      # tui.json at runtime.
+      plugin = [ "oh-my-openagent@${sources.oh-my-openagent.version}" ];
     };
   };
 
@@ -59,30 +63,19 @@ in
 
   # Clean stale opencode runtime state on each activation.
   # model.json holds a remembered model picker that can reference old/invalid models.
-  # The plugin creates .bak.* and .migrations.json files when it tries (and fails)
-  # to rewrite the nix-managed read-only symlink.
-  # (oh-my-openagent is now version-pinned in the plugin list above, so the bun
-  # cache is version-keyed and refetches on bump — the @latest cache wipe is gone.)
   home.activation = {
     cleanOpencodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       rm -f "$HOME/.local/state/opencode/model.json"
-      rm -f "$HOME/.config/opencode/oh-my-openagent.json.bak."*
-      rm -f "$HOME/.config/opencode/oh-my-openagent.json.migrations.json"
     '';
 
-    # Orca launches opencode with OPENCODE_CONFIG_DIR pointed at its hook
-    # directory so its status plugin can be injected. oh-my-openagent also reads
-    # its config from OPENCODE_CONFIG_DIR, so mirror the nix-managed config into
-    # each Orca hook dir instead of letting it fall back to plugin defaults.
-    linkOhMyOpenagentOrcaHookConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    # oh-my-openagent 5.x reads its config from ~/.omo/omo.jsonc only. Remove
+    # the 4.x-era config mirrors previously symlinked into Orca's
+    # OPENCODE_CONFIG_DIR hook dirs (they now dangle).
+    cleanOrcaHookConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       ORCA_HOOKS_DIR="$HOME/Library/Application Support/orca/opencode-hooks"
 
       if [ -d "$ORCA_HOOKS_DIR" ]; then
-        for hook_dir in "$ORCA_HOOKS_DIR"/*; do
-          if [ -d "$hook_dir" ]; then
-            ln -sf "$HOME/.config/opencode/oh-my-openagent.json" "$hook_dir/oh-my-openagent.json"
-          fi
-        done
+        find "$ORCA_HOOKS_DIR" -maxdepth 2 -name oh-my-openagent.json -type l -delete
       fi
     '';
   };

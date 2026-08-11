@@ -21,9 +21,6 @@ let
   };
 in
 {
-  "$schema" =
-    "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
-
   model_fallback = true;
 
   browser_automation_engine = {
@@ -59,8 +56,10 @@ in
 
   team_mode = {
     enabled = true;
-    max_parallel_members = 12;
-    max_members = 16;
+    # Schema caps both at 8 (values above fail validation, which silently
+    # disables team_mode and the team_* tools entirely).
+    max_parallel_members = 8;
+    max_members = 8;
     tmux_visualization = false;
   };
 

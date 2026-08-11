@@ -63,8 +63,9 @@ let
       };
       modelConcurrency = baseConfig.background_task.modelConcurrency // {
         "${models.fable}" = 12;
+        # gpt and gptStd currently resolve to the same id (no -pro variant
+        # exists), so a single entry covers both.
         "${models.gpt}" = 12;
-        "${models.gptStd}" = 12;
       };
     };
     categories = baseConfig.categories // {
@@ -86,13 +87,22 @@ let
   };
 in
 {
+  # oh-my-openagent 5.x reads its unified config from ~/.omo/omo.jsonc (the
+  # legacy ~/.config/opencode/oh-my-openagent.json is treated as a migration
+  # source it can never delete out of the read-only nix store). Manage the
+  # unified file directly, harness-scoped under "[opencode]", with the
+  # migration marker so the plugin never re-runs the legacy migration.
   # force = true so home-manager re-establishes its symlink even after the
-  # opencode plugin atomically rewrites the file in place (renameSync), which
-  # would otherwise leave a stale user-owned regular file with drifted values
-  # (notably git_master.include_co_authored_by) at this path.
-  home.file.".config/opencode/oh-my-openagent.json" = {
+  # plugin atomically rewrites the file in place (renameSync), which would
+  # otherwise leave a stale user-owned regular file at this path.
+  home.file.".omo/omo.jsonc" = {
     force = true;
-    text = builtins.toJSON config;
+    text = builtins.toJSON {
+      "$schema" =
+        "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/omo.schema.json";
+      "[opencode]" = config;
+      _migrations = [ "2026-07-opencode-config-unification" ];
+    };
   };
 
   programs.zsh.initContent = ''
