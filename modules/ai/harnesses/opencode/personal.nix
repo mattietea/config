@@ -23,7 +23,14 @@ in
       "$schema" =
         "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/omo.schema.json";
       "[opencode]" = config;
-      _migrations = [ "2026-07-opencode-config-unification" ];
+      # Mark plugin config migrations as applied — the plugin can't (and
+      # mustn't) rewrite this read-only nix-managed file. When a new omo
+      # version ships a new migration id, add it here and apply the shape
+      # change to this config by hand.
+      _migrations = [
+        "2026-07-opencode-config-unification"
+        "2026-08-reasoning-unification"
+      ];
     };
   };
 }
