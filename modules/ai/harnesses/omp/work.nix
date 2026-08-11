@@ -15,6 +15,12 @@ let
 in
 {
   home.file.".omp/agent/config.yml".source = lib.mkForce (
-    yamlFormat.generate "omp-config.yml" { modelRoles = roles; }
+    yamlFormat.generate "omp-config.yml" {
+      modelRoles = roles;
+      # Keep in sync with ./default.nix — wizard state must be pinned in
+      # every config.yml variant (read-only nix symlink).
+      setupVersion = 1;
+      providers.webSearch = "auto";
+    }
   );
 }

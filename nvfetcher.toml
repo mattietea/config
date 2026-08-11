@@ -46,13 +46,6 @@ src.github = "stablyai/agent-slack"
 src.prefix = "v"
 fetch.url = "https://github.com/stablyai/agent-slack/releases/download/v$ver/agent-slack-darwin-arm64"
 
-# omp (oh-my-pi, omp.sh) ships a raw prebuilt binary per platform as a
-# release asset (no archive), same shape as agent-slack.
-[omp]
-src.github = "can1357/oh-my-pi"
-src.prefix = "v"
-fetch.url = "https://github.com/can1357/oh-my-pi/releases/download/v$ver/omp-darwin-arm64"
-
 # claude-mem ships a fully self-contained prebuilt npm tarball: the CLI
 # (dist/npx-cli/index.js) and every plugin script (plugin/scripts/*.cjs) are
 # pre-bundled with dependencies inlined, so there are no node_modules to build.
