@@ -55,21 +55,6 @@
       };
       skills = [ "worktrunk" ];
     };
-    chrome-devtools = {
-      enable = true;
-      sources.chrome-devtools-mcp = {
-        path = sources.chrome-devtools-mcp-skills.src;
-        subdir = "skills";
-      };
-      skills = [
-        "chrome-devtools"
-        "chrome-devtools-cli"
-        "a11y-debugging"
-        "debug-optimize-lcp"
-        "memory-leak-debugging"
-        "troubleshooting"
-      ];
-    };
     agent-slack = {
       enable = true;
       sources.agent-slack = {

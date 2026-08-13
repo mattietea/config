@@ -56,20 +56,6 @@
     };
     date = "2026-08-07";
   };
-  chrome-devtools-mcp-skills = {
-    pname = "chrome-devtools-mcp-skills";
-    version = "073d4a39e9c96b17936d3cdc4bdea69977f0cca6";
-    src = fetchgit {
-      url = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
-      rev = "073d4a39e9c96b17936d3cdc4bdea69977f0cca6";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-YtKbV3d+xNLWR1cdlDW7HwOW8EV3sambcUDDUzfkh2k=";
-    };
-    date = "2026-08-10";
-  };
   claude-mem = {
     pname = "claude-mem";
     version = "13.15.0";
@@ -184,14 +170,6 @@
     src = fetchurl {
       url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.5.tar.gz";
       sha256 = "sha256-ErfX1tMJo3A5DMBXg2mpYoS/E2MAvMJE8xNZ6LIgaZo=";
-    };
-  };
-  omp = {
-    pname = "omp";
-    version = "17.2.12";
-    src = fetchurl {
-      url = "https://github.com/can1357/oh-my-pi/releases/download/v17.2.12/omp-darwin-arm64";
-      sha256 = "sha256-q0/yTIujrm/Z1LVJaclPRAjMMWZ19VNHKa5QLYyX33Q=";
     };
   };
   orca-arm64 = {
