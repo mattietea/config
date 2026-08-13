@@ -13,4 +13,5 @@ in
   commit = models.haiku;
   vision = models.sonnet;
   designer = models.sonnet;
+  advisor = "${models.sonnet}:medium";
 }

@@ -13,34 +13,28 @@ in
     # opencode); tracks upstream releases via `nix flake update`.
     packages = [ inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.omp ];
 
-    file.".omp/agent/config.yml".source = yamlFormat.generate "omp-config.yml" {
-      modelRoles = import ./roles.nix;
-      # omp persists setup-wizard completion into config.yml, which is a
-      # read-only nix symlink here — so pin the wizard state declaratively.
-      # Bump setupVersion when a new omp release adds onboarding steps
-      # (current constant: 1).
-      setupVersion = 1;
-      providers.webSearch = "auto";
-      astGrep.enabled = true;
-      memory.backend = "mnemopi";
-      autolearn.enabled = true;
-      advisor.enabled = true;
-    };
+    file.".omp/agent/config.yml".source = yamlFormat.generate "omp-config.yml" (
+      import ./settings.nix // { modelRoles = import ./roles.nix; }
+    );
 
     # Orca launches omp with PI_CODING_AGENT_DIR pointed at a per-workspace
     # overlay directory that has no config.yml, so omp silently falls back to
     # built-in model roles. Mirror the nix-managed config into each existing
     # overlay (same pattern as linkOhMyOpenagentOrcaHookConfig for opencode).
     # Overlays created after the last switch are picked up on the next one.
-    # Overlay dirs are nested (<uuid>::/<project path>@@<hash>), so locate the
-    # leaves by their agent.db instead of globbing one level.
+    # Overlay leaves are hash-suffixed dirs (<uuid>::/<project path>@@<hash>,
+    # global-floating-terminal@@<hash>); an agent.db only appears after first
+    # use, so match both — leaves like the floating terminal's may otherwise
+    # never contain one.
     activation.linkOmpOrcaOverlayConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       ORCA_OVERLAYS_DIR="$HOME/Library/Application Support/orca/pi-agent-overlays"
 
       if [ -d "$ORCA_OVERLAYS_DIR" ]; then
-        ${pkgs.findutils}/bin/find "$ORCA_OVERLAYS_DIR" -maxdepth 8 -type f -name agent.db 2>/dev/null |
-          while IFS= read -r db; do
-            ln -sf "$HOME/.omp/agent/config.yml" "$(dirname "$db")/config.yml"
+        ${pkgs.findutils}/bin/find "$ORCA_OVERLAYS_DIR" -maxdepth 8 \
+          \( -type f -name agent.db -o -type d -name '*@@*' \) 2>/dev/null |
+          while IFS= read -r hit; do
+            [ -d "$hit" ] || hit="$(dirname "$hit")"
+            ln -sf "$HOME/.omp/agent/config.yml" "$hit/config.yml"
           done
       fi
     '';
