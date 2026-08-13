@@ -40,24 +40,65 @@ let
       '';
 in
 {
-  # Codex plugin/marketplace discovery — moved here from the codex harness
-  # module so the harness can stay claude-mem-agnostic.
-  programs.codex.settings = {
-    marketplaces.claude-mem-local = {
-      source_type = "local";
-      source = "${config.home.homeDirectory}/.claude/plugins/marketplaces/thedotmack";
+  # Every claude-mem touchpoint lives in this module — the harnesses and the
+  # mcp module stay claude-mem-agnostic. Toggling the ./integrations/claude-mem
+  # import in modules/ai/default.nix enables/disables the whole integration
+  # atomically.
+  programs = {
+    # Claude Code plugin + marketplace registration.
+    claude-code.settings = {
+      enabledPlugins."claude-mem@thedotmack" = true;
+      extraKnownMarketplaces.thedotmack.source = {
+        source = "github";
+        repo = "thedotmack/claude-mem";
+      };
     };
-    plugins."claude-mem@claude-mem-local".enabled = true;
+
+    # Codex plugin/marketplace discovery.
+    codex.settings = {
+      marketplaces.claude-mem-local = {
+        source_type = "local";
+        source = "${config.home.homeDirectory}/.claude/plugins/marketplaces/thedotmack";
+      };
+      plugins."claude-mem@claude-mem-local".enabled = true;
+    };
+
+    # claude-mem ships an opencode plugin under its Claude Code marketplace
+    # bundle. It uses fire-and-forget HTTP to the worker daemon, so the worker
+    # must be running (it auto-starts via the claude-mem MCP server). The
+    # bundle is installed by `npx claude-mem install --ide opencode`.
+    opencode.settings.plugin = [
+      "file://${config.home.homeDirectory}/.config/opencode/plugins/claude-mem.js"
+    ];
+
+    # claude-mem MCP search tools (search / timeline / get_observations).
+    # Workaround for upstream issue #2295 — opencode integration does not
+    # auto-register the MCP server. The CJS bundle is installed under the
+    # marketplace path by the activation script below.
+    mcp.servers.claude-mem = {
+      type = "stdio";
+      command = "${pkgs.nodejs}/bin/node";
+      args = [
+        "${config.home.homeDirectory}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/mcp-server.cjs"
+      ];
+    };
   };
 
-  # Point claude-mem hook commands at the build-time-wrapped Nix-store path.
-  #
-  # The shipped hook commands first check ${CLAUDE_PLUGIN_ROOT:-${PLUGIN_ROOT:-}}
-  # before falling back to globbing ~/.claude/plugins/cache/.../[0-9]*/.
-  # Setting this makes hook resolution deterministic across claude-mem version
-  # bumps and independent of the activation-time copy below — so even if the
-  # home-dir marketplace is stale, hooks resolve to the current Nix store.
-  home.sessionVariables.CLAUDE_PLUGIN_ROOT = "${wrappedMarketplace}";
+  home.sessionVariables = {
+    # Point claude-mem hook commands at the build-time-wrapped Nix-store path.
+    #
+    # The shipped hook commands first check ${CLAUDE_PLUGIN_ROOT:-${PLUGIN_ROOT:-}}
+    # before falling back to globbing ~/.claude/plugins/cache/.../[0-9]*/.
+    # Setting this makes hook resolution deterministic across claude-mem version
+    # bumps and independent of the activation-time copy below — so even if the
+    # home-dir marketplace is stale, hooks resolve to the current Nix store.
+    CLAUDE_PLUGIN_ROOT = "${wrappedMarketplace}";
+
+    # The claude-mem opencode plugin defaults to worker port 37700 + (uid % 100),
+    # but the worker actually runs on 37777 (set in ~/.claude-mem/settings.json).
+    # Override here so the plugin POSTs to the real worker.
+    CLAUDE_MEM_WORKER_PORT = "37777";
+  };
 
   # Mirror the build-time wrapped marketplace into ~/.claude/plugins/marketplaces/
   # because:

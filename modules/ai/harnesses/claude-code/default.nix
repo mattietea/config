@@ -49,17 +49,10 @@
         pr = "";
       };
       enabledPlugins = {
-        "claude-mem@thedotmack" = false; # temporarily disabled
         "codex@openai-codex" = true;
         "improve-claude-md@skills" = true;
       };
       extraKnownMarketplaces = {
-        thedotmack = {
-          source = {
-            source = "github";
-            repo = "thedotmack/claude-mem";
-          };
-        };
         openai-codex = {
           source = {
             source = "github";
