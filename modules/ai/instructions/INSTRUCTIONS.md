@@ -106,12 +106,6 @@ Make surgical changes — every changed line should trace directly to the reques
 
 </important>
 
-<important if="you need to search the web for information">
-
-Use **Exa** (MCP server) first — higher quality, focused results. Fall back to generic web search only when Exa doesn't cover the topic.
-
-</important>
-
 <important if="I ask you to look at a tab, browser tab, or any of my open tabs">
 
 Use the **playwriter** skill. Playwriter connects to my running Chrome via a browser extension, so my logins, cookies, and extensions are already there — unlike agent-browser which spawns a fresh browser.
