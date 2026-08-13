@@ -11,6 +11,7 @@ let
   # matching guide: GPT temperament fits autonomous deep work).
   roles = import ./roles.nix // {
     slow = "${models.gptStd}:high";
+    advisor = "${models.gptStd}:high";
   };
 in
 {
@@ -21,6 +22,10 @@ in
       # every config.yml variant (read-only nix symlink).
       setupVersion = 1;
       providers.webSearch = "auto";
+      astGrep.enabled = true;
+      memory.backend = "mnemopi";
+      autolearn.enabled = true;
+      advisor.enabled = true;
     }
   );
 }
