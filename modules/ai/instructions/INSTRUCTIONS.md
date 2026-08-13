@@ -120,7 +120,7 @@ Use the **playwriter** skill. Playwriter connects to my running Chrome via a bro
 
 <important if="you are asked to load a website, visit a URL, fill a form, or interact with a web page (and it is NOT one of my already-open browser tabs)">
 
-Use the **agent-browser** skill. Only use Chrome DevTools MCP when I explicitly ask for DevTools, debugging, performance analysis, or network inspection. If I am referring to a tab in my running Chrome, use the **playwriter** skill instead.
+Use the **agent-browser** skill. If I am referring to a tab in my running Chrome, use the **playwriter** skill instead.
 
 </important>
 

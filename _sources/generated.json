@@ -74,26 +74,6 @@
         },
         "version": "f17010c9bb483898c1d9c9f42dde2b3a98889434"
     },
-    "chrome-devtools-mcp-skills": {
-        "cargoLock": null,
-        "date": "2026-08-10",
-        "extract": null,
-        "name": "chrome-devtools-mcp-skills",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "073d4a39e9c96b17936d3cdc4bdea69977f0cca6",
-            "sha256": "sha256-YtKbV3d+xNLWR1cdlDW7HwOW8EV3sambcUDDUzfkh2k=",
-            "sparseCheckout": [],
-            "type": "git",
-            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
-        },
-        "version": "073d4a39e9c96b17936d3cdc4bdea69977f0cca6"
-    },
     "claude-mem": {
         "cargoLock": null,
         "date": null,
@@ -273,21 +253,6 @@
             "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.5.tar.gz"
         },
         "version": "5.0.0-beta.5"
-    },
-    "omp": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "omp",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-q0/yTIujrm/Z1LVJaclPRAjMMWZ19VNHKa5QLYyX33Q=",
-            "type": "url",
-            "url": "https://github.com/can1357/oh-my-pi/releases/download/v17.2.12/omp-darwin-arm64"
-        },
-        "version": "17.2.12"
     },
     "orca-arm64": {
         "cargoLock": null,

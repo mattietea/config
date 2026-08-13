@@ -14,13 +14,5 @@ _: {
       type = "http";
       url = "https://api.statsig.com/v1/mcp";
     };
-    chrome-devtools = {
-      type = "stdio";
-      command = "npx";
-      args = [
-        "-y"
-        "chrome-devtools-mcp@latest"
-      ];
-    };
   };
 }

@@ -128,11 +128,6 @@ src.git = "https://github.com/pproenca/dot-skills"
 src.branch = "master"
 fetch.git = "https://github.com/pproenca/dot-skills"
 
-[chrome-devtools-mcp-skills]
-src.git = "https://github.com/ChromeDevTools/chrome-devtools-mcp"
-src.branch = "main"
-fetch.git = "https://github.com/ChromeDevTools/chrome-devtools-mcp"
-
 [itechmeat-skills]
 src.git = "https://github.com/itechmeat/llm-code"
 src.branch = "master"
