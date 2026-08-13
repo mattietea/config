@@ -1,5 +1,6 @@
 # Shared config.yml payload for omp. Each host variant merges its own
 # modelRoles on top (base roles in ./default.nix, work roles in ./work.nix).
+{ homeDirectory }:
 {
   # omp persists setup-wizard completion into config.yml, which is a
   # read-only nix symlink here — so pin the wizard state declaratively.
@@ -22,13 +23,20 @@
     # Auto-run one capture turn at stop instead of a passive reminder.
     autoContinue = true;
   };
-  # User-level skills only; don't pick up skills shipped inside repos
-  # (.claude/skills, .omp/skills, .agents/skills). Note .github/skills has
-  # no dedicated toggle and stays active while any user source is enabled.
+  # Only nix-managed skills. Disabling every named source toggle also turns
+  # off the toggle-less providers (github .github/skills, opencode,
+  # claude-plugins), which stay active while ANY named source is enabled —
+  # so project repos can't inject skills from any layout. The user skill set
+  # is served back through customDirectories instead.
   skills = {
+    enableCodexUser = false;
+    enableClaudeUser = false;
     enableClaudeProject = false;
+    enablePiUser = false;
     enablePiProject = false;
+    enableAgentsUser = false;
     enableAgentsProject = false;
+    customDirectories = [ "${homeDirectory}/.agents/skills" ];
   };
   advisor.enabled = true;
 }

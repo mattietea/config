@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -19,6 +20,8 @@ let
 in
 {
   home.file.".omp/agent/config.yml".source = lib.mkForce (
-    yamlFormat.generate "omp-config.yml" (import ./settings.nix // { modelRoles = roles; })
+    yamlFormat.generate "omp-config.yml" (
+      import ./settings.nix { inherit (config.home) homeDirectory; } // { modelRoles = roles; }
+    )
   );
 }
