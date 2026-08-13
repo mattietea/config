@@ -22,5 +22,13 @@
     # Auto-run one capture turn at stop instead of a passive reminder.
     autoContinue = true;
   };
+  # User-level skills only; don't pick up skills shipped inside repos
+  # (.claude/skills, .omp/skills, .agents/skills). Note .github/skills has
+  # no dedicated toggle and stays active while any user source is enabled.
+  skills = {
+    enableClaudeProject = false;
+    enablePiProject = false;
+    enableAgentsProject = false;
+  };
   advisor.enabled = true;
 }
