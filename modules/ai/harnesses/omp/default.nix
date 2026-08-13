@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   inputs,
@@ -14,7 +15,10 @@ in
     packages = [ inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.omp ];
 
     file.".omp/agent/config.yml".source = yamlFormat.generate "omp-config.yml" (
-      import ./settings.nix // { modelRoles = import ./roles.nix; }
+      import ./settings.nix { inherit (config.home) homeDirectory; }
+      // {
+        modelRoles = import ./roles.nix;
+      }
     );
 
     # Orca launches omp with PI_CODING_AGENT_DIR pointed at a per-workspace
