@@ -38,15 +38,9 @@ inputs.darwin.lib.darwinSystem {
     {
       age = {
         identityPaths = [ "/Users/${settings.username}/.ssh/id_ed25519" ];
-        secrets = {
-          context7-api-key = {
-            file = ../secrets/context7-api-key.age;
-            owner = settings.username;
-          };
-          exa-api-key = {
-            file = ../secrets/exa-api-key.age;
-            owner = settings.username;
-          };
+        secrets.context7-api-key = {
+          file = ../secrets/context7-api-key.age;
+          owner = settings.username;
         };
       };
     }

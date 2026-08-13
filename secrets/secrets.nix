@@ -9,5 +9,4 @@ in
 {
   "anthropic-api-key.age".publicKeys = [ matthewthomas ];
   "context7-api-key.age".publicKeys = all;
-  "exa-api-key.age".publicKeys = all;
 }

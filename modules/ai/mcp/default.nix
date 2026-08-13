@@ -1,19 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
-  programs.mcp = {
-    enable = true;
-    servers = {
-      exa = {
-        type = "stdio";
-        command = "${pkgs.writeShellScript "exa-mcp" ''
-          export EXA_API_KEY="$(cat /run/agenix/exa-api-key)"
-          exec npx -y exa-mcp-server
-        ''}";
-        args = [ ];
-      };
-    };
-  };
+# Base MCP config is just the enable switch; servers are host-specific
+# (work adds its set in ./work.nix).
+_: {
+  programs.mcp.enable = true;
 }
