@@ -21,6 +21,10 @@ in
       # (current constant: 1).
       setupVersion = 1;
       providers.webSearch = "auto";
+      astGrep.enabled = true;
+      memory.backend = "mnemopi";
+      autolearn.enabled = true;
+      advisor.enabled = true;
     };
 
     # Orca launches omp with PI_CODING_AGENT_DIR pointed at a per-workspace

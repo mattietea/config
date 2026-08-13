@@ -14,10 +14,6 @@
         ''}";
         args = [ ];
       };
-      grep = {
-        type = "http";
-        url = "https://mcp.grep.app";
-      };
     };
   };
 }
