@@ -62,7 +62,7 @@ Adding `inputs.nixpkgs.follows = "nixpkgs"` pins the input to YOUR nixpkgs. This
 - ✅ One nixpkgs evaluation, smaller closure
 - ❌ Derivation hashes change → upstream binary cache misses → full source rebuild
 
-**Rule of thumb:** If the input has a binary cache and builds heavy native code (Rust, Go, C++), do NOT add `follows` — let it use its own nixpkgs pin. See the `opencode` input in `flake.nix` for an example.
+**Rule of thumb:** If the input has a binary cache and builds heavy native code (Rust, Go, C++), do NOT add `follows` — let it use its own nixpkgs pin. See the `llm-agents` and `claude-code-nix` inputs in `flake.nix` for examples.
 
 ### Current caches
 
@@ -71,7 +71,7 @@ Adding `inputs.nixpkgs.follows = "nixpkgs"` pins the input to YOUR nixpkgs. This
 | `cache.nixos.org`            | nixpkgs (default)                            |
 | `devenv.cachix.org`          | devenv                                       |
 | `nix-community.cachix.org`   | home-manager, nix-darwin, community packages |
-| `opencode.cachix.org`        | opencode + opencode-desktop (Tauri/Rust)     |
+| `cache.numtide.com`          | llm-agents prebuilt binaries (opencode etc.) |
 | `claude-code-nix.cachix.org` | claude-code                                  |
 
 ## Gotchas
