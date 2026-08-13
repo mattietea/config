@@ -55,6 +55,14 @@ in
         subdir = "plugins/improve-claude-md/skills";
       };
     };
+    show-me = {
+      enable = true;
+      skills = [ "show-me" ];
+      sources.humanlayer-show-me = {
+        path = sources.humanlayer-skills.src;
+        subdir = "plugins/show-me/skills";
+      };
+    };
     gh-stack = {
       enable = true;
       skills = [ "gh-stack" ];
