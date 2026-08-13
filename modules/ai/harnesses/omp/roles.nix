@@ -2,7 +2,7 @@
 # Anthropic-only so the personal host works as-is; work swaps `slow`
 # to GPT in ./work.nix. Model ids come from the shared models.nix.
 let
-  models = import ../opencode/models.nix;
+  models = import ../../models.nix;
 in
 {
   default = "${models.fable}:high";

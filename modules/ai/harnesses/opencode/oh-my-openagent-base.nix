@@ -2,7 +2,7 @@
 # Pure data file — imported by opencode-personal and opencode-work
 # Base defaults are Anthropic-only; work host overrides with OpenAI where appropriate
 let
-  models = import ./models.nix;
+  models = import ../../models.nix;
 
   # Default profile for heavyweight agents: Opus with extended thinking,
   # Sonnet for fallback and compaction.

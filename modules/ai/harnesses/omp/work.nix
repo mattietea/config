@@ -4,7 +4,7 @@
   ...
 }:
 let
-  models = import ../opencode/models.nix;
+  models = import ../../models.nix;
   yamlFormat = pkgs.formats.yaml { };
 
   # Deep reasoning on GPT-5.6 Sol (see the oh-my-openagent agent-model

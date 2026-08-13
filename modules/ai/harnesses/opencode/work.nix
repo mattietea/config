@@ -1,6 +1,6 @@
 _:
 let
-  models = import ./models.nix;
+  models = import ../../models.nix;
   baseConfig = import ./oh-my-openagent-base.nix;
 
   # Heavyweight Anthropic agents run on Fable 5 (work org has the required 30-day

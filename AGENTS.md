@@ -244,7 +244,7 @@ ai = [
 **Model configuration**:
 
 - claude-code: `settings.model` using shorthand names (currently `"opus[1m]"`)
-- opencode: Model ids centralized in `modules/ai/harnesses/opencode/models.nix`; per-agent assignments in `oh-my-openagent-base.nix` + per-host overrides
+- opencode: Model ids centralized in `modules/ai/models.nix`; per-agent assignments in `oh-my-openagent-base.nix` + per-host overrides
 
 ### External Package Inputs
 
