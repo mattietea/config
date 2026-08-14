@@ -19,6 +19,12 @@
       confirm-close-surface = false;
       bold-is-bright = true;
       unfocused-split-opacity = 0.95;
+      # omp (Kitty keyboard protocol): distinguish Shift+Enter from Enter and
+      # make Alt+Backspace deliver ESC DEL — see omp's terminal setup docs.
+      keybind = [
+        "alt+backspace=text:\\x1b\\x7f"
+        "shift+enter=text:\\n"
+      ];
     };
   };
 }
