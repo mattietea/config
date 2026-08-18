@@ -106,15 +106,15 @@ Make surgical changes — every changed line should trace directly to the reques
 
 </important>
 
-<important if="I ask you to look at a tab, browser tab, or any of my open tabs">
+<important if="I ask you to open, see, or look at a URL, tab, or any of my open tabs">
 
-Use the **playwriter** skill. Playwriter connects to my running Chrome via a browser extension, so my logins, cookies, and extensions are already there — unlike agent-browser which spawns a fresh browser.
+Use the **playwriter** skill. Playwriter drives my running Chrome via a browser extension — my logins, cookies, and extensions are already there, and I can watch the page.
 
 </important>
 
-<important if="you are asked to load a website, visit a URL, fill a form, or interact with a web page (and it is NOT one of my already-open browser tabs)">
+<important if="you need to work a website yourself — visit a URL, fill a form, click through a flow, extract data, test a web app — and I did not ask to see/look at it or point at one of my open tabs">
 
-Use the **agent-browser** skill. If I am referring to a tab in my running Chrome, use the **playwriter** skill instead.
+Use the **agent-browser** skill. It spawns a fresh browser with no logins. If a site needs auth, use its auth vault (`agent-browser auth save` / `auth login`) or a named session (`AGENT_BROWSER_SESSION_NAME`) — never type credentials into commands. Saved browser state is secret material: keep it in agent-browser's managed storage, never in a repo.
 
 </important>
 
