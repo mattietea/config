@@ -26,7 +26,10 @@ in
     agent-browser = {
       enable = true;
       skills = [ "agent-browser" ];
-      packages = [ pkgs.agent-browser ];
+      packages = [
+        pkgs.agent-browser
+        pkgs.ffmpeg # video recording (`agent-browser record`)
+      ];
       sources.agent-browser = {
         path = sources.agent-browser-skills.src;
         subdir = "skills";
