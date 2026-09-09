@@ -1,6 +1,5 @@
 # Base model-role assignments for omp (https://omp.sh/docs/roles).
-# Anthropic-only so the personal host works as-is; work swaps `slow`
-# to GPT in ./work.nix. Model ids come from the shared models.nix.
+# Anthropic-only for the personal host; work overrides roles in ./work.nix.
 let
   models = import ../../models.nix;
 in
