@@ -1,12 +1,7 @@
-# Shared config.yml payload for omp. Each host variant merges its own
+# Shared preferences for omp. Each host variant merges its own
 # modelRoles on top (base roles in ./default.nix, work roles in ./work.nix).
 { homeDirectory }:
 {
-  # omp persists setup-wizard completion into config.yml, which is a
-  # read-only nix symlink here — so pin the wizard state declaratively.
-  # Bump setupVersion when a new omp release adds onboarding steps
-  # (current constant: 1).
-  setupVersion = 1;
   providers.webSearch = "auto";
   astGrep.enabled = true;
   followUpMode = "all";
@@ -38,5 +33,5 @@
     enableAgentsProject = false;
     customDirectories = [ "${homeDirectory}/.agents/skills" ];
   };
-  advisor.enabled = true;
+  advisor.enabled = false;
 }

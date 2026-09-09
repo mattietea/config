@@ -16,7 +16,7 @@ let
   };
 in
 {
-  home.file.".omp/agent/config.yml".source = lib.mkForce (
+  home.file.".omp/nix.yml".source = lib.mkForce (
     yamlFormat.generate "omp-config.yml" (
       import ./settings.nix { inherit (config.home) homeDirectory; } // { modelRoles = roles; }
     )
