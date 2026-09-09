@@ -35,19 +35,20 @@ in
         subdir = "skills";
       };
     };
+    # The herdr package + config live in modules/home-manager/packages/herdr.
+    herdr = {
+      enable = true;
+      skills = [ "herdr" ];
+      sources.herdr = {
+        path = sources.herdr-skills.src;
+        subdir = "skills";
+      };
+    };
     playwriter = {
       enable = true;
       skills = [ "playwriter" ];
       sources.playwriter = {
         path = sources.playwriter-skills.src;
-        subdir = "skills";
-      };
-    };
-    orchestration = {
-      enable = true;
-      skills = [ "orchestration" ];
-      sources.orca = {
-        path = sources.orca-skills.src;
         subdir = "skills";
       };
     };
