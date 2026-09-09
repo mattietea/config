@@ -92,6 +92,17 @@
     };
     date = "2026-08-15";
   };
+  herdr-skills = {
+    pname = "herdr-skills";
+    version = "v0.9.0";
+    src = fetchFromGitHub {
+      owner = "herdrdev";
+      repo = "herdr";
+      rev = "v0.9.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-SUYF4bbaYwNgoe498VoCUzuLPcjBLQXR0o0DWjjoSnI=";
+    };
+  };
   humanlayer-skills = {
     pname = "humanlayer-skills";
     version = "3c2629142c5d437428269b1b722b08c0b87f574d";
@@ -170,33 +181,6 @@
     src = fetchurl {
       url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.48.tar.gz";
       sha256 = "sha256-V5F9EFMbplXUHKUVxE76KCRdLMyPkILeLtWJXYhRmSE=";
-    };
-  };
-  orca-arm64 = {
-    pname = "orca-arm64";
-    version = "1.4.198";
-    src = fetchurl {
-      url = "https://github.com/stablyai/orca/releases/download/v1.4.198/Orca-1.4.198-arm64-mac.zip";
-      sha256 = "sha256-FVFqZrT8p/EWX7ltslctJByS8Dlnv7GRlygvCfmoQ5c=";
-    };
-  };
-  orca-skills = {
-    pname = "orca-skills";
-    version = "v1.4.198";
-    src = fetchFromGitHub {
-      owner = "stablyai";
-      repo = "orca";
-      rev = "v1.4.198";
-      fetchSubmodules = false;
-      sha256 = "sha256-f8chxIwMzdGSQyc7tauzqpUIDTTiApmnVhz4TimIvU0=";
-    };
-  };
-  orca-x64 = {
-    pname = "orca-x64";
-    version = "1.4.198";
-    src = fetchurl {
-      url = "https://github.com/stablyai/orca/releases/download/v1.4.198/Orca-1.4.198-mac.zip";
-      sha256 = "sha256-TPF+VBF+N+DOUdirKwV6yj/9th0+eDhSgPERoxbTGls=";
     };
   };
   playwriter-skills = {
