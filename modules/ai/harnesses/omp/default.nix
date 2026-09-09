@@ -9,8 +9,8 @@ let
 in
 {
   home = {
-    # Built from source by the llm-agents flake (same input that provides
-    # opencode); tracks upstream releases via `nix flake update`.
+    # Built from source by the llm-agents flake; tracks upstream releases
+    # via `nix flake update`.
     packages = [ inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.omp ];
 
     file.".omp/agent/config.yml".source = yamlFormat.generate "omp-config.yml" (

@@ -260,21 +260,6 @@
         },
         "version": "1.54.0"
     },
-    "oh-my-openagent": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "oh-my-openagent",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-89Ph4Op9vECzLutewO1OG7BifzfQTv499tVXu6XApyY=",
-            "type": "url",
-            "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.62.tar.gz"
-        },
-        "version": "5.0.0-beta.62"
-    },
     "playwriter-skills": {
         "cargoLock": null,
         "date": "2026-08-27",

@@ -17,7 +17,7 @@ in
       default = [ ];
       description = ''
         Markdown files concatenated (in order) to form the final AI instructions
-        file deployed to every configured harness (Claude Code, Codex, OpenCode).
+        file deployed to Claude Code and Codex.
         The base module contributes `INSTRUCTIONS.md`; host aggregators
         (e.g. `work.nix`) append their own segments.
       '';
@@ -34,7 +34,6 @@ in
         [
           ".claude/CLAUDE.md"
           ".codex/AGENTS.md"
-          ".config/opencode/AGENTS.md"
         ]
         (_: {
           source = mergedFile;

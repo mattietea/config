@@ -175,14 +175,6 @@
       sha256 = "sha256-0TU4A/SzLKQpbeaqoh0cF6Hpkm94f1QXZcNXt5+83Ww=";
     };
   };
-  oh-my-openagent = {
-    pname = "oh-my-openagent";
-    version = "5.0.0-beta.62";
-    src = fetchurl {
-      url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.62.tar.gz";
-      sha256 = "sha256-89Ph4Op9vECzLutewO1OG7BifzfQTv499tVXu6XApyY=";
-    };
-  };
   playwriter-skills = {
     pname = "playwriter-skills";
     version = "6e563c86eb1a490264d696d025bd5df4b2fda405";
