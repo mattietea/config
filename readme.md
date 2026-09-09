@@ -6,7 +6,7 @@ Declarative macOS development environment using Nix Flakes, nix-darwin, and home
 
 - **Modular architecture**: 40+ tool configurations, each with its own `default.nix`
 - **Multi-host support**: Personal and work hosts share a common app/package baseline (`lib/hosts.nix`) with per-host settings and additions
-- **AI-powered development**: Independent configuration for claude-code, codex, and opencode with MCP integration
+- **AI-powered development**: Independent configuration for claude-code, codex, and omp
 - **Cross-tool integrations**: fzf + bat/eza, git + delta, and more
 - **Reproducible builds**: Everything managed via Nix flakes for complete reproducibility
 - **Automated CI/CD**: GitHub Actions evaluate both host configurations on every PR, plus weekly auto-merged dependency updates

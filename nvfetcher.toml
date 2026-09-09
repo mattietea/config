@@ -15,15 +15,6 @@ src.github = "schpet/linear-cli"
 src.prefix = "v"
 fetch.url = "https://github.com/schpet/linear-cli/releases/download/v$ver/linear-aarch64-apple-darwin.tar.xz"
 
-# opencode loads this by npm name, so we only need its VERSION tracked here
-# (the same one mechanism as the binaries). fetch.github just gives nvfetcher a
-# source to resolve the version from; the src itself is unused — the opencode
-# plugin string consumes `sources.oh-my-openagent.version`.
-[oh-my-openagent]
-src.github = "code-yeongyu/oh-my-openagent"
-src.prefix = "v"
-fetch.url = "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v$ver.tar.gz"
-
 [wacli]
 src.github = "openclaw/wacli"
 src.prefix = "v"

@@ -6,7 +6,6 @@
       "nix"
       "git-firefly"
       "github-theme"
-      "opencode"
       "tsgo"
       "oxc"
     ];

@@ -63,18 +63,7 @@ in
       plugins."claude-mem@claude-mem-local".enabled = true;
     };
 
-    # claude-mem ships an opencode plugin under its Claude Code marketplace
-    # bundle. It uses fire-and-forget HTTP to the worker daemon, so the worker
-    # must be running (it auto-starts via the claude-mem MCP server). The
-    # bundle is installed by `npx claude-mem install --ide opencode`.
-    opencode.settings.plugin = [
-      "file://${config.home.homeDirectory}/.config/opencode/plugins/claude-mem.js"
-    ];
-
     # claude-mem MCP search tools (search / timeline / get_observations).
-    # Workaround for upstream issue #2295 — opencode integration does not
-    # auto-register the MCP server. The CJS bundle is installed under the
-    # marketplace path by the activation script below.
     mcp.servers.claude-mem = {
       type = "stdio";
       command = "${pkgs.nodejs}/bin/node";
@@ -93,11 +82,6 @@ in
     # bumps and independent of the activation-time copy below — so even if the
     # home-dir marketplace is stale, hooks resolve to the current Nix store.
     CLAUDE_PLUGIN_ROOT = "${wrappedMarketplace}";
-
-    # The claude-mem opencode plugin defaults to worker port 37700 + (uid % 100),
-    # but the worker actually runs on 37777 (set in ~/.claude-mem/settings.json).
-    # Override here so the plugin POSTs to the real worker.
-    CLAUDE_MEM_WORKER_PORT = "37777";
   };
 
   # Mirror the build-time wrapped marketplace into ~/.claude/plugins/marketplaces/

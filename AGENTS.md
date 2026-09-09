@@ -12,7 +12,7 @@ Declarative macOS dotfiles managing system settings, GUI applications, and CLI t
 
 - Modular tool configurations (each tool gets own `default.nix`)
 - Two host configurations sharing a common app/package baseline (`lib/hosts.nix`) with inline per-host settings
-- Independent AI tool configuration (claude-code, opencode, zed) with MCP integration
+- Independent AI tool configuration (claude-code, codex, omp)
 - Cross-tool integrations (fzf + bat/eza, git + delta)
 - Reproducible builds via Nix flakes
 
@@ -82,8 +82,7 @@ sudo determinate-nixd upgrade
     ├── ai/                      # AI tool configuration
     │   ├── default.nix          # Aggregator: imports all base AI modules
     │   ├── work.nix             # Aggregator: imports work-specific AI overrides
-    │   ├── personal.nix         # Aggregator: imports personal-specific AI overrides
-    │   ├── harnesses/           # AI coding tools (claude-code, codex, opencode)
+    │   ├── harnesses/           # AI coding tools (claude-code, codex, omp)
     │   ├── tools/               # ai.tools catalog: one toggle = skills + sources + instructions + packages
     │   ├── skills/              # Agent skills sources + targets
     │   ├── integrations/        # Harness integrations (claude-mem)
@@ -200,7 +199,6 @@ mkHost {
   packages = commonPackages ++ map trivialPkg [ "wacli" ];
   ai = [
     ../modules/ai
-    ../modules/ai/personal.nix
   ];
 }
 ```
@@ -220,12 +218,12 @@ shellAliases = { g = "${pkgs.git}/bin/git"; cat = "${pkgs.bat}/bin/bat"; };
 
 AI tools are consolidated under `modules/ai/` with a clear taxonomy:
 
-- **harnesses/** — AI coding tools (claude-code, codex, opencode), each with `enableMcpIntegration = true`
+- **harnesses/** — AI coding tools (claude-code, codex, omp); Claude Code and Codex use `enableMcpIntegration = true`
 - **tools/** — the `ai.tools` catalog; enabling one tool registers its skills, skill sources, instructions, and packages across every harness (base catalog in `catalog.nix`, work tools in `work.nix`)
 - **skills/** — shared agent-skills sources + deploy targets (tool-specific sources live with their tool in `tools/`)
 - **integrations/** — harness integrations (claude-mem)
 - **mcp/** — MCP server configuration shared via `enableMcpIntegration`
-- **instructions/** — Global instruction file deployed to Claude Code, Codex, and OpenCode
+- **instructions/** — Global instruction file deployed to Claude Code and Codex
 
 Host files import AI modules via aggregators:
 
@@ -239,12 +237,12 @@ ai = [
 **Package sources**:
 
 - claude-code: External flake input `claude-code-nix` (own binary cache)
-- opencode: External flake input `llm-agents`
+- codex and omp: External flake input `llm-agents`
 
 **Model configuration**:
 
 - claude-code: `settings.model` using shorthand names (currently `"opus[1m]"`)
-- opencode: Model ids centralized in `modules/ai/models.nix`; per-agent assignments in `oh-my-openagent-base.nix` + per-host overrides
+- omp: Model ids centralized in `modules/ai/models.nix`; role assignments in `harnesses/omp/roles.nix` + per-host overrides
 
 ### External Package Inputs
 

@@ -21,7 +21,7 @@
     '';
 
     # nvfetcher reads nvfetcher.toml and regenerates _sources/generated.nix
-    # (pinned version + hash for pup, linear, oh-my-openagent, claude-mem, …).
+    # (pinned version + hash for pup, linear, claude-mem, …).
     # One mechanism for every non-flake-input dependency — replaces the old
     # update-clis script.
     update.exec = ''

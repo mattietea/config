@@ -57,10 +57,6 @@ let
       appPath = "${homeApps}/Zed.app";
     }
     {
-      moduleName = "opencode-desktop";
-      appPath = "${homeApps}/OpenCode.app";
-    }
-    {
       moduleName = null;
       appPath = "/System/Applications/System Settings.app";
     }

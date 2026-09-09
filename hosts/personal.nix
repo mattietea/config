@@ -38,6 +38,5 @@ mkHost {
 
   ai = [
     ../modules/ai
-    ../modules/ai/personal.nix
   ];
 }
