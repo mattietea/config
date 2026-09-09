@@ -16,7 +16,6 @@ in
   commonApps = map app [
     "ghostty"
     "zed"
-    "orca"
   ];
 
   commonPackages =
@@ -34,6 +33,7 @@ in
       "gh-stack"
       "git"
       "git-absorb"
+      "herdr"
       "lazygit"
       "mise"
       "pure"

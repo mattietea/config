@@ -52,16 +52,5 @@ in
     cleanOpencodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       rm -f "$HOME/.local/state/opencode/model.json"
     '';
-
-    # oh-my-openagent 5.x reads its config from ~/.omo/omo.jsonc only. Remove
-    # the 4.x-era config mirrors previously symlinked into Orca's
-    # OPENCODE_CONFIG_DIR hook dirs (they now dangle).
-    cleanOrcaHookConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ORCA_HOOKS_DIR="$HOME/Library/Application Support/orca/opencode-hooks"
-
-      if [ -d "$ORCA_HOOKS_DIR" ]; then
-        find "$ORCA_HOOKS_DIR" -maxdepth 2 -name oh-my-openagent.json -type l -delete
-      fi
-    '';
   };
 }

@@ -129,6 +129,27 @@
         },
         "version": "cf93c57cac89d6fc3e4194686000411567f5caf3"
     },
+    "herdr-skills": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "herdr-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "herdrdev",
+            "repo": "herdr",
+            "rev": "v0.9.0",
+            "sha256": "sha256-SUYF4bbaYwNgoe498VoCUzuLPcjBLQXR0o0DWjjoSnI=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.9.0"
+    },
     "humanlayer-skills": {
         "cargoLock": null,
         "date": "2026-08-13",
@@ -253,57 +274,6 @@
             "url": "https://github.com/code-yeongyu/oh-my-openagent/archive/refs/tags/v5.0.0-beta.48.tar.gz"
         },
         "version": "5.0.0-beta.48"
-    },
-    "orca-arm64": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "orca-arm64",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-FVFqZrT8p/EWX7ltslctJByS8Dlnv7GRlygvCfmoQ5c=",
-            "type": "url",
-            "url": "https://github.com/stablyai/orca/releases/download/v1.4.198/Orca-1.4.198-arm64-mac.zip"
-        },
-        "version": "1.4.198"
-    },
-    "orca-skills": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "orca-skills",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "stablyai",
-            "repo": "orca",
-            "rev": "v1.4.198",
-            "sha256": "sha256-f8chxIwMzdGSQyc7tauzqpUIDTTiApmnVhz4TimIvU0=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v1.4.198"
-    },
-    "orca-x64": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "orca-x64",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-TPF+VBF+N+DOUdirKwV6yj/9th0+eDhSgPERoxbTGls=",
-            "type": "url",
-            "url": "https://github.com/stablyai/orca/releases/download/v1.4.198/Orca-1.4.198-mac.zip"
-        },
-        "version": "1.4.198"
     },
     "playwriter-skills": {
         "cargoLock": null,
