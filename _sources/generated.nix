@@ -235,17 +235,17 @@
   };
   worktrunk-skills = {
     pname = "worktrunk-skills";
-    version = "6c263ed69e47a15f17b6f5d1ac2ff7a6fd66c7d4";
+    version = "3a6d9c623853befa4ac077442d3d26702d2b9411";
     src = fetchgit {
       url = "https://github.com/max-sixty/worktrunk";
-      rev = "6c263ed69e47a15f17b6f5d1ac2ff7a6fd66c7d4";
+      rev = "3a6d9c623853befa4ac077442d3d26702d2b9411";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-GXYl8+ZmqP6SWCxiH+k6uvOeH9rWiBuVe6XKjDwehdw=";
+      sha256 = "sha256-ep+9nTtcEZYvisWJMLfhp4q4qkTVLS5g6EnkJE98Ma8=";
     };
-    date = "2026-09-13";
+    date = "2026-09-14";
   };
   wshobson-agents = {
     pname = "wshobson-agents";
