@@ -16,7 +16,7 @@ buildGoModule {
     "cmd/status"
   ];
 
-  vendorHash = "sha256-a4KJiQwfOUcT+dLfgg13iuLOZx8pqUQVVK6QERbTWPQ=";
+  vendorHash = "sha256-iGwtKV6mJfSgZ5rMB5ASXzdKTPBy9RqoysM4JRh0dts=";
 
   # Release builds are pure-Go (Makefile sets CGO_ENABLED=0); match that so the
   # gopsutil dependency uses its cgo-free path.
