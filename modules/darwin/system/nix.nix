@@ -18,22 +18,12 @@
   # launchd's `command` is exec-wrapped, so compound commands need a script.
   launchd.daemons.nix-gc = {
     command = "${pkgs.writeShellScript "nix-gc" ''
-      # macOS stamps `com.apple.macl` on an .app bundle once it is granted a TCC
-      # permission. That xattr makes the bundle un-chmod-able, so when the path
-      # later becomes garbage `nix-collect-garbage` aborts the ENTIRE run on it
-      # (deleting one path, freeing nothing) and every subsequent sweep dies the
-      # same way. Retry, stripping the macl off whichever path blocked us — only
-      # ever a dead path, so no live app loses its TCC grants.
-      for _ in 1 2 3 4 5; do
-        gc_out=$(/nix/var/nix/profiles/default/bin/nix-collect-garbage --delete-older-than 30d 2>&1)
-        gc_rc=$?
-        printf '%s\n' "$gc_out"
-        [ $gc_rc -eq 0 ] && break
-        gc_blocked=$(printf '%s\n' "$gc_out" | sed -n 's/.*fchmodat "\(.*\)".*/\1/p' | head -1)
-        [ -n "$gc_blocked" ] || break
-        echo "nix-gc: clearing com.apple.macl from $gc_blocked"
-        /usr/bin/xattr -d com.apple.macl "$gc_blocked" 2>/dev/null || break
-      done
+      set -e
+
+      # macOS App Management can deny deleting old .app bundles even as root.
+      # Preserve that failure: stripping protected xattrs is not a permission
+      # fix, and a successful optimisation must not hide failed collection.
+      /nix/var/nix/profiles/default/bin/nix-collect-garbage --delete-older-than 30d
       /nix/var/nix/profiles/default/bin/nix store optimise
     ''}";
     serviceConfig = {
