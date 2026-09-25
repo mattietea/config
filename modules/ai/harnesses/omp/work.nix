@@ -7,20 +7,18 @@
 let
   models = import ../../models.nix;
   yamlFormat = pkgs.formats.yaml { };
-  primaryModel = "${models.astra}:high";
+  secondaryModel = "${models.astra}:high";
   fastModel = "${models.luna}:low";
 
   roles = import ./roles.nix // {
-    default = primaryModel;
     smol = fastModel;
-    slow = "${models.astra}:xhigh";
-    plan = primaryModel;
-    task = primaryModel;
+    slow = secondaryModel;
+    task = "${models.opus}:medium";
     commit = fastModel;
     tiny = fastModel;
-    vision = primaryModel;
-    designer = primaryModel;
-    advisor = "${models.fable}:high";
+    vision = secondaryModel;
+    designer = secondaryModel;
+    advisor = secondaryModel;
   };
 in
 {
@@ -29,6 +27,8 @@ in
       import ./settings.nix { inherit (config.home) homeDirectory; }
       // {
         modelRoles = roles;
+        # Keep code review on a different model from implementation.
+        task.agentModelOverrides.reviewer = "@slow";
         tier.openai = "priority";
       }
     )

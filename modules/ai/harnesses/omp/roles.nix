@@ -4,10 +4,10 @@ let
   models = import ../../models.nix;
 in
 {
-  default = "${models.fable}:high";
+  default = "${models.opus}:high";
   smol = models.haiku;
-  slow = "${models.fable}:high";
-  plan = "${models.fable}:high";
+  slow = "${models.opus}:high";
+  plan = "${models.opus}:high";
   task = models.sonnet;
   commit = models.haiku;
   vision = models.sonnet;
