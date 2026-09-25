@@ -146,7 +146,7 @@ The configuration uses a modular architecture following standard nix-darwin and 
 ├── nvfetcher.toml               # Pinned non-flake sources (prebuilt CLIs, agent-skill repos)
 ├── _sources/                    # nvfetcher-generated pins (do not edit by hand)
 ├── overlays/
-│   └── default.nix              # Packages built from nvfetcher sources (pup, linear-cli, wacli)
+│   └── default.nix              # Packages from nvfetcher sources; also overrides nixpkgs' mise and zed-editor
 ├── secrets/
 │   ├── secrets.nix              # agenix recipients per secret
 │   └── *.age                    # Encrypted secrets

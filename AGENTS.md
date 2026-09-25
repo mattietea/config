@@ -65,7 +65,7 @@ sudo determinate-nixd upgrade
 ├── nvfetcher.toml               # Pinned non-flake sources (prebuilt CLIs, agent-skill repos)
 ├── _sources/                    # nvfetcher-generated pins (do not edit by hand)
 ├── overlays/
-│   └── default.nix              # Packages built from nvfetcher sources (pup, linear-cli, wacli)
+│   └── default.nix              # Packages from nvfetcher sources; also overrides nixpkgs' mise and zed-editor
 ├── secrets/
 │   ├── secrets.nix              # agenix recipients per secret
 │   └── *.age                    # Encrypted secrets
@@ -118,7 +118,7 @@ sudo determinate-nixd upgrade
 - `lib/hosts.nix` - Shared app/package baseline + `app`/`pkg`/`trivialPkg` helpers
 - `hosts/personal.nix` - Personal host (settings + host-specific apps/packages)
 - `hosts/work.nix` - Work host (settings + host-specific apps/packages + work secrets)
-- `overlays/default.nix` - Custom packages built from nvfetcher sources (`pup`, `linear-cli`, `wacli`)
+- `overlays/default.nix` - Packages built from nvfetcher sources (`pup`, `linear-cli`, `wacli`, `mole`, `agent-slack`), plus overrides of nixpkgs' `mise` and `zed-editor` where nixpkgs lags upstream
 - `nvfetcher.toml` / `_sources/generated.nix` - Pinned non-flake sources (prebuilt CLIs, agent-skill repos)
 - `devenv.nix` - Scripts (switch, format, lint, update, clean) and git hooks
 - `modules/darwin/system/default.nix` - System defaults importer + meta settings

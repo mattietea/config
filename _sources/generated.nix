@@ -167,6 +167,14 @@
     };
     date = "2026-09-18";
   };
+  mise = {
+    pname = "mise";
+    version = "2026.9.13";
+    src = fetchurl {
+      url = "https://github.com/jdx/mise/releases/download/v2026.9.13/mise-v2026.9.13-macos-arm64.tar.gz";
+      sha256 = "sha256-RpjCU37veIML1az5ggQQD7CtmoiEhh5VJl6FXzWqP6A=";
+    };
+  };
   mole = {
     pname = "mole";
     version = "1.55.0";

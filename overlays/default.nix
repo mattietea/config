@@ -15,6 +15,10 @@ in
     inherit (sources.wacli) version src;
   };
 
+  mise = final.callPackage ../modules/home-manager/packages/mise/package.nix {
+    inherit (sources.mise) version src;
+  };
+
   mole = final.callPackage ../modules/home-manager/packages/mole/package.nix {
     inherit (sources.mole) version src;
   };

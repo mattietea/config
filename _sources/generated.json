@@ -245,6 +245,21 @@
         },
         "version": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7"
     },
+    "mise": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "mise",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-RpjCU37veIML1az5ggQQD7CtmoiEhh5VJl6FXzWqP6A=",
+            "type": "url",
+            "url": "https://github.com/jdx/mise/releases/download/v2026.9.13/mise-v2026.9.13-macos-arm64.tar.gz"
+        },
+        "version": "2026.9.13"
+    },
     "mole": {
         "cargoLock": null,
         "date": null,

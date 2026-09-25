@@ -20,6 +20,15 @@ src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_universal_darwin_all.tar.gz"
 
+# mise ships official prebuilt per-platform tarballs. We use them because
+# nixpkgs lags upstream badly (2026.8.6 vs 2026.9.13 as of 2026-09-25; the
+# bump sits unmerged in NixOS/nixpkgs#565961), and its source build is a full
+# Rust compile that isn't cached for aarch64-darwin.
+[mise]
+src.github = "jdx/mise"
+src.prefix = "v"
+fetch.url = "https://github.com/jdx/mise/releases/download/v$ver/mise-v$ver-macos-arm64.tar.gz"
+
 # mole is a shell CLI (mole/mo + lib/ + bin/*.sh) plus two Go binaries
 # (cmd/analyze, cmd/status). We build from source via buildGoModule and assemble
 # the shell tree — see modules/home-manager/packages/mole/package.nix. Tags are
