@@ -1,6 +1,5 @@
 {
   imports = [
-    ./harnesses/claude-code/work.nix
     ./harnesses/omp/work.nix
     ./tools/work.nix
     ./mcp/work.nix
