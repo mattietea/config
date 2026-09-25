@@ -76,10 +76,13 @@ inputs.darwin.lib.darwinSystem {
             html.enable = false;
             manpages.enable = false;
           };
-          # User-level generation expiry (launchd agent). The root nix-gc
-          # daemon never reaches home-manager generations under
-          # ~/.local/state/nix/profiles (NixOS/nix#8508), so without this they
-          # accumulate as GC roots and pin old closures forever.
+          # User-level GC (launchd agent). The root nix-gc daemon can't expire
+          # generations of user profiles under ~/.local/state/nix/profiles
+          # (NixOS/nix#8508), so `store.cleanup` expires them here. As a
+          # nix-darwin module, home-manager activates with driver version 1 and
+          # no longer writes a `home-manager` profile; GC-rooting is done via
+          # ~/.local/state/home-manager/gcroots/current-home instead. A stale
+          # `home-manager-N-link` there pins its whole closure until deleted.
           services.home-manager.autoExpire = {
             enable = true;
             frequency = "weekly";

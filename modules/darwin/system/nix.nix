@@ -40,6 +40,6 @@
   };
 
   system.activationScripts.postActivation.text = ''
-    nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 2>/dev/null || true
+    nix-env --profile /nix/var/nix/profiles/system --delete-generations +3 2>/dev/null || true
   '';
 }

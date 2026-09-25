@@ -7,5 +7,6 @@ _: {
     ShowPathbar = true;
     ShowStatusBar = true;
     FXPreferredViewStyle = "Nlsv";
+    FXRemoveOldTrashItems = true;
   };
 }
